@@ -18,6 +18,7 @@ describe('PersonController', () => {
         findOne: jest.fn(),
         update: jest.fn(),
         remove: jest.fn(),
+        findByrole: jest.fn(),
     };
 
     beforeEach(async () => {
@@ -59,7 +60,7 @@ describe('PersonController', () => {
         expect(await controller.create(dto)).toEqual(result);
         expect(service.create).toHaveBeenCalledWith(dto);
     });
-
+    // Get all people
     it ('should return all people', async () => {
         const result = [
             { id: 1, name: 'John', lastname: 'Doe' },
@@ -70,7 +71,7 @@ describe('PersonController', () => {
         expect(await controller.findAll()).toEqual(result);
         expect(service.findAll).toHaveBeenCalledTimes(1);
     });
-
+    // Get person by id
     it ('should return a person by id', async () => {
         const result = { id: 1, name: 'John', lastname: 'Doe' };
         mockService.findOne.mockResolvedValue(result);
@@ -78,6 +79,7 @@ describe('PersonController', () => {
         expect(await controller.findOne(1)).toEqual(result);
         expect(service.findOne).toHaveBeenCalledWith(1);
     });
+    // Update person by id
     it ('should update a person', async () => {
         const dto = { phone: '555-5678' } as UpdatePersonDto;
         const result = { id: 1, name: 'John', lastname: 'Doe', phone: '555-5678' };
@@ -86,12 +88,23 @@ describe('PersonController', () => {
         expect(await controller.update(1, dto)).toEqual(result);
         expect(service.update).toHaveBeenCalledWith(1, dto);
     });
-
+    // Delete person by id
     it ('should delete a person', async () => {
         const result = { message: 'Person deleted successfully' };
         mockService.remove.mockResolvedValue(result);
 
         expect(await controller.remove(1)).toEqual(result);
         expect(service.remove).toHaveBeenCalledWith(1);
+    });
+    // Get person by role
+    it ('should return a person by role', async () => {
+        const result = [
+            { id: 1, name: 'John', lastname: 'Doe', role: Role.Admin },
+            { id: 2, name: 'Jane', lastname: 'Doe', role: Role.Doctor },
+        ];
+        mockService.findByrole.mockResolvedValue(result);
+
+        expect(await controller.findByRole(Role.Admin)).toEqual(result);
+        expect(service.findByrole).toHaveBeenCalledWith(Role.Admin);
     });
 });
