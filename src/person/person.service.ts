@@ -51,7 +51,7 @@ export class PersonService {
     }
 
     // Delete person by id
-    remove(id: number) {
+    async remove(id: number) {
         return this.personRepository.delete(id);
     }
 }
