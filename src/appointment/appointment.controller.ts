@@ -29,7 +29,7 @@ export class AppointmentController {
     //http:localhost:3000/appointment/1
     //The param id is the id of the appointment, is required
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.appointmentService.findOne(+id);
   }
 
@@ -38,7 +38,7 @@ export class AppointmentController {
     //http:localhost:3000/appointment/1
     //The param id is the id of the appointment, is required for update
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAppointmentDto: UpdateAppointmentDto) {
+  update(@Param('id') id: number, @Body() updateAppointmentDto: UpdateAppointmentDto) {
     return this.appointmentService.update(+id, updateAppointmentDto);
   }
 
@@ -47,7 +47,7 @@ export class AppointmentController {
     //http:localhost:3000/appointment/1
     //The param id is the id of the appointment, is required for delete
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.appointmentService.remove(+id);
   }
 }
