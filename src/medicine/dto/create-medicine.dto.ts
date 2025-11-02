@@ -27,5 +27,5 @@ export class CreateMedicineDto {
 
     @IsInt()
     @Min(0)
-    price: string;
+    price: number;
 }

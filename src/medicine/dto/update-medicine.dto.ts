@@ -31,5 +31,5 @@ export class UpdateMedicineDto extends PartialType(CreateMedicineDto) {
 
     @IsInt()
     @Min(0)
-    price: string;
+    price: number;
 }
