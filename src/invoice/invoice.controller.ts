@@ -29,8 +29,8 @@ export class InvoiceController {
   //http:localhost:3000/invoice/1
   //The param id is the id of the invoice, is required
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.invoiceService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.invoiceService.findOne(id);
   }
 
   // ─── PATCH ───────────────────────────────────────────────
@@ -38,8 +38,8 @@ export class InvoiceController {
   // http:localhost:3000/invoice/1
   // The param id is the id of the invoice, is required for update
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateInvoiceDto: UpdateInvoiceDto) {
-    return this.invoiceService.update(+id, updateInvoiceDto);
+  update(@Param('id') id: number, @Body() updateInvoiceDto: UpdateInvoiceDto) {
+    return this.invoiceService.update(id, updateInvoiceDto);
   }
 
   // ─── DELETE ───────────────────────────────────────────────
@@ -47,7 +47,7 @@ export class InvoiceController {
   // http:localhost:3000/invoice/1
   // The param id is the id of the invoice, is required for delete
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.invoiceService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.invoiceService.remove(id);
   }
 }
