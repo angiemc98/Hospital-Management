@@ -40,7 +40,7 @@ export class Medicine {
     //Price of the medicine
     //Is required, length between 2 and 100
     @Column({type: 'varchar', length: 50})
-    price: string;
+    price: number;
 
     //Relationships
 

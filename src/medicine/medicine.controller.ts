@@ -29,7 +29,7 @@ export class MedicineController {
   //http:localhost:3000/medicine/1
   //The param id is the id of the medicine, is required
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.medicineService.findOne(+id);
   }
 
@@ -38,7 +38,7 @@ export class MedicineController {
   //http:localhost:3000/medicine/1
   //The param id is the id of the medicine, is required for update
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMedicineDto: UpdateMedicineDto) {
+  update(@Param('id') id: number, @Body() updateMedicineDto: UpdateMedicineDto) {
     return this.medicineService.update(+id, updateMedicineDto);
   }
 
@@ -47,7 +47,7 @@ export class MedicineController {
   //http:localhost:3000/medicine/1
   //The param id is the id of the medicine, is required for delete
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.medicineService.remove(+id);
   }
 
