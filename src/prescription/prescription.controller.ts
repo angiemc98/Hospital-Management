@@ -29,7 +29,7 @@ export class PrescriptionController {
   //http:localhost:3000/prescription/1
   //The param id is the id of the prescription, is required
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.prescriptionService.findOne(+id);
   }
 
@@ -38,7 +38,7 @@ export class PrescriptionController {
   //http:localhost:3000/prescription/1
   //The param id is the id of the prescription, is required for update
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePrescriptionDto: UpdatePrescriptionDto) {
+  update(@Param('id') id: number, @Body() updatePrescriptionDto: UpdatePrescriptionDto) {
     return this.prescriptionService.update(+id, updatePrescriptionDto);
   }
 
@@ -47,7 +47,7 @@ export class PrescriptionController {
   //http:localhost:3000/prescription/1
   //The param id is the id of the prescription, is required for delete
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.prescriptionService.remove(+id);
   }
 }
