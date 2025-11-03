@@ -3,17 +3,17 @@ import { Person } from "../person/person.entity";
 import { Appointment } from "../appointment/appointment.entity";
 import { Prescription } from "../prescription/prescription.entity";
 import { Specialty } from "../specialty/specialty.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
 
 @Entity('doctor')
 export class Doctor {
 
-    // Id of the doctor
+    @ApiProperty({ description: 'Id of the doctor', example: 1 })
     @PrimaryGeneratedColumn()
     id: number;
 
-    // License number of the doctor
-    // Is required, length between 2 and 100
+    @ApiProperty({ description: 'License number of the doctor', example: '12345-AB' })
     @Column(
         {length: 50, type: 'varchar'}
     )
@@ -21,17 +21,17 @@ export class Doctor {
 
     //Relationships
 
-    // Relation Person > Doctor, a Person can have many doctors
+    @ApiProperty({ type: () => Person })
     @OneToOne(() => Person, (person) => person.doctor, {cascade: true})
     @JoinColumn({name:'person_id'})
     person:Person;
     
-    // Relation Specialty > Doctor, a Specialty can have many doctors
+    @ApiProperty({ type: () => Specialty })
     @ManyToOne(() => Specialty, (Especialidades) => Especialidades.propety_doctor, {cascade: true})
     @JoinColumn({name:'specialty_id'})
     specialty:Specialty; 
 
-    // Relation Appointment > Doctor, an Appointment can have many doctors
+    @ApiProperty({ type: () => [Appointment] })
     @OneToMany(() => Appointment, (appointment) => appointment.doctor, {cascade: true})
     appointments:Appointment[];
 }

@@ -1,54 +1,51 @@
-import { Controller, Post, Body, Get, Param, Patch, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Patch, Delete, ParseIntPipe } from '@nestjs/common';
 import { Patient } from './patient.entity';
 import { CreatePatientDto } from './dto/create-patient.dto';
 import { PatientService } from './patient.service';
 import { UpdatePatientDto } from './dto/update-patient.dto';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
+@ApiTags('patient')
 @Controller('patient')
 export class PatientController {
   constructor(private readonly patientService: PatientService) {}
   
-  // ─── POST ───────────────────────────────────────────────
-  //Create a new patient
-  //http:localhost:3000/patient
-  //The JSON Body must be in the format of the CreatePatientDto
   @Post()
+  @ApiOperation({ summary: 'Create a new patient' })
+  @ApiResponse({ status: 201, description: 'The patient has been successfully created.', type: Patient })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
   create(@Body() patientDto: CreatePatientDto) {
     return this.patientService.createPatient(patientDto);
   }
 
-  // ─── GET ───────────────────────────────────────────────
-  //Get all patients
-  //http:localhost:3000/patient
   @Get()
+  @ApiOperation({ summary: 'Get all patients' })
+  @ApiResponse({ status: 200, description: 'Return all patients.', type: [Patient] })
   findAll() {
     return this.patientService.findAll();
   }
 
-  // ─── GET ───────────────────────────────────────────────
-  //Get patient by id
-  //http:localhost:3000/patient/1
-  //The param id is the id of the patient, is required
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.patientService.findOne(+id);
+  @ApiOperation({ summary: 'Get patient by id' })
+  @ApiResponse({ status: 200, description: 'Return the patient.', type: Patient })
+  @ApiResponse({ status: 404, description: 'Patient not found.' })
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.patientService.findOne(id);
   }
 
-  // ─── PATCH ───────────────────────────────────────────────
-  //Update an patient
-  //http:localhost:3000/patient/1
-  //The param id is the id of the patient, is required for update
   @Patch(':id')
-  update(@Param('id') id: number, @Body() patientDto: UpdatePatientDto) {
-    return this.patientService.update(+id, patientDto);
+  @ApiOperation({ summary: 'Update a patient' })
+  @ApiResponse({ status: 200, description: 'The patient has been successfully updated.', type: Patient })
+  @ApiResponse({ status: 404, description: 'Patient not found.' })
+  update(@Param('id', ParseIntPipe) id: number, @Body() patientDto: UpdatePatientDto) {
+    return this.patientService.update(id, patientDto);
   }
 
-  // ─── DELETE ───────────────────────────────────────────────
-  // Delete a patient
-  // http:localhost:3000/patient/1
-  // The param id is the id of the patient, is required for delete
   @Delete(':id')
-  remove(@Param('id') id: number) {
-    return this.patientService.remove(+id);
+  @ApiOperation({ summary: 'Delete a patient' })
+  @ApiResponse({ status: 200, description: 'The patient has been successfully deleted.' })
+  @ApiResponse({ status: 404, description: 'Patient not found.' })
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.patientService.remove(id);
   }
 }

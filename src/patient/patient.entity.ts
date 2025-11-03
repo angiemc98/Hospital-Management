@@ -1,45 +1,40 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from "typeorm";
 import { Appointment } from "../appointment/appointment.entity";
 import { Person } from "../person/person.entity";
-import { Prescription } from "../prescription/prescription.entity";
 import { Invoice } from "../invoice/invoice.entity";
-
-
+import { ApiProperty } from "@nestjs/swagger";
 
 @Entity('patient')
 export class Patient {
 
-    // Primary key of the patient
+    @ApiProperty({ description: 'Primary key of the patient', example: 1 })
     @PrimaryGeneratedColumn()
     id: number;
 
-    // blood type of the patient
+    @ApiProperty({ description: 'Blood type of the patient', example: 'O+' })
     @Column({type: 'varchar', length: 50})
     bloodType: string;
 
-    // insurance of the patient
+    @ApiProperty({ description: 'Insurance type of the patient', enum: ['contributive', 'subsidized', 'free'] })
     @Column({enum: ['contributive', 'subsidized', 'free']})
     insurance: string;
 
-    // medical history of the patient
+    @ApiProperty({ description: 'Medical history of the patient', example: 'Allergic to penicillin.' })
     @Column({type: 'text', nullable: true})
     medicalHistory: string;
 
     //Relationships
 
-    // Relation Person > Patient, a Person can have many patients
+    @ApiProperty({ type: () => Person })
     @OneToOne(() => Person, (person) => person.patient, {cascade: true})
-    // foreign key person_id JoinColumn = Define the name of the foreign key column in the patient table
     @JoinColumn({name:'person_id'})
     person: Person;
 
-    // Relation Appointment > Patient, an Appointment can have many patients
+    @ApiProperty({ type: () => [Appointment] })
     @OneToMany (() => Appointment, (appointment) => appointment.patient, {cascade: true})
-    // foreign key patient_id JoinColumn = Define the name of the foreign key column in the patient table
-    @JoinColumn({name: 'patient_id'})
     appointments: Appointment[];
 
-    // Relation Invoice > Patient, an Invoice can have many patients
+    @ApiProperty({ type: () => [Invoice] })
     @OneToMany(() => Invoice, (invoice) => invoice.propety_patient, {cascade: true})
     invoices: Invoice[];
 }

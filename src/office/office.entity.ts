@@ -1,28 +1,28 @@
 import { Appointment } from "src/appointment/appointment.entity"; 
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { ApiProperty } from "@nestjs/swagger";
 
 @Entity('consultorio')
 export class Office{
-    // Primary key of the office
+    @ApiProperty({ description: 'Primary key of the office', example: 1 })
     @PrimaryGeneratedColumn()
     id_consultorio: number;
     
-    // Number of the office
-    // Is required, unique
+    @ApiProperty({ description: 'Number of the office', example: 101 })
     @Column({unique: true})
     num_consultorio: number;
 
-    // Number of the office
+    @ApiProperty({ description: 'Floor number of the office', example: 1 })
     @Column()
     piso: number;
 
-    // Availability of the office, default value true, change to false if the office is occupied
+    @ApiProperty({ description: 'Availability of the office', example: true })
     @Column({type: 'boolean', default: true})
     disponible: boolean
 
     //Relationships
 
-    // Relation Appointment > Office, an Appointment can have many offices
+    @ApiProperty({ type: () => [Appointment] })
     @OneToMany(() => Appointment, (Cita) => Cita.office, {cascade: true})
     property_cita: Appointment[];
 }

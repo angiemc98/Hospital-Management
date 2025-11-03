@@ -2,42 +2,41 @@ import { Body, Controller, Get, Patch, Post, Delete, Param, ParseIntPipe } from 
 import { SpecialtyService } from './specialty.service';
 import { CreateSpecialtyDto } from './dto/create-specialty.dto';
 import { UpdateSpecialtyDto } from './dto/update-speciality.dto';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Specialty } from './specialty.entity';
 
+@ApiTags('specialty')
 @Controller('specialty')
 export class SpecialtyController {
   constructor(private readonly specialtyService: SpecialtyService) {}
 
-  // ─── POST ───────────────────────────────────────────────
-  //Create a new specialty
-  //http:localhost:3000/specialty
-  //The JSON Body must be in the format of the CreateSpecialtyDto
   @Post()
+  @ApiOperation({ summary: 'Create a new specialty' })
+  @ApiResponse({ status: 201, description: 'The specialty has been successfully created.', type: Specialty })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
   create(@Body()dto: CreateSpecialtyDto) {
     return this.specialtyService.create(dto);
   }
 
-  // ─── GET ───────────────────────────────────────────────
-  //Get all specialties
-  //http:localhost:3000/specialty
   @Get()
+  @ApiOperation({ summary: 'Get all specialties' })
+  @ApiResponse({ status: 200, description: 'Return all specialties.', type: [Specialty] })
   findAll() {
     return this.specialtyService.findAll();
   }
 
-  // ─── GET ───────────────────────────────────────────────
-  //Get specialty by id
-  //http:localhost:3000/specialty/1
-  //The param id is the id of the specialty, is required
   @Get(':id')
-    findOne(@Param('id', ParseIntPipe) id: number) {
-      return this.specialtyService.findOne(id);
-    }
+  @ApiOperation({ summary: 'Get a specialty by id' })
+  @ApiResponse({ status: 200, description: 'Return the specialty.', type: Specialty })
+  @ApiResponse({ status: 404, description: 'Specialty not found.'})
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.specialtyService.findOne(id);
+  }
 
-  // ─── PATCH ───────────────────────────────────────────────
-  //Update an specialty
-  //http:localhost:3000/specialty/1
-  //The param id is the id of the specialty, is required for update
   @Patch(':id')
+  @ApiOperation({ summary: 'Update a specialty' })
+  @ApiResponse({ status: 200, description: 'The specialty has been successfully updated.', type: Specialty })
+  @ApiResponse({ status: 404, description: 'Specialty not found.'})
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdateSpecialtyDto,
@@ -45,12 +44,11 @@ export class SpecialtyController {
     return this.specialtyService.update(id, dto);
   }
 
-  // ─── DELETE ───────────────────────────────────────────────
-  //Delete an specialty
-  //http:localhost:3000/specialty/1
-  //The param id is the id of the specialty, is required for delete
   @Delete(':id')
-  delete(@Body('id') id: number) {
-    return this.specialtyService.delete(+id);
+  @ApiOperation({ summary: 'Delete a specialty' })
+  @ApiResponse({ status: 200, description: 'The specialty has been successfully deleted.'})
+  @ApiResponse({ status: 404, description: 'Specialty not found.'})
+  delete(@Param('id', ParseIntPipe) id: number) {
+    return this.specialtyService.delete(id);
   }
 }
