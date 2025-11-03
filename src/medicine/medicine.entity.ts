@@ -100,7 +100,7 @@ export class Medicine {
      * @required
      */
     @Column({type: 'varchar', length: 50})
-    price: string;
+    price: number;
 
     /**
      * Prescripciones asociadas con este medicamento

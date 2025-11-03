@@ -74,8 +74,8 @@ export class InvoiceController {
    * GET http://localhost:3000/invoice/1
    */
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.invoiceService.findOne(+id);
+  findOne(@Param('id') id: number) {
+    return this.invoiceService.findOne(id);
   }
 
   /**
@@ -98,8 +98,8 @@ export class InvoiceController {
    * ```
    */
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateInvoiceDto: UpdateInvoiceDto) {
-    return this.invoiceService.update(+id, updateInvoiceDto);
+  update(@Param('id') id: number, @Body() updateInvoiceDto: UpdateInvoiceDto) {
+    return this.invoiceService.update(id, updateInvoiceDto);
   }
 
   /**
@@ -114,7 +114,7 @@ export class InvoiceController {
    * // Retorna: { "message": "Invoice with id 1 deleted successfully" }
    */
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.invoiceService.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.invoiceService.remove(id);
   }
 }

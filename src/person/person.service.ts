@@ -162,7 +162,6 @@ export class PersonService {
         await this.personRepository.update(id, updatePersonDto);
         return this.personRepository.findOne({ where: { id } });
     }
-
     /**
      * Elimina una persona por su ID
      * 
@@ -175,6 +174,8 @@ export class PersonService {
      * ```
      */
     remove(id: number) {
+    // Delete person by id
+    async remove(id: number) {
         return this.personRepository.delete(id);
     }
 }
