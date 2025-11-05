@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Office } from './office.entity';
 import { CreateOfficeDto } from './dto/create-office.dto';
 import { UpdateOfficeDto } from './dto/Update-office.dto';
+
 
 /**
  * Servicio para gestionar las operaciones de consultorios
@@ -45,10 +46,31 @@ export class OfficeService {
      * });
      * ```
      */
-    async create(createOfficeDto: CreateOfficeDto) {
-        const office = this.officeRepository.create(createOfficeDto);
-        return this.officeRepository.save(office);
+   async create(createOfficeDto: CreateOfficeDto) {
+    // 1. Validar la existencia primero (FUERA del try)
+    const exist = await this.officeRepository.findOne({where: {num_consultorio: createOfficeDto.num_consultorio}});
+    if (exist) {
+        // El error de conflicto se lanza y propaga directamente
+        throw new HttpException('Office already exists', HttpStatus.CONFLICT);
     }
+    
+    // 2. Usar try/catch SOLO para manejar fallos inesperados de DB/servidor
+    try {
+        const office = this.officeRepository.create(createOfficeDto);
+        const savedOffice = await this.officeRepository.save(office);
+
+        // Agregamos un retorno explícito ya que el test de éxito lo necesita
+        return {
+            message: 'Office created successfully', 
+            statusCode: HttpStatus.CREATED, 
+            data: savedOffice 
+        };
+    } catch (error) {
+        // 3. Manejar errores desconocidos con un error 500 genérico
+        // NOTA: Si el error fuera una HttpException ya lanzada, TypeORM no la capturaría aquí.
+        throw new HttpException('Error creating office', HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+}
 
     /**
      * Obtiene todos los consultorios registrados con sus citas
@@ -61,8 +83,13 @@ export class OfficeService {
      * // Retorna consultorios con property_cita poblado
      * ```
      */
-    findAll() {
-        return this.officeRepository.find( {relations: ['property_cita']});
+    async findAll() {
+        const offices = await this.officeRepository.find();
+        return {
+            message: 'All offices retrieved successfully',
+            statusCode: HttpStatus.OK,
+            data: offices
+        };
     }
 
     /**
@@ -80,8 +107,12 @@ export class OfficeService {
     async findOne(id: number) {
         const office = await this.officeRepository.findOne({where: {id_consultorio: id}, relations: ['property_cita']});
         // Si el consultorio no existe
-        if (!office) throw new Error('Office not found');
-        return office;
+        if (!office) throw new HttpException('Office not found', HttpStatus.NOT_FOUND);
+        return {
+            message: 'Office retrieved successfully',
+            statusCode: HttpStatus.OK,
+            data: office,
+        }
     }
 
     /**
@@ -106,10 +137,18 @@ export class OfficeService {
      */
     async update(id: number, updateOfficeDto: UpdateOfficeDto) {
         // Verificación de existencia del consultorio
-        const office = await this.findOne(id);
+        const office = await this.officeRepository.findOne({where: {id_consultorio: id}});
+        if (!office) {
+            throw new HttpException('Office not found', HttpStatus.NOT_FOUND);
+        }
         // Si se envía nuevo num_consultorio, actualiza la relación
         Object.assign(office, updateOfficeDto);
-        return this.officeRepository.save(office);
+        const updated = await this.officeRepository.save(office);
+        return {
+            message: 'Office updated successfully',
+            statusCode: HttpStatus.OK,
+            data: updated
+        }
     }   
 
     /**
@@ -123,7 +162,15 @@ export class OfficeService {
      * await officeService.remove(1);
      * ```
      */
-    remove(id: number) {
-        return this.officeRepository.delete(id);
+    async remove(id: number) {
+        const office = await this.officeRepository.findOne({where: {id_consultorio: id}});
+        if (!office) {
+            throw new HttpException('Office not found', HttpStatus.NOT_FOUND);
+        }
+        await this.officeRepository.delete(office);
+        return {
+            message: 'Office deleted successfully',
+            statusCode: HttpStatus.OK,
+        }
     }
 }
