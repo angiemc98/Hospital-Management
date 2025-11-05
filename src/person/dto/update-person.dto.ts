@@ -51,6 +51,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      */
     @IsString()
     @Length(2, 100)
+    @IsOptional()
     name: string;
 
     /**
@@ -66,6 +67,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      */
     @IsString()
     @Length(2, 100)
+    @IsOptional()
     lastname: string;
 
     /**
@@ -78,6 +80,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      * @example "1234567890", "CC-1234567"
      */
     @IsString()
+    @IsOptional()
     document: string;
 
     /**
@@ -90,6 +93,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      * @example new Date("1990-05-15"), "1990-05-15"
      */
     @IsDateString()
+    @IsOptional()
     birthDate: Date;
 
     /**
@@ -102,6 +106,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      * @example "usuario@example.com"
      */
     @IsEmail()
+    @IsOptional()
     email: string;
 
     /**
@@ -117,6 +122,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      */
     @IsString()
     @Length(2, 100)
+    @IsOptional()
     phone: string;
 
     /**
@@ -129,6 +135,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      * @example Role.Doctor, Role.Patient, Role.Admin
      */
     @IsString()
+    @IsOptional()
     role: Role;
 
     /**

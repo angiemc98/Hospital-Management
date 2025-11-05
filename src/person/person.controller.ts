@@ -49,7 +49,11 @@ export class PersonController {
    * ```
    */
   @Post()
-  create(@Body() dto: CreatePersonDto): Promise<Person> {
+  create(@Body() dto: CreatePersonDto): Promise<{
+    message: string,
+    statusCode: number,
+    data: Person
+  }> {
     return this.personService.create(dto);
   }
 
