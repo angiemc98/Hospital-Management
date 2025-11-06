@@ -1,157 +1,115 @@
-import { IsDateString, IsEmail, IsEnum, IsOptional, IsString, Length } from "class-validator";
-import { Role } from "../person.entity";
-import { Type } from "class-transformer";
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
+import { OfficeService } from './office.service';
+import { CreateOfficeDto } from './dto/create-office.dto';
+import { UpdateOfficeDto } from './dto/update-office.dto';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Office } from './office.entity';
 
 /**
- * DTO para la creación de una nueva persona
+ * Controlador para gestionar las operaciones REST de consultorios
  * 
  * @description
- * Define la estructura y validaciones requeridas para crear una persona en el sistema.
- * Utiliza class-validator para garantizar la integridad de los datos, incluyendo
- * validaciones específicas para contraseñas y roles.
+ * Este controlador expone los endpoints HTTP para realizar operaciones CRUD
+ * sobre los consultorios. Maneja las peticiones HTTP y delega la lógica
+ * de negocio al servicio OfficeService.
  * 
+ * @route /office
  * @export
- * @class CreatePersonDto
- * 
- * @example
- * ```typescript
- * const newPerson: CreatePersonDto = {
- *   name: "Juan",
- *   lastname: "Pérez",
- *   document: "1234567890",
- *   birthDate: new Date("1990-05-15"),
- *   phone: "3001234567",
- *   email: "juan@example.com",
- *   password: "securePass123",
- *   role: Role.Patient,
- *   gender: "Masculino"
- * };
- * ```
+ * @class OfficeController
  */
-export class CreatePersonDto {
+@ApiTags('office')
+@Controller('office')
+export class OfficeController {
+  /**
+   * Constructor del controlador de consultorios
+   * 
+   * @param {OfficeService} officeService - Servicio que maneja la lógica de negocio de consultorios
+   */
+  constructor(private readonly officeService: OfficeService) {}
 
-    /**
-     * Nombre de la persona
-     * 
-     * @type {string}
-     * @description Nombre o nombres de la persona
-     * @minLength 2
-     * @maxLength 100
-     * @required
-     * 
-     * @example "Juan", "María Fernanda"
-     */
-    @IsString()
-    @Length(2, 100)
-    name: string;
+  /**
+   * Crea un nuevo consultorio
+   * 
+   * @route POST /office
+   * @param {CreateOfficeDto} dto - Datos del consultorio a crear
+   * @returns {Promise<Office>} El consultorio creado
+   */
+  @Post()
+  @ApiOperation({ summary: 'Create a new office' })
+  @ApiResponse({ status: 201, description: 'The office has been successfully created.', type: Office })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
+  create(@Body() dto: CreateOfficeDto) {
+    return this.officeService.create(dto);
+  }
 
-    /**
-     * Apellido de la persona
-     * 
-     * @type {string}
-     * @description Apellido o apellidos de la persona
-     * @minLength 2
-     * @maxLength 100
-     * @required
-     * 
-     * @example "Pérez", "García López"
-     */
-    @IsString()
-    @Length(2, 100)
-    lastname: string;
+  /**
+   * Obtiene todos los consultorios
+   * 
+   * @route GET /office
+   * @returns {Promise<Office[]>} Lista de todos los consultorios con sus citas asociadas
+   */
+  @Get()
+  @ApiOperation({ summary: 'Get all offices' })
+  @ApiResponse({ status: 200, description: 'Return all offices.', type: [Office] })
+  findAll() {
+    return this.officeService.findAll();
+  }
 
-    /**
-     * Documento de identidad de la persona
-     * 
-     * @type {string}
-     * @description Número de documento de identidad único
-     * @required
-     * 
-     * @example "1234567890", "CC-1234567"
-     */
-    @IsString()
-    document: string;
+  /**
+   * Obtiene un consultorio por su ID
+   * 
+   * @route GET /office/:id
+   * @param {number} id - ID del consultorio a buscar
+   * @returns {Promise<Office>} El consultorio encontrado con sus citas
+   */
+  @Get(':id')
+  @ApiOperation({ summary: 'Get an office by id' })
+  @ApiResponse({ status: 200, description: 'Return the office.', type: Office })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.officeService.findOne(id);
+  }
 
-    /**
-     * Fecha de nacimiento de la persona
-     * 
-     * @type {Date}
-     * @description Fecha de nacimiento en formato ISO 8601
-     * @required
-     * 
-     * @example new Date("1990-05-15"), "1990-05-15"
-     */
-    @Type(() => Date)
-    @IsDateString()
-    birthDate: Date;
+  /**
+   * Actualiza un consultorio existente
+   * 
+   * @route PATCH /office/:id
+   * @param {number} id - ID del consultorio a actualizar
+   * @param {UpdateOfficeDto} dto - Datos actualizados del consultorio
+   * @returns {Promise<Office>} El consultorio actualizado
+   */
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update an office' })
+  @ApiResponse({ status: 200, description: 'The office has been successfully updated.', type: Office })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: UpdateOfficeDto,
+  ) {
+    return this.officeService.update(id, dto);
+  }
 
-    /**
-     * Teléfono de contacto de la persona
-     * 
-     * @type {string}
-     * @description Número de teléfono móvil o fijo
-     * @minLength 2
-     * @maxLength 100
-     * @required
-     * 
-     * @example "3001234567", "+573001234567"
-     */
-    @IsString()
-    @Length(2, 100)
-    phone: string;
-
-    /**
-     * Correo electrónico de la persona
-     * 
-     * @type {string}
-     * @description Dirección de correo electrónico válida
-     * @required
-     * 
-     * @example "usuario@example.com"
-     */
-    @IsEmail()
-    email: string;
-
-    /**
-     * Contraseña de la persona
-     * 
-     * @type {string}
-     * @description Contraseña para acceso al sistema. Será hasheada automáticamente antes de guardar.
-     * @minLength 8
-     * @maxLength 50
-     * @required
-     * 
-     * @example "securePass123", "MyP@ssw0rd!"
-     */
-    @IsString({ message: 'La contraseña debe tener caracteres válidos' })
-    @Length(8, 50, {
-        message: 'La contraseña debe tener entre 8 y 50 caracteres'
-    })
-    password: string;
-
-    /**
-     * Rol de la persona en el sistema
-     * 
-     * @type {Role}
-     * @description Define el tipo de usuario y sus permisos (doctor, paciente, admin)
-     * @required
-     * 
-     * @example Role.Doctor, Role.Patient, Role.Admin
-     */
-    @IsEnum(Role, { message: 'El rol debe ser existente' })
-    role: Role;
-
-    /**
-     * Género de la persona
-     * 
-     * @type {string}
-     * @description Género con el que se identifica la persona
-     * @optional
-     * 
-     * @example "Masculino", "Femenino", "No binario", "Prefiero no decir"
-     */
-    @IsString()
-    @IsOptional()
-    gender: string;
-
+  /**
+   * Elimina un consultorio por su ID
+   * 
+   * @route DELETE /office/:id
+   * @param {number} id - ID del consultorio a eliminar
+   * @returns {Promise<DeleteResult>} Resultado de la operación de eliminación
+   */
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete an office' })
+  @ApiResponse({ status: 200, description: 'The office has been successfully deleted.' })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.officeService.remove(id);
+  }
 }

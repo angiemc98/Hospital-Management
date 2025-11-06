@@ -1,7 +1,18 @@
-import { Controller, Patch, Get, Post, Body, Param, ParseIntPipe, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { OfficeService } from './office.service';
 import { CreateOfficeDto } from './dto/create-office.dto';
-import { UpdateOfficeDto } from './dto/Update-office.dto';
+import { UpdateOfficeDto } from './dto/update-office.dto';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Office } from './office.entity';
 
 /**
  * Controlador para gestionar las operaciones REST de consultorios
@@ -15,6 +26,7 @@ import { UpdateOfficeDto } from './dto/Update-office.dto';
  * @export
  * @class OfficeController
  */
+@ApiTags('office')
 @Controller('office')
 export class OfficeController {
   /**
@@ -30,19 +42,11 @@ export class OfficeController {
    * @route POST /office
    * @param {CreateOfficeDto} dto - Datos del consultorio a crear
    * @returns {Promise<Office>} El consultorio creado
-   * 
-   * @example
-   * POST http://localhost:3000/office
-   * Body:
-   * ```json
-   * {
-   *   "num_consultorio": 101,
-   *   "piso": 1,
-   *   "disponible": true
-   * }
-   * ```
    */
   @Post()
+  @ApiOperation({ summary: 'Create a new office' })
+  @ApiResponse({ status: 201, description: 'The office has been successfully created.', type: Office })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
   create(@Body() dto: CreateOfficeDto) {
     return this.officeService.create(dto);
   }
@@ -52,11 +56,10 @@ export class OfficeController {
    * 
    * @route GET /office
    * @returns {Promise<Office[]>} Lista de todos los consultorios con sus citas asociadas
-   * 
-   * @example
-   * GET http://localhost:3000/office
    */
   @Get()
+  @ApiOperation({ summary: 'Get all offices' })
+  @ApiResponse({ status: 200, description: 'Return all offices.', type: [Office] })
   findAll() {
     return this.officeService.findAll();
   }
@@ -67,11 +70,11 @@ export class OfficeController {
    * @route GET /office/:id
    * @param {number} id - ID del consultorio a buscar
    * @returns {Promise<Office>} El consultorio encontrado con sus citas
-   * 
-   * @example
-   * GET http://localhost:3000/office/1
    */
   @Get(':id')
+  @ApiOperation({ summary: 'Get an office by id' })
+  @ApiResponse({ status: 200, description: 'Return the office.', type: Office })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.officeService.findOne(id);
   }
@@ -83,18 +86,11 @@ export class OfficeController {
    * @param {number} id - ID del consultorio a actualizar
    * @param {UpdateOfficeDto} dto - Datos actualizados del consultorio
    * @returns {Promise<Office>} El consultorio actualizado
-   * 
-   * @example
-   * PATCH http://localhost:3000/office/1
-   * Body:
-   * ```json
-   * {
-   *   "disponible": false,
-   *   "piso": 2
-   * }
-   * ```
    */
   @Patch(':id')
+  @ApiOperation({ summary: 'Update an office' })
+  @ApiResponse({ status: 200, description: 'The office has been successfully updated.', type: Office })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdateOfficeDto,
@@ -108,13 +104,12 @@ export class OfficeController {
    * @route DELETE /office/:id
    * @param {number} id - ID del consultorio a eliminar
    * @returns {Promise<DeleteResult>} Resultado de la operación de eliminación
-   * 
-   * @example
-   * DELETE http://localhost:3000/office/1
    */
   @Delete(':id')
-  remove(@Body('id', ParseIntPipe) id: number) {
+  @ApiOperation({ summary: 'Delete an office' })
+  @ApiResponse({ status: 200, description: 'The office has been successfully deleted.' })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
+  remove(@Param('id', ParseIntPipe) id: number) {
     return this.officeService.remove(id);
   }
-
 }

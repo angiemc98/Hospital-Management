@@ -3,6 +3,7 @@ import { Person } from "../person/person.entity";
 import { Appointment } from "../appointment/appointment.entity";
 import { Prescription } from "../prescription/prescription.entity";
 import { Specialty } from "../specialty/specialty.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
 /**
  * Entidad que representa un doctor en el sistema médico
@@ -24,6 +25,13 @@ import { Specialty } from "../specialty/specialty.entity";
 @Entity('doctor')
 export class Doctor {
 
+<<<<<<< HEAD
+    @ApiProperty({ description: 'Id of the doctor', example: 1 })
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @ApiProperty({ description: 'License number of the doctor', example: '12345-AB' })
+=======
     /**
      * Identificador del doctor
      * 
@@ -44,11 +52,17 @@ export class Doctor {
      * 
      * @example "MP-123456", "RM-789012", "LIC-345678"
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @Column(
         {length: 50, type: 'varchar'}
     )
     licenseNumber: string;
 
+<<<<<<< HEAD
+    //Relationships
+
+    @ApiProperty({ type: () => Person })
+=======
     /**
      * Persona asociada con este doctor
      * 
@@ -59,10 +73,14 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Person}
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @OneToOne(() => Person, (person) => person.doctor, {cascade: true})
     @JoinColumn({name:'person_id'})
     person:Person;
     
+<<<<<<< HEAD
+    @ApiProperty({ type: () => Specialty })
+=======
     /**
      * Especialidad del doctor
      * 
@@ -74,10 +92,14 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Specialty}
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @ManyToOne(() => Specialty, (Especialidades) => Especialidades.propety_doctor, {cascade: true})
     @JoinColumn({name:'specialty_id'})
     specialty:Specialty; 
 
+<<<<<<< HEAD
+    @ApiProperty({ type: () => [Appointment] })
+=======
     /**
      * Citas asociadas con este doctor
      * 
@@ -87,6 +109,7 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Appointment}
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @OneToMany(() => Appointment, (appointment) => appointment.doctor, {cascade: true})
     appointments:Appointment[];
 }

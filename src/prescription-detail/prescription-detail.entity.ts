@@ -1,38 +1,111 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Prescription } from "src/prescription/prescription.entity";
 import { Medicine } from "src/medicine/medicine.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
 
 @Entity('prescription_detail')
 export class PrescriptionDetail {
     
-    // Primary key of the prescription detail
+    @ApiProperty({ description: 'Primary key of the prescription detail', example: 1 })
     @PrimaryGeneratedColumn()
     id: number;
     
-    // Dose of the prescription 
+    @ApiProperty({ description: 'Dose of the prescription', example: '1 tablet' })
     @Column({length: 100})
     dose: string;
 
-    // Duration of the prescription 
+    @ApiProperty({ description: 'Duration of the prescription in days', example: 7 })
     @Column({type: 'int'})
     duration: number;
 
-    // Instructions of the prescription 
+    @ApiProperty({ description: 'Instructions for the prescription', example: 'Take one tablet every 8 hours.' })
     @Column({type: 'text'})
-    instrucitons: string;
+    instructions: string;
 
     //Relationships
 
-    // Relation Prescription > PrescriptionDetail, a PrescriptionDetail can have many prescriptions
+    @ApiProperty({ type: () => Prescription })
     @ManyToOne(() => Prescription, (prescription) => prescription.details, {onDelete: 'CASCADE'})
-    // foreign key prescription_id JoinColumn = Define the name of the foreign key column in the prescription_detail table
     @JoinColumn({name: 'prescription_id'})
     prescription: Prescription;
 
-    // Relation Medicine > PrescriptionDetail, a Medicine can have many prescription details
+    @ApiProperty({ type: () => Medicine })
     @ManyToOne(() => Medicine, (medicine) => medicine.details)
-    // foreign key medicine_id JoinColumn = Define the name of the foreign key column in the prescription_detail table
+    @JoinColumn({name: 'medicine_id'})
+    medicine: Medicine;
+    
+}import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Prescription } from "src/prescription/prescription.entity";
+import { Medicine } from "src/medicine/medicine.entity";
+import { ApiProperty } from "@nestjs/swagger";
+
+
+@Entity('prescription_detail')
+export class PrescriptionDetail {
+    
+    @ApiProperty({ description: 'Primary key of the prescription detail', example: 1 })
+    @PrimaryGeneratedColumn()
+    id: number;
+    
+    @ApiProperty({ description: 'Dose of the prescription', example: '1 tablet' })
+    @Column({length: 100})
+    dose: string;
+
+    @ApiProperty({ description: 'Duration of the prescription in days', example: 7 })
+    @Column({type: 'int'})
+    duration: number;
+
+    @ApiProperty({ description: 'Instructions for the prescription', example: 'Take one tablet every 8 hours.' })
+    @Column({type: 'text'})
+    instructions: string;
+
+    //Relationships
+
+    @ApiProperty({ type: () => Prescription })
+    @ManyToOne(() => Prescription, (prescription) => prescription.details, {onDelete: 'CASCADE'})
+    @JoinColumn({name: 'prescription_id'})
+    prescription: Prescription;
+
+    @ApiProperty({ type: () => Medicine })
+    @ManyToOne(() => Medicine, (medicine) => medicine.details)
+    @JoinColumn({name: 'medicine_id'})
+    medicine: Medicine;
+    
+}import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Prescription } from "src/prescription/prescription.entity";
+import { Medicine } from "src/medicine/medicine.entity";
+import { ApiProperty } from "@nestjs/swagger";
+
+
+@Entity('prescription_detail')
+export class PrescriptionDetail {
+    
+    @ApiProperty({ description: 'Primary key of the prescription detail', example: 1 })
+    @PrimaryGeneratedColumn()
+    id: number;
+    
+    @ApiProperty({ description: 'Dose of the prescription', example: '1 tablet' })
+    @Column({length: 100})
+    dose: string;
+
+    @ApiProperty({ description: 'Duration of the prescription in days', example: 7 })
+    @Column({type: 'int'})
+    duration: number;
+
+    @ApiProperty({ description: 'Instructions for the prescription', example: 'Take one tablet every 8 hours.' })
+    @Column({type: 'text'})
+    instructions: string;
+
+    //Relationships
+
+    @ApiProperty({ type: () => Prescription })
+    @ManyToOne(() => Prescription, (prescription) => prescription.details, {onDelete: 'CASCADE'})
+    @JoinColumn({name: 'prescription_id'})
+    prescription: Prescription;
+
+    @ApiProperty({ type: () => Medicine })
+    @ManyToOne(() => Medicine, (medicine) => medicine.details)
     @JoinColumn({name: 'medicine_id'})
     medicine: Medicine;
     

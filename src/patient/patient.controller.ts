@@ -1,9 +1,13 @@
-import { Controller, Post, Body, Get, Param, Patch, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Patch, Delete, ParseIntPipe } from '@nestjs/common';
 import { Patient } from './patient.entity';
 import { CreatePatientDto } from './dto/create-patient.dto';
 import { PatientService } from './patient.service';
 import { UpdatePatientDto } from './dto/update-patient.dto';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
+<<<<<<< HEAD
+@ApiTags('patient')
+=======
 /**
  * Controlador para gestionar las operaciones REST de pacientes
  * 
@@ -16,6 +20,7 @@ import { UpdatePatientDto } from './dto/update-patient.dto';
  * @export
  * @class PatientController
  */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
 @Controller('patient')
 export class PatientController {
   /**
@@ -25,6 +30,8 @@ export class PatientController {
    */
   constructor(private readonly patientService: PatientService) {}
   
+<<<<<<< HEAD
+=======
   /**
    * Crea un nuevo paciente
    * 
@@ -44,11 +51,17 @@ export class PatientController {
    * }
    * ```
    */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
   @Post()
+  @ApiOperation({ summary: 'Create a new patient' })
+  @ApiResponse({ status: 201, description: 'The patient has been successfully created.', type: Patient })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
   create(@Body() patientDto: CreatePatientDto) {
     return this.patientService.createPatient(patientDto);
   }
 
+<<<<<<< HEAD
+=======
   /**
    * Obtiene todos los pacientes
    * 
@@ -58,11 +71,16 @@ export class PatientController {
    * @example
    * GET http://localhost:3000/patient
    */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
   @Get()
+  @ApiOperation({ summary: 'Get all patients' })
+  @ApiResponse({ status: 200, description: 'Return all patients.', type: [Patient] })
   findAll() {
     return this.patientService.findAll();
   }
 
+<<<<<<< HEAD
+=======
   /**
    * Obtiene un paciente por su ID
    * 
@@ -73,11 +91,17 @@ export class PatientController {
    * @example
    * GET http://localhost:3000/patient/1
    */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.patientService.findOne(+id);
+  @ApiOperation({ summary: 'Get patient by id' })
+  @ApiResponse({ status: 200, description: 'Return the patient.', type: Patient })
+  @ApiResponse({ status: 404, description: 'Patient not found.' })
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.patientService.findOne(id);
   }
 
+<<<<<<< HEAD
+=======
   /**
    * Actualiza un paciente existente
    * 
@@ -97,11 +121,17 @@ export class PatientController {
    * }
    * ```
    */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
   @Patch(':id')
-  update(@Param('id') id: number, @Body() patientDto: UpdatePatientDto) {
-    return this.patientService.update(+id, patientDto);
+  @ApiOperation({ summary: 'Update a patient' })
+  @ApiResponse({ status: 200, description: 'The patient has been successfully updated.', type: Patient })
+  @ApiResponse({ status: 404, description: 'Patient not found.' })
+  update(@Param('id', ParseIntPipe) id: number, @Body() patientDto: UpdatePatientDto) {
+    return this.patientService.update(id, patientDto);
   }
 
+<<<<<<< HEAD
+=======
   /**
    * Elimina un paciente por su ID
    * 
@@ -112,8 +142,12 @@ export class PatientController {
    * @example
    * DELETE http://localhost:3000/patient/1
    */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
   @Delete(':id')
-  remove(@Param('id') id: number) {
-    return this.patientService.remove(+id);
+  @ApiOperation({ summary: 'Delete a patient' })
+  @ApiResponse({ status: 200, description: 'The patient has been successfully deleted.' })
+  @ApiResponse({ status: 404, description: 'Patient not found.' })
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.patientService.remove(id);
   }
 }

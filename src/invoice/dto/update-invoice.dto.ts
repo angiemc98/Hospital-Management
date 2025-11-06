@@ -1,7 +1,9 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
 import { CreateInvoiceDto } from './create-invoice.dto';
-import { IsNumber, IsString, IsOptional } from 'class-validator';
 
+<<<<<<< HEAD
+export class UpdateInvoiceDto extends PartialType(CreateInvoiceDto) {}
+=======
 /**
  * DTO para la actualización de una factura existente
  * 
@@ -91,3 +93,4 @@ export class UpdateInvoiceDto extends PartialType(CreateInvoiceDto) {
     @IsNumber()
     id_factura: number;
 }
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f

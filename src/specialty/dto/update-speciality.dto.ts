@@ -1,60 +1,24 @@
-import { IsOptional, IsString, Length } from "class-validator";
+import { PartialType } from '@nestjs/swagger';
+import { CreateSpecialtyDto } from './create-specialty.dto';
 
 /**
  * DTO para la actualización de una especialidad médica existente
  * 
  * @description
  * Define la estructura y validaciones para actualizar una especialidad.
- * Permite actualizaciones parciales de los datos de la especialidad.
+ * Extiende de CreateSpecialtyDto usando PartialType, lo que hace que
+ * todas las propiedades sean opcionales, permitiendo actualizaciones parciales.
  * 
  * @export
- * @class UpdateSpecialtyDto
+ * @class UpdateSpecialityDto
+ * @extends {PartialType(CreateSpecialtyDto)}
  * 
  * @example
  * ```typescript
  * // Actualización parcial - solo descripción
- * const updateData: UpdateSpecialtyDto = {
- *   description: "Especialidad avanzada del sistema cardiovascular"
- * };
- * 
- * // Actualización completa
- * const fullUpdate: UpdateSpecialtyDto = {
- *   name: "Cardiología Intervencionista",
- *   description: "Especialidad dedicada a procedimientos invasivos del corazón"
+ * const updateData: UpdateSpecialityDto = {
+ *   descripcion: "Especialidad avanzada del sistema cardiovascular"
  * };
  * ```
  */
-export class UpdateSpecialtyDto {
-    
-    /**
-     * Nombre de la especialidad
-     * 
-     * @type {string}
-     * @description Nombre de la especialidad médica
-     * @minLength 2
-     * @maxLength 100
-     * @optional
-     * 
-     * @example "Cardiología", "Pediatría", "Dermatología", "Neurología"
-     */
-    @IsString()
-    @Length(2, 100)
-    name: string;
-
-    /**
-     * Descripción de la especialidad
-     * 
-     * @type {string}
-     * @description Información adicional sobre la especialidad, sus campos de acción o características
-     * @minLength 2
-     * @maxLength 100
-     * @optional
-     * 
-     * @example "Especialidad dedicada al diagnóstico y tratamiento de enfermedades del corazón"
-     */
-    @IsString()
-    @Length(2, 100)
-    @IsOptional()
-    description: string;
-
-}
+export class UpdateSpecialityDto extends PartialType(CreateSpecialtyDto) {}

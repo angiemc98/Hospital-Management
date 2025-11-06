@@ -1,5 +1,13 @@
-import { IsInt, IsOptional, IsString, Length, Min } from "class-validator";
+import { IsInt, IsOptional, IsString, Length, Min, IsNumber } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
 
+<<<<<<< HEAD
+export class CreateMedicineDto {
+    @ApiProperty({
+        description: 'The name of the medicine',
+        example: 'Ibuprofen',
+    })
+=======
 /**
  * DTO para la creación de un nuevo medicamento
  * 
@@ -35,10 +43,17 @@ export class CreateMedicineDto {
      * 
      * @example "Ibuprofeno", "Amoxicilina"
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @IsString()
     @Length(2, 100)
     name: string;
 
+<<<<<<< HEAD
+    @ApiProperty({
+        description: 'The type of the medicine',
+        example: 'Analgesic',
+    })
+=======
     /**
      * Tipo del medicamento
      * 
@@ -50,10 +65,17 @@ export class CreateMedicineDto {
      * 
      * @example "tablet", "pill", "liquid", "injection"
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @IsString()
     @Length(2, 50)
     type: string;
 
+<<<<<<< HEAD
+    @ApiProperty({
+        description: 'The presentation of the medicine',
+        example: 'Tablet',
+    })
+=======
     /**
      * Presentación del medicamento
      * 
@@ -65,10 +87,17 @@ export class CreateMedicineDto {
      * 
      * @example "500mg", "100ml", "250mg/5ml"
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @IsString()
     @Length(2, 50)
     presentation: string;
 
+<<<<<<< HEAD
+    @ApiProperty({
+        description: 'The stock of the medicine',
+        example: 100,
+    })
+=======
     /**
      * Stock disponible del medicamento
      * 
@@ -79,10 +108,18 @@ export class CreateMedicineDto {
      * 
      * @example 100, 50, 200
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @IsInt()
     @Min(0)
     stock: number;
 
+<<<<<<< HEAD
+    @ApiProperty({
+        description: 'A description of the medicine',
+        example: 'Used to relieve pain and reduce inflammation.',
+        required: false,
+    })
+=======
     /**
      * Descripción del medicamento
      * 
@@ -94,11 +131,19 @@ export class CreateMedicineDto {
      * 
      * @example "Analgésico y antipirético para dolores leves a moderados"
      */
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @IsString()
     @Length(2, 50)
     @IsOptional()
     description: string;
 
+<<<<<<< HEAD
+    @ApiProperty({
+        description: 'The price of the medicine',
+        example: 10.50,
+    })
+    @IsNumber()
+=======
     /**
      * Precio del medicamento
      * 
@@ -110,6 +155,7 @@ export class CreateMedicineDto {
      * @example "5000", "12500", "3000"
      */
     @IsInt()
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @Min(0)
     price: number;
 }

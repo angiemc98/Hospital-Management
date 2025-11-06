@@ -1,7 +1,9 @@
-import { IsInt, IsOptional, IsString, Length, Min } from "class-validator";
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
 import { CreateMedicineDto } from './create-medicine.dto';
 
+<<<<<<< HEAD
+export class UpdateMedicineDto extends PartialType(CreateMedicineDto) {}
+=======
 /**
  * DTO para la actualización de un medicamento existente
  * 
@@ -138,3 +140,4 @@ export class UpdateMedicineDto extends PartialType(CreateMedicineDto) {
     @Min(0)
     price: number;
 }
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
