@@ -1,60 +1,41 @@
-import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsInt, IsOptional, IsString } from "class-validator";
+
+
 
 export class CreateAppointmentDto {
 
-    @ApiProperty({
-        description: 'Date of the appointment',
-        example: '2024-01-01T12:00:00.000Z',
-    })
+    //Date of the appointment
     @IsDateString()
     date: Date;
 
-    @ApiProperty({
-        description: 'Reason of the appointment',
-        example: 'Headache',
-        required: false,
-    })
+    //Reason of the appointment
+    //If the appointment is not scheduled, the reason is optional
     @IsString()
     @IsOptional()
     reason?: string;
 
-    @ApiProperty({
-        description: 'Notes of the appointment',
-        example: 'The patient has been feeling sick for 2 days',
-        required: false,
-    })
+    //Notes of the appointment
+    //If the appointment is not scheduled, the notes is optional
     @IsString()
     @IsOptional()
     notes?: string;
 
-    @ApiProperty({
-        description: 'Status of the appointment (scheduled, completed, canceled)',
-        example: 'scheduled',
-        required: false,
-    })
+    //Status of the appointment
+    //If the appointment is not scheduled, the status is optional
+    //Status: scheduled, completed, canceled
     @IsString()
     @IsOptional()
     status?: string;
 
-    @ApiProperty({
-        description: 'Doctor id',
-        example: 1,
-    })
+    //Doctor id
     @IsInt()
     doctorId: number;
 
-    @ApiProperty({
-        description: 'Patient id',
-        example: 1,
-    })
+    //Patient id
     @IsInt()
     patientId: number;
     
-    @ApiProperty({
-        description: 'Office id',
-        example: 1,
-    })
+    //Office id
     @IsInt()
     officeId: number;
     

@@ -5,30 +5,23 @@ import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne,
 import { Office } from "src/office/office.entity";
 import { Invoice } from "src/invoice/invoice.entity";
 import { Prescription } from "src/prescription/prescription.entity";
-import { ApiProperty } from "@nestjs/swagger"
-import { Prescription } from "src/prescription/prescription.entity";
 
 //Atributos entidad appointment
 @Entity('appointment')
 export class Appointment {
     
-    @ApiProperty({ description: 'The unique identifier of the appointment', example: 1 })
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ApiProperty({ description: 'The date and time of the appointment', example: '2024-07-20T14:30:00Z' })
     @Column({type: 'timestamp'})
     date: Date;
 
-    @ApiProperty({ description: 'The reason for the appointment', example: 'Regular check-up' })
     @Column({type: 'text', nullable: true})
     reason: string;
 
-    @ApiProperty({ description: 'Additional notes for the appointment', example: 'Patient feels tired' })
     @Column({type: 'text', nullable: true})
     notes: string;
 
-    @ApiProperty({ description: 'The status of the appointment', example: 'scheduled', enum: ['scheduled', 'completed', 'canceled'] })
     @Column({default: 'scheduled'})
     status: string; // scheduled, completed, canceled
 

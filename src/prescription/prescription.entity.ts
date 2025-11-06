@@ -1,46 +1,48 @@
+
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { Medicine } from "src/medicine/medicine.entity";
 import { PrescriptionDetail } from "src/prescription-detail/prescription-detail.entity";
 import { Appointment } from "src/appointment/appointment.entity";
-import { ApiProperty } from "@nestjs/swagger";
 
 
 @Entity('prescription')
 export class Prescription {
 
-    @ApiProperty({ description: 'Primary key of the prescription', example: 1 })
+    // Primary key of the prescription
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ApiProperty({ description: 'Date of the prescription', example: '2024-07-20T10:00:00Z' })
+    // Date of the prescription
     @Column({type:'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     date: Date;
 
-    @ApiProperty({ description: 'Observations of the prescription', example: 'Take with food.' })
+    // Observations of the prescription
     @Column({type: 'text', nullable: true})
     observations: string;
 
-    @ApiProperty({ description: 'Quantity of the medicine', example: 30 })
+    // Quantity of the prescription of medicine
     @Column({type: 'int', default: 0})
     quantity: number;
 
-    @ApiProperty({ description: 'Duration of the treatment in days', example: 10 })
+    // Duration of the prescription
     @Column({type: 'int', default: 0})
     duration: number;
 
     // Relationships
 
-    @ApiProperty({ type: () => Appointment })
+    // Relation Appointment > Prescription, an Appointment can have many prescriptions
     @ManyToOne(() => Appointment, appointment => appointment.prescription)
+    // foreign key appointment_id JoinColumn = Define the name of the foreign key column in the prescription table
     @JoinColumn({name: 'appointment_id'})
     appointment: Appointment;
 
-    @ApiProperty({ type: () => Medicine })
+    // Relation Medicine > Prescription, a Medicine can have many prescriptions
     @ManyToOne(() => Medicine, medicine => medicine.prescription)
+    // foreign key medicine_id JoinColumn = Define the name of the foreign key column in the prescription table
     @JoinColumn({name: 'medicine_id'})
     medicine: Medicine;
     
-    @ApiProperty({ type: () => [PrescriptionDetail] })
+    // Relation PrescriptionDetail > Prescription, a PrescriptionDetail can have many prescriptions
     @OneToMany(() => PrescriptionDetail, prescriptionDetail => prescriptionDetail.prescription)
     details: PrescriptionDetail[];
 }
