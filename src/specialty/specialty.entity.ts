@@ -1,6 +1,6 @@
+// Importación de la clase doctor para usar la entidad y hacer la relación en la BD 
 import { Doctor } from "../doctor/doctor.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ApiProperty } from "@nestjs/swagger";
 
 /**
  * Entidad que representa una especialidad médica en el sistema
@@ -16,11 +16,11 @@ import { ApiProperty } from "@nestjs/swagger";
  * ```typescript
  * const specialty = new Specialty();
  * specialty.name = "Cardiología";
- * specialty.descripcion = "Especialidad médica dedicada al estudio del corazón";
+ * specialty.description = "Especialidad médica dedicada al estudio del corazón";
  * ```
  */
 @Entity('especialidades')
-export class Specialty {
+export class Specialty{
 
     /**
      * Clave primaria de la especialidad
@@ -28,7 +28,6 @@ export class Specialty {
      * @type {number}
      * @description Identificador único autogenerado para la especialidad
      */
-    @ApiProperty({ description: 'Primary key of the specialty', example: 1 })
     @PrimaryGeneratedColumn()
     id_especialidad: number;
 
@@ -44,7 +43,6 @@ export class Specialty {
      * 
      * @example "Cardiología", "Pediatría", "Dermatología"
      */
-    @ApiProperty({ description: 'Name of the specialty', example: 'Cardiology' })
     @Column({unique: true, length:100})
     name: string;
 
@@ -57,9 +55,8 @@ export class Specialty {
      * 
      * @example "Especialidad dedicada al diagnóstico y tratamiento de enfermedades del corazón"
      */
-    @ApiProperty({ description: 'Description of the specialty', example: 'Deals with disorders of the heart.' })
     @Column({nullable: true})
-    descripcion: string;
+    description: string;
 
     /**
      * Doctores asociados con esta especialidad
@@ -69,7 +66,6 @@ export class Specialty {
      * Una especialidad puede tener múltiples doctores asociados.
      * @see {@link Doctor}
      */
-    @ApiProperty({ type: () => [Doctor] })
-    @OneToMany(() => Doctor, (doctor) => doctor.specialty)
-    doctors: Doctor[];
+    @OneToMany(() => Doctor, (Doctor_Alias) => Doctor_Alias.specialty)
+    propety_doctor: Doctor[];
 }

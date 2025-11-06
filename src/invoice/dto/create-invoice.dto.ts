@@ -1,14 +1,5 @@
 import { IsDateString, IsNumber, IsString, IsOptional } from "class-validator";
-import { ApiProperty } from '@nestjs/swagger';
 
-<<<<<<< HEAD
-export class CreateInvoiceDto {
-    @ApiProperty({
-        description: 'The date of the invoice',
-        example: '2024-07-20T10:00:00Z',
-        required: false,
-    })
-=======
 /**
  * DTO para la creación de una nueva factura
  * 
@@ -42,32 +33,10 @@ export class CreateInvoiceDto {
      * 
      * @example "2024-03-15T10:30:00", new Date("2024-03-15")
      */
->>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @IsDateString()
-    @IsOptional()
+    @IsOptional() // porque el valor se autogenera en la BD
     fecha?: Date;
 
-<<<<<<< HEAD
-    @ApiProperty({
-        description: 'The total amount of the invoice',
-        example: 150.75,
-    })
-    @IsNumber()
-    total: number;
-
-    @ApiProperty({
-        description: 'The payment method',
-        example: 'Credit Card',
-    })
-    @IsString()
-    metodo_pago: string;
-
-    @ApiProperty({
-        description: 'The payment status',
-        example: 'Paid',
-        required: false,
-    })
-=======
     /**
      * Monto total de la factura
      * 
@@ -104,24 +73,10 @@ export class CreateInvoiceDto {
      * 
      * @example "Pendiente", "Pagado", "Fallido", "Cancelado"
      */
->>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @IsString()
     @IsOptional()
     estado_pago?: string;
 
-<<<<<<< HEAD
-    @ApiProperty({
-        description: 'The ID of the patient',
-        example: 1,
-    })
-    @IsNumber()
-    id_paciente: number;
-
-    @ApiProperty({
-        description: 'The ID of the appointment',
-        example: 1,
-    })
-=======
     /**
      * ID del paciente asociado a la factura
      * 
@@ -145,7 +100,6 @@ export class CreateInvoiceDto {
      * 
      * @example 1, 3, 7
      */
->>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
     @IsNumber()
     id_cita: number;
 }

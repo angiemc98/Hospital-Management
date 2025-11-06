@@ -1,56 +1,54 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
-import { PrescriptionService } from './prescription.service';
-import { CreatePrescriptionDto } from './dto/create-prescription.dto';
-import { UpdatePrescriptionDto } from './dto/update-prescription.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { Prescription } from './prescription.entity';
+import { IsOptional, IsString, Length } from "class-validator";
 
-@ApiTags('prescription')
-@Controller('prescription')
-export class PrescriptionController {
-  constructor(private readonly prescriptionService: PrescriptionService) {}
+/**
+ * DTO para la creación de una nueva especialidad médica
+ * 
+ * @description
+ * Define la estructura y validaciones requeridas para crear una especialidad.
+ * Utiliza class-validator para garantizar la integridad de los datos.
+ * 
+ * @export
+ * @class CreateSpecialtyDto
+ * 
+ * @example
+ * ```typescript
+ * const newSpecialty: CreateSpecialtyDto = {
+ *   name: "Cardiología",
+ *   descripcion: "Especialidad médica dedicada al estudio del corazón"
+ * };
+ * ```
+ */
+export class CreateSpecialtyDto{
+    
+    /**
+     * Nombre de la especialidad
+     * 
+     * @type {string}
+     * @description Nombre de la especialidad médica
+     * @minLength 2
+     * @maxLength 100
+     * @required
+     * 
+     * @example "Cardiología", "Pediatría", "Dermatología", "Neurología"
+     */
+    @IsString()
+    @Length(2, 100)
+    name: string;
 
-  /**
-   * Creates a new prescription.
-   * @param createPrescriptionDto - The data to create the prescription.
-   * @returns The created prescription.
-   */
-  @Post()
-  @ApiOperation({ summary: 'Create a new prescription' })
-  @ApiResponse({ status: 201, description: 'The prescription has been successfully created.', type: Prescription })
-  @ApiResponse({ status: 400, description: 'Bad Request.' })
-  create(@Body() createPrescriptionDto: CreatePrescriptionDto) {
-    return this.prescriptionService.create(createPrescriptionDto);
-  }
+    /**
+     * Descripción de la especialidad
+     * 
+     * @type {string}
+     * @description Información adicional sobre la especialidad, sus campos de acción o características
+     * @minLength 2
+     * @maxLength 100
+     * @optional
+     * 
+     * @example "Especialidad dedicada al diagnóstico y tratamiento de enfermedades del corazón"
+     */
+    @IsString()
+    @Length(2, 100)
+    @IsOptional()
+    descripcion: string;
 
-  @Get()
-  @ApiOperation({ summary: 'Get all prescriptions' })
-  @ApiResponse({ status: 200, description: 'Return all prescriptions.', type: [Prescription] })
-  findAll() {
-    return this.prescriptionService.findAll();
-  }
-
-  @Get(':id')
-  @ApiOperation({ summary: 'Get a prescription by id' })
-  @ApiResponse({ status: 200, description: 'Return the prescription.', type: Prescription })
-  @ApiResponse({ status: 404, description: 'Prescription not found.'})
-  findOne(@Param('id', ParseIntPipe) id: number) {
-    return this.prescriptionService.findOne(id);
-  }
-
-  @Patch(':id')
-  @ApiOperation({ summary: 'Update a prescription' })
-  @ApiResponse({ status: 200, description: 'The prescription has been successfully updated.', type: Prescription })
-  @ApiResponse({ status: 404, description: 'Prescription not found.'})
-  update(@Param('id', ParseIntPipe) id: number, @Body() updatePrescriptionDto: UpdatePrescriptionDto) {
-    return this.prescriptionService.update(id, updatePrescriptionDto);
-  }
-
-  @Delete(':id')
-  @ApiOperation({ summary: 'Delete a prescription' })
-  @ApiResponse({ status: 200, description: 'The prescription has been successfully deleted.'})
-  @ApiResponse({ status: 404, description: 'Prescription not found.'})
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.prescriptionService.remove(id);
-  }
 }
