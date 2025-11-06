@@ -31,26 +31,41 @@ export class PrescriptionController {
   }
 
   @Get(':id')
+<<<<<<< HEAD
   @ApiOperation({ summary: 'Get a prescription by id' })
   @ApiResponse({ status: 200, description: 'Return the prescription.', type: Prescription })
   @ApiResponse({ status: 404, description: 'Prescription not found.'})
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.prescriptionService.findOne(id);
+=======
+  findOne(@Param('id') id: number) {
+    return this.prescriptionService.findOne(+id);
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
   }
 
   @Patch(':id')
+<<<<<<< HEAD
   @ApiOperation({ summary: 'Update a prescription' })
   @ApiResponse({ status: 200, description: 'The prescription has been successfully updated.', type: Prescription })
   @ApiResponse({ status: 404, description: 'Prescription not found.'})
   update(@Param('id', ParseIntPipe) id: number, @Body() updatePrescriptionDto: UpdatePrescriptionDto) {
     return this.prescriptionService.update(id, updatePrescriptionDto);
+=======
+  update(@Param('id') id: number, @Body() updatePrescriptionDto: UpdatePrescriptionDto) {
+    return this.prescriptionService.update(+id, updatePrescriptionDto);
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
   }
 
   @Delete(':id')
+<<<<<<< HEAD
   @ApiOperation({ summary: 'Delete a prescription' })
   @ApiResponse({ status: 200, description: 'The prescription has been successfully deleted.'})
   @ApiResponse({ status: 404, description: 'Prescription not found.'})
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.prescriptionService.remove(id);
+=======
+  remove(@Param('id') id: number) {
+    return this.prescriptionService.remove(+id);
+>>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
   }
 }

@@ -29,7 +29,7 @@ export class AppointmentController {
   @ApiOperation({ summary: 'Get appointment by id' })
   @ApiResponse({ status: 200, description: 'Return the appointment.', type: Appointment})
   @ApiResponse({ status: 404, description: 'Appointment not found.'})
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.appointmentService.findOne(+id);
   }
 
@@ -37,7 +37,7 @@ export class AppointmentController {
   @ApiOperation({ summary: 'Update an appointment' })
   @ApiResponse({ status: 200, description: 'The appointment has been successfully updated.', type: Appointment})
   @ApiResponse({ status: 404, description: 'Appointment not found.'})
-  update(@Param('id') id: string, @Body() updateAppointmentDto: UpdateAppointmentDto) {
+  update(@Param('id') id: number, @Body() updateAppointmentDto: UpdateAppointmentDto) {
     return this.appointmentService.update(+id, updateAppointmentDto);
   }
 
@@ -45,7 +45,7 @@ export class AppointmentController {
   @ApiOperation({ summary: 'Delete an appointment' })
   @ApiResponse({ status: 200, description: 'The appointment has been successfully deleted.'})
   @ApiResponse({ status: 404, description: 'Appointment not found.'})
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.appointmentService.remove(+id);
   }
 }
