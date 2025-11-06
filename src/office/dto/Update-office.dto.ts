@@ -1,4 +1,5 @@
-import { PartialType } from '@nestjs/swagger';
+import { PartialType } from '@nestjs/mapped-types';
+import { IsBoolean, IsInt, IsPositive } from 'class-validator';
 import { CreateOfficeDto } from './create-office.dto';
 
 /**
@@ -66,4 +67,3 @@ export class UpdateOfficeDto extends PartialType(CreateOfficeDto) {
     @IsBoolean()
     disponible: boolean;
 }
->>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f

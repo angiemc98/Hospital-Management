@@ -13,7 +13,7 @@ describe('PatientController', () => {
 
     // Mock servicePatient
     const mockPatientService = {
-        createPatient: jest.fn(),
+        create: jest.fn(),
         findAll: jest.fn(),
         findOne: jest.fn(),
         update: jest.fn(),
@@ -53,10 +53,10 @@ describe('PatientController', () => {
         };
 
         const result = {id: 1, ...dto};
-        mockPatientService.createPatient.mockResolvedValue(result);
+        mockPatientService.create.mockResolvedValue(result);
 
         expect(await controller.create(dto)).toEqual(result);
-        expect(service.createPatient).toHaveBeenCalledWith(dto);
+        expect(service.create).toHaveBeenCalledWith(dto);
     });
 
     // Test: find all patients
