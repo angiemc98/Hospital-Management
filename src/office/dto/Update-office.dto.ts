@@ -1,9 +1,6 @@
 import { PartialType } from '@nestjs/swagger';
 import { CreateOfficeDto } from './create-office.dto';
 
-<<<<<<< HEAD
-export class UpdateOfficeDto extends PartialType(CreateOfficeDto) {}
-=======
 /**
  * DTO para la actualización de un consultorio existente
  * 

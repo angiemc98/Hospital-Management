@@ -1,105 +1,115 @@
-import { Appointment } from "src/appointment/appointment.entity"; 
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ApiProperty } from "@nestjs/swagger";
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from '@nestjs/common';
+import { OfficeService } from './office.service';
+import { CreateOfficeDto } from './dto/create-office.dto';
+import { UpdateOfficeDto } from './dto/update-office.dto';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Office } from './office.entity';
 
 /**
- * Entidad que representa un consultorio médico en el sistema
+ * Controlador para gestionar las operaciones REST de consultorios
  * 
  * @description
- * Esta entidad almacena la información de los consultorios disponibles
- * en el centro médico, incluyendo su número, piso y disponibilidad.
+ * Este controlador expone los endpoints HTTP para realizar operaciones CRUD
+ * sobre los consultorios. Maneja las peticiones HTTP y delega la lógica
+ * de negocio al servicio OfficeService.
  * 
+ * @route /office
  * @export
- * @class Office
- * 
- * @example
- * ```typescript
- * const office = new Office();
- * office.num_consultorio = 101;
- * office.piso = 1;
- * office.disponible = true;
- * ```
+ * @class OfficeController
  */
-@Entity('consultorio')
-export class Office{
-<<<<<<< HEAD
-    @ApiProperty({ description: 'Primary key of the office', example: 1 })
-    @PrimaryGeneratedColumn()
-    id_consultorio: number;
-    
-    @ApiProperty({ description: 'Number of the office', example: 101 })
-    @Column({unique: true})
-    num_consultorio: number;
+@ApiTags('office')
+@Controller('office')
+export class OfficeController {
+  /**
+   * Constructor del controlador de consultorios
+   * 
+   * @param {OfficeService} officeService - Servicio que maneja la lógica de negocio de consultorios
+   */
+  constructor(private readonly officeService: OfficeService) {}
 
-    @ApiProperty({ description: 'Floor number of the office', example: 1 })
-    @Column()
-    piso: number;
+  /**
+   * Crea un nuevo consultorio
+   * 
+   * @route POST /office
+   * @param {CreateOfficeDto} dto - Datos del consultorio a crear
+   * @returns {Promise<Office>} El consultorio creado
+   */
+  @Post()
+  @ApiOperation({ summary: 'Create a new office' })
+  @ApiResponse({ status: 201, description: 'The office has been successfully created.', type: Office })
+  @ApiResponse({ status: 400, description: 'Bad Request.' })
+  create(@Body() dto: CreateOfficeDto) {
+    return this.officeService.create(dto);
+  }
 
-    @ApiProperty({ description: 'Availability of the office', example: true })
-    @Column({type: 'boolean', default: true})
-    disponible: boolean
+  /**
+   * Obtiene todos los consultorios
+   * 
+   * @route GET /office
+   * @returns {Promise<Office[]>} Lista de todos los consultorios con sus citas asociadas
+   */
+  @Get()
+  @ApiOperation({ summary: 'Get all offices' })
+  @ApiResponse({ status: 200, description: 'Return all offices.', type: [Office] })
+  findAll() {
+    return this.officeService.findAll();
+  }
 
-    //Relationships
+  /**
+   * Obtiene un consultorio por su ID
+   * 
+   * @route GET /office/:id
+   * @param {number} id - ID del consultorio a buscar
+   * @returns {Promise<Office>} El consultorio encontrado con sus citas
+   */
+  @Get(':id')
+  @ApiOperation({ summary: 'Get an office by id' })
+  @ApiResponse({ status: 200, description: 'Return the office.', type: Office })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.officeService.findOne(id);
+  }
 
-    @ApiProperty({ type: () => [Appointment] })
-=======
-    /**
-     * Clave primaria del consultorio
-     * 
-     * @type {number}
-     * @description Identificador único autogenerado para el consultorio
-     */
-    @PrimaryGeneratedColumn()
-    id_consultorio: number;
-    
-    /**
-     * Número del consultorio
-     * 
-     * @type {number}
-     * @description Número identificador del consultorio, debe ser único
-     * @required
-     * @unique
-     * 
-     * @example 101, 202, 305
-     */
-    @Column({unique: true})
-    num_consultorio: number;
+  /**
+   * Actualiza un consultorio existente
+   * 
+   * @route PATCH /office/:id
+   * @param {number} id - ID del consultorio a actualizar
+   * @param {UpdateOfficeDto} dto - Datos actualizados del consultorio
+   * @returns {Promise<Office>} El consultorio actualizado
+   */
+  @Patch(':id')
+  @ApiOperation({ summary: 'Update an office' })
+  @ApiResponse({ status: 200, description: 'The office has been successfully updated.', type: Office })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: UpdateOfficeDto,
+  ) {
+    return this.officeService.update(id, dto);
+  }
 
-    /**
-     * Piso donde se ubica el consultorio
-     * 
-     * @type {number}
-     * @description Número de piso en el que se encuentra el consultorio
-     * @required
-     * 
-     * @example 1, 2, 3
-     */
-    @Column()
-    piso: number;
-
-    /**
-     * Disponibilidad del consultorio
-     * 
-     * @type {boolean}
-     * @description Indica si el consultorio está disponible (true) u ocupado (false)
-     * @default true
-     * @required
-     * 
-     * @example true, false
-     */
-    @Column({type: 'boolean', default: true})
-    disponible: boolean
-
-    /**
-     * Citas asociadas con este consultorio
-     * 
-     * @type {Appointment[]}
-     * @description Relación uno a muchos con la entidad Appointment.
-     * Un consultorio puede tener múltiples citas asignadas.
-     * Se aplica cascada para operaciones relacionadas.
-     * @see {@link Appointment}
-     */
->>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
-    @OneToMany(() => Appointment, (Cita) => Cita.office, {cascade: true})
-    property_cita: Appointment[];
+  /**
+   * Elimina un consultorio por su ID
+   * 
+   * @route DELETE /office/:id
+   * @param {number} id - ID del consultorio a eliminar
+   * @returns {Promise<DeleteResult>} Resultado de la operación de eliminación
+   */
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete an office' })
+  @ApiResponse({ status: 200, description: 'The office has been successfully deleted.' })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.officeService.remove(id);
+  }
 }

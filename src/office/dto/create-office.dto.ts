@@ -1,13 +1,6 @@
 import { IsBoolean, IsInt, IsPositive } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-<<<<<<< HEAD
-export class CreateOfficeDto {
-    @ApiProperty({
-        description: 'The office number',
-        example: 101,
-    })
-=======
 /**
  * DTO para la creación de un nuevo consultorio
  * 
@@ -37,24 +30,14 @@ export class CreateOfficeDto {
      * 
      * @example 101, 202, 305
      */
->>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
+    @ApiProperty({
+        description: 'The office number',
+        example: 101,
+    })
     @IsInt()
     @IsPositive()
     num_consultorio: number;
 
-<<<<<<< HEAD
-    @ApiProperty({
-        description: 'The floor where the office is located',
-        example: 1,
-    })
-    @IsInt()
-    piso: number;
-
-    @ApiProperty({
-        description: 'Indicates if the office is available',
-        example: true,
-    })
-=======
     /**
      * Piso donde se ubica el consultorio
      * 
@@ -64,6 +47,10 @@ export class CreateOfficeDto {
      * 
      * @example 1, 2, 3, -1 (sótano)
      */
+    @ApiProperty({
+        description: 'The floor where the office is located',
+        example: 1,
+    })
     @IsInt()
     piso: number;
 
@@ -76,7 +63,10 @@ export class CreateOfficeDto {
      * 
      * @example true, false
      */
->>>>>>> b846244bf0d6c0ce173c5869f275c3ec233c969f
+    @ApiProperty({
+        description: 'Indicates if the office is available',
+        example: true,
+    })
     @IsBoolean()
     disponible: boolean;
 }
