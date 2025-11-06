@@ -1,16 +1,4 @@
-import { IsOptional, IsString, Length } from "class-validator";
+import { PartialType } from '@nestjs/swagger';
+import { CreateSpecialtyDto } from './create-specialty.dto';
 
-
-// Update Specialty DTO
-export class UpdateSpecialtyDto {
-    
-    @IsString()
-    @Length(2, 100)
-    name: string;
-
-    @IsString()
-    @Length(2, 100)
-    @IsOptional()
-    description: string;
-
-}
+export class UpdateSpecialtyDto extends PartialType(CreateSpecialtyDto) {}
