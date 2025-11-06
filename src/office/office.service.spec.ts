@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { OfficeService } from './office.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { Office } from './office.entity';
+import {Office} from './office.entity';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { DeleteResult, Repository } from 'typeorm';
 

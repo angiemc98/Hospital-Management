@@ -10,9 +10,9 @@ import {
 } from '@nestjs/common';
 import { OfficeService } from './office.service';
 import { CreateOfficeDto } from './dto/create-office.dto';
-import { UpdateOfficeDto } from './dto/update-office.dto';
+import { UpdateOfficeDto } from './dto/Update-office.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { Office } from './office.entity';
+
 
 /**
  * Controlador para gestionar las operaciones REST de consultorios
@@ -28,7 +28,7 @@ import { Office } from './office.entity';
  */
 @ApiTags('office')
 @Controller('office')
-export class OfficeController {
+export class Office {
   /**
    * Constructor del controlador de consultorios
    * 
