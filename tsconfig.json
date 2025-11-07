@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "@angular/*": [
+        "node_modules/@angular/*"
+      ]
     },
     "resolveJsonModule": true,
     "module": "commonjs",
@@ -22,6 +25,16 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }, 
+  "include": [
+    "src/**/*",
+    "documentation/**/*"
+  ], "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
