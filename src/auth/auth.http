@@ -1,0 +1,37 @@
+### 1. Registrar un nuevo usuario (Paciente por defecto)
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+{
+    "name": "Carlos",
+    "lastName": "Rojas",
+    "document": "1001001001",
+    "phone": "3001112233",
+    "email": "carlos.rojas@prueba.com",
+    "password": "Password123"
+}
+
+
+### 2. Iniciar sesión y obtener el token JWT
+# Guarda la respuesta para extraer el token en la variable 'authToken'
+@authToken = {{loginResponse.response.json.access_token}}
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "carlos.rojas@prueba.com",
+    "password": "Password123"
+}
+
+> {%
+    client.global.set("authToken", response.body.access_token);
+    client.log("Token JWT guardado: " + client.global.get("authToken"));
+%}
+
+
+
+### 3. Acceder a una ruta protegida (Profile) usando el token
+
+GET http://localhost:3000/auth/profile
+Authorization: Bearer {{authToken}}
