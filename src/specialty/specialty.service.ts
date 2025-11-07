@@ -3,6 +3,8 @@ import { Specialty } from "./specialty.entity";
 import { Repository } from "typeorm";
 import { CreateSpecialtyDto } from "./dto/create-specialty.dto";
 import { UpdateSpecialtyDto } from "./dto/update-speciality.dto";
+import { HttpException, HttpStatus } from "@nestjs/common";
+
 
 /**
  * Servicio para gestionar las operaciones de especialidades médicas
@@ -42,8 +44,35 @@ export class SpecialtyService {
      * ```
      */
     async create(dtospecialty: CreateSpecialtyDto){
-        const specialty = this.specialtyRepository.create(dtospecialty);
-        return  this.specialtyRepository.save(specialty);
+        try {
+        const existingSpecialty = await this.specialtyRepository.findOne({
+            where: { name: dtospecialty.name }
+        });
+        if (existingSpecialty) {
+            return {
+                message: "Specialty already exists",
+                statusCode: HttpStatus.CONFLICT,
+                data: existingSpecialty
+            };
+        }
+        const newSpecialty = this.specialtyRepository.create(dtospecialty);
+        const saved = await this.specialtyRepository.save(newSpecialty);
+        return {
+            message: "Specialty created successfully",
+            statusCode: HttpStatus.CREATED,
+            data: saved
+        };
+        } catch (error) {
+            // Este catch maneja errores de TypeORM/DB, no el conflicto
+            throw new HttpException(
+                {
+                    message: "Error creating specialty",
+                    error: error.message,
+                },
+                HttpStatus.BAD_REQUEST
+            )
+        }    
+    
     }
 
     /**
@@ -57,10 +86,22 @@ export class SpecialtyService {
      * // Retorna especialidades con propety_doctor poblado
      * ```
      */
-    findAll(){
-        return this.specialtyRepository.find({relations: ['propety_doctor']});
+    async findAll(){
+        try {
+        const all = await this.specialtyRepository.find();
+        return {
+            message: 'All specialties retrieved successfully',
+            statusCode: HttpStatus.OK,
+            data: all,
+        };
+        } catch (error) {
+        // Este catch maneja errores de TypeORM/DB
+        throw new HttpException(
+            { message: 'Error retrieving specialties', error: error.message },
+            HttpStatus.BAD_REQUEST,
+        );
+        }
     }
-
     /**
      * Busca una especialidad por su ID
      * 
@@ -76,11 +117,28 @@ export class SpecialtyService {
     async findOne(id: number) {
 
         // Busca la especialidad
-        const specialty = await this.specialtyRepository.findOne({
-            where: { id_especialidad: id }
-        });
-        if (!specialty) throw new Error('Specialty not found');
-        return specialty;
+        try {
+            const specialty = await this.specialtyRepository.findOne({ where: { id_especialidad: id } });
+            if (!specialty)
+                
+                throw new HttpException('Specialty not found', HttpStatus.NOT_FOUND);
+
+            return {
+                message: 'Specialty found successfully',
+                statusCode: HttpStatus.OK,
+                data: specialty,
+            };
+            } catch (error) {
+          
+            if (error instanceof HttpException) {
+                throw error;
+            }
+          
+            throw new HttpException(
+                { message: 'Error finding specialty', error: error.message },
+                HttpStatus.BAD_REQUEST,
+            );
+            }
     }
     
     /**
@@ -100,13 +158,28 @@ export class SpecialtyService {
      * ```
      */
     async update(id: number, dtospecialty: UpdateSpecialtyDto){
-        const specialty = await this.specialtyRepository.findOne({where: {id_especialidad: id}});
-        if (!specialty) {
-            throw new Error('Specialty not found');
+        try {
+            const specialty = await this.specialtyRepository.findOne({ where: { id_especialidad: id } });
+            if (!specialty)
+                throw new HttpException('Specialty not found', HttpStatus.NOT_FOUND);
+
+            Object.assign(specialty, dtospecialty);
+            const updated = await this.specialtyRepository.save(specialty);
+
+            return {
+                message: 'Specialty updated successfully',
+                statusCode: HttpStatus.OK,
+                data: updated,
+            };
+        } catch (error) {
+            if (error instanceof HttpException) {
+                throw error;
+            }
+        throw new HttpException(
+            { message: 'Error updating specialty', error: error.message },
+            HttpStatus.BAD_REQUEST,
+        );
         }
-        specialty.name = dtospecialty.name;
-        specialty.description = dtospecialty.description;
-        return this.specialtyRepository.save(specialty);
     }
 
     /**
@@ -122,10 +195,25 @@ export class SpecialtyService {
      * ```
      */
     async delete(id: number){
-        const specialty = await this.specialtyRepository.findOne({where: {id_especialidad: id}});
-        if (!specialty) {
-            throw new Error('Specialty not found');
-        }
-        await this.specialtyRepository.delete(specialty);
+        try {
+            const specialty = await this.specialtyRepository.findOne({ where: { id_especialidad: id } });
+            if (!specialty)
+                throw new HttpException('Specialty not found', HttpStatus.NOT_FOUND);
+
+            const deleted = await this.specialtyRepository.delete(id);
+            return {
+                message: 'Specialty deleted successfully',
+                statusCode: HttpStatus.OK,
+                data: deleted,
+            };
+            } catch (error) {
+                if (error instanceof HttpException) {
+                    throw error;
+                }
+            throw new HttpException(
+                { message: 'Error deleting specialty', error: error.message },
+                HttpStatus.BAD_REQUEST,
+            );
+            }
     }
 }
