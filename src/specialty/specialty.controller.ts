@@ -2,6 +2,8 @@ import { Body, Controller, Get, Patch, Post, Delete, Param, ParseIntPipe } from 
 import { SpecialtyService } from './specialty.service';
 import { CreateSpecialtyDto } from './dto/create-specialty.dto';
 import { UpdateSpecialtyDto } from './dto/update-speciality.dto';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
+import { Specialty } from './specialty.entity';
 
 /**
  * Controlador para gestionar las operaciones REST de especialidades médicas
@@ -15,6 +17,7 @@ import { UpdateSpecialtyDto } from './dto/update-speciality.dto';
  * @export
  * @class SpecialtyController
  */
+@ApiTags('specialty')
 @Controller('specialty')
 export class SpecialtyController {
   /**
@@ -42,6 +45,9 @@ export class SpecialtyController {
    * ```
    */
   @Post()
+  @ApiOperation({ summary: 'Create a new medical specialty' })
+  @ApiResponse({ status: 201, description: 'The specialty has been successfully created.', type: Specialty })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   create(@Body()dto: CreateSpecialtyDto) {
     return this.specialtyService.create(dto);
   }
@@ -56,6 +62,8 @@ export class SpecialtyController {
    * GET http://localhost:3000/specialty
    */
   @Get()
+  @ApiOperation({ summary: 'Get all medical specialties' })
+  @ApiResponse({ status: 200, description: 'List of all specialties with their associated doctors.', type: [Specialty] })
   findAll() {
     return this.specialtyService.findAll();
   }
@@ -71,6 +79,10 @@ export class SpecialtyController {
    * GET http://localhost:3000/specialty/1
    */
   @Get(':id')
+  @ApiOperation({ summary: 'Get a specialty by its ID' })
+  @ApiParam({ name: 'id', description: 'ID of the specialty to search for', type: Number })
+  @ApiResponse({ status: 200, description: 'Specialty found.', type: Specialty })
+  @ApiResponse({ status: 404, description: 'Specialty not found.' })
     findOne(@Param('id', ParseIntPipe) id: number) {
       return this.specialtyService.findOne(id);
     }
@@ -94,6 +106,10 @@ export class SpecialtyController {
    * ```
    */
   @Patch(':id')
+  @ApiOperation({ summary: 'Update an existing specialty' })
+  @ApiParam({ name: 'id', description: 'ID of the specialty to update', type: Number })
+  @ApiResponse({ status: 200, description: 'The specialty has been successfully updated.', type: Specialty })
+  @ApiResponse({ status: 404, description: 'Specialty not found.' })
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdateSpecialtyDto,
@@ -112,6 +128,10 @@ export class SpecialtyController {
    * DELETE http://localhost:3000/specialty/1
    */
   @Delete(':id')
+  @ApiOperation({ summary: 'Delete a specialty by its ID' })
+  @ApiParam({ name: 'id', description: 'ID of the specialty to delete', type: Number })
+  @ApiResponse({ status: 200, description: 'The specialty has been successfully deleted.' })
+  @ApiResponse({ status: 404, description: 'Specialty not found.' })
   delete(@Body('id') id: number) {
     return this.specialtyService.delete(+id);
   }
