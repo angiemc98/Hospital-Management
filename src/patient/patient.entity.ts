@@ -3,6 +3,7 @@ import { Appointment } from "../appointment/appointment.entity";
 import { Person } from "../person/person.entity";
 import { Prescription } from "../prescription/prescription.entity";
 import { Invoice } from "../invoice/invoice.entity";
+import { ApiProperty } from '@nestjs/swagger';
 
 /**
  * Entidad que representa un paciente en el sistema médico
@@ -32,6 +33,10 @@ export class Patient {
      * @type {number}
      * @description Identificador único autogenerado para el paciente
      */
+    @ApiProperty({
+    description: 'The unique identifier for the patient.',
+    example: 1,
+  })
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -45,6 +50,11 @@ export class Patient {
      * 
      * @example "O+", "A-", "AB+", "B-"
      */
+     @ApiProperty({
+    description: 'The blood type of the patient.',
+    example: 'O+',
+    maxLength: 50,
+  })
     @Column({type: 'varchar', length: 50})
     bloodType: string;
 
@@ -58,6 +68,11 @@ export class Patient {
      * 
      * @example "contributive" (régimen contributivo), "subsidized" (régimen subsidiado), "free" (sin seguro)
      */
+    @ApiProperty({
+    description: 'The type of medical insurance the patient has.',
+    example: 'contributive',
+    enum: ['contributive', 'subsidized', 'free'],
+  })
     @Column({enum: ['contributive', 'subsidized', 'free']})
     insurance: string;
 
@@ -70,6 +85,12 @@ export class Patient {
      * 
      * @example "Hipertensión controlada, alergia a la penicilina, apendicectomía en 2015"
      */
+    @ApiProperty({
+    description:
+      'A summary of the patient`s medical history, including conditions, allergies, etc.',
+    example: 'Controlled hypertension, penicillin allergy.',
+    nullable: true,
+  })
     @Column({type: 'text', nullable: true})
     medicalHistory: string;
 
@@ -83,6 +104,7 @@ export class Patient {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Person}
      */
+    @ApiProperty({ type: () => Person })
     @OneToOne(() => Person, (person) => person.patient, {cascade: true})
     @JoinColumn({name:'person_id'})
     person: Person;
@@ -97,6 +119,7 @@ export class Patient {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Appointment}
      */
+    @ApiProperty({ type: () => [Appointment] })
     @OneToMany (() => Appointment, (appointment) => appointment.patient, {cascade: true})
     @JoinColumn({name: 'patient_id'})
     appointments: Appointment[];
@@ -110,6 +133,7 @@ export class Patient {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Invoice}
      */
+    @ApiProperty({ type: () => [Invoice] })
     @OneToMany(() => Invoice, (invoice) => invoice.propety_patient, {cascade: true})
     invoices: Invoice[];
 }

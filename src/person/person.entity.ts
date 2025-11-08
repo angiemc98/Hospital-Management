@@ -2,6 +2,8 @@ import { BeforeInsert, BeforeUpdate, Column, Entity, OneToOne, PrimaryGeneratedC
 import { Doctor } from '../doctor/doctor.entity';
 import { Patient } from '../patient/patient.entity';
 import * as bcrypt from 'bcrypt';
+import { ApiProperty } from '@nestjs/swagger';
+
 
 /**
  * Enumeración de roles de usuario en el sistema
@@ -52,6 +54,11 @@ export class Person {
      * @type {number}
      * @description Identificador único autogenerado para la persona
      */
+     @ApiProperty({
+        description: 'Unique identifier for the person',
+        example: 1,
+        readOnly: true,
+    })
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -66,6 +73,12 @@ export class Person {
      * 
      * @example "Juan", "María Fernanda"
      */
+    @ApiProperty({
+        description: 'First name(s) of the person',
+        example: 'Juan',
+        minLength: 2,
+        maxLength: 100,
+    })
     @Column(
     {length: 100}
     )
@@ -82,6 +95,12 @@ export class Person {
      * 
      * @example "Pérez", "García López"
      */
+     @ApiProperty({
+        description: 'Last name(s) of the person',
+        example: 'Pérez',
+        minLength: 2,
+        maxLength: 100,
+    })
     @Column(
     {length:100}
     )
@@ -97,6 +116,11 @@ export class Person {
      * 
      * @example "1234567890", "CC-1234567"
      */
+    @ApiProperty({
+        description: 'Unique identity document number',
+        example: '1234567890',
+        unique: true,
+    })
     @Column(
     {unique: true}
     )
@@ -111,6 +135,11 @@ export class Person {
      * 
      * @example new Date('1990-05-15')
      */
+     @ApiProperty({
+        description: 'Date of birth of the person',
+        example: '1990-05-15',
+        required: false,
+    })
     @Column({
         type: 'date',
         nullable: true
@@ -127,6 +156,11 @@ export class Person {
      * 
      * @example "3001234567", "+573001234567"
      */
+    @ApiProperty({
+        description: 'Unique contact phone number',
+        example: '3001234567',
+        unique: true,
+    })
     @Column(
     {unique: true}
     )
@@ -142,6 +176,11 @@ export class Person {
      * 
      * @example "usuario@example.com"
      */
+    @ApiProperty({
+        description: 'Unique email address',
+        example: 'user@example.com',
+        unique: true,
+    })
     @Column(
     {unique: true}
     )
@@ -158,6 +197,12 @@ export class Person {
      * 
      * @example "$2b$10$abcdefghijklmnopqrstuvwxyz123456"
      */
+     @ApiProperty({
+        description: 'Hashed password for the user (write-only)',
+        example: 'MySecurePassword123',
+        writeOnly: true,
+        minLength: 8,
+    })
     @Column(
     {select: false}
     )
@@ -201,6 +246,11 @@ export class Person {
      * 
      * @example Role.Doctor, Role.Patient, Role.Admin
      */
+    @ApiProperty({
+        description: 'Role of the person in the system',
+        enum: Role,
+        example: Role.Patient,
+    })
     @Column({
         type: 'enum',
         enum: Role
@@ -215,6 +265,7 @@ export class Person {
      * Si la persona tiene rol de doctor, esta relación contendrá su información médica.
      * @see {@link Doctor}
      */
+    @ApiProperty({ type: () => Doctor, required: false })
     @OneToOne(
     () => Doctor,
     (doctor) => doctor.person
@@ -229,6 +280,7 @@ export class Person {
      * Si la persona tiene rol de paciente, esta relación contendrá su información clínica.
      * @see {@link Patient}
      */
+    @ApiProperty({ type: () => Patient, required: false })
     @OneToOne(
     () => Patient,
     (patient) => patient.person
