@@ -6,9 +6,6 @@ import { Repository } from 'typeorm';
 import { Invoice } from './invoice.entity';
 import { Appointment } from 'src/appointment/appointment.entity';
 import { Patient } from 'src/patient/patient.entity';
-import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
-import { HttpException } from '@nestjs/common/exceptions/http.exception';
-
 
 /**
  * Servicio para gestionar las operaciones de facturas
@@ -65,40 +62,28 @@ export class InvoiceService {
    * ```
    */
   async create(dto: CreateInvoiceDto) {
-    try {
-      // Search for appointment
-      const appointment = await this.appointmentRepository.findOne({
-        where: { id: dto.id_cita },
-      });
-      if (!appointment) throw new Error('Appointment not found');
-      
-      // Search for patient
-      const patient = await this.patientRepository.findOne({
-        where: { id: dto.id_paciente },
-      });
-      if (!patient) throw new Error('Patient not found');
-      
-      // Create the invoice
-      const invoice = this.invoiceRepository.create({
-        fecha: new Date(),
-        total: dto.total,
-        metodo_pago: dto.metodo_pago,
-        estado_pago: dto.estado_pago,
-        propety_cita: appointment,
-        propety_patient: patient,
-      });
-      const savedInvoice = await this.invoiceRepository.save(invoice);
-      return {
-        message: 'Invoice created successfully',
-        statusCode: HttpStatus.CREATED,
-        data: savedInvoice
-      };
-  } catch (error) {
-    throw new HttpException(
-      { message: error.message || 'Error creating invoice' },
-      HttpStatus.INTERNAL_SERVER_ERROR,
-    );
-  }
+    // Busca la cita
+    const appointment = await this.appointmentRepository.findOne({
+      where: { id: dto.id_cita },
+    });
+    if (!appointment) throw new Error('Appointment not found');
+    
+    // Busca el paciente
+    const patient = await this.patientRepository.findOne({
+      where: { id: dto.id_paciente },
+    });
+    if (!patient) throw new Error('Patient not found');
+
+    // Crea la factura con las relaciones correctas
+    const invoice = this.invoiceRepository.create({
+      total: dto.total,
+      metodo_pago: dto.metodo_pago,
+      estado_pago: dto.estado_pago || 'Pendiente',
+      propety_cita: appointment,
+      propety_patient: patient,
+    });
+
+    return this.invoiceRepository.save(invoice);
   }
 
   /**
@@ -112,15 +97,10 @@ export class InvoiceService {
    * // Retorna facturas con propety_cita y propety_patient poblados
    * ```
    */
-  async findAll() {
-    const invoices = await this.invoiceRepository.find({
+  findAll() {
+    return this.invoiceRepository.find({
       relations: ['propety_cita', 'propety_patient'],
     });
-    return {
-      message: 'All invoices retrieved successfully',
-      statusCode: HttpStatus.OK,
-      data: invoices
-    }
   }
 
   /**
@@ -140,12 +120,8 @@ export class InvoiceService {
       where: { id_factura: id },
       relations: ['propety_cita', 'propety_patient'],
     });
-    if (!invoice) throw new HttpException('Invoice not found', HttpStatus.NOT_FOUND);
-    return {
-      message: 'Invoice retrieved successfully',
-      statusCode: HttpStatus.OK,
-      data: invoice
-    }
+    if (!invoice) throw new Error('Invoice not found');
+    return invoice;
   }
 
   /**
@@ -172,20 +148,30 @@ export class InvoiceService {
    * ```
    */
   async update(id: number, dto: UpdateInvoiceDto) {
-    // Verification of existence of invoice
-    const invoice = await this.invoiceRepository.findOne({
-      where: { id_factura: id },
-    });
+    // Verificación de existencia de la factura
+    const invoice = await this.findOne(id);
 
-    if (!invoice) throw new HttpException('Invoice not found', HttpStatus.NOT_FOUND);
-
-    Object.assign(invoice, dto);
-    const updatedInvoice = await this.invoiceRepository.save(invoice);
-    return {
-      message: 'Invoice updated successfully',
-      statusCode: HttpStatus.OK,
-      data: updatedInvoice
+    // Si se envía nuevo id_cita, actualiza la relación
+    if (dto.id_cita) {
+      const appointment = await this.appointmentRepository.findOne({
+        where: { id: dto.id_cita },
+      });
+      if (!appointment) throw new Error('Appointment not found');
+      invoice.propety_cita = appointment;
     }
+
+    // Si se envía nuevo id_paciente, actualiza la relación
+    if (dto.id_paciente) {
+      const patient = await this.patientRepository.findOne({
+        where: { id: dto.id_paciente },
+      });
+      if (!patient) throw new Error('Patient not found');
+      invoice.propety_patient = patient;
+    }
+
+    // Actualiza campos simples
+    Object.assign(invoice, dto);
+    return this.invoiceRepository.save(invoice);
   }
 
   /**
@@ -206,14 +192,8 @@ export class InvoiceService {
    * ```
    */
   async remove(id: number) {
-    const invoice = await this.invoiceRepository.findOne({
-      where: { id_factura: id },
-    });
-    if (!invoice) throw new HttpException('Invoice not found', HttpStatus.NOT_FOUND);
+    const invoice = await this.findOne(id);
     await this.invoiceRepository.remove(invoice);
-    return {
-      message: 'Invoice deleted successfully',
-      statusCode: HttpStatus.OK,
+    return { message: `Invoice with id ${id} deleted successfully` };
   }
-}
 }

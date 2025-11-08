@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Doctor } from './doctor.entity';
@@ -6,7 +6,6 @@ import { Person } from 'src/person/person.entity';
 import { CreateDoctorDto } from './dto/create-doctor.dto';
 import { UpdateDoctorDto } from './dto/update-doctor.dto';
 import { Specialty } from 'src/specialty/specialty.entity';
-import { HttpStatus } from '@nestjs/common/enums';
 
 /**
  * Servicio para gestionar las operaciones de doctores
@@ -56,43 +55,22 @@ export class DoctorService {
      * });
      * ```
      */
-    async create (dto:CreateDoctorDto): Promise<{
-        message: string; 
-        statusCode: number;
-        data: Doctor
-    }> {
-        try {
-        // Search for person
-            const person = await this.personRepository.findOneBy({id: dto.personaId});
-            if (!person) {
-                throw new HttpException(
-                    {message: 'Person not found', statusCode: 400},
-                    HttpStatus.NOT_FOUND,
-                );
-            }
-            // Search for specialty
-            const specialty = await this.specialtyRepository.findOneBy({id_especialidad: dto.specialtyId});
-            if (!specialty) {
-                throw new HttpException(
-                    {message: 'Specialty not found', statusCode: 400},
-                    HttpStatus.NOT_FOUND,
-                );
-            }
-            // Create the doctor
-            const doctor = this.doctorRepository.create({person, specialty, licenseNumber: dto.licenseNumber});
-            const savedDoctor = await this.doctorRepository.save(doctor);
-            return {
-                message: 'Doctor created successfully',
-                statusCode: 201,
-                data: savedDoctor
-            };
-    } catch (error) {
-        throw new HttpException({
-            message: 'Error creating doctor',
-            statusCode: error.status,
-        }, HttpStatus.BAD_REQUEST);
+    async create (dto:CreateDoctorDto) {
+        // Busca la persona
+        const person = await this.personRepository.findOneBy({id: dto.personaId});
+        if (!person) {
+            throw new Error('Person not found');
         }
+        // Busca la especialidad
+        const specialty = await this.specialtyRepository.findOneBy({id_especialidad: dto.specialtyId});
+        if (!specialty) {
+            throw new Error('Specialty not found');
+        }
+        // Crea el doctor
+        const doctor = this.doctorRepository.create({person, specialty, licenseNumber: dto.licenseNumber});
+        return this.doctorRepository.save(doctor);
     }
+
     /**
      * Obtiene todos los doctores registrados con sus datos personales
      * 
@@ -104,25 +82,8 @@ export class DoctorService {
      * // Retorna doctores con datos de person poblados
      * ```
      */
-    // Find all doctors with their person data
-    async findAll(): Promise<{
-        message: string;
-        statusCode: number;
-        data: Doctor[]
-    }> {
-        try {
-            const doctors = await this.doctorRepository.find({relations: ['person', 'specialty']});
-            return {
-                message: 'All doctors retrieved successfully',
-                statusCode: HttpStatus.OK,
-                data: doctors
-            };
-        } catch (error) {
-            throw new HttpException({
-                message:'Error retrieving doctors',
-                statusCode: error.message
-            }, HttpStatus.BAD_REQUEST);
-        }        
+    findAll() {
+        return this.doctorRepository.find({relations: ['person']});
     }
 
     /**
@@ -136,33 +97,9 @@ export class DoctorService {
      * const doctor = await doctorService.findOne(1);
      * ```
      */
-    // Find one doctor with their person data
-    async findOne(id: number): Promise<{
-        message: string;
-        statusCode: number;
-        data: Doctor
-    }> {
-        try {
-            const doctor = await this.doctorRepository.findOne({where: {id}, relations: ['person', 'specialty']});
-            if (!doctor) {
-                throw new HttpException(
-                    {message: 'Doctor not found', statusCode: 400},
-                    HttpStatus.NOT_FOUND,
-                );
-            }
-            return {
-                message: 'Doctor retrieved successfully',
-                statusCode: HttpStatus.OK,
-                data: doctor
-            };
-        } catch (error) {
-            throw new HttpException({
-                message:'Error retrieving doctor',
-                statusCode: error.message
-            }, HttpStatus.BAD_REQUEST);
-        };
+    findOne(id: number) {
+        return this.doctorRepository.findOne({where: {id}, relations: ['person']});
     }
-
 
     /**
      * Actualiza un doctor existente
@@ -187,12 +124,7 @@ export class DoctorService {
      * });
      * ```
      */
-    // Update doctor with correct relations
-    async update(id: number, dto: UpdateDoctorDto): Promise<{
-        message: string;
-        statusCode: number;
-        data: Doctor
-    }> {
+    async update(id: number, dto: UpdateDoctorDto) {
         // Verificación de existencia del doctor
         const doctor = await this.doctorRepository.findOne({
             where: { id },
@@ -201,48 +133,32 @@ export class DoctorService {
 
         // Si el doctor no existe
         if (!doctor) {
-            throw new HttpException(
-            {message: 'Doctor not found'},
-            HttpStatus.NOT_FOUND,
-            );
+            throw new Error('Doctor not found');
         }
-        try {
-            if (dto.specialtyId) {
-                const specialty = await this.specialtyRepository.findOne({
-                    where: { id_especialidad: dto.specialtyId },
-                });
-                if (!specialty) {
-                    throw new HttpException(
-                        {message: 'Specialty not found'},
-                        HttpStatus.NOT_FOUND,
-                    );
-                }
-                doctor.specialty = specialty;
-            }
+
         // Si se envía nuevo personaId, actualiza la relación
-            if (dto.personaId) {
-                const person = await this.personRepository.findOne({ where: { id: dto.personaId } });
-                if (!person) {
-                    throw new HttpException(
-                        {message: 'Person not found'},
-                        HttpStatus.NOT_FOUND,
-                    );
-                }
-                doctor.person = person;
-            }
-                Object.assign(doctor, dto);
-                const updatedDoctor = await this.doctorRepository.save(doctor);
-                return {
-                    message: 'Doctor updated successfully',
-                    statusCode: HttpStatus.OK,
-                    data: updatedDoctor
-                };
-        } catch (error) {
-            throw new HttpException({
-                message: 'Error updating doctor',
-                statusCode: error.message
-            }, HttpStatus.BAD_REQUEST);
+        if (dto.personaId) {
+            const person = await this.personRepository.findOneBy({ id: dto.personaId });
+            if (!person) throw new Error('Person not found');
+            doctor.person = person;
         }
+
+        // Si se envía nuevo specialtyId, actualiza la relación
+        if (dto.specialtyId) {
+            const specialty = await this.specialtyRepository.findOneBy({
+            id_especialidad: dto.specialtyId,
+            });
+            if (!specialty) throw new Error('Specialty not found');
+            doctor.specialty = specialty;
+        }
+
+        // Actualiza campos simples
+        if (dto.licenseNumber) {
+            doctor.licenseNumber = dto.licenseNumber;
+        }
+
+        // Guarda los cambios
+        return this.doctorRepository.save(doctor);
     }
 
     /**
@@ -256,34 +172,8 @@ export class DoctorService {
      * await doctorService.remove(1);
      * ```
      */
+    remove(id: number) {
+        return this.doctorRepository.delete(id);    
+    }    
 
-    // Delete doctor by id
-   async remove(id: number): Promise <{
-        message: string;
-        statusCode: number;
-        data: any;
-   }> {
-            const doctor = await this.doctorRepository.findOne({where: {id}});
-
-            if (!doctor) {
-                throw new HttpException(
-                    {message: 'Doctor not found'},
-                    HttpStatus.NOT_FOUND,
-                );
-            }
-
-            try {
-                const deleted = await this.doctorRepository.delete(id);
-                return {
-                    message: 'Doctor deleted successfully',
-                    statusCode: HttpStatus.OK,
-                    data: deleted
-                };
-        } catch (error) {
-            throw new HttpException({
-                message: 'Error deleting doctor',
-                statusCode: error.message
-            }, HttpStatus.BAD_REQUEST);
-        }
-    }
 }

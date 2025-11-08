@@ -169,38 +169,21 @@ la lógica de negocio al servicio InvoiceService.</p>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#remove" >remove</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#update" >update</a>
                             </li>
@@ -228,9 +211,6 @@ la lógica de negocio al servicio InvoiceService.</p>
                     <a name="create"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>create</b></span>
                         <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -247,14 +227,14 @@ la lógica de negocio al servicio InvoiceService.</p>
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a new invoice&#x27;})<br />@ApiResponse({status: 201, description: &#x27;The invoice has been successfully created.&#x27;, type: Invoice})<br />@ApiResponse({status: 400, description: &#x27;Invalid input data.&#x27;})<br /></code>
+                    <code>@Post()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/invoice/invoice.controller.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/invoice/invoice.controller.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -326,8 +306,6 @@ Body:
                     <a name="findAll"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -344,14 +322,14 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br />@ApiOperation({summary: &#x27;Get all invoices&#x27;})<br />@ApiResponse({status: 200, description: &#x27;List of all invoices.&#x27;, type: undefined})<br /></code>
+                    <code>@Get()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="70"
-                                    class="link-to-prism">src/invoice/invoice.controller.ts:70</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/invoice/invoice.controller.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -380,10 +358,6 @@ Body:
                     <a name="findOne"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>findOne</b></span>
                         <a href="#findOne"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -392,7 +366,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -400,14 +374,14 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Get an invoice by its ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the invoice to search for&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;Invoice found.&#x27;, type: Invoice})<br />@ApiResponse({status: 404, description: &#x27;Invoice not found.&#x27;})<br /></code>
+                    <code>@Get(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="89"
-                                    class="link-to-prism">src/invoice/invoice.controller.ts:89</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/invoice/invoice.controller.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -433,7 +407,7 @@ Body:
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -470,10 +444,6 @@ Body:
                     <a name="remove"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>remove</b></span>
                         <a href="#remove"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -482,7 +452,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -490,14 +460,14 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Delete an invoice by its ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the invoice to delete&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;The invoice has been successfully deleted.&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Invoice not found.&#x27;})<br /></code>
+                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="137"
-                                    class="link-to-prism">src/invoice/invoice.controller.ts:137</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/invoice/invoice.controller.ts:117</a></div>
                         </td>
                     </tr>
 
@@ -524,7 +494,7 @@ Body:
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -561,10 +531,6 @@ Body:
                     <a name="update"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>update</b></span>
                         <a href="#update"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -573,7 +539,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateInvoiceDto: <a href="../classes/UpdateInvoiceDto.html" target="_self">UpdateInvoiceDto</a>)</code>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateInvoiceDto: <a href="../classes/UpdateInvoiceDto.html" target="_self">UpdateInvoiceDto</a>)</code>
                 </td>
             </tr>
 
@@ -581,14 +547,14 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Patch(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Update an existing invoice&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the invoice to update&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;The invoice has been successfully updated.&#x27;, type: Invoice})<br />@ApiResponse({status: 404, description: &#x27;Invoice not found.&#x27;})<br /></code>
+                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="117"
-                                    class="link-to-prism">src/invoice/invoice.controller.ts:117</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/invoice/invoice.controller.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -621,7 +587,7 @@ Body:
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -677,8 +643,6 @@ Body:
 import { InvoiceService } from &#x27;./invoice.service&#x27;;
 import { CreateInvoiceDto } from &#x27;./dto/create-invoice.dto&#x27;;
 import { UpdateInvoiceDto } from &#x27;./dto/update-invoice.dto&#x27;;
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
-import { Invoice } from &#x27;./invoice.entity&#x27;;
 
 /**
  * Controlador para gestionar las operaciones REST de facturas
@@ -692,7 +656,6 @@ import { Invoice } from &#x27;./invoice.entity&#x27;;
  * @export
  * @class InvoiceController
  */
-@ApiTags(&#x27;invoice&#x27;)
 @Controller(&#x27;invoice&#x27;)
 export class InvoiceController {
   /**
@@ -723,9 +686,6 @@ export class InvoiceController {
    * &#x60;&#x60;&#x60;
    */
   @Post()
-  @ApiOperation({ summary: &#x27;Create a new invoice&#x27; })
-  @ApiResponse({ status: 201, description: &#x27;The invoice has been successfully created.&#x27;, type: Invoice })
-  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
   create(@Body() createInvoiceDto: CreateInvoiceDto) {
     return this.invoiceService.create(createInvoiceDto);
   }
@@ -740,8 +700,6 @@ export class InvoiceController {
    * GET http://localhost:3000/invoice
    */
   @Get()
-  @ApiOperation({ summary: &#x27;Get all invoices&#x27; })
-  @ApiResponse({ status: 200, description: &#x27;List of all invoices.&#x27;, type: [Invoice] })
   findAll() {
     return this.invoiceService.findAll();
   }
@@ -757,12 +715,8 @@ export class InvoiceController {
    * GET http://localhost:3000/invoice/1
    */
   @Get(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Get an invoice by its ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the invoice to search for&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;Invoice found.&#x27;, type: Invoice })
-  @ApiResponse({ status: 404, description: &#x27;Invoice not found.&#x27; })
-  findOne(@Param(&#x27;id&#x27;) id: number) {
-    return this.invoiceService.findOne(id);
+  findOne(@Param(&#x27;id&#x27;) id: string) {
+    return this.invoiceService.findOne(+id);
   }
 
   /**
@@ -785,12 +739,8 @@ export class InvoiceController {
    * &#x60;&#x60;&#x60;
    */
   @Patch(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Update an existing invoice&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the invoice to update&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;The invoice has been successfully updated.&#x27;, type: Invoice })
-  @ApiResponse({ status: 404, description: &#x27;Invoice not found.&#x27; })
-  update(@Param(&#x27;id&#x27;) id: number, @Body() updateInvoiceDto: UpdateInvoiceDto) {
-    return this.invoiceService.update(id, updateInvoiceDto);
+  update(@Param(&#x27;id&#x27;) id: string, @Body() updateInvoiceDto: UpdateInvoiceDto) {
+    return this.invoiceService.update(+id, updateInvoiceDto);
   }
 
   /**
@@ -805,12 +755,8 @@ export class InvoiceController {
    * // Retorna: { &quot;message&quot;: &quot;Invoice with id 1 deleted successfully&quot; }
    */
   @Delete(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Delete an invoice by its ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the invoice to delete&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;The invoice has been successfully deleted.&#x27; })
-  @ApiResponse({ status: 404, description: &#x27;Invoice not found.&#x27; })
-  remove(@Param(&#x27;id&#x27;) id: number) {
-    return this.invoiceService.remove(id);
+  remove(@Param(&#x27;id&#x27;) id: string) {
+    return this.invoiceService.remove(+id);
   }
 }</code></pre>
     </div>

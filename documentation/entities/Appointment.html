@@ -151,32 +151,26 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#date" >date</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#doctor" >doctor</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#id" >id</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#invoice" >invoice</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#notes" >notes</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#office" >office</a>
@@ -184,21 +178,17 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#patient" >patient</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#prescription" >prescription</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#reason" >reason</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#status" >status</a>
                             </li>
@@ -227,7 +217,6 @@
                     <a name="date"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>date</b></span>
                         <a href="#date"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -244,13 +233,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The date and time of the appointment.&#x27;, example: &#x27;2024-08-15T10:00:00Z&#x27;})<br />@Column({type: &#x27;timestamp&#x27;})<br />
+                            @Column({type: &#x27;timestamp&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/appointment/appointment.entity.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/appointment/appointment.entity.ts:17</a></div>
                         </td>
                     </tr>
 
@@ -263,7 +252,6 @@
                 <td class="col-md-4">
                     <a name="doctor"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>doctor</b></span>
@@ -282,13 +270,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Doctor})<br />@ManyToOne(undefined, doctor &#x3D;&gt; doctor.appointments)<br />@JoinColumn({name: &#x27;doctor_id&#x27;})<br />
+                            @ManyToOne(undefined, doctor &#x3D;&gt; doctor.appointments)<br />@JoinColumn({name: &#x27;doctor_id&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/appointment/appointment.entity.ts:67</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/appointment/appointment.entity.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -301,7 +289,6 @@
                 <td class="col-md-4">
                     <a name="id"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>id</b></span>
                         <a href="#id"><span class="icon ion-ios-link"></span></a>
@@ -319,13 +306,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The unique identifier for the appointment.&#x27;, example: 1})<br />@PrimaryGeneratedColumn()<br />
+                            @PrimaryGeneratedColumn()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/appointment/appointment.entity.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/appointment/appointment.entity.ts:14</a></div>
                         </td>
                     </tr>
 
@@ -338,7 +325,6 @@
                 <td class="col-md-4">
                     <a name="invoice"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>invoice</b></span>
                         <a href="#invoice"><span class="icon ion-ios-link"></span></a>
@@ -356,13 +342,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Invoice, nullable: true})<br />@OneToOne(undefined, invoice &#x3D;&gt; invoice.appointment)<br />
+                            @OneToOne(undefined, invoice &#x3D;&gt; invoice.propety_cita)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/appointment/appointment.entity.ts:84</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/appointment/appointment.entity.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -375,7 +361,6 @@
                 <td class="col-md-4">
                     <a name="notes"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>notes</b></span>
                         <a href="#notes"><span class="icon ion-ios-link"></span></a>
@@ -393,13 +378,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Any notes related to the appointment.&#x27;, example: &#x27;Patient reported mild headaches.&#x27;, nullable: true})<br />@Column({type: &#x27;text&#x27;, nullable: true})<br />
+                            @Column({type: &#x27;text&#x27;, nullable: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/appointment/appointment.entity.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/appointment/appointment.entity.ts:23</a></div>
                         </td>
                     </tr>
 
@@ -412,7 +397,6 @@
                 <td class="col-md-4">
                     <a name="office"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>office</b></span>
@@ -431,13 +415,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Office})<br />@ManyToOne(undefined, office &#x3D;&gt; office.appointments)<br />@JoinColumn({name: &#x27;office_id&#x27;})<br />
+                            @ManyToOne(undefined, office &#x3D;&gt; office.property_cita)<br />@JoinColumn({name: &#x27;office_id&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/appointment/appointment.entity.ts:79</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/appointment/appointment.entity.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -450,7 +434,6 @@
                 <td class="col-md-4">
                     <a name="patient"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>patient</b></span>
@@ -469,13 +452,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Patient})<br />@ManyToOne(undefined, patient &#x3D;&gt; patient.appointments)<br />@JoinColumn({name: &#x27;patient_id&#x27;})<br />
+                            @ManyToOne(undefined, patient &#x3D;&gt; patient.appointments)<br />@JoinColumn({name: &#x27;patient_id&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/appointment/appointment.entity.ts:73</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/appointment/appointment.entity.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -488,7 +471,6 @@
                 <td class="col-md-4">
                     <a name="prescription"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>prescription</b></span>
                         <a href="#prescription"><span class="icon ion-ios-link"></span></a>
@@ -506,13 +488,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; })<br />@OneToMany(undefined, prescription &#x3D;&gt; prescription.appointment)<br />
+                            @OneToMany(undefined, prescription &#x3D;&gt; prescription.appointment)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/appointment/appointment.entity.ts:89</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/appointment/appointment.entity.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -525,7 +507,6 @@
                 <td class="col-md-4">
                     <a name="reason"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>reason</b></span>
                         <a href="#reason"><span class="icon ion-ios-link"></span></a>
@@ -543,13 +524,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The reason for the appointment.&#x27;, example: &#x27;Regular check-up&#x27;, nullable: true})<br />@Column({type: &#x27;text&#x27;, nullable: true})<br />
+                            @Column({type: &#x27;text&#x27;, nullable: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/appointment/appointment.entity.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/appointment/appointment.entity.ts:20</a></div>
                         </td>
                     </tr>
 
@@ -562,7 +543,6 @@
                 <td class="col-md-4">
                     <a name="status"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>status</b></span>
                         <a href="#status"><span class="icon ion-ios-link"></span></a>
@@ -580,13 +560,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The status of the appointment.&#x27;, example: &#x27;scheduled&#x27;, default: &#x27;scheduled&#x27;, enum: undefined})<br />@Column({default: &#x27;scheduled&#x27;})<br />
+                            @Column({default: &#x27;scheduled&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/appointment/appointment.entity.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/appointment/appointment.entity.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -598,96 +578,61 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
-import { Doctor } from &#x27;src/doctor/doctor.entity&#x27;;
-// ... existing code ...
-import { Prescription } from &#x27;src/prescription/prescription.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Doctor } from &quot;src/doctor/doctor.entity&quot;;
+/*import { Invoice } from &quot;src/invoice/invoice.entity&quot;; */
+import { Patient } from &quot;src/patient/patient.entity&quot;;
+import {Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToOne, OneToMany} from &quot;typeorm&quot;;
+import { Office } from &quot;src/office/office.entity&quot;;
+import { Invoice } from &quot;src/invoice/invoice.entity&quot;;
+import { Prescription } from &quot;src/prescription/prescription.entity&quot;;
 
-/**
- * @class Appointment
- * @description Represents a medical appointment in the system.
- * @property {number} id - The unique identifier for the appointment.
- * @property {Date} date - The date and time of the appointment.
- * @property {string} reason - The reason for the appointment.
- * @property {string} notes - Any notes related to the appointment.
- * @property {string} status - The status of the appointment (e.g., scheduled, completed, canceled).
- * @property {Doctor} doctor - The doctor assigned to the appointment.
- * @property {Patient} patient - The patient for whom the appointment is scheduled.
- * @property {Office} office - The office where the appointment will take place.
- * @property {Invoice} invoice - The invoice associated with the appointment.
- * @property {Prescription[]} prescription - The prescriptions issued during the appointment.
- */
+//Atributos entidad appointment
 @Entity(&#x27;appointment&#x27;)
 export class Appointment {
-  @ApiProperty({
-    description: &#x27;The unique identifier for the appointment.&#x27;,
-    example: 1,
-  })
-  @PrimaryGeneratedColumn()
-  id: number;
+    
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @ApiProperty({
-    description: &#x27;The date and time of the appointment.&#x27;,
-    example: &#x27;2024-08-15T10:00:00Z&#x27;,
-  })
-  @Column({ type: &#x27;timestamp&#x27; })
-  date: Date;
+    @Column({type: &#x27;timestamp&#x27;})
+    date: Date;
 
-  @ApiProperty({
-    description: &#x27;The reason for the appointment.&#x27;,
-    example: &#x27;Regular check-up&#x27;,
-    nullable: true,
-  })
-  @Column({ type: &#x27;text&#x27;, nullable: true })
-  reason: string;
+    @Column({type: &#x27;text&#x27;, nullable: true})
+    reason: string;
 
-  @ApiProperty({
-    description: &#x27;Any notes related to the appointment.&#x27;,
-    example: &#x27;Patient reported mild headaches.&#x27;,
-    nullable: true,
-  })
-  @Column({ type: &#x27;text&#x27;, nullable: true })
-  notes: string;
+    @Column({type: &#x27;text&#x27;, nullable: true})
+    notes: string;
 
-  @ApiProperty({
-    description: &#x27;The status of the appointment.&#x27;,
-    example: &#x27;scheduled&#x27;,
-    default: &#x27;scheduled&#x27;,
-    enum: [&#x27;scheduled&#x27;, &#x27;completed&#x27;, &#x27;canceled&#x27;],
-  })
-  @Column({ default: &#x27;scheduled&#x27; })
-  status: string; // scheduled, completed, canceled
+    @Column({default: &#x27;scheduled&#x27;})
+    status: string; // scheduled, completed, canceled
 
-  //Relationships
 
-  @ApiProperty({ type: () &#x3D;&gt; Doctor })
-  // Relation Doctor &gt; Appointment, a Doctor can have many appointments
-  @ManyToOne(() &#x3D;&gt; Doctor, (doctor) &#x3D;&gt; doctor.appointments)
-  @JoinColumn({ name: &#x27;doctor_id&#x27; })
-  doctor: Doctor;
+    //Relationships
 
-  @ApiProperty({ type: () &#x3D;&gt; Patient })
-  // Relation Patient &gt; Appointment, a Patient can have many appointments
-  @ManyToOne(() &#x3D;&gt; Patient, (patient) &#x3D;&gt; patient.appointments)
-  @JoinColumn({ name: &#x27;patient_id&#x27; })
-  patient: Patient;
+    // Relation Doctor &gt; Appointment, a Doctor can have many appointments
+    @ManyToOne(() &#x3D;&gt; Doctor, doctor &#x3D;&gt; doctor.appointments)
+    @JoinColumn({name: &#x27;doctor_id&#x27;})
+    doctor: Doctor;
+    
+    // Relation Patient &gt; Appointment, a Patient can have many appointments
+    @ManyToOne(() &#x3D;&gt; Patient, patient &#x3D;&gt; patient.appointments)
+    @JoinColumn({name: &#x27;patient_id&#x27;})
+    patient: Patient;
+    
+    // Relation Office &gt; Appointment, an Office can have many appointments
+    @ManyToOne(() &#x3D;&gt; Office, office &#x3D;&gt; office.property_cita)
+    @JoinColumn({name: &#x27;office_id&#x27;})
+    office: Office;
+    
+    // Relation Invoice &gt; Appointment, an Invoice can have many appointments
+    @OneToOne(() &#x3D;&gt; Invoice, invoice &#x3D;&gt; invoice.propety_cita)
+    invoice: Invoice;
 
-  @ApiProperty({ type: () &#x3D;&gt; Office })
-  // Relation Office &gt; Appointment, an Office can have many appointments
-  @ManyToOne(() &#x3D;&gt; Office, (office) &#x3D;&gt; office.appointments)
-  @JoinColumn({ name: &#x27;office_id&#x27; })
-  office: Office;
-
-  @ApiProperty({ type: () &#x3D;&gt; Invoice, nullable: true })
-  // Relation Invoice &gt; Appointment, an Invoice can have many appointments
-  @OneToOne(() &#x3D;&gt; Invoice, (invoice) &#x3D;&gt; invoice.appointment)
-  invoice: Invoice;
-
-  @ApiProperty({ type: () &#x3D;&gt; [Prescription] })
-  // Relation Prescription &gt; Appointment, an Prescription can have many appointments
-  @OneToMany(() &#x3D;&gt; Prescription, (prescription) &#x3D;&gt; prescription.appointment)
-  prescription: Prescription[];
-}</code></pre>
+    // Relation Prescription &gt; Appointment, an Prescription can have many appointments
+    @OneToMany(() &#x3D;&gt; Prescription, prescription &#x3D;&gt; prescription.appointment)
+    prescription: Prescription[];
+    
+}
+</code></pre>
     </div>
 </div>
 

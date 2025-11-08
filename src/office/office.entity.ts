@@ -1,6 +1,5 @@
 import { Appointment } from "src/appointment/appointment.entity"; 
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ApiProperty } from "@nestjs/swagger";
 
 /**
  * Entidad que representa un consultorio médico en el sistema
@@ -28,11 +27,6 @@ export class Office{
      * @type {number}
      * @description Identificador único autogenerado para el consultorio
      */
-    @ApiProperty({
-        description: 'Unique identifier for the office',
-        example: 1,
-        readOnly: true,
-    })
     @PrimaryGeneratedColumn()
     id_consultorio: number;
     
@@ -46,11 +40,6 @@ export class Office{
      * 
      * @example 101, 202, 305
      */
-     @ApiProperty({
-        description: 'Identifier number of the office, must be unique',
-        example: 101,
-        unique: true,
-    })
     @Column({unique: true})
     num_consultorio: number;
 
@@ -63,10 +52,6 @@ export class Office{
      * 
      * @example 1, 2, 3
      */
-    @ApiProperty({
-        description: 'Floor number where the office is located',
-        example: 1,
-    })
     @Column()
     piso: number;
 
@@ -80,11 +65,6 @@ export class Office{
      * 
      * @example true, false
      */
-    @ApiProperty({
-        description: 'Indicates if the office is available (true) or occupied (false)',
-        example: true,
-        default: true,
-    })
     @Column({type: 'boolean', default: true})
     disponible: boolean
 
@@ -97,7 +77,6 @@ export class Office{
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Appointment}
      */
-    @ApiProperty({ type: () => [Appointment] })
     @OneToMany(() => Appointment, (Cita) => Cita.office, {cascade: true})
     property_cita: Appointment[];
 }

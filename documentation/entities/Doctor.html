@@ -162,27 +162,22 @@ doctor.licenseNumber = &quot;MP-123456&quot;;</code></pre></div>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#appointments" >appointments</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#id" >id</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#licenseNumber" >licenseNumber</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#person" >person</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#specialty" >specialty</a>
@@ -212,7 +207,6 @@ doctor.licenseNumber = &quot;MP-123456&quot;;</code></pre></div>
                     <a name="appointments"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>appointments</b></span>
                         <a href="#appointments"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -229,13 +223,13 @@ doctor.licenseNumber = &quot;MP-123456&quot;;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; })<br />@OneToMany(undefined, appointment &#x3D;&gt; appointment.doctor, {cascade: true})<br />
+                            @OneToMany(undefined, appointment &#x3D;&gt; appointment.doctor, {cascade: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/doctor/doctor.entity.ts:104</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/doctor/doctor.entity.ts:91</a></div>
                         </td>
                     </tr>
 
@@ -258,7 +252,6 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                     <a name="id"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>id</b></span>
                         <a href="#id"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -275,13 +268,13 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The unique identifier for the doctor.&#x27;, example: 1})<br />@PrimaryGeneratedColumn()<br />
+                            @PrimaryGeneratedColumn()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/doctor/doctor.entity.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/doctor/doctor.entity.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -301,7 +294,6 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                     <a name="licenseNumber"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>licenseNumber</b></span>
                         <a href="#licenseNumber"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -318,13 +310,13 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The medical license number of the doctor.&#x27;, example: &#x27;MP-123456&#x27;, minLength: 2, maxLength: 50})<br />@Column({length: 50, type: &#x27;varchar&#x27;})<br />
+                            @Column({length: 50, type: &#x27;varchar&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/doctor/doctor.entity.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/doctor/doctor.entity.ts:50</a></div>
                         </td>
                     </tr>
 
@@ -345,7 +337,6 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>person</b></span>
                         <a href="#person"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -362,13 +353,13 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Person})<br />@OneToOne(undefined, person &#x3D;&gt; person.doctor, {cascade: true})<br />@JoinColumn({name: &#x27;person_id&#x27;})<br />
+                            @OneToOne(undefined, person &#x3D;&gt; person.doctor, {cascade: true})<br />@JoinColumn({name: &#x27;person_id&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/doctor/doctor.entity.ts:75</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/doctor/doctor.entity.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -393,7 +384,6 @@ See <a href="../entitys/Person.html">Person</a></p>
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>specialty</b></span>
                         <a href="#specialty"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -410,13 +400,13 @@ See <a href="../entitys/Person.html">Person</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Specialty})<br />@ManyToOne(undefined, Especialidades &#x3D;&gt; Especialidades.propety_doctor, {cascade: true})<br />@JoinColumn({name: &#x27;specialty_id&#x27;})<br />
+                            @ManyToOne(undefined, Especialidades &#x3D;&gt; Especialidades.propety_doctor, {cascade: true})<br />@JoinColumn({name: &#x27;specialty_id&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/doctor/doctor.entity.ts:91</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/doctor/doctor.entity.ts:79</a></div>
                         </td>
                     </tr>
 
@@ -444,7 +434,7 @@ import { Person } from &quot;../person/person.entity&quot;;
 import { Appointment } from &quot;../appointment/appointment.entity&quot;;
 import { Prescription } from &quot;../prescription/prescription.entity&quot;;
 import { Specialty } from &quot;../specialty/specialty.entity&quot;;
-import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
+
 /**
  * Entidad que representa un doctor en el sistema médico
  * 
@@ -471,10 +461,6 @@ export class Doctor {
      * @type {number}
      * @description Clave primaria autogenerada del doctor
      */
-     @ApiProperty({
-    description: &#x27;The unique identifier for the doctor.&#x27;,
-    example: 1,
-  })
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -489,12 +475,6 @@ export class Doctor {
      * 
      * @example &quot;MP-123456&quot;, &quot;RM-789012&quot;, &quot;LIC-345678&quot;
      */
-     @ApiProperty({
-    description: &#x27;The medical license number of the doctor.&#x27;,
-    example: &#x27;MP-123456&#x27;,
-    minLength: 2,
-    maxLength: 50,
-  })
     @Column(
         {length: 50, type: &#x27;varchar&#x27;}
     )
@@ -510,7 +490,6 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Person}
      */
-    @ApiProperty({ type: () &#x3D;&gt; Person })
     @OneToOne(() &#x3D;&gt; Person, (person) &#x3D;&gt; person.doctor, {cascade: true})
     @JoinColumn({name:&#x27;person_id&#x27;})
     person:Person;
@@ -526,7 +505,6 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Specialty}
      */
-    @ApiProperty({ type: () &#x3D;&gt; Specialty })
     @ManyToOne(() &#x3D;&gt; Specialty, (Especialidades) &#x3D;&gt; Especialidades.propety_doctor, {cascade: true})
     @JoinColumn({name:&#x27;specialty_id&#x27;})
     specialty:Specialty; 
@@ -540,7 +518,6 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Appointment}
      */
-    @ApiProperty({ type: () &#x3D;&gt; [Appointment] })
     @OneToMany(() &#x3D;&gt; Appointment, (appointment) &#x3D;&gt; appointment.doctor, {cascade: true})
     appointments:Appointment[];
 }</code></pre>

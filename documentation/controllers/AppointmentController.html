@@ -140,16 +140,6 @@
             </p>
 
 
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>Controlador para gestionar las operaciones REST de citas médicas</p>
-<p>Este controlador expone los endpoints HTTP para realizar operaciones CRUD
-sobre las citas médicas del sistema. Maneja las peticiones HTTP y delega
-la lógica de negocio al servicio AppointmentService.</p>
-
-            </p>
 
 
 
@@ -233,27 +223,14 @@ la lógica de negocio al servicio AppointmentService.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="60"
-                                    class="link-to-prism">src/appointment/appointment.controller.ts:60</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="15"
+                                    class="link-to-prism">src/appointment/appointment.controller.ts:15</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Crea una nueva cita médica</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">POST http://localhost:3000/appointment
-Body:
-```json
-{
-  &quot;date&quot;: &quot;2024-08-15T10:00:00Z&quot;,
-  &quot;reason&quot;: &quot;Consulta de control&quot;,
-  &quot;notes&quot;: &quot;Paciente reporta mejoría&quot;,
-  &quot;status&quot;: &quot;scheduled&quot;,
-  &quot;doctorId&quot;: 1,
-  &quot;patientId&quot;: 5,
-  &quot;officeId&quot;: 101
-}</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -264,7 +241,6 @@ Body:
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -279,12 +255,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>Datos de la cita a crear</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -294,8 +264,7 @@ Body:
 
                         </div>
                             <div class="io-description">
-                                <p>La cita creada con respuesta estructurada</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -330,25 +299,19 @@ Body:
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="74"
-                                    class="link-to-prism">src/appointment/appointment.controller.ts:74</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="23"
+                                    class="link-to-prism">src/appointment/appointment.controller.ts:23</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene todas las citas médicas</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">GET http://localhost:3000/appointment</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
-                            <div class="io-description">
-                                <p>Lista de todas las citas con respuesta estructurada</p>
-
-                            </div>
                 </td>
             </tr>
         </tbody>
@@ -368,7 +331,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -382,16 +345,14 @@ Body:
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="89"
-                                    class="link-to-prism">src/appointment/appointment.controller.ts:89</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/appointment/appointment.controller.ts:32</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene una cita médica por su ID</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">GET http://localhost:3000/appointment/1</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -402,14 +363,13 @@ Body:
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -417,12 +377,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>ID de la cita a buscar</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -432,8 +386,7 @@ Body:
 
                         </div>
                             <div class="io-description">
-                                <p>La cita encontrada con respuesta estructurada</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -454,7 +407,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -468,17 +421,14 @@ Body:
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="131"
-                                    class="link-to-prism">src/appointment/appointment.controller.ts:131</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/appointment/appointment.controller.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Elimina una cita médica por su ID</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">DELETE http://localhost:3000/appointment/1
-// Retorna: { &quot;message&quot;: &quot;Appointment deleted successfully&quot;, &quot;statusCode&quot;: 200 }</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -489,14 +439,13 @@ Body:
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -504,12 +453,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>ID de la cita a eliminar</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -519,8 +462,7 @@ Body:
 
                         </div>
                             <div class="io-description">
-                                <p>Mensaje de confirmación de eliminación</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -541,7 +483,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateAppointmentDto: <a href="../classes/UpdateAppointmentDto.html" target="_self">UpdateAppointmentDto</a>)</code>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateAppointmentDto: <a href="../classes/UpdateAppointmentDto.html" target="_self">UpdateAppointmentDto</a>)</code>
                 </td>
             </tr>
 
@@ -555,22 +497,14 @@ Body:
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="112"
-                                    class="link-to-prism">src/appointment/appointment.controller.ts:112</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/appointment/appointment.controller.ts:41</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Actualiza una cita médica existente</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">PATCH http://localhost:3000/appointment/1
-Body:
-```json
-{
-  &quot;status&quot;: &quot;completed&quot;,
-  &quot;notes&quot;: &quot;Consulta finalizada. Paciente en buen estado.&quot;
-}</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -581,14 +515,13 @@ Body:
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -596,12 +529,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>ID de la cita a actualizar</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>updateAppointmentDto</td>
@@ -614,12 +541,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>Datos actualizados de la cita</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -629,8 +550,7 @@ Body:
 
                         </div>
                             <div class="io-description">
-                                <p>La cita actualizada con respuesta estructurada</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -640,140 +560,60 @@ Body:
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  ParseIntPipe,
-} from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Patch, Param, Delete } from &#x27;@nestjs/common&#x27;;
 import { AppointmentService } from &#x27;./appointment.service&#x27;;
 import { CreateAppointmentDto } from &#x27;./dto/create-appointment.dto&#x27;;
 import { UpdateAppointmentDto } from &#x27;./dto/update-appointment.dto&#x27;;
-import { Appointment } from &#x27;./appointment.entity&#x27;;
 
-/**
- * Controlador para gestionar las operaciones REST de citas médicas
- * 
- * @description
- * Este controlador expone los endpoints HTTP para realizar operaciones CRUD
- * sobre las citas médicas del sistema. Maneja las peticiones HTTP y delega
- * la lógica de negocio al servicio AppointmentService.
- * 
- * @route /appointment
- * @export
- * @class AppointmentController
- */
 @Controller(&#x27;appointment&#x27;)
 export class AppointmentController {
-  /**
-   * Constructor del controlador de citas médicas
-   * 
-   * @param {AppointmentService} appointmentService - Servicio que maneja la lógica de negocio de citas
-   */
   constructor(private readonly appointmentService: AppointmentService) {}
 
-  /**
-   * Crea una nueva cita médica
-   * 
-   * @route POST /appointment
-   * @param {CreateAppointmentDto} createAppointmentDto - Datos de la cita a crear
-   * @returns {Promise&lt;{message: string, statusCode: number, data: Appointment}&gt;} La cita creada con respuesta estructurada
-   * 
-   * @example
-   * POST http://localhost:3000/appointment
-   * Body:
-   * &#x60;&#x60;&#x60;json
-   * {
-   *   &quot;date&quot;: &quot;2024-08-15T10:00:00Z&quot;,
-   *   &quot;reason&quot;: &quot;Consulta de control&quot;,
-   *   &quot;notes&quot;: &quot;Paciente reporta mejoría&quot;,
-   *   &quot;status&quot;: &quot;scheduled&quot;,
-   *   &quot;doctorId&quot;: 1,
-   *   &quot;patientId&quot;: 5,
-   *   &quot;officeId&quot;: 101
-   * }
-   * &#x60;&#x60;&#x60;
-   */
+  // ─── POST ───────────────────────────────────────────────
+  //Create a new appointment
+  //http:localhost:3000/appointment
+  //The JSON Body must be in the format of the CreateAppointmentDto
   @Post()
   create(@Body() createAppointmentDto: CreateAppointmentDto) {
     return this.appointmentService.create(createAppointmentDto);
   }
 
-  /**
-   * Obtiene todas las citas médicas
-   * 
-   * @route GET /appointment
-   * @returns {Promise&lt;{message: string, statusCode: number, data: Appointment[]}&gt;} Lista de todas las citas con respuesta estructurada
-   * 
-   * @example
-   * GET http://localhost:3000/appointment
-   */
+    // ─── GET ───────────────────────────────────────────────
+    //Get all appointments
+    //http:localhost:3000/appointment
   @Get()
   findAll() {
     return this.appointmentService.findAll();
   }
 
-  /**
-   * Obtiene una cita médica por su ID
-   * 
-   * @route GET /appointment/:id
-   * @param {number} id - ID de la cita a buscar
-   * @returns {Promise&lt;{message: string, statusCode: number, data: Appointment}&gt;} La cita encontrada con respuesta estructurada
-   * 
-   * @example
-   * GET http://localhost:3000/appointment/1
-   */
+   // ─── GET ───────────────────────────────────────────────
+    //Get appointment by id
+    //http:localhost:3000/appointment/1
+    //The param id is the id of the appointment, is required
   @Get(&#x27;:id&#x27;)
-  findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
-    return this.appointmentService.findOne(id);
+  findOne(@Param(&#x27;id&#x27;) id: string) {
+    return this.appointmentService.findOne(+id);
   }
 
-  /**
-   * Actualiza una cita médica existente
-   * 
-   * @route PATCH /appointment/:id
-   * @param {number} id - ID de la cita a actualizar
-   * @param {UpdateAppointmentDto} updateAppointmentDto - Datos actualizados de la cita
-   * @returns {Promise&lt;{message: string, statusCode: number, data: Appointment}&gt;} La cita actualizada con respuesta estructurada
-   * 
-   * @example
-   * PATCH http://localhost:3000/appointment/1
-   * Body:
-   * &#x60;&#x60;&#x60;json
-   * {
-   *   &quot;status&quot;: &quot;completed&quot;,
-   *   &quot;notes&quot;: &quot;Consulta finalizada. Paciente en buen estado.&quot;
-   * }
-   * &#x60;&#x60;&#x60;
-   */
+  // ─── PATCH ───────────────────────────────────────────────
+    //Update an appointment
+    //http:localhost:3000/appointment/1
+    //The param id is the id of the appointment, is required for update
   @Patch(&#x27;:id&#x27;)
-  update(
-    @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
-    @Body() updateAppointmentDto: UpdateAppointmentDto,
-  ) {
-    return this.appointmentService.update(id, updateAppointmentDto);
+  update(@Param(&#x27;id&#x27;) id: string, @Body() updateAppointmentDto: UpdateAppointmentDto) {
+    return this.appointmentService.update(+id, updateAppointmentDto);
   }
 
-  /**
-   * Elimina una cita médica por su ID
-   * 
-   * @route DELETE /appointment/:id
-   * @param {number} id - ID de la cita a eliminar
-   * @returns {Promise&lt;{message: string, statusCode: number}&gt;} Mensaje de confirmación de eliminación
-   * 
-   * @example
-   * DELETE http://localhost:3000/appointment/1
-   * // Retorna: { &quot;message&quot;: &quot;Appointment deleted successfully&quot;, &quot;statusCode&quot;: 200 }
-   */
+  // ─── DELETE ───────────────────────────────────────────────
+    //Delete an appointment
+    //http:localhost:3000/appointment/1
+    //The param id is the id of the appointment, is required for delete
   @Delete(&#x27;:id&#x27;)
-  remove(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
-    return this.appointmentService.remove(id);
+  remove(@Param(&#x27;id&#x27;) id: string) {
+    return this.appointmentService.remove(+id);
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 

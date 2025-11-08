@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Person, Role } from './person.entity';
@@ -54,40 +54,11 @@ export class PersonService {
      * });
      * ```
      */
-    async create(createPersonDto: CreatePersonDto): Promise<{
-        
-        message: string;
-        statusCode: number;
-        data: Person;
-    }>{
-        try {
-            // person exists
-            const existingPerson = await this.personRepository.findOne({ where: { email: createPersonDto.email } });
-            if (existingPerson) {
-                return {
-                    message: 'Person already exists',
-                    statusCode: HttpStatus.CONFLICT,
-                    data: existingPerson
-                };
-            }
-            const newPerson = this.personRepository.create(createPersonDto);
-            // El save permite que se active el @BeforeInsert antes de que un usuario se cree, activando el hashing
-            const saved = await this.personRepository.save(newPerson);
-            return {
-                message: 'Person created successfully',
-                statusCode: HttpStatus.CREATED,
-                data: saved
-            };
-            } catch (error) {
-                throw new HttpException(
-                    {
-                        message: 'Error creating person',
-                            error: error.message,
-                        },
-                        HttpStatus.BAD_REQUEST,
-                    );
-                    }
-        }
+    async create(createPersonDto: CreatePersonDto): Promise<Person>{
+        const newPerson = this.personRepository.create(createPersonDto);
+        // El save permite que se active el @BeforeInsert antes de que un usuario se cree, activando el hashing
+        return this.personRepository.save(newPerson);
+    }
 
     /**
      * Busca una persona por su correo electrónico
@@ -110,33 +81,13 @@ export class PersonService {
      * const personWithPass = await personService.findOneByEmail("juan@example.com", true);
      * ```
      */
-    async findOneByEmail(email: string, includePassword = false): Promise<
-        { 
-            message: string;
-            statusCode: number;
-            data: Person | null;
-        }> {
+    async findOneByEmail(email: string, includePassword = false): Promise<Person | null> {
+        const findOptions = {
+            where: { email },
+            select: includePassword ? ['id', 'name', 'email', 'role', 'password'] : ['id', 'name', 'email', 'role'],
+        } as any;
         
-        try {
-            const findOptions = {
-                where: { email },
-                select: includePassword ? ['id', 'name', 'email', 'role', 'password'] : ['id', 'name', 'email', 'role'],
-            } as any;
-        
-        return {
-            message: 'Person found successfully',
-            statusCode: HttpStatus.OK,
-            data: await this.personRepository.findOne(findOptions)
-        };
-        } catch (error) {
-            throw new HttpException(
-                {
-                    message: 'Error finding person by email',
-                    error: error.message,
-                },
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+        return this.personRepository.findOne(findOptions);
     }
 
     /**
@@ -149,27 +100,8 @@ export class PersonService {
      * const allPersons = await personService.findAll();
      * ```
      */
-    async findAll(): Promise <{
-        message: string;
-        statusCode: number;
-        data: Person[];
-    }> {
-        try {
-            const allPersons = await this.personRepository.find();
-            return {
-                message: 'All persons retrieved successfully',
-                statusCode: HttpStatus.OK,
-                data: allPersons
-            };
-        } catch (error) {
-            throw new HttpException(
-                {
-                    message: 'Error retrieving all persons',
-                    error: error.message,
-                },
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    findAll() {
+        return this.personRepository.find();
     }
 
     /**
@@ -188,26 +120,9 @@ export class PersonService {
      * const patients = await personService.findByrole(Role.Patient);
      * ```
      */
-    async findByrole(role: Role): Promise<{
-        message: string;
-        statusCode: number;
-        data: Person[];
-        }> {
-            try {
-                const persons = await this.personRepository.find({ where: { role } });
-                return {
-                    message: 'Persons found successfully',
-                    statusCode: HttpStatus.OK,
-                    data: persons
-                };
-            } catch (error) {
-                throw new HttpException(
-                    {message: 'Error finding persons by role', error: error.message},
-                    HttpStatus.BAD_REQUEST,
-                );
-                }
-        }
-
+    findByrole(role: Role) {
+        return this.personRepository.find({ where: { role } });
+    }
 
     /**
      * Busca una persona por su ID
@@ -220,27 +135,8 @@ export class PersonService {
      * const person = await personService.findOne(1);
      * ```
      */
-    async findOne(id: number): Promise<{
-        message: string;
-        statusCode: number;
-        data: Person | null;
-        }> {
-        try {
-            const person = await this.personRepository.findOne({ where: { id } });
-            return {
-                message: 'Person found successfully',
-                statusCode: HttpStatus.OK,
-                data: person
-            };
-        } catch (error) {
-            throw new HttpException(
-                {
-                    message: 'Error finding person by id',
-                    error: error.message,
-                },
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    findOne(id: number) {
+        return this.personRepository.findOne({ where: { id } });
     }
 
     /**
@@ -262,37 +158,9 @@ export class PersonService {
      * });
      * ```
      */
-    async update(id: number, updatePersonDto: UpdatePersonDto): Promise<{
-        message: string;
-        statusCode: number;
-        data: Person;
-    }> {
-        const person = await this.personRepository.findOne({ where: { id } });
-        if (!person) {
-            throw new HttpException(
-                {
-                    message: 'Person not found',
-                    error: 'Person not found',
-                },
-                HttpStatus.BAD_REQUEST,
-            );
-        } Object.assign(person, updatePersonDto);
-        try {
-            const updated = await this.personRepository.save(person);
-        return {
-            message: 'Person updated successfully',
-            statusCode: HttpStatus.OK,
-            data: updated
-        };
-        } catch (error) {
-            throw new HttpException(
-                {
-                    message: 'Error updating person',
-                    error: error.message,
-                },
-                HttpStatus.BAD_REQUEST,
-            );
-        } 
+    async update(id: number, updatePersonDto: UpdatePersonDto) {
+        await this.personRepository.update(id, updatePersonDto);
+        return this.personRepository.findOne({ where: { id } });
     }
     /**
      * Elimina una persona por su ID
@@ -305,37 +173,9 @@ export class PersonService {
      * await personService.remove(1);
      * ```
      */
+    remove(id: number) {
     // Delete person by id
-    async remove(id: number): Promise<{
-        message: string;
-        statusCode: number;
-        data: any;
-    }> {
-        const person = await this.personRepository.findOne({ where: { id } });
-        if (!person) {
-            throw new HttpException(
-                {
-                    message: 'Person not found',
-                    error: 'Person not found',
-                },
-                HttpStatus.BAD_REQUEST,
-            );
-        }
-        try {
-            const deleted = await this.personRepository.delete(id);
-            return {
-                message: 'Person deleted successfully',
-                statusCode: HttpStatus.OK,
-                data: deleted
-            };
-        } catch (error) {
-            throw new HttpException(
-                {
-                    message: 'Error deleting person',
-                    error: error.message,
-                },
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    async remove(id: number) {
+        return this.personRepository.delete(id);
     }
 }

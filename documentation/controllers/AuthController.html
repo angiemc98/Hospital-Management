@@ -159,18 +159,23 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                <a href="#getProfile" >getProfile</a>
+                                <a href="#create" >create</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier">Async</span>
-                                <a href="#login" >login</a>
+                                <a href="#findAll" >findAll</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier">Async</span>
-                                <a href="#register" >register</a>
+                                <a href="#findOne" >findOne</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -193,19 +198,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getProfile"></a>
+                    <a name="create"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                        <span ><b>getProfile</b></span>
-                        <a href="#getProfile"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>getProfile(req: unknown)</code>
+                    <code>create(createAuthDto: <a href="../classes/CreateAuthDto.html" target="_self">CreateAuthDto</a>)</code>
                 </td>
             </tr>
 
@@ -213,22 +217,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@UseGuards(JwtAuthGuard)<br />@Get(&#x27;profile&#x27;)<br /></code>
+                    <code>@Post()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/auth/auth.controller.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="11"
+                                    class="link-to-prism">src/auth/auth.controller.ts:11</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Example of a protected route. Only authenticated users can access this route.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -243,9 +245,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>req</td>
+                                                <td>createAuthDto</td>
                                             <td>
-                                                        <code>unknown</code>
+                                                            <code><a href="../classes/CreateAuthDto.html" target="_self" >CreateAuthDto</a></code>
                                             </td>
 
                                             <td>
@@ -258,7 +260,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>{ message: string; user: any; }</code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
@@ -272,19 +274,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="login"></a>
+                    <a name="findAll"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier">Async</span>
-                        <span ><b>login</b></span>
-                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>findAll</b></span>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>login(loginDto: <a href="../classes/LoginDto.html" target="_self">LoginDto</a>)</code>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
@@ -292,22 +293,66 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;login&#x27;)<br /></code>
+                    <code>@Get()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/auth/auth.controller.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="16"
+                                    class="link-to-prism">src/auth/auth.controller.ts:16</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Route for user login. Returns a JSON object with the user data and a JWT token.</p>
-</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findOne"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findOne</b></span>
+                        <a href="#findOne"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="21"
+                                    class="link-to-prism">src/auth/auth.controller.ts:21</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -322,9 +367,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>loginDto</td>
+                                                <td>id</td>
                                             <td>
-                                                            <code><a href="../classes/LoginDto.html" target="_self" >LoginDto</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -337,7 +382,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
@@ -351,19 +396,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="register"></a>
+                    <a name="remove"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier">Async</span>
-                        <span ><b>register</b></span>
-                        <a href="#register"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>remove</b></span>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>register(registerDto: <a href="../classes/RegisterDto.html" target="_self">RegisterDto</a>)</code>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -371,22 +415,20 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post(&#x27;register&#x27;)<br /></code>
+                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="17"
-                                    class="link-to-prism">src/auth/auth.controller.ts:17</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/auth/auth.controller.ts:31</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Route for user registration. Returns a JSON object with the user data.</p>
-</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -401,9 +443,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>registerDto</td>
+                                                <td>id</td>
                                             <td>
-                                                            <code><a href="../classes/RegisterDto.html" target="_self" >RegisterDto</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -416,7 +458,95 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateAuthDto: <a href="../classes/UpdateAuthDto.html" target="_self">UpdateAuthDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/auth/auth.controller.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>updateAuthDto</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateAuthDto.html" target="_self" >UpdateAuthDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
@@ -430,53 +560,41 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">// src/auth/auth.controller.ts
-import { Controller, Post, Body, UseGuards, Request, Get, HttpStatus } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get, Post, Body, Patch, Param, Delete } from &#x27;@nestjs/common&#x27;;
 import { AuthService } from &#x27;./auth.service&#x27;;
-import { LoginDto } from &#x27;./dto/login.dto&#x27;;
-import { RegisterDto } from &#x27;./dto/register.dto&#x27;;
-import { AuthGuard } from &#x27;@nestjs/passport&#x27;;
-import { JwtAuthGuard } from &#x27;./guards/jwt-auth.guard&#x27;;
+import { CreateAuthDto } from &#x27;./dto/create-auth.dto&#x27;;
+import { UpdateAuthDto } from &#x27;./dto/update-auth.dto&#x27;;
 
 @Controller(&#x27;auth&#x27;)
 export class AuthController {
-    constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
-    /**
-     * Route for user registration. Returns a JSON object with the user data.
-     */
-    @Post(&#x27;register&#x27;)
-    async register(@Body() registerDto: RegisterDto) {
-        const user &#x3D; await this.authService.register(registerDto);
-        return {
-            message: &#x27;Registro exitoso. Usuario creado.&#x27;,
-            statusCode: HttpStatus.CREATED,
-            user: { id: user.id, email: user.email, role: user.role }
-        };
-    }
+  @Post()
+  create(@Body() createAuthDto: CreateAuthDto) {
+    return this.authService.create(createAuthDto);
+  }
 
-    /**
-     * Route for user login. Returns a JSON object with the user data and a JWT token.
-     */
-    @Post(&#x27;login&#x27;)
-    async login(@Body() loginDto: LoginDto) {
-        // The service validates the user credentials and returns a JWT token
-        return this.authService.login(loginDto);
-    }
-    
-    /**
-     * Example of a protected route. Only authenticated users can access this route.
-     */
-    @UseGuards(JwtAuthGuard)
-    @Get(&#x27;profile&#x27;)
-    getProfile(@Request() req) {
-        // req.user contains the object returned by JwtStrategy.validate()
-        return {
-            message: &#x27;Acceso autorizado&#x27;,
-            user: req.user,
-        };
-    }
-}</code></pre>
+  @Get()
+  findAll() {
+    return this.authService.findAll();
+  }
+
+  @Get(&#x27;:id&#x27;)
+  findOne(@Param(&#x27;id&#x27;) id: string) {
+    return this.authService.findOne(+id);
+  }
+
+  @Patch(&#x27;:id&#x27;)
+  update(@Param(&#x27;id&#x27;) id: string, @Body() updateAuthDto: UpdateAuthDto) {
+    return this.authService.update(+id, updateAuthDto);
+  }
+
+  @Delete(&#x27;:id&#x27;)
+  remove(@Param(&#x27;id&#x27;) id: string) {
+    return this.authService.remove(+id);
+  }
+}
+</code></pre>
     </div>
 </div>
 

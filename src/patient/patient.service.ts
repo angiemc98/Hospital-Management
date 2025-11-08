@@ -5,7 +5,6 @@ import { Patient } from './patient.entity';
 import { Person } from '../person/person.entity';
 import { CreatePatientDto } from './dto/create-patient.dto';
 import { UpdatePatientDto } from './dto/update-patient.dto';
-import { HttpException, HttpStatus } from '@nestjs/common';
 
 /**
  * Servicio para gestionar las operaciones de pacientes
@@ -55,35 +54,22 @@ export class PatientService {
      * });
      * ```
      */
-    async create(dto: CreatePatientDto) {
-        try {
-        const existing = await this.patientRepository.findOne({
-            where: { person:{ id: dto.personId } },
-            relations: ['person'],
+    async createPatient(Patientdto: CreatePatientDto) {
+        // Busca la persona por id
+        const person = await this.personRepository.findOneBy({id: Patientdto.personId});
+        
+        if (!person) {
+            throw new Error('Person not found');
+        }
+        // Crea el paciente
+        const patient = this.patientRepository.create({
+            person,
+            insurance: Patientdto.insurance,
+            bloodType: Patientdto.bloodType,
+            medicalHistory: Patientdto.medicalHistory
         });
-        if (existing) {
-            return {
-            message: 'Patient already exists',
-            statusCode: HttpStatus.CONFLICT,
-            data: existing,
-            };
-        }
-
-        const patient = this.patientRepository.create(dto);
-        const saved = await this.patientRepository.save(patient);
-        return {
-            message: 'Patient created successfully',
-            statusCode: HttpStatus.CREATED,
-            data: saved,
-        };
-        } catch (error) {
-        throw new HttpException(
-            { message: 'Error creating patient', error: error.message },
-            HttpStatus.BAD_REQUEST,
-        );
-        }
-    }
-    
+        return this.patientRepository.save(patient);
+    }   
 
     /**
      * Obtiene todos los pacientes registrados con sus datos personales
@@ -96,20 +82,8 @@ export class PatientService {
      * // Retorna pacientes con datos de person poblados
      * ```
      */
-    async findAll() {
-        try {
-        const data = await this.patientRepository.find({ relations: ['person'] });
-        return {
-            message: 'Patients retrieved successfully',
-            statusCode: HttpStatus.OK,
-            data,
-        };
-        } catch (error) {
-        throw new HttpException(
-            { message: 'Error retrieving patients', error: error.message },
-            HttpStatus.BAD_REQUEST,
-        );
-        }
+    findAll() {
+        return this.patientRepository.find({relations: ['person']});
     }
 
     /**
@@ -123,22 +97,8 @@ export class PatientService {
      * const patient = await patientService.findOne(1);
      * ```
      */
-    async findOne(id: number) {
-        const patient = await this.patientRepository.findOne({
-        where: { id },
-        relations: ['person', 'appointments'],
-        });
-        if (!patient) {
-        throw new HttpException(
-            { message: 'Patient not found' },
-            HttpStatus.NOT_FOUND,
-        );
-        }
-        return {
-        message: 'Patient found successfully',
-        statusCode: HttpStatus.OK,
-        data: patient,
-        };
+    findOne(id: number) {
+        return this.patientRepository.findOne({where: {id}, relations: ['person']});
     }
 
     /**
@@ -156,22 +116,9 @@ export class PatientService {
      * });
      * ```
      */
-    async update(id: number, dto: UpdatePatientDto) {
-        const existing = await this.patientRepository.findOne({ where: { id } });
-        if (!existing) {
-        throw new HttpException(
-            { message: 'Patient not found' },
-            HttpStatus.NOT_FOUND,
-        );
-        }
-
-        Object.assign(existing, dto);
-        const updated = await this.patientRepository.save(existing);
-        return {
-        message: 'Patient updated successfully',
-        statusCode: HttpStatus.OK,
-        data: updated,
-        };
+    async update(id: number, Patientdto: UpdatePatientDto) {
+        await this.patientRepository.update(id, Patientdto);
+        return this.findOne(id);
     }
 
     /**
@@ -185,20 +132,8 @@ export class PatientService {
      * await patientService.remove(1);
      * ```
      */
-    async remove(id: number) {
-        const existing = await this.patientRepository.findOne({ where: { id } });
-        if (!existing) {
-        throw new HttpException(
-            { message: 'Patient not found' },
-            HttpStatus.NOT_FOUND,
-        );
-        }
-        const deleted = await this.patientRepository.delete(id);
-        return {
-        message: 'Patient deleted successfully',
-        statusCode: HttpStatus.OK,
-        data: deleted,
-        };
+    remove(id: number) {
+        return this.patientRepository.delete(id);
     }
 
 }

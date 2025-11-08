@@ -162,11 +162,9 @@
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
-                                    <span class="modifier">Async</span>
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
-                                    <span class="modifier">Async</span>
                                 <a href="#remove" >remove</a>
                             </li>
                             <li>
@@ -196,7 +194,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -354,8 +352,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="65"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:65</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:47</a></div>
                         </td>
                     </tr>
 
@@ -377,7 +375,6 @@
                 <td class="col-md-4">
                     <a name="findOne"></a>
                     <span class="name">
-                            <span class="modifier">Async</span>
                         <span ><b>findOne</b></span>
                         <a href="#findOne"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -385,16 +382,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="84"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:84</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -430,7 +426,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
@@ -446,7 +442,6 @@
                 <td class="col-md-4">
                     <a name="remove"></a>
                     <span class="name">
-                            <span class="modifier">Async</span>
                         <span ><b>remove</b></span>
                         <a href="#remove"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -454,16 +449,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="141"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:141</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -499,7 +493,7 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
@@ -531,8 +525,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="113"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:113</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.service.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -604,7 +598,6 @@ import { Repository } from &#x27;typeorm&#x27;;
 import { PrescriptionDetail } from &#x27;./prescription-detail.entity&#x27;;
 import { Medicine } from &#x27;src/medicine/medicine.entity&#x27;;
 import { Prescription } from &#x27;src/prescription/prescription.entity&#x27;;
-import { HttpException, HttpStatus } from &#x27;@nestjs/common&#x27;;
 
 @Injectable()
 export class PrescriptionDetailService {
@@ -617,150 +610,53 @@ export class PrescriptionDetailService {
     private readonly prescriptionRepository: Repository&lt;Prescription&gt;,
 ) {}
 
+    // Create a prescription detail with the correct relations
     async create (dto: CreatePrescriptionDetailDto &amp; { prescriptionId?: number, medicineId: number }) {
-        try {
-            const prescription &#x3D; await this.prescriptionRepository.findOne({
-                where: { id: dto.prescriptionId },
-            });
-            if (!prescription)
-              
-                throw new HttpException({ message: &#x27;Prescripción no encontrada&#x27; }, HttpStatus.NOT_FOUND);
-
-            const medicine &#x3D; await this.medicineRepository.findOne({
-                where: { id: dto.medicineId },
-            });
-            if (!medicine)
-               
-                throw new HttpException({ message: &#x27;Medicamento no encontrado&#x27; }, HttpStatus.NOT_FOUND);
-
-            
-            const detail &#x3D; this.detailRepository.create({
-                dose: dto.dose,
-                duration: dto.duration,
-                instrucitons: dto.instrucitons,
-            });
-
-            const savedDetail &#x3D; await this.detailRepository.save(detail);
-
-            return {
-                message: &#x27;Detalle de prescripción creado exitosamente&#x27;,
-                statusCode: HttpStatus.CREATED,
-                data: savedDetail,
-            };
-        } catch (error) {
-           
-            if (error instanceof HttpException) {
-                throw error;
-            }
-            throw new HttpException(
-                { message: &#x27;Error al crear el detalle de prescripción&#x27;, error: error.message },
-                HttpStatus.BAD_REQUEST,
-            ); 
+        // Create the prescription detail with the correct relations
+        const detail &#x3D; this.detailRepository.create({
+        dose: dto.dose,
+        duration: dto.duration,
+        instrucitons: dto.instrucitons,
+        });
+        // Search for prescription
+        if (dto.prescriptionId) {
+        const prescription &#x3D; await this.prescriptionRepository.findOneBy({id: dto.prescriptionId});
+        if (!prescription) {
+            throw new Error(&#x27;Prescription not found&#x27;);
         }
+        detail.prescription &#x3D; prescription;
+        }
+        // Search for medicine
+        const medicine &#x3D; await this.medicineRepository.findOneBy({id: dto.medicineId});
+        if (!medicine) {
+        throw new Error(&#x27;Medicine not found&#x27;);
+        }
+        detail.medicine &#x3D; medicine;
+        return this.detailRepository.save(detail);
     }
 
     // Find all prescription details with relations prescription and medicine
     async findAll () {
-        try {
-            const details &#x3D; await this.detailRepository.find({
-                relations: [&#x27;prescription&#x27;, &#x27;medicine&#x27;],
-            });
-            return {
-                message: &#x27;Details de prescription successfully retrieved&#x27;,
-                statusCode: HttpStatus.OK,
-                data: details,
-            };
-        } catch (error) {
-            throw new HttpException(
-                { message: &#x27;Error retrieving prescription details&#x27;, error: error.message },
-                HttpStatus.BAD_REQUEST,
-            );
+        return this.detailRepository.find({relations:[&#x27;prescription&#x27;, &#x27;medicine&#x27;]});
     }
-}
 
     // Find one prescription detail by id
-   async findOne(id: number) {
-        try {
-            const detail &#x3D; await this.detailRepository.findOne({
-                where: { id },
-                relations: [&#x27;prescription&#x27;, &#x27;medicine&#x27;],
-            });
-
-            if (!detail)
-                
-                throw new HttpException({ message: &#x27;Details description not found&#x27; }, HttpStatus.NOT_FOUND);
-
-            return {
-                message: &#x27;Detalle de prescripción encontrado correctamente&#x27;,
-                statusCode: HttpStatus.OK,
-                data: detail,
-            };
-        } catch (error) {
-            
-            if (error instanceof HttpException) {
-                throw error;
-            }
-            throw new HttpException(
-                { message: &#x27;Error retrieving prescription details&#x27;, error: error.message },
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    findOne(id: number) {
+        return this.detailRepository.findOneBy({id});
     }
 
     // Update prescription detail with correct relations
     async update(id: number, dto: UpdatePrescriptionDetailsDto) {
-        try {
-            const existing &#x3D; await this.detailRepository.findOne({ where: { id } });
-            if (!existing)
-              
-                throw new HttpException({ message: &#x27;Details description not found&#x27; }, HttpStatus.NOT_FOUND);
-
-            Object.assign(existing, dto);
-            const updated &#x3D; await this.detailRepository.save(existing);
-
-            return {
-                message: &#x27;Details description updated successfully&#x27;,
-                statusCode: HttpStatus.OK,
-                data: updated,
-            };
-        } catch (error) {
-            
-            if (error instanceof HttpException) {
-                throw error;
-            }
-            throw new HttpException(
-                { message: &#x27;Error updating prescription details&#x27;, error: error.message },
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+        await this.detailRepository.update(id, dto);
+        return this.findOne(id);
     }
 
     // Delete prescription detail by id
-    async remove(id: number) {
-        try {
-            const existing &#x3D; await this.detailRepository.findOne({ where: { id } });
-            if (!existing)
-              
-                throw new HttpException({ message: &#x27;Details description not found&#x27; }, HttpStatus.NOT_FOUND);
-
-            const deleted &#x3D; await this.detailRepository.delete(id);
-
-            return {
-                message: &#x27;Details description deleted successfully&#x27;,
-                statusCode: HttpStatus.OK,
-                data: deleted,
-            };
-        } catch (error) { 
-            if (error instanceof HttpException) {
-                throw error;
-            }
-            throw new HttpException(
-                { message: &#x27;Error deleting prescription details&#x27;, error: error.message },
-                HttpStatus.BAD_REQUEST,
-            );
-        }
+    remove(id: number) {
+        return this.detailRepository.delete(id);
     }
-}</code></pre>
+}
+</code></pre>
     </div>
 
 </div>
