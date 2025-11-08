@@ -11,101 +11,104 @@ import {
 import { AppointmentService } from './appointment.service';
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { UpdateAppointmentDto } from './dto/update-appointment.dto';
-import {
-  ApiTags,
-  ApiOperation,
-  ApiResponse,
-  ApiParam,
-} from '@nestjs/swagger';
 import { Appointment } from './appointment.entity';
 
 /**
+ * Controlador para gestionar las operaciones REST de citas médicas
+ * 
+ * @description
+ * Este controlador expone los endpoints HTTP para realizar operaciones CRUD
+ * sobre las citas médicas del sistema. Maneja las peticiones HTTP y delega
+ * la lógica de negocio al servicio AppointmentService.
+ * 
+ * @route /appointment
+ * @export
  * @class AppointmentController
- * @description Handles all incoming requests for the appointment resource.
- * @property {AppointmentService} appointmentService - The service that handles the business logic for appointments.
  */
-@ApiTags('appointment')
 @Controller('appointment')
 export class AppointmentController {
+  /**
+   * Constructor del controlador de citas médicas
+   * 
+   * @param {AppointmentService} appointmentService - Servicio que maneja la lógica de negocio de citas
+   */
   constructor(private readonly appointmentService: AppointmentService) {}
 
   /**
-   * @method create
-   * @description Creates a new appointment.
-   * @param {CreateAppointmentDto} createAppointmentDto - The data to create the appointment with.
-   * @returns {Promise<Appointment>} The newly created appointment.
+   * Crea una nueva cita médica
+   * 
+   * @route POST /appointment
+   * @param {CreateAppointmentDto} createAppointmentDto - Datos de la cita a crear
+   * @returns {Promise<{message: string, statusCode: number, data: Appointment}>} La cita creada con respuesta estructurada
+   * 
+   * @example
+   * POST http://localhost:3000/appointment
+   * Body:
+   * ```json
+   * {
+   *   "date": "2024-08-15T10:00:00Z",
+   *   "reason": "Consulta de control",
+   *   "notes": "Paciente reporta mejoría",
+   *   "status": "scheduled",
+   *   "doctorId": 1,
+   *   "patientId": 5,
+   *   "officeId": 101
+   * }
+   * ```
    */
   @Post()
-  @ApiOperation({ summary: 'Create a new appointment' })
-  @ApiResponse({
-    status: 201,
-    description: 'The appointment has been successfully created.',
-    type: Appointment,
-  })
-  @ApiResponse({ status: 400, description: 'Bad Request.' })
   create(@Body() createAppointmentDto: CreateAppointmentDto) {
     return this.appointmentService.create(createAppointmentDto);
   }
 
   /**
-   * @method findAll
-   * @description Retrieves all appointments.
-   * @returns {Promise<Appointment[]>} A list of all appointments.
+   * Obtiene todas las citas médicas
+   * 
+   * @route GET /appointment
+   * @returns {Promise<{message: string, statusCode: number, data: Appointment[]}>} Lista de todas las citas con respuesta estructurada
+   * 
+   * @example
+   * GET http://localhost:3000/appointment
    */
   @Get()
-  @ApiOperation({ summary: 'Get all appointments' })
-  @ApiResponse({
-    status: 200,
-    description: 'Return all appointments.',
-    type: [Appointment],
-  })
   findAll() {
     return this.appointmentService.findAll();
   }
 
   /**
-   * @method findOne
-   * @description Retrieves a single appointment by its ID.
-   * @param {number} id - The ID of the appointment to retrieve.
-   * @returns {Promise<Appointment>} The appointment with the given ID.
+   * Obtiene una cita médica por su ID
+   * 
+   * @route GET /appointment/:id
+   * @param {number} id - ID de la cita a buscar
+   * @returns {Promise<{message: string, statusCode: number, data: Appointment}>} La cita encontrada con respuesta estructurada
+   * 
+   * @example
+   * GET http://localhost:3000/appointment/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get a single appointment by ID' })
-  @ApiParam({
-    name: 'id',
-    description: 'The ID of the appointment',
-    type: 'number',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'Return the appointment.',
-    type: Appointment,
-  })
-  @ApiResponse({ status: 404, description: 'Appointment not found.' })
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.appointmentService.findOne(id);
   }
 
   /**
-   * @method update
-   * @description Updates an existing appointment.
-   * @param {number} id - The ID of the appointment to update.
-   * @param {UpdateAppointmentDto} updateAppointmentDto - The data to update the appointment with.
-   * @returns {Promise<Appointment>} The updated appointment.
+   * Actualiza una cita médica existente
+   * 
+   * @route PATCH /appointment/:id
+   * @param {number} id - ID de la cita a actualizar
+   * @param {UpdateAppointmentDto} updateAppointmentDto - Datos actualizados de la cita
+   * @returns {Promise<{message: string, statusCode: number, data: Appointment}>} La cita actualizada con respuesta estructurada
+   * 
+   * @example
+   * PATCH http://localhost:3000/appointment/1
+   * Body:
+   * ```json
+   * {
+   *   "status": "completed",
+   *   "notes": "Consulta finalizada. Paciente en buen estado."
+   * }
+   * ```
    */
   @Patch(':id')
-  @ApiOperation({ summary: 'Update an existing appointment' })
-  @ApiParam({
-    name: 'id',
-    description: 'The ID of the appointment to update',
-    type: 'number',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'The appointment has been successfully updated.',
-    type: Appointment,
-  })
-  @ApiResponse({ status: 404, description: 'Appointment not found.' })
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateAppointmentDto: UpdateAppointmentDto,
@@ -114,23 +117,17 @@ export class AppointmentController {
   }
 
   /**
-   * @method remove
-   * @description Deletes an appointment.
-   * @param {number} id - The ID of the appointment to delete.
-   * @returns {Promise<void>}
+   * Elimina una cita médica por su ID
+   * 
+   * @route DELETE /appointment/:id
+   * @param {number} id - ID de la cita a eliminar
+   * @returns {Promise<{message: string, statusCode: number}>} Mensaje de confirmación de eliminación
+   * 
+   * @example
+   * DELETE http://localhost:3000/appointment/1
+   * // Retorna: { "message": "Appointment deleted successfully", "statusCode": 200 }
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete an appointment' })
-  @ApiParam({
-    name: 'id',
-    description: 'The ID of the appointment to delete',
-    type: 'number',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'The appointment has been successfully deleted.',
-  })
-  @ApiResponse({ status: 404, description: 'Appointment not found.' })
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.appointmentService.remove(id);
   }

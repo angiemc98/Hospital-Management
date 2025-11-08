@@ -106,7 +106,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Controllers</li>
-  <li class="breadcrumb-item" >DoctorController</li>
+  <li class="breadcrumb-item" >MedicineController</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -130,13 +130,13 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/doctor/doctor.controller.ts</code>
+            <code>src/office/office.controller.ts</code>
         </p>
             <p class="comment">
                 <h3>Prefix</h3>
             </p>
             <p class="comment">
-                <code>doctor</code>
+                <code>medicine</code>
             </p>
 
 
@@ -144,10 +144,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Controlador para gestionar las operaciones REST de doctores</p>
-<p>Este controlador expone los endpoints HTTP para realizar operaciones CRUD
-sobre los doctores del sistema médico. Maneja las peticiones HTTP y delega
-la lógica de negocio al servicio DoctorService.</p>
+                <p>// ... existing code ...</p>
 
             </p>
 
@@ -175,7 +172,6 @@ la lógica de negocio al servicio DoctorService.</p>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
@@ -240,7 +236,7 @@ la lógica de negocio al servicio DoctorService.</p>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>create(dto: <a href="../classes/CreateDoctorDto.html" target="_self">CreateDoctorDto</a>)</code>
+                    <code>create(createMedicineDto: <a href="../classes/CreateMedicineDto.html" target="_self">CreateMedicineDto</a>)</code>
                 </td>
             </tr>
 
@@ -248,29 +244,23 @@ la lógica de negocio al servicio DoctorService.</p>
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a new doctor&#x27;})<br />@ApiResponse({status: 201, description: &#x27;The doctor has been successfully created.&#x27;, type: Doctor})<br />@ApiResponse({status: 400, description: &#x27;Bad Request.&#x27;})<br /></code>
+                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a new medicine&#x27;})<br />@ApiResponse({status: 201, description: &#x27;The medicine has been successfully created.&#x27;, type: Medicine})<br />@ApiResponse({status: 400, description: &#x27;Invalid input data.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/doctor/doctor.controller.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/office/office.controller.ts:135</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Crea un nuevo doctor</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">POST http://localhost:3000/doctor
-Body:
-```json
-{
-  &quot;personaId&quot;: 1,
-  &quot;specialtyId&quot;: 2,
-  &quot;licenseNumber&quot;: &quot;MP-123456&quot;
-}</code></pre></div></div>
+                        <div class="io-description"><p>// ... existing code ...
+  &quot;price&quot;: &quot;5000&quot;\n   * }\n   * ```\n</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -281,14 +271,13 @@ Body:
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>dto</td>
+                                                <td>createMedicineDto</td>
                                             <td>
-                                                            <code><a href="../classes/CreateDoctorDto.html" target="_self" >CreateDoctorDto</a></code>
+                                                            <code><a href="../classes/CreateMedicineDto.html" target="_self" >CreateMedicineDto</a></code>
                                             </td>
 
                                             <td>
@@ -296,12 +285,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>Datos del doctor a crear</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -311,8 +294,7 @@ Body:
 
                         </div>
                             <div class="io-description">
-                                <p>El doctor creado con sus relaciones</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -324,7 +306,6 @@ Body:
                 <td class="col-md-4">
                     <a name="findAll"></a>
                     <span class="name">
-                            <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
                             <span class="modifier"></span>
@@ -344,30 +325,29 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br />@ApiOperation({summary: &#x27;Get all doctors&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Return all doctors.&#x27;, type: undefined})<br />@ApiResponse({status: 404, description: &#x27;Doctor not found.&#x27;})<br /></code>
+                    <code>@Get()<br />@ApiOperation({summary: &#x27;Get all medicines&#x27;})<br />@ApiResponse({status: 200, description: &#x27;List of all registered medicines.&#x27;, type: undefined})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/doctor/doctor.controller.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/office/office.controller.ts:147</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene todos los doctores</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">GET http://localhost:3000/doctor</code></pre></div></div>
+                        <div class="io-description"><p>// ... existing code ...</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">GET http://localhost:3000/medicine</code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
-                                <p>Lista de todos los doctores con sus datos personales</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -400,22 +380,22 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Get a single doctor by ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;The ID of the doctor&#x27;, type: &#x27;number&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Return the doctor.&#x27;, type: Doctor})<br />@ApiResponse({status: 404, description: &#x27;Doctor not found.&#x27;})<br /></code>
+                    <code>@Get(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Get a medicine by its ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the medicine to search for&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;Medicine found.&#x27;, type: Medicine})<br />@ApiResponse({status: 404, description: &#x27;Medicine not found.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="100"
-                                    class="link-to-prism">src/doctor/doctor.controller.ts:100</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">src/office/office.controller.ts:161</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene un doctor por su ID</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">GET http://localhost:3000/doctor/1</code></pre></div></div>
+                        <div class="io-description"><p>// ... existing code ...</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">GET http://localhost:3000/medicine/1</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -426,7 +406,6 @@ Body:
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -441,12 +420,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>ID del doctor a buscar</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -456,8 +429,7 @@ Body:
 
                         </div>
                             <div class="io-description">
-                                <p>El doctor encontrado con sus datos personales</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -490,22 +462,22 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Delete a doctor&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;The ID of the doctor to delete&#x27;, type: &#x27;number&#x27;})<br />@ApiResponse({status: 200, description: &#x27;The doctor has been successfully deleted.&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Doctor not found.&#x27;})<br /></code>
+                    <code>@Delete(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Delete a medicine by its ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the medicine to delete&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;The medicine has been successfully deleted.&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Medicine not found.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="161"
-                                    class="link-to-prism">src/doctor/doctor.controller.ts:161</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">src/office/office.controller.ts:187</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Elimina un doctor por su ID</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">DELETE http://localhost:3000/doctor/1</code></pre></div></div>
+                        <div class="io-description"><p>// ... existing code ...</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">DELETE http://localhost:3000/medicine/1</code></pre></div></div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -516,7 +488,6 @@ Body:
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -531,12 +502,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>ID del doctor a eliminar</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -546,8 +511,7 @@ Body:
 
                         </div>
                             <div class="io-description">
-                                <p>Resultado de la operación de eliminación</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -572,7 +536,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, dto: <a href="../classes/UpdateDoctorDto.html" target="_self">UpdateDoctorDto</a>)</code>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateMedicineDto: <a href="../classes/UpdateMedicineDto.html" target="_self">UpdateMedicineDto</a>)</code>
                 </td>
             </tr>
 
@@ -580,28 +544,23 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Patch(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Update an existing doctor&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;The ID of the doctor to update&#x27;, type: &#x27;number&#x27;})<br />@ApiResponse({status: 200, description: &#x27;The doctor has been successfully updated.&#x27;, type: Doctor})<br />@ApiResponse({status: 404, description: &#x27;Doctor not found.&#x27;})<br /></code>
+                    <code>@Patch(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Update an existing medicine&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the medicine to update&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;The medicine has been successfully updated.&#x27;, type: Medicine})<br />@ApiResponse({status: 404, description: &#x27;Medicine not found.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="135"
-                                    class="link-to-prism">src/doctor/doctor.controller.ts:135</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="173"
+                                    class="link-to-prism">src/office/office.controller.ts:173</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Actualiza un doctor existente</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-html">PATCH http://localhost:3000/doctor/1
-Body:
-```json
-{
-  &quot;specialtyId&quot;: 3,
-  &quot;licenseNumber&quot;: &quot;MP-789012&quot;
-}</code></pre></div></div>
+                        <div class="io-description"><p>// ... existing code ...
+  &quot;price&quot;: &quot;5500&quot;\n   * }\n   * ```\n</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -612,7 +571,6 @@ Body:
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -627,17 +585,11 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>ID del doctor a actualizar</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                         <tr>
-                                                <td>dto</td>
+                                                <td>updateMedicineDto</td>
                                             <td>
-                                                            <code><a href="../classes/UpdateDoctorDto.html" target="_self" >UpdateDoctorDto</a></code>
+                                                            <code><a href="../classes/UpdateMedicineDto.html" target="_self" >UpdateMedicineDto</a></code>
                                             </td>
 
                                             <td>
@@ -645,12 +597,6 @@ Body:
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>Datos actualizados del doctor</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -660,8 +606,7 @@ Body:
 
                         </div>
                             <div class="io-description">
-                                <p>El doctor actualizado con sus relaciones</p>
-
+                                
                             </div>
                 </td>
             </tr>
@@ -671,169 +616,403 @@ Body:
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Post, Body, Get, Param, Patch, Delete } from &#x27;@nestjs/common&#x27;;
-import { DoctorService } from &#x27;./doctor.service&#x27;;
-import { CreateDoctorDto } from &#x27;./dto/create-doctor.dto&#x27;;
-import { UpdateDoctorDto } from &#x27;./dto/update-doctor.dto&#x27;;
-import {ApiTags, ApiOperation,ApiResponse,ApiParam,
-} from &#x27;@nestjs/swagger&#x27;;
-import { Doctor } from &#x27;./doctor.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Patch, Get, Post, Body, Param, ParseIntPipe, Delete } from &#x27;@nestjs/common&#x27;;
+import { OfficeService } from &#x27;./office.service&#x27;;
+import { CreateOfficeDto } from &#x27;./dto/create-office.dto&#x27;;
+import { UpdateOfficeDto } from &#x27;./dto/Update-office.dto&#x27;;
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
+import { Office } from &#x27;./office.entity&#x27;;
+
 /**
- * Controlador para gestionar las operaciones REST de doctores
+ * Controlador para gestionar las operaciones REST de consultorios
  * 
  * @description
  * Este controlador expone los endpoints HTTP para realizar operaciones CRUD
- * sobre los doctores del sistema médico. Maneja las peticiones HTTP y delega
- * la lógica de negocio al servicio DoctorService.
+ * sobre los consultorios. Maneja las peticiones HTTP y delega la lógica
+ * de negocio al servicio OfficeService.
  * 
- * @route /doctor
+ * @route /office
  * @export
- * @class DoctorController
+ * @class OfficeController
  */
-@ApiTags(&#x27;doctor&#x27;)
-@Controller(&#x27;doctor&#x27;)
-export class DoctorController {
+@ApiTags(&#x27;office&#x27;)
+@Controller(&#x27;office&#x27;)
+export class OfficeController {
   /**
-   * Constructor del controlador de doctores
+   * Constructor del controlador de consultorios
    * 
-   * @param {DoctorService} doctorService - Servicio que maneja la lógica de negocio de doctores
+   * @param {OfficeService} officeService - Servicio que maneja la lógica de negocio de consultorios
    */
-  constructor(private readonly doctorService: DoctorService) {}
+  constructor(private readonly officeService: OfficeService) {}
 
   /**
-   * Crea un nuevo doctor
+   * Crea un nuevo consultorio
    * 
-   * @route POST /doctor
-   * @param {CreateDoctorDto} dto - Datos del doctor a crear
-   * @returns {Promise&lt;Doctor&gt;} El doctor creado con sus relaciones
+   * @route POST /office
+   * @param {CreateOfficeDto} dto - Datos del consultorio a crear
+   * @returns {Promise&lt;Office&gt;} El consultorio creado
    * 
    * @example
-   * POST http://localhost:3000/doctor
+   * POST http://localhost:3000/office
    * Body:
    * &#x60;&#x60;&#x60;json
    * {
-   *   &quot;personaId&quot;: 1,
-   *   &quot;specialtyId&quot;: 2,
-   *   &quot;licenseNumber&quot;: &quot;MP-123456&quot;
+   *   &quot;num_consultorio&quot;: 101,
+   *   &quot;piso&quot;: 1,
+   *   &quot;disponible&quot;: true
    * }
    * &#x60;&#x60;&#x60;
    */
   @Post()
-   @ApiOperation({ summary: &#x27;Create a new doctor&#x27; })
-  @ApiResponse({
-    status: 201,
-    description: &#x27;The doctor has been successfully created.&#x27;,
-    type: Doctor,
-  })
-  @ApiResponse({ status: 400, description: &#x27;Bad Request.&#x27; })
-  create(@Body() dto: CreateDoctorDto) {
-    return this.doctorService.create(dto);
+  @ApiOperation({ summary: &#x27;Create a new office&#x27; })
+  @ApiResponse({ status: 201, description: &#x27;The office has been successfully created.&#x27;, type: Office })
+  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
+  create(@Body() dto: CreateOfficeDto) {
+    return this.officeService.create(dto);
   }
 
   /**
-   * Obtiene todos los doctores
+   * Obtiene todos los consultorios
    * 
-   * @route GET /doctor
-   * @returns {Promise&lt;Doctor[]&gt;} Lista de todos los doctores con sus datos personales
+   * @route GET /office
+   * @returns {Promise&lt;Office[]&gt;} Lista de todos los consultorios con sus citas asociadas
    * 
    * @example
-   * GET http://localhost:3000/doctor
+   * GET http://localhost:3000/office
    */
   @Get()
-   @ApiOperation({ summary: &#x27;Get all doctors&#x27; })
-  @ApiResponse({
-    status: 200,
-    description: &#x27;Return all doctors.&#x27;,
-    type: [Doctor],
-  })
-  @ApiResponse({ status: 404, description: &#x27;Doctor not found.&#x27; })
+  camilaaa98
+dame todos de una vez, eso de estarle pidiendo una por una que jajaj​
+TRAE AI
+Thought process
+Considering Autonomous Action
+
+I&#x27;ve been reflecting on the user&#x27;s desire for more independent operation. I&#x27;ve successfully updated medicine.entity.ts. Now, I&#x27;m turning my attention to medicine.controller.ts, which feels like the next logical step in this module. My goal is to streamline the process, as instructed, and tackle the module&#x27;s files in sequence.
+
+Streamlining Module Updates
+
+My focus has shifted. I&#x27;ve processed the user&#x27;s input, now aiming for consolidated updates. I just finished refactoring medicine.controller.ts, incorporating English Swagger decorators and the ParseIntPipe. Next, I will begin working on the office module, as instructed, starting with its entity and controller files.
+
+Executing Autonomous Updates
+
+I&#x27;ve taken the user&#x27;s feedback to heart and am now working to streamline operations. I&#x27;ve updated the medicine.controller.ts file, incorporating English Swagger decorators, replacing +id with ParseIntPipe, and retaining the original JSDoc. Next up, as instructed, I will address the office module, focusing on both its entity and controller files.
+
+Embracing User Requests
+
+I&#x27;ve internalized the user&#x27;s need for autonomy. I&#x27;ve now updated medicine.controller.ts, translating JSDoc to English, adding @ApiTags, @ApiOperation, @ApiResponse, and @ApiParam decorators, and swapping +id with ParseIntPipe. Moving on, I&#x27;ll now address the office module, as instructed, and tackle it as a single unit of work.
+
+Adopting Proactive Strategies
+
+I&#x27;ve integrated the user&#x27;s need for autonomy and am proactively working on entire modules. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and preserved the original JSDoc. I will now move to the office module, as instructed, and will proceed to update both office.entity.ts and office.controller.ts.
+
+Implementing Proactive Updates
+
+I&#x27;m now fully embracing the user&#x27;s desire for an autonomous approach. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and retained the original JSDoc. Next, I&#x27;ll be addressing the office module as a single unit, starting with office.entity.ts and then office.controller.ts, according to the provided instructions.
+
+Adapting Autonomous Module Handling
+
+I&#x27;ve integrated the user&#x27;s need for a complete module focus. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and preserved the original JSDoc. Next, I&#x27;ll move on to the office module, updating both office.entity.ts and office.controller.ts as a cohesive unit.
+
+¡Entendido! Tienes razón, es mucho más eficiente así. Me disculpo por el flujo de trabajo anterior.
+
+A partir de ahora, abordaré cada módulo de una sola vez, entregándote las actualizaciones para la entidad y el controlador juntos.
+
+Aquí tienes la actualización para el controlador del módulo medicine, con la que completamos este módulo.
+
+
+/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/medicine/medicine.controller.ts
+Apply
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from &#x27;@nestjs/common&#x27;;
+import { CreateMedicineDto } from &#x27;./dto/create-medicine.dto&#x27;;
+import { UpdateMedicineDto } from &#x27;./dto/update-medicine.dto&#x27;;
+import { MedicineService } from &#x27;./medicine.service&#x27;;
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
+import { Medicine } from &#x27;./medicine.entity&#x27;;
+
+/**
+// ... existing code ...
+ * @export
+ * @class MedicineController
+ */
+@ApiTags(&#x27;medicine&#x27;)
+@Controller(&#x27;medicine&#x27;)
+export class MedicineController {
+  /**
+// ... existing code ...
+   * @param {MedicineService} medicineService - Servicio que maneja la lógica de negocio de medicamentos
+   */
+  constructor(private readonly medicineService: MedicineService) {}
+
+  /**
+// ... existing code ...
+   *   \&quot;price\&quot;: \&quot;5000\&quot;\n   * }\n   * &#x60;&#x60;&#x60;\n   */
+  @Post()
+  @ApiOperation({ summary: &#x27;Create a new medicine&#x27; })
+  @ApiResponse({ status: 201, description: &#x27;The medicine has been successfully created.&#x27;, type: Medicine })
+  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
+  create(@Body() createMedicineDto: CreateMedicineDto) {
+    return this.medicineService.create(createMedicineDto);
+  } 
+
+  /**
+// ... existing code ...
+   * @example
+   * GET http://localhost:3000/medicine
+   */
+  @Get()
+  @ApiOperation({ summary: &#x27;Get all medicines&#x27; })
+  @ApiResponse({ status: 200, description: &#x27;List of all registered medicines.&#x27;, type: [Medicine] })
   findAll() {
-    return this.doctorService.findAll();
+    return this.medicineService.findAll();
   }
 
   /**
-   * Obtiene un doctor por su ID
-   * 
-   * @route GET /doctor/:id
-   * @param {number} id - ID del doctor a buscar
-   * @returns {Promise&lt;Doctor&gt;} El doctor encontrado con sus datos personales
-   * 
+// ... existing code ...
    * @example
-   * GET http://localhost:3000/doctor/1
+   * GET http://localhost:3000/medicine/1
    */
   @Get(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Get a single doctor by ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;The ID of the doctor&#x27;, type: &#x27;number&#x27; })
-  @ApiResponse({
-    status: 200,
-    description: &#x27;Return the doctor.&#x27;,
-    type: Doctor,
-  })
-  @ApiResponse({ status: 404, description: &#x27;Doctor not found.&#x27; })
-  findOne(@Param((&#x27;id&#x27;)) id: number) {
-    return this.doctorService.findOne(+id);
+  @ApiOperation({ summary: &#x27;Get a medicine by its ID&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to search for&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;Medicine found.&#x27;, type: Medicine })
+  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
+  findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    return this.medicineService.findOne(id);
   }
 
   /**
-   * Actualiza un doctor existente
+// ... existing code ...
+   *   \&quot;price\&quot;: \&quot;5500\&quot;\n   * }\n   * &#x60;&#x60;&#x60;\n   */
+  @Patch(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Update an existing medicine&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to update&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;The medicine has been successfully updated.&#x27;, type: Medicine })
+  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
+  update(@Param(&#x27;id&#x27;, ParseIntPipe) id: number, @Body() updateMedicineDto: UpdateMedicineDto) {
+    return this.medicineService.update(id, updateMedicineDto);
+  }
+
+  /**
+// ... existing code ...
+   * @example
+   * DELETE http://localhost:3000/medicine/1
+   */
+  @Delete(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Delete a medicine by its ID&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to delete&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;The medicine has been successfully deleted.&#x27; })
+  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
+  remove(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    return this.medicineService.remove(id);
+  }
+
+}
+Módulo medicine completado.
+
+Ahora, procederé con el módulo office. Voy a leer ambos archivos y te entregaré las dos actualizaciones en mi siguiente mensaje.
+
+src\office\office.controller.ts
+src\office\office.entity.ts
+De acuerdo. He revisado los archivos del módulo office.
+
+Aquí tienes las actualizaciones para la entidad y el controlador, ambas con la documentación de Swagger en inglés y las mejoras de estandarización.
+
+Primero, el archivo src/office/office.entity.ts:
+
+
+/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/office/office.entity.ts
+Apply
+import { ApiProperty } from &quot;@nestjs/swagger&quot;;
+import { Appointment } from &quot;src/appointment/appointment.entity&quot;; 
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from &quot;typeorm&quot;;
+
+/**
+// ... existing code ...
+ * office.piso &#x3D; 1;
+ * office.disponible &#x3D; true;
+ * &#x60;&#x60;&#x60;
+ */
+@Entity(&#x27;consultorio&#x27;)
+export class Office{
+    /**
+// ... existing code ...
+     * @description Identificador único autogenerado para el consultorio
+     */
+    @ApiProperty({
+        description: &#x27;Unique identifier for the office&#x27;,
+        example: 1,
+        readOnly: true,
+    })
+    @PrimaryGeneratedColumn()
+    id_consultorio: number;
+    
+    /**
+// ... existing code ...
+     * @unique
+     * 
+     * @example 101, 202, 305
+     */
+    @ApiProperty({
+        description: &#x27;Identifier number of the office, must be unique&#x27;,
+        example: 101,
+        unique: true,
+    })
+    @Column({unique: true})
+    num_consultorio: number;
+
+    /**
+// ... existing code ...
+     * @required
+     * 
+     * @example 1, 2, 3
+     */
+    @ApiProperty({
+        description: &#x27;Floor number where the office is located&#x27;,
+        example: 1,
+    })
+    @Column()
+    piso: number;
+
+    /**
+// ... existing code ...
+     * @required
+     * 
+     * @example true, false
+     */
+    @ApiProperty({
+        description: &#x27;Indicates if the office is available (true) or occupied (false)&#x27;,
+        example: true,
+        default: true,
+    })
+    @Column({type: &#x27;boolean&#x27;, default: true})
+    disponible: boolean
+
+    /**
+// ... existing code ...
+     * Un consultorio puede tener múltiples citas asignadas.
+     * Se aplica cascada para operaciones relacionadas.
+     * @see {@link Appointment}
+     */
+    @ApiProperty({ type: () &#x3D;&gt; [Appointment] })
+    @OneToMany(() &#x3D;&gt; Appointment, (Cita) &#x3D;&gt; Cita.office, {cascade: true})
+    property_cita: Appointment[];
+}
+Y aquí está el archivo src/office/office.controller.ts:
+
+
+/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/office/office.controller.ts
+Apply
+import { Controller, Patch, Get, Post, Body, Param, ParseIntPipe, Delete } from &#x27;@nestjs/common&#x27;;
+import { OfficeService } from &#x27;./office.service&#x27;;
+import { CreateOfficeDto } from &#x27;./dto/create-office.dto&#x27;;
+import { UpdateOfficeDto } from &#x27;./dto/Update-office.dto&#x27;;
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
+import { Office } from &#x27;./office.entity&#x27;;
+
+/**
+// ... existing code ...
+ * @export
+ * @class OfficeController
+ */
+@ApiTags(&#x27;office&#x27;)
+@Controller(&#x27;office&#x27;)
+export class OfficeController {
+  /**
+// ... existing code ...
+   * @param {OfficeService} officeService - Servicio que maneja la lógica de negocio de consultorios
+   */
+  constructor(private readonly officeService: OfficeService) {}
+
+  /**
+// ... existing code ...
+   *   \&quot;disponible\&quot;: true\n   * }\n   * &#x60;&#x60;&#x60;\n   */
+  @Post()
+  @ApiOperation({ summary: &#x27;Create a new office&#x27; })
+  @ApiResponse({ status: 201, description: &#x27;The office has been successfully created.&#x27;, type: Office })
+  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
+  create(@Body() dto: CreateOfficeDto) {
+    return this.officeService.create(dto);
+  }
+
+  /**
+// ... existing code ...
+   * @example
+   * GET http://localhost:3000/office
+   */
+  @Get()
+  @ApiOperation({ summary: &#x27;Get all offices&#x27; })
+  @ApiResponse({ status: 200, description: &#x27;List of all offices with their associated appointments.&#x27;, type: [Office] })  findAll() {
+    return this.officeService.findAll();
+  }
+
+  /**
+   * Obtiene un consultorio por su ID
    * 
-   * @route PATCH /doctor/:id
-   * @param {number} id - ID del doctor a actualizar
-   * @param {UpdateDoctorDto} dto - Datos actualizados del doctor
-   * @returns {Promise&lt;Doctor&gt;} El doctor actualizado con sus relaciones
+   * @route GET /office/:id
+   * @param {number} id - ID del consultorio a buscar
+   * @returns {Promise&lt;Office&gt;} El consultorio encontrado con sus citas
    * 
    * @example
-   * PATCH http://localhost:3000/doctor/1
+   * GET http://localhost:3000/office/1
+   */
+  @Get(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Get an office by its ID&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to search for&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;Office found with its appointments.&#x27;, type: Office })
+  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
+  findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    return this.officeService.findOne(id);
+  }
+
+  /**
+   * Actualiza un consultorio existente
+   * 
+   * @route PATCH /office/:id
+   * @param {number} id - ID del consultorio a actualizar
+   * @param {UpdateOfficeDto} dto - Datos actualizados del consultorio
+   * @returns {Promise&lt;Office&gt;} El consultorio actualizado
+   * 
+   * @example
+   * PATCH http://localhost:3000/office/1
    * Body:
    * &#x60;&#x60;&#x60;json
    * {
-   *   &quot;specialtyId&quot;: 3,
-   *   &quot;licenseNumber&quot;: &quot;MP-789012&quot;
+   *   &quot;disponible&quot;: false,
+   *   &quot;piso&quot;: 2
    * }
    * &#x60;&#x60;&#x60;
    */
   @Patch(&#x27;:id&#x27;)
-    @ApiOperation({ summary: &#x27;Update an existing doctor&#x27; })
-  @ApiParam({
-    name: &#x27;id&#x27;,
-    description: &#x27;The ID of the doctor to update&#x27;,
-    type: &#x27;number&#x27;,
-  })
-  @ApiResponse({
-    status: 200,
-    description: &#x27;The doctor has been successfully updated.&#x27;,
-    type: Doctor,
-  })
-  @ApiResponse({ status: 404, description: &#x27;Doctor not found.&#x27; })
-  update(@Param(&#x27;id&#x27;) id: number, @Body() dto: UpdateDoctorDto) {
-    return this.doctorService.update(+id, dto);
+  @ApiOperation({ summary: &#x27;Update an existing office&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to update&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;The office has been successfully updated.&#x27;, type: Office })
+  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
+  update(
+    @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
+    @Body() dto: UpdateOfficeDto,
+  ) {
+    return this.officeService.update(id, dto);
   }
 
   /**
-   * Elimina un doctor por su ID
+   * Elimina un consultorio por su ID
    * 
-   * @route DELETE /doctor/:id
-   * @param {number} id - ID del doctor a eliminar
+   * @route DELETE /office/:id
+   * @param {number} id - ID del consultorio a eliminar
    * @returns {Promise&lt;DeleteResult&gt;} Resultado de la operación de eliminación
    * 
    * @example
-   * DELETE http://localhost:3000/doctor/1
+   * DELETE http://localhost:3000/office/1
    */
   @Delete(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Delete a doctor&#x27; })
-  @ApiParam({
-    name: &#x27;id&#x27;,
-    description: &#x27;The ID of the doctor to delete&#x27;,
-    type: &#x27;number&#x27;,
-  })
-  @ApiResponse({
-    status: 200,
-    description: &#x27;The doctor has been successfully deleted.&#x27;,
-  })
-  @ApiResponse({ status: 404, description: &#x27;Doctor not found.&#x27; })
-  remove(@Param(&#x27;id&#x27;) id: number) {
-    return this.doctorService.remove(+id);
+  @ApiOperation({ summary: &#x27;Delete an office by its ID&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to delete&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;The office has been successfully deleted.&#x27; })
+  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
+  remove(@Body(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    return this.officeService.remove(id);
   }
+
 }</code></pre>
     </div>
 </div>
@@ -879,7 +1058,7 @@ export class DoctorController {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'controller';
-            var COMPODOC_CURRENT_PAGE_URL = 'DoctorController.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'MedicineController-1.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

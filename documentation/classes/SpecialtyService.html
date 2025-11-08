@@ -178,6 +178,7 @@ el manejo de sus relaciones con doctores.</p>
                                 <a href="#delete" >delete</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
@@ -211,7 +212,7 @@ el manejo de sus relaciones con doctores.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/specialty/specialty.service.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/specialty/specialty.service.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -286,8 +287,8 @@ el manejo de sus relaciones con doctores.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/specialty/specialty.service.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/specialty/specialty.service.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -368,8 +369,8 @@ el manejo de sus relaciones con doctores.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="124"
-                                    class="link-to-prism">src/specialty/specialty.service.ts:124</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="197"
+                                    class="link-to-prism">src/specialty/specialty.service.ts:197</a></div>
                         </td>
                     </tr>
 
@@ -414,7 +415,7 @@ el manejo de sus relaciones con doctores.</p>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -430,6 +431,7 @@ el manejo de sus relaciones con doctores.</p>
                 <td class="col-md-4">
                     <a name="findAll"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -437,15 +439,16 @@ el manejo de sus relaciones con doctores.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findAll()</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="60"
-                                    class="link-to-prism">src/specialty/specialty.service.ts:60</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/specialty/specialty.service.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -457,7 +460,7 @@ el manejo de sus relaciones con doctores.</p>
 // Retorna especialidades con propety_doctor poblado</code></pre></div></div>
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -490,8 +493,8 @@ el manejo de sus relaciones con doctores.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/specialty/specialty.service.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/specialty/specialty.service.ts:117</a></div>
                         </td>
                     </tr>
 
@@ -569,8 +572,8 @@ el manejo de sus relaciones con doctores.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">src/specialty/specialty.service.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="160"
+                                    class="link-to-prism">src/specialty/specialty.service.ts:160</a></div>
                         </td>
                     </tr>
 
@@ -662,6 +665,8 @@ import { Specialty } from &quot;./specialty.entity&quot;;
 import { Repository } from &quot;typeorm&quot;;
 import { CreateSpecialtyDto } from &quot;./dto/create-specialty.dto&quot;;
 import { UpdateSpecialtyDto } from &quot;./dto/update-speciality.dto&quot;;
+import { HttpException, HttpStatus } from &quot;@nestjs/common&quot;;
+
 
 /**
  * Servicio para gestionar las operaciones de especialidades médicas
@@ -701,8 +706,35 @@ export class SpecialtyService {
      * &#x60;&#x60;&#x60;
      */
     async create(dtospecialty: CreateSpecialtyDto){
-        const specialty &#x3D; this.specialtyRepository.create(dtospecialty);
-        return  this.specialtyRepository.save(specialty);
+        try {
+        const existingSpecialty &#x3D; await this.specialtyRepository.findOne({
+            where: { name: dtospecialty.name }
+        });
+        if (existingSpecialty) {
+            return {
+                message: &quot;Specialty already exists&quot;,
+                statusCode: HttpStatus.CONFLICT,
+                data: existingSpecialty
+            };
+        }
+        const newSpecialty &#x3D; this.specialtyRepository.create(dtospecialty);
+        const saved &#x3D; await this.specialtyRepository.save(newSpecialty);
+        return {
+            message: &quot;Specialty created successfully&quot;,
+            statusCode: HttpStatus.CREATED,
+            data: saved
+        };
+        } catch (error) {
+            // Este catch maneja errores de TypeORM/DB, no el conflicto
+            throw new HttpException(
+                {
+                    message: &quot;Error creating specialty&quot;,
+                    error: error.message,
+                },
+                HttpStatus.BAD_REQUEST
+            )
+        }    
+    
     }
 
     /**
@@ -716,10 +748,22 @@ export class SpecialtyService {
      * // Retorna especialidades con propety_doctor poblado
      * &#x60;&#x60;&#x60;
      */
-    findAll(){
-        return this.specialtyRepository.find({relations: [&#x27;propety_doctor&#x27;]});
+    async findAll(){
+        try {
+        const all &#x3D; await this.specialtyRepository.find();
+        return {
+            message: &#x27;All specialties retrieved successfully&#x27;,
+            statusCode: HttpStatus.OK,
+            data: all,
+        };
+        } catch (error) {
+        // Este catch maneja errores de TypeORM/DB
+        throw new HttpException(
+            { message: &#x27;Error retrieving specialties&#x27;, error: error.message },
+            HttpStatus.BAD_REQUEST,
+        );
+        }
     }
-
     /**
      * Busca una especialidad por su ID
      * 
@@ -735,11 +779,28 @@ export class SpecialtyService {
     async findOne(id: number) {
 
         // Busca la especialidad
-        const specialty &#x3D; await this.specialtyRepository.findOne({
-            where: { id_especialidad: id }
-        });
-        if (!specialty) throw new Error(&#x27;Specialty not found&#x27;);
-        return specialty;
+        try {
+            const specialty &#x3D; await this.specialtyRepository.findOne({ where: { id_especialidad: id } });
+            if (!specialty)
+                
+                throw new HttpException(&#x27;Specialty not found&#x27;, HttpStatus.NOT_FOUND);
+
+            return {
+                message: &#x27;Specialty found successfully&#x27;,
+                statusCode: HttpStatus.OK,
+                data: specialty,
+            };
+            } catch (error) {
+          
+            if (error instanceof HttpException) {
+                throw error;
+            }
+          
+            throw new HttpException(
+                { message: &#x27;Error finding specialty&#x27;, error: error.message },
+                HttpStatus.BAD_REQUEST,
+            );
+            }
     }
     
     /**
@@ -759,13 +820,28 @@ export class SpecialtyService {
      * &#x60;&#x60;&#x60;
      */
     async update(id: number, dtospecialty: UpdateSpecialtyDto){
-        const specialty &#x3D; await this.specialtyRepository.findOne({where: {id_especialidad: id}});
-        if (!specialty) {
-            throw new Error(&#x27;Specialty not found&#x27;);
+        try {
+            const specialty &#x3D; await this.specialtyRepository.findOne({ where: { id_especialidad: id } });
+            if (!specialty)
+                throw new HttpException(&#x27;Specialty not found&#x27;, HttpStatus.NOT_FOUND);
+
+            Object.assign(specialty, dtospecialty);
+            const updated &#x3D; await this.specialtyRepository.save(specialty);
+
+            return {
+                message: &#x27;Specialty updated successfully&#x27;,
+                statusCode: HttpStatus.OK,
+                data: updated,
+            };
+        } catch (error) {
+            if (error instanceof HttpException) {
+                throw error;
+            }
+        throw new HttpException(
+            { message: &#x27;Error updating specialty&#x27;, error: error.message },
+            HttpStatus.BAD_REQUEST,
+        );
         }
-        specialty.name &#x3D; dtospecialty.name;
-        specialty.description &#x3D; dtospecialty.description;
-        return this.specialtyRepository.save(specialty);
     }
 
     /**
@@ -781,11 +857,26 @@ export class SpecialtyService {
      * &#x60;&#x60;&#x60;
      */
     async delete(id: number){
-        const specialty &#x3D; await this.specialtyRepository.findOne({where: {id_especialidad: id}});
-        if (!specialty) {
-            throw new Error(&#x27;Specialty not found&#x27;);
-        }
-        await this.specialtyRepository.delete(specialty);
+        try {
+            const specialty &#x3D; await this.specialtyRepository.findOne({ where: { id_especialidad: id } });
+            if (!specialty)
+                throw new HttpException(&#x27;Specialty not found&#x27;, HttpStatus.NOT_FOUND);
+
+            const deleted &#x3D; await this.specialtyRepository.delete(id);
+            return {
+                message: &#x27;Specialty deleted successfully&#x27;,
+                statusCode: HttpStatus.OK,
+                data: deleted,
+            };
+            } catch (error) {
+                if (error instanceof HttpException) {
+                    throw error;
+                }
+            throw new HttpException(
+                { message: &#x27;Error deleting specialty&#x27;, error: error.message },
+                HttpStatus.BAD_REQUEST,
+            );
+            }
     }
 }</code></pre>
     </div>

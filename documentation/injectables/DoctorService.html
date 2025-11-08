@@ -169,12 +169,15 @@ de sus relaciones con Person y Specialty.</p>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#remove" >remove</a>
                             </li>
                             <li>
@@ -204,7 +207,7 @@ de sus relaciones con Person y Specialty.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/doctor/doctor.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/doctor/doctor.service.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -314,8 +317,8 @@ de sus relaciones con Person y Specialty.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/doctor/doctor.service.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/doctor/doctor.service.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -366,7 +369,7 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -383,6 +386,7 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
                 <td class="col-md-4">
                     <a name="findAll"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -390,15 +394,16 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findAll()</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="85"
-                                    class="link-to-prism">src/doctor/doctor.service.ts:85</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/doctor/doctor.service.ts:108</a></div>
                         </td>
                     </tr>
 
@@ -410,7 +415,7 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
 // Retorna doctores con datos de person poblados</code></pre></div></div>
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -427,6 +432,7 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
                 <td class="col-md-4">
                     <a name="findOne"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>findOne</b></span>
                         <a href="#findOne"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -434,15 +440,16 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="100"
-                                    class="link-to-prism">src/doctor/doctor.service.ts:100</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/doctor/doctor.service.ts:140</a></div>
                         </td>
                     </tr>
 
@@ -487,7 +494,7 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -504,6 +511,7 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
                 <td class="col-md-4">
                     <a name="remove"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>remove</b></span>
                         <a href="#remove"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -511,15 +519,16 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="175"
-                                    class="link-to-prism">src/doctor/doctor.service.ts:175</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="261"
+                                    class="link-to-prism">src/doctor/doctor.service.ts:261</a></div>
                         </td>
                     </tr>
 
@@ -564,7 +573,7 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -597,8 +606,8 @@ Verifica que tanto la persona como la especialidad existan antes de crear el doc
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="127"
-                                    class="link-to-prism">src/doctor/doctor.service.ts:127</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="191"
+                                    class="link-to-prism">src/doctor/doctor.service.ts:191</a></div>
                         </td>
                     </tr>
 
@@ -667,7 +676,7 @@ Permite actualizar la persona asociada, la especialidad y el número de licencia
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -684,7 +693,7 @@ Permite actualizar la persona asociada, la especialidad y el número de licencia
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpException, Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { Repository } from &#x27;typeorm&#x27;;
 import { Doctor } from &#x27;./doctor.entity&#x27;;
@@ -692,6 +701,7 @@ import { Person } from &#x27;src/person/person.entity&#x27;;
 import { CreateDoctorDto } from &#x27;./dto/create-doctor.dto&#x27;;
 import { UpdateDoctorDto } from &#x27;./dto/update-doctor.dto&#x27;;
 import { Specialty } from &#x27;src/specialty/specialty.entity&#x27;;
+import { HttpStatus } from &#x27;@nestjs/common/enums&#x27;;
 
 /**
  * Servicio para gestionar las operaciones de doctores
@@ -741,22 +751,43 @@ export class DoctorService {
      * });
      * &#x60;&#x60;&#x60;
      */
-    async create (dto:CreateDoctorDto) {
-        // Busca la persona
-        const person &#x3D; await this.personRepository.findOneBy({id: dto.personaId});
-        if (!person) {
-            throw new Error(&#x27;Person not found&#x27;);
+    async create (dto:CreateDoctorDto): Promise&lt;{
+        message: string; 
+        statusCode: number;
+        data: Doctor
+    }&gt; {
+        try {
+        // Search for person
+            const person &#x3D; await this.personRepository.findOneBy({id: dto.personaId});
+            if (!person) {
+                throw new HttpException(
+                    {message: &#x27;Person not found&#x27;, statusCode: 400},
+                    HttpStatus.NOT_FOUND,
+                );
+            }
+            // Search for specialty
+            const specialty &#x3D; await this.specialtyRepository.findOneBy({id_especialidad: dto.specialtyId});
+            if (!specialty) {
+                throw new HttpException(
+                    {message: &#x27;Specialty not found&#x27;, statusCode: 400},
+                    HttpStatus.NOT_FOUND,
+                );
+            }
+            // Create the doctor
+            const doctor &#x3D; this.doctorRepository.create({person, specialty, licenseNumber: dto.licenseNumber});
+            const savedDoctor &#x3D; await this.doctorRepository.save(doctor);
+            return {
+                message: &#x27;Doctor created successfully&#x27;,
+                statusCode: 201,
+                data: savedDoctor
+            };
+    } catch (error) {
+        throw new HttpException({
+            message: &#x27;Error creating doctor&#x27;,
+            statusCode: error.status,
+        }, HttpStatus.BAD_REQUEST);
         }
-        // Busca la especialidad
-        const specialty &#x3D; await this.specialtyRepository.findOneBy({id_especialidad: dto.specialtyId});
-        if (!specialty) {
-            throw new Error(&#x27;Specialty not found&#x27;);
-        }
-        // Crea el doctor
-        const doctor &#x3D; this.doctorRepository.create({person, specialty, licenseNumber: dto.licenseNumber});
-        return this.doctorRepository.save(doctor);
     }
-
     /**
      * Obtiene todos los doctores registrados con sus datos personales
      * 
@@ -768,8 +799,25 @@ export class DoctorService {
      * // Retorna doctores con datos de person poblados
      * &#x60;&#x60;&#x60;
      */
-    findAll() {
-        return this.doctorRepository.find({relations: [&#x27;person&#x27;]});
+    // Find all doctors with their person data
+    async findAll(): Promise&lt;{
+        message: string;
+        statusCode: number;
+        data: Doctor[]
+    }&gt; {
+        try {
+            const doctors &#x3D; await this.doctorRepository.find({relations: [&#x27;person&#x27;, &#x27;specialty&#x27;]});
+            return {
+                message: &#x27;All doctors retrieved successfully&#x27;,
+                statusCode: HttpStatus.OK,
+                data: doctors
+            };
+        } catch (error) {
+            throw new HttpException({
+                message:&#x27;Error retrieving doctors&#x27;,
+                statusCode: error.message
+            }, HttpStatus.BAD_REQUEST);
+        }        
     }
 
     /**
@@ -783,9 +831,33 @@ export class DoctorService {
      * const doctor &#x3D; await doctorService.findOne(1);
      * &#x60;&#x60;&#x60;
      */
-    findOne(id: number) {
-        return this.doctorRepository.findOne({where: {id}, relations: [&#x27;person&#x27;]});
+    // Find one doctor with their person data
+    async findOne(id: number): Promise&lt;{
+        message: string;
+        statusCode: number;
+        data: Doctor
+    }&gt; {
+        try {
+            const doctor &#x3D; await this.doctorRepository.findOne({where: {id}, relations: [&#x27;person&#x27;, &#x27;specialty&#x27;]});
+            if (!doctor) {
+                throw new HttpException(
+                    {message: &#x27;Doctor not found&#x27;, statusCode: 400},
+                    HttpStatus.NOT_FOUND,
+                );
+            }
+            return {
+                message: &#x27;Doctor retrieved successfully&#x27;,
+                statusCode: HttpStatus.OK,
+                data: doctor
+            };
+        } catch (error) {
+            throw new HttpException({
+                message:&#x27;Error retrieving doctor&#x27;,
+                statusCode: error.message
+            }, HttpStatus.BAD_REQUEST);
+        };
     }
+
 
     /**
      * Actualiza un doctor existente
@@ -810,7 +882,12 @@ export class DoctorService {
      * });
      * &#x60;&#x60;&#x60;
      */
-    async update(id: number, dto: UpdateDoctorDto) {
+    // Update doctor with correct relations
+    async update(id: number, dto: UpdateDoctorDto): Promise&lt;{
+        message: string;
+        statusCode: number;
+        data: Doctor
+    }&gt; {
         // Verificación de existencia del doctor
         const doctor &#x3D; await this.doctorRepository.findOne({
             where: { id },
@@ -819,32 +896,48 @@ export class DoctorService {
 
         // Si el doctor no existe
         if (!doctor) {
-            throw new Error(&#x27;Doctor not found&#x27;);
+            throw new HttpException(
+            {message: &#x27;Doctor not found&#x27;},
+            HttpStatus.NOT_FOUND,
+            );
         }
-
+        try {
+            if (dto.specialtyId) {
+                const specialty &#x3D; await this.specialtyRepository.findOne({
+                    where: { id_especialidad: dto.specialtyId },
+                });
+                if (!specialty) {
+                    throw new HttpException(
+                        {message: &#x27;Specialty not found&#x27;},
+                        HttpStatus.NOT_FOUND,
+                    );
+                }
+                doctor.specialty &#x3D; specialty;
+            }
         // Si se envía nuevo personaId, actualiza la relación
-        if (dto.personaId) {
-            const person &#x3D; await this.personRepository.findOneBy({ id: dto.personaId });
-            if (!person) throw new Error(&#x27;Person not found&#x27;);
-            doctor.person &#x3D; person;
+            if (dto.personaId) {
+                const person &#x3D; await this.personRepository.findOne({ where: { id: dto.personaId } });
+                if (!person) {
+                    throw new HttpException(
+                        {message: &#x27;Person not found&#x27;},
+                        HttpStatus.NOT_FOUND,
+                    );
+                }
+                doctor.person &#x3D; person;
+            }
+                Object.assign(doctor, dto);
+                const updatedDoctor &#x3D; await this.doctorRepository.save(doctor);
+                return {
+                    message: &#x27;Doctor updated successfully&#x27;,
+                    statusCode: HttpStatus.OK,
+                    data: updatedDoctor
+                };
+        } catch (error) {
+            throw new HttpException({
+                message: &#x27;Error updating doctor&#x27;,
+                statusCode: error.message
+            }, HttpStatus.BAD_REQUEST);
         }
-
-        // Si se envía nuevo specialtyId, actualiza la relación
-        if (dto.specialtyId) {
-            const specialty &#x3D; await this.specialtyRepository.findOneBy({
-            id_especialidad: dto.specialtyId,
-            });
-            if (!specialty) throw new Error(&#x27;Specialty not found&#x27;);
-            doctor.specialty &#x3D; specialty;
-        }
-
-        // Actualiza campos simples
-        if (dto.licenseNumber) {
-            doctor.licenseNumber &#x3D; dto.licenseNumber;
-        }
-
-        // Guarda los cambios
-        return this.doctorRepository.save(doctor);
     }
 
     /**
@@ -858,10 +951,36 @@ export class DoctorService {
      * await doctorService.remove(1);
      * &#x60;&#x60;&#x60;
      */
-    remove(id: number) {
-        return this.doctorRepository.delete(id);    
-    }    
 
+    // Delete doctor by id
+   async remove(id: number): Promise &lt;{
+        message: string;
+        statusCode: number;
+        data: any;
+   }&gt; {
+            const doctor &#x3D; await this.doctorRepository.findOne({where: {id}});
+
+            if (!doctor) {
+                throw new HttpException(
+                    {message: &#x27;Doctor not found&#x27;},
+                    HttpStatus.NOT_FOUND,
+                );
+            }
+
+            try {
+                const deleted &#x3D; await this.doctorRepository.delete(id);
+                return {
+                    message: &#x27;Doctor deleted successfully&#x27;,
+                    statusCode: HttpStatus.OK,
+                    data: deleted
+                };
+        } catch (error) {
+            throw new HttpException({
+                message: &#x27;Error deleting doctor&#x27;,
+                statusCode: error.message
+            }, HttpStatus.BAD_REQUEST);
+        }
+    }
 }</code></pre>
     </div>
 
