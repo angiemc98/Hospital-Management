@@ -188,13 +188,16 @@ const fullUpdate: UpdatePersonDto = {
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#birthDate" >birthDate</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#document" >document</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#email" >email</a>
                             </li>
@@ -206,9 +209,11 @@ const fullUpdate: UpdatePersonDto = {
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#lastname" >lastname</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#name" >name</a>
@@ -216,9 +221,11 @@ const fullUpdate: UpdatePersonDto = {
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#phone" >phone</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#role" >role</a>
                             </li>
@@ -248,6 +255,7 @@ const fullUpdate: UpdatePersonDto = {
                     <a name="birthDate"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>birthDate</b></span>
                         <a href="#birthDate"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -264,13 +272,13 @@ const fullUpdate: UpdatePersonDto = {
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsDateString()<br />
+                            @IsDateString()<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/person/dto/update-person.dto.ts:93</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/person/dto/update-person.dto.ts:97</a></div>
                         </td>
                     </tr>
 
@@ -290,6 +298,7 @@ const fullUpdate: UpdatePersonDto = {
                     <a name="document"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>document</b></span>
                         <a href="#document"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -306,13 +315,13 @@ const fullUpdate: UpdatePersonDto = {
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsString()<br />
+                            @IsString()<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/person/dto/update-person.dto.ts:81</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/person/dto/update-person.dto.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -332,6 +341,7 @@ const fullUpdate: UpdatePersonDto = {
                     <a name="email"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>email</b></span>
                         <a href="#email"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -348,13 +358,13 @@ const fullUpdate: UpdatePersonDto = {
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsEmail()<br />
+                            @IsEmail()<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/person/dto/update-person.dto.ts:105</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/person/dto/update-person.dto.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -397,7 +407,7 @@ const fullUpdate: UpdatePersonDto = {
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">src/person/dto/update-person.dto.ts:145</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/person/dto/update-person.dto.ts:152</a></div>
                         </td>
                     </tr>
 
@@ -418,6 +428,7 @@ const fullUpdate: UpdatePersonDto = {
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>lastname</b></span>
                         <a href="#lastname"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -434,13 +445,13 @@ const fullUpdate: UpdatePersonDto = {
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsString()<br />@Length(2, 100)<br />
+                            @IsString()<br />@Length(2, 100)<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/person/dto/update-person.dto.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/person/dto/update-person.dto.ts:71</a></div>
                         </td>
                     </tr>
 
@@ -461,6 +472,7 @@ const fullUpdate: UpdatePersonDto = {
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>name</b></span>
                         <a href="#name"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -477,13 +489,13 @@ const fullUpdate: UpdatePersonDto = {
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsString()<br />@Length(2, 100)<br />
+                            @IsString()<br />@Length(2, 100)<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/person/dto/update-person.dto.ts:54</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/person/dto/update-person.dto.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -504,6 +516,7 @@ const fullUpdate: UpdatePersonDto = {
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>phone</b></span>
                         <a href="#phone"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -520,13 +533,13 @@ const fullUpdate: UpdatePersonDto = {
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsString()<br />@Length(2, 100)<br />
+                            @IsString()<br />@Length(2, 100)<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/person/dto/update-person.dto.ts:120</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/person/dto/update-person.dto.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -546,6 +559,7 @@ const fullUpdate: UpdatePersonDto = {
                     <a name="role"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>role</b></span>
                         <a href="#role"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -562,13 +576,13 @@ const fullUpdate: UpdatePersonDto = {
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @IsString()<br />
+                            @IsString()<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/person/dto/update-person.dto.ts:132</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/person/dto/update-person.dto.ts:139</a></div>
                         </td>
                     </tr>
 
@@ -646,6 +660,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      */
     @IsString()
     @Length(2, 100)
+    @IsOptional()
     name: string;
 
     /**
@@ -661,6 +676,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      */
     @IsString()
     @Length(2, 100)
+    @IsOptional()
     lastname: string;
 
     /**
@@ -673,6 +689,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      * @example &quot;1234567890&quot;, &quot;CC-1234567&quot;
      */
     @IsString()
+    @IsOptional()
     document: string;
 
     /**
@@ -685,6 +702,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      * @example new Date(&quot;1990-05-15&quot;), &quot;1990-05-15&quot;
      */
     @IsDateString()
+    @IsOptional()
     birthDate: Date;
 
     /**
@@ -697,6 +715,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      * @example &quot;usuario@example.com&quot;
      */
     @IsEmail()
+    @IsOptional()
     email: string;
 
     /**
@@ -712,6 +731,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      */
     @IsString()
     @Length(2, 100)
+    @IsOptional()
     phone: string;
 
     /**
@@ -724,6 +744,7 @@ export class UpdatePersonDto extends PartialType(CreatePersonDto) {
      * @example Role.Doctor, Role.Patient, Role.Admin
      */
     @IsString()
+    @IsOptional()
     role: Role;
 
     /**

@@ -131,7 +131,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/office/office.entity.ts</code>
+            <code>src/office/office.controller.ts</code>
         </p>
 
 
@@ -139,13 +139,10 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Entidad que representa un consultorio médico en el sistema</p>
-<p>Esta entidad almacena la información de los consultorios disponibles
-en el centro médico, incluyendo su número, piso y disponibilidad.</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">const office = new Office();
-office.num_consultorio = 101;
+                <p>// ... existing code ...
 office.piso = 1;
-office.disponible = true;</code></pre></div>
+office.disponible = true;</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none"></code></pre></div>
             </p>
 
 
@@ -163,21 +160,26 @@ office.disponible = true;</code></pre></div>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#disponible" >disponible</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#id_consultorio" >id_consultorio</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#num_consultorio" >num_consultorio</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#piso" >piso</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#property_cita" >property_cita</a>
                             </li>
@@ -206,6 +208,7 @@ office.disponible = true;</code></pre></div>
                     <a name="disponible"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>disponible</b></span>
                         <a href="#disponible"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -222,19 +225,19 @@ office.disponible = true;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({type: &#x27;boolean&#x27;, default: true})<br />
+                            @ApiProperty({description: &#x27;Indicates if the office is available (true) or occupied (false)&#x27;, example: true, default: true})<br />@Column({type: &#x27;boolean&#x27;, default: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/office/office.entity.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">src/office/office.controller.ts:270</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Disponibilidad del consultorio</p>
+                    <div class="io-description"><p>// ... existing code ...</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
                 </td>
             </tr>
@@ -247,6 +250,7 @@ office.disponible = true;</code></pre></div>
                 <td class="col-md-4">
                     <a name="id_consultorio"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>id_consultorio</b></span>
                         <a href="#id_consultorio"><span class="icon ion-ios-link"></span></a>
@@ -264,19 +268,19 @@ office.disponible = true;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @PrimaryGeneratedColumn()<br />
+                            @ApiProperty({description: &#x27;Unique identifier for the office&#x27;, example: 1, readOnly: true})<br />@PrimaryGeneratedColumn()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/office/office.entity.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">src/office/office.controller.ts:229</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Clave primaria del consultorio</p>
+                    <div class="io-description"><p>// ... existing code ...</p>
 </div>
                 </td>
             </tr>
@@ -289,6 +293,7 @@ office.disponible = true;</code></pre></div>
                 <td class="col-md-4">
                     <a name="num_consultorio"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>num_consultorio</b></span>
                         <a href="#num_consultorio"><span class="icon ion-ios-link"></span></a>
@@ -306,19 +311,19 @@ office.disponible = true;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({unique: true})<br />
+                            @ApiProperty({description: &#x27;Identifier number of the office, must be unique&#x27;, example: 101, unique: true})<br />@Column({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/office/office.entity.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">src/office/office.controller.ts:243</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Número del consultorio</p>
+                    <div class="io-description"><p>// ... existing code ...</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
                 </td>
             </tr>
@@ -331,6 +336,7 @@ office.disponible = true;</code></pre></div>
                 <td class="col-md-4">
                     <a name="piso"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>piso</b></span>
                         <a href="#piso"><span class="icon ion-ios-link"></span></a>
@@ -348,19 +354,19 @@ office.disponible = true;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column()<br />
+                            @ApiProperty({description: &#x27;Floor number where the office is located&#x27;, example: 1})<br />@Column()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/office/office.entity.ts:56</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="256" class="link-to-prism">src/office/office.controller.ts:256</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Piso donde se ubica el consultorio</p>
+                    <div class="io-description"><p>// ... existing code ...</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
                 </td>
             </tr>
@@ -373,6 +379,7 @@ office.disponible = true;</code></pre></div>
                 <td class="col-md-4">
                     <a name="property_cita"></a>
                     <span class="name">
+                            <span class="modifier"></span>
                             <span class="modifier"></span>
                         <span ><b>property_cita</b></span>
                         <a href="#property_cita"><span class="icon ion-ios-link"></span></a>
@@ -390,20 +397,20 @@ office.disponible = true;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @OneToMany(undefined, Cita &#x3D;&gt; Cita.office, {cascade: true})<br />
+                            @ApiProperty({type: () &#x3D;&gt; })<br />@OneToMany(undefined, Cita &#x3D;&gt; Cita.office, {cascade: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/office/office.entity.ts:81</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="280" class="link-to-prism">src/office/office.controller.ts:280</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Citas asociadas con este consultorio</p>
-<p>Un consultorio puede tener múltiples citas asignadas.
+                    <div class="io-description"><p>// ... existing code ...
+Un consultorio puede tener múltiples citas asignadas.
 Se aplica cascada para operaciones relacionadas.
 See <a href="../entitys/Appointment.html">Appointment</a></p>
 </div>
@@ -417,23 +424,218 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Appointment } from &quot;src/appointment/appointment.entity&quot;; 
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Patch, Get, Post, Body, Param, ParseIntPipe, Delete } from &#x27;@nestjs/common&#x27;;
+import { OfficeService } from &#x27;./office.service&#x27;;
+import { CreateOfficeDto } from &#x27;./dto/create-office.dto&#x27;;
+import { UpdateOfficeDto } from &#x27;./dto/Update-office.dto&#x27;;
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
+import { Office } from &#x27;./office.entity&#x27;;
+
+/**
+ * Controlador para gestionar las operaciones REST de consultorios
+ * 
+ * @description
+ * Este controlador expone los endpoints HTTP para realizar operaciones CRUD
+ * sobre los consultorios. Maneja las peticiones HTTP y delega la lógica
+ * de negocio al servicio OfficeService.
+ * 
+ * @route /office
+ * @export
+ * @class OfficeController
+ */
+@ApiTags(&#x27;office&#x27;)
+@Controller(&#x27;office&#x27;)
+export class OfficeController {
+  /**
+   * Constructor del controlador de consultorios
+   * 
+   * @param {OfficeService} officeService - Servicio que maneja la lógica de negocio de consultorios
+   */
+  constructor(private readonly officeService: OfficeService) {}
+
+  /**
+   * Crea un nuevo consultorio
+   * 
+   * @route POST /office
+   * @param {CreateOfficeDto} dto - Datos del consultorio a crear
+   * @returns {Promise&lt;Office&gt;} El consultorio creado
+   * 
+   * @example
+   * POST http://localhost:3000/office
+   * Body:
+   * &#x60;&#x60;&#x60;json
+   * {
+   *   &quot;num_consultorio&quot;: 101,
+   *   &quot;piso&quot;: 1,
+   *   &quot;disponible&quot;: true
+   * }
+   * &#x60;&#x60;&#x60;
+   */
+  @Post()
+  @ApiOperation({ summary: &#x27;Create a new office&#x27; })
+  @ApiResponse({ status: 201, description: &#x27;The office has been successfully created.&#x27;, type: Office })
+  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
+  create(@Body() dto: CreateOfficeDto) {
+    return this.officeService.create(dto);
+  }
+
+  /**
+   * Obtiene todos los consultorios
+   * 
+   * @route GET /office
+   * @returns {Promise&lt;Office[]&gt;} Lista de todos los consultorios con sus citas asociadas
+   * 
+   * @example
+   * GET http://localhost:3000/office
+   */
+  @Get()
+  camilaaa98
+dame todos de una vez, eso de estarle pidiendo una por una que jajaj​
+TRAE AI
+Thought process
+Considering Autonomous Action
+
+I&#x27;ve been reflecting on the user&#x27;s desire for more independent operation. I&#x27;ve successfully updated medicine.entity.ts. Now, I&#x27;m turning my attention to medicine.controller.ts, which feels like the next logical step in this module. My goal is to streamline the process, as instructed, and tackle the module&#x27;s files in sequence.
+
+Streamlining Module Updates
+
+My focus has shifted. I&#x27;ve processed the user&#x27;s input, now aiming for consolidated updates. I just finished refactoring medicine.controller.ts, incorporating English Swagger decorators and the ParseIntPipe. Next, I will begin working on the office module, as instructed, starting with its entity and controller files.
+
+Executing Autonomous Updates
+
+I&#x27;ve taken the user&#x27;s feedback to heart and am now working to streamline operations. I&#x27;ve updated the medicine.controller.ts file, incorporating English Swagger decorators, replacing +id with ParseIntPipe, and retaining the original JSDoc. Next up, as instructed, I will address the office module, focusing on both its entity and controller files.
+
+Embracing User Requests
+
+I&#x27;ve internalized the user&#x27;s need for autonomy. I&#x27;ve now updated medicine.controller.ts, translating JSDoc to English, adding @ApiTags, @ApiOperation, @ApiResponse, and @ApiParam decorators, and swapping +id with ParseIntPipe. Moving on, I&#x27;ll now address the office module, as instructed, and tackle it as a single unit of work.
+
+Adopting Proactive Strategies
+
+I&#x27;ve integrated the user&#x27;s need for autonomy and am proactively working on entire modules. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and preserved the original JSDoc. I will now move to the office module, as instructed, and will proceed to update both office.entity.ts and office.controller.ts.
+
+Implementing Proactive Updates
+
+I&#x27;m now fully embracing the user&#x27;s desire for an autonomous approach. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and retained the original JSDoc. Next, I&#x27;ll be addressing the office module as a single unit, starting with office.entity.ts and then office.controller.ts, according to the provided instructions.
+
+Adapting Autonomous Module Handling
+
+I&#x27;ve integrated the user&#x27;s need for a complete module focus. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and preserved the original JSDoc. Next, I&#x27;ll move on to the office module, updating both office.entity.ts and office.controller.ts as a cohesive unit.
+
+¡Entendido! Tienes razón, es mucho más eficiente así. Me disculpo por el flujo de trabajo anterior.
+
+A partir de ahora, abordaré cada módulo de una sola vez, entregándote las actualizaciones para la entidad y el controlador juntos.
+
+Aquí tienes la actualización para el controlador del módulo medicine, con la que completamos este módulo.
+
+
+/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/medicine/medicine.controller.ts
+Apply
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from &#x27;@nestjs/common&#x27;;
+import { CreateMedicineDto } from &#x27;./dto/create-medicine.dto&#x27;;
+import { UpdateMedicineDto } from &#x27;./dto/update-medicine.dto&#x27;;
+import { MedicineService } from &#x27;./medicine.service&#x27;;
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
+import { Medicine } from &#x27;./medicine.entity&#x27;;
+
+/**
+// ... existing code ...
+ * @export
+ * @class MedicineController
+ */
+@ApiTags(&#x27;medicine&#x27;)
+@Controller(&#x27;medicine&#x27;)
+export class MedicineController {
+  /**
+// ... existing code ...
+   * @param {MedicineService} medicineService - Servicio que maneja la lógica de negocio de medicamentos
+   */
+  constructor(private readonly medicineService: MedicineService) {}
+
+  /**
+// ... existing code ...
+   *   \&quot;price\&quot;: \&quot;5000\&quot;\n   * }\n   * &#x60;&#x60;&#x60;\n   */
+  @Post()
+  @ApiOperation({ summary: &#x27;Create a new medicine&#x27; })
+  @ApiResponse({ status: 201, description: &#x27;The medicine has been successfully created.&#x27;, type: Medicine })
+  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
+  create(@Body() createMedicineDto: CreateMedicineDto) {
+    return this.medicineService.create(createMedicineDto);
+  } 
+
+  /**
+// ... existing code ...
+   * @example
+   * GET http://localhost:3000/medicine
+   */
+  @Get()
+  @ApiOperation({ summary: &#x27;Get all medicines&#x27; })
+  @ApiResponse({ status: 200, description: &#x27;List of all registered medicines.&#x27;, type: [Medicine] })
+  findAll() {
+    return this.medicineService.findAll();
+  }
+
+  /**
+// ... existing code ...
+   * @example
+   * GET http://localhost:3000/medicine/1
+   */
+  @Get(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Get a medicine by its ID&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to search for&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;Medicine found.&#x27;, type: Medicine })
+  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
+  findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    return this.medicineService.findOne(id);
+  }
+
+  /**
+// ... existing code ...
+   *   \&quot;price\&quot;: \&quot;5500\&quot;\n   * }\n   * &#x60;&#x60;&#x60;\n   */
+  @Patch(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Update an existing medicine&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to update&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;The medicine has been successfully updated.&#x27;, type: Medicine })
+  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
+  update(@Param(&#x27;id&#x27;, ParseIntPipe) id: number, @Body() updateMedicineDto: UpdateMedicineDto) {
+    return this.medicineService.update(id, updateMedicineDto);
+  }
+
+  /**
+// ... existing code ...
+   * @example
+   * DELETE http://localhost:3000/medicine/1
+   */
+  @Delete(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Delete a medicine by its ID&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to delete&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;The medicine has been successfully deleted.&#x27; })
+  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
+  remove(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    return this.medicineService.remove(id);
+  }
+
+}
+Módulo medicine completado.
+
+Ahora, procederé con el módulo office. Voy a leer ambos archivos y te entregaré las dos actualizaciones en mi siguiente mensaje.
+
+src\office\office.controller.ts
+src\office\office.entity.ts
+De acuerdo. He revisado los archivos del módulo office.
+
+Aquí tienes las actualizaciones para la entidad y el controlador, ambas con la documentación de Swagger en inglés y las mejoras de estandarización.
+
+Primero, el archivo src/office/office.entity.ts:
+
+
+/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/office/office.entity.ts
+Apply
+import { ApiProperty } from &quot;@nestjs/swagger&quot;;
+import { Appointment } from &quot;src/appointment/appointment.entity&quot;; 
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from &quot;typeorm&quot;;
 
 /**
- * Entidad que representa un consultorio médico en el sistema
- * 
- * @description
- * Esta entidad almacena la información de los consultorios disponibles
- * en el centro médico, incluyendo su número, piso y disponibilidad.
- * 
- * @export
- * @class Office
- * 
- * @example
- * &#x60;&#x60;&#x60;typescript
- * const office &#x3D; new Office();
- * office.num_consultorio &#x3D; 101;
+// ... existing code ...
  * office.piso &#x3D; 1;
  * office.disponible &#x3D; true;
  * &#x60;&#x60;&#x60;
@@ -441,63 +643,184 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from &quot;typeorm&
 @Entity(&#x27;consultorio&#x27;)
 export class Office{
     /**
-     * Clave primaria del consultorio
-     * 
-     * @type {number}
+// ... existing code ...
      * @description Identificador único autogenerado para el consultorio
      */
+    @ApiProperty({
+        description: &#x27;Unique identifier for the office&#x27;,
+        example: 1,
+        readOnly: true,
+    })
     @PrimaryGeneratedColumn()
     id_consultorio: number;
     
     /**
-     * Número del consultorio
-     * 
-     * @type {number}
-     * @description Número identificador del consultorio, debe ser único
-     * @required
+// ... existing code ...
      * @unique
      * 
      * @example 101, 202, 305
      */
+    @ApiProperty({
+        description: &#x27;Identifier number of the office, must be unique&#x27;,
+        example: 101,
+        unique: true,
+    })
     @Column({unique: true})
     num_consultorio: number;
 
     /**
-     * Piso donde se ubica el consultorio
-     * 
-     * @type {number}
-     * @description Número de piso en el que se encuentra el consultorio
+// ... existing code ...
      * @required
      * 
      * @example 1, 2, 3
      */
+    @ApiProperty({
+        description: &#x27;Floor number where the office is located&#x27;,
+        example: 1,
+    })
     @Column()
     piso: number;
 
     /**
-     * Disponibilidad del consultorio
-     * 
-     * @type {boolean}
-     * @description Indica si el consultorio está disponible (true) u ocupado (false)
-     * @default true
+// ... existing code ...
      * @required
      * 
      * @example true, false
      */
+    @ApiProperty({
+        description: &#x27;Indicates if the office is available (true) or occupied (false)&#x27;,
+        example: true,
+        default: true,
+    })
     @Column({type: &#x27;boolean&#x27;, default: true})
     disponible: boolean
 
     /**
-     * Citas asociadas con este consultorio
-     * 
-     * @type {Appointment[]}
-     * @description Relación uno a muchos con la entidad Appointment.
+// ... existing code ...
      * Un consultorio puede tener múltiples citas asignadas.
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Appointment}
      */
+    @ApiProperty({ type: () &#x3D;&gt; [Appointment] })
     @OneToMany(() &#x3D;&gt; Appointment, (Cita) &#x3D;&gt; Cita.office, {cascade: true})
     property_cita: Appointment[];
+}
+Y aquí está el archivo src/office/office.controller.ts:
+
+
+/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/office/office.controller.ts
+Apply
+import { Controller, Patch, Get, Post, Body, Param, ParseIntPipe, Delete } from &#x27;@nestjs/common&#x27;;
+import { OfficeService } from &#x27;./office.service&#x27;;
+import { CreateOfficeDto } from &#x27;./dto/create-office.dto&#x27;;
+import { UpdateOfficeDto } from &#x27;./dto/Update-office.dto&#x27;;
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
+import { Office } from &#x27;./office.entity&#x27;;
+
+/**
+// ... existing code ...
+ * @export
+ * @class OfficeController
+ */
+@ApiTags(&#x27;office&#x27;)
+@Controller(&#x27;office&#x27;)
+export class OfficeController {
+  /**
+// ... existing code ...
+   * @param {OfficeService} officeService - Servicio que maneja la lógica de negocio de consultorios
+   */
+  constructor(private readonly officeService: OfficeService) {}
+
+  /**
+// ... existing code ...
+   *   \&quot;disponible\&quot;: true\n   * }\n   * &#x60;&#x60;&#x60;\n   */
+  @Post()
+  @ApiOperation({ summary: &#x27;Create a new office&#x27; })
+  @ApiResponse({ status: 201, description: &#x27;The office has been successfully created.&#x27;, type: Office })
+  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
+  create(@Body() dto: CreateOfficeDto) {
+    return this.officeService.create(dto);
+  }
+
+  /**
+// ... existing code ...
+   * @example
+   * GET http://localhost:3000/office
+   */
+  @Get()
+  @ApiOperation({ summary: &#x27;Get all offices&#x27; })
+  @ApiResponse({ status: 200, description: &#x27;List of all offices with their associated appointments.&#x27;, type: [Office] })  findAll() {
+    return this.officeService.findAll();
+  }
+
+  /**
+   * Obtiene un consultorio por su ID
+   * 
+   * @route GET /office/:id
+   * @param {number} id - ID del consultorio a buscar
+   * @returns {Promise&lt;Office&gt;} El consultorio encontrado con sus citas
+   * 
+   * @example
+   * GET http://localhost:3000/office/1
+   */
+  @Get(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Get an office by its ID&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to search for&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;Office found with its appointments.&#x27;, type: Office })
+  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
+  findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    return this.officeService.findOne(id);
+  }
+
+  /**
+   * Actualiza un consultorio existente
+   * 
+   * @route PATCH /office/:id
+   * @param {number} id - ID del consultorio a actualizar
+   * @param {UpdateOfficeDto} dto - Datos actualizados del consultorio
+   * @returns {Promise&lt;Office&gt;} El consultorio actualizado
+   * 
+   * @example
+   * PATCH http://localhost:3000/office/1
+   * Body:
+   * &#x60;&#x60;&#x60;json
+   * {
+   *   &quot;disponible&quot;: false,
+   *   &quot;piso&quot;: 2
+   * }
+   * &#x60;&#x60;&#x60;
+   */
+  @Patch(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Update an existing office&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to update&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;The office has been successfully updated.&#x27;, type: Office })
+  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
+  update(
+    @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
+    @Body() dto: UpdateOfficeDto,
+  ) {
+    return this.officeService.update(id, dto);
+  }
+
+  /**
+   * Elimina un consultorio por su ID
+   * 
+   * @route DELETE /office/:id
+   * @param {number} id - ID del consultorio a eliminar
+   * @returns {Promise&lt;DeleteResult&gt;} Resultado de la operación de eliminación
+   * 
+   * @example
+   * DELETE http://localhost:3000/office/1
+   */
+  @Delete(&#x27;:id&#x27;)
+  @ApiOperation({ summary: &#x27;Delete an office by its ID&#x27; })
+  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to delete&#x27;, type: Number })
+  @ApiResponse({ status: 200, description: &#x27;The office has been successfully deleted.&#x27; })
+  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
+  remove(@Body(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    return this.officeService.remove(id);
+  }
+
 }</code></pre>
     </div>
 </div>

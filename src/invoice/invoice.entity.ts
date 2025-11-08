@@ -1,6 +1,7 @@
 import { Appointment } from "src/appointment/appointment.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Patient } from "src/patient/patient.entity";
+import { ApiProperty } from "@nestjs/swagger";
 
 /**
  * Entidad que representa una factura en el sistema médico
@@ -29,6 +30,11 @@ export class Invoice {
      * @type {number}
      * @description Identificador único autogenerado para la factura
      */
+     @ApiProperty({
+        description: 'Unique identifier for the invoice',
+        example: 1,
+        readOnly: true,
+    })
     @PrimaryGeneratedColumn()
     id_factura: number;
 
@@ -42,6 +48,11 @@ export class Invoice {
      * 
      * @example new Date("2024-03-15T10:30:00")
      */
+     @ApiProperty({
+        description: 'Date and time of invoice issuance',
+        example: '2024-03-15T10:30:00',
+        default: 'CURRENT_TIMESTAMP',
+    })
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
     fecha: Date;
 
@@ -57,6 +68,14 @@ export class Invoice {
      * 
      * @example 150000.00, 75500.50, 1250000.99
      */
+     @ApiProperty({
+        description: 'Total amount of the invoice',
+        example: 150000.00,
+        type: 'number',
+        format: 'decimal',
+        precision: 10,
+        scale: 2,
+    })
     @Column({type: 'decimal', precision: 10, scale: 2})
     total: number;
 
@@ -70,6 +89,11 @@ export class Invoice {
      * 
      * @example "Efectivo", "Tarjeta de crédito", "Tarjeta de débito", "Transferencia bancaria", "PSE"
      */
+     @ApiProperty({
+        description: 'Payment method used',
+        example: 'Credit Card',
+        maxLength: 50,
+    })
     @Column({type: 'varchar', length: 50})
     metodo_pago: string;
 
@@ -84,7 +108,13 @@ export class Invoice {
      * 
      * @example "Pendiente", "Pagado", "Fallido", "Cancelado"
      */
-    @Column({type: 'varchar', length: 50, default: 'Pendiente'})
+    @ApiProperty({
+        description: 'Payment status of the invoice',
+        example: 'Pending',
+        maxLength: 50,
+        default: 'Pending',
+    })
+    @Column({type: 'varchar', length: 50, default: 'Pending'})
     estado_pago: string;
 
     /**
@@ -97,6 +127,7 @@ export class Invoice {
      * Si la cita es eliminada, todas sus facturas también se eliminarán (CASCADE).
      * @see {@link Appointment}
      */
+    @ApiProperty({ type: () => Appointment })
     @ManyToOne(() => Appointment, (Cita) => Cita.invoice, {onDelete: 'CASCADE'})
     @JoinColumn({name: 'id_cita'})
     propety_cita: Appointment;
@@ -111,6 +142,7 @@ export class Invoice {
      * Si el paciente es eliminado, todas sus facturas también se eliminarán (CASCADE).
      * @see {@link Patient}
      */
+    @ApiProperty({ type: () => Patient })
     @ManyToOne(() => Patient, (paciente) => paciente.invoices, {onDelete: 'CASCADE'})
     @JoinColumn({name: 'id_paciente'})
     propety_patient: Patient;

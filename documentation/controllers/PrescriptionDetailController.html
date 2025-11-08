@@ -159,21 +159,38 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#remove" >remove</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#update" >update</a>
                             </li>
@@ -201,6 +218,9 @@
                     <a name="create"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>create</b></span>
                         <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -217,14 +237,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br /></code>
+                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a new prescription detail&#x27;})<br />@ApiResponse({status: 201, description: &#x27;The prescription detail has been successfully created.&#x27;, type: PrescriptionDetail})<br />@ApiResponse({status: 400, description: &#x27;Invalid input data.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="21"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:21</a></div>
                         </td>
                     </tr>
 
@@ -277,6 +297,8 @@
                     <a name="findAll"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -293,14 +315,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br /></code>
+                    <code>@Get()<br />@ApiOperation({summary: &#x27;Get all prescription details&#x27;})<br />@ApiResponse({status: 200, description: &#x27;List of all prescription details.&#x27;, type: undefined})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -323,6 +345,10 @@
                     <a name="findOne"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>findOne</b></span>
                         <a href="#findOne"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -339,14 +365,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;:id&#x27;)<br /></code>
+                    <code>@Get(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Get a prescription detail by its ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the prescription detail to search for&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;Prescription detail found.&#x27;, type: PrescriptionDetail})<br />@ApiResponse({status: 404, description: &#x27;Prescription detail not found.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -399,6 +425,10 @@
                     <a name="remove"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>remove</b></span>
                         <a href="#remove"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -415,14 +445,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
+                    <code>@Delete(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Delete a prescription detail by its ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the prescription detail to delete&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;The prescription detail has been successfully deleted.&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Prescription detail not found.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:70</a></div>
                         </td>
                     </tr>
 
@@ -475,6 +505,10 @@
                     <a name="update"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>update</b></span>
                         <a href="#update"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -491,14 +525,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
+                    <code>@Patch(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Update an existing prescription detail&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the prescription detail to update&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;The prescription detail has been successfully updated.&#x27;, type: PrescriptionDetail})<br />@ApiResponse({status: 404, description: &#x27;Prescription detail not found.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/prescription-detail/prescription-detail.controller.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -564,8 +598,10 @@
 import { CreatePrescriptionDetailDto } from &#x27;./dto/create-prescription-detail.dto&#x27;;
 import { PrescriptionDetailService } from &#x27;./prescription-detail.service&#x27;;
 import { UpdatePrescriptionDetailsDto } from &#x27;./dto/update-prescription-details.dto&#x27;;
+import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
+import { PrescriptionDetail } from &#x27;./prescription-detail.entity&#x27;;
 
-
+@ApiTags(&#x27;prescription-detail&#x27;)
 @Controller(&#x27;prescription-detail&#x27;)
 export class PrescriptionDetailController {
     constructor(private readonly detailRepository: PrescriptionDetailService){}
@@ -575,6 +611,9 @@ export class PrescriptionDetailController {
     //http:localhost:3000/prescription-detail
     // table relation between prescription and medicine, parameters id of prescription and medicine
     @Post()
+    @ApiOperation({ summary: &#x27;Create a new prescription detail&#x27; })
+    @ApiResponse({ status: 201, description: &#x27;The prescription detail has been successfully created.&#x27;, type: PrescriptionDetail })
+    @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
     create(@Body() createPrescriptionDetailDto: CreatePrescriptionDetailDto) {
         return this.detailRepository.create(createPrescriptionDetailDto);
     }
@@ -583,6 +622,8 @@ export class PrescriptionDetailController {
     //Get all prescription details
     //http:localhost:3000/prescription-detail
     @Get()
+    @ApiOperation({ summary: &#x27;Get all prescription details&#x27; })
+    @ApiResponse({ status: 200, description: &#x27;List of all prescription details.&#x27;, type: [PrescriptionDetail] })
     findAll() {
         return this.detailRepository.findAll();
     }
@@ -592,6 +633,10 @@ export class PrescriptionDetailController {
     //http:localhost:3000/prescription-detail/1
     //The param id is the id of the prescription detail, is required
     @Get(&#x27;:id&#x27;)
+    @ApiOperation({ summary: &#x27;Get a prescription detail by its ID&#x27; })
+    @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the prescription detail to search for&#x27;, type: Number })
+    @ApiResponse({ status: 200, description: &#x27;Prescription detail found.&#x27;, type: PrescriptionDetail })
+    @ApiResponse({ status: 404, description: &#x27;Prescription detail not found.&#x27; })
     findOne(@Param(&#x27;id&#x27;) id: number) {
         return this.detailRepository.findOne(id);
     }
@@ -601,6 +646,10 @@ export class PrescriptionDetailController {
     // http:localhost:3000/prescription-detail/1
     // The param id is the id of the prescription detail, is required for update
     @Patch(&#x27;:id&#x27;)
+     @ApiOperation({ summary: &#x27;Update an existing prescription detail&#x27; })
+    @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the prescription detail to update&#x27;, type: Number })
+    @ApiResponse({ status: 200, description: &#x27;The prescription detail has been successfully updated.&#x27;, type: PrescriptionDetail })
+    @ApiResponse({ status: 404, description: &#x27;Prescription detail not found.&#x27; })
     update(@Param(&#x27;id&#x27;) id: number, @Body() updatePrescriptionDetailsDto: UpdatePrescriptionDetailsDto) {
         return this.detailRepository.update(id, updatePrescriptionDetailsDto);
     }
@@ -610,6 +659,10 @@ export class PrescriptionDetailController {
     // http:localhost:3000/prescription-detail/1
     // The param id is the id of the prescription detail, is required for delete
     @Delete(&#x27;:id&#x27;)
+     @ApiOperation({ summary: &#x27;Delete a prescription detail by its ID&#x27; })
+    @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the prescription detail to delete&#x27;, type: Number })
+    @ApiResponse({ status: 200, description: &#x27;The prescription detail has been successfully deleted.&#x27; })
+    @ApiResponse({ status: 404, description: &#x27;Prescription detail not found.&#x27; })
     remove(@Param(&#x27;id&#x27;) id: number) {
         return this.detailRepository.remove(id);
     }
