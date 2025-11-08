@@ -73,8 +73,6 @@ export class Invoice {
         example: 150000.00,
         type: 'number',
         format: 'decimal',
-        precision: 10,
-        scale: 2,
     })
     @Column({type: 'decimal', precision: 10, scale: 2})
     total: number;

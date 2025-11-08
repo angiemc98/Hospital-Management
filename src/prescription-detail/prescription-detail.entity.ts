@@ -8,7 +8,7 @@ import { Medicine } from "src/medicine/medicine.entity";
 export class PrescriptionDetail {
     
     // Primary key of the prescription detail
-      @ApiProperty({
+    @ApiProperty({
         description: 'Unique identifier for the prescription detail',
         example: 1,
         readOnly: true,

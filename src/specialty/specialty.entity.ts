@@ -48,10 +48,9 @@ export class Specialty{
      * 
      * @example "Cardiología", "Pediatría", "Dermatología"
      */
-     @ApiProperty({
+    @ApiProperty({
         description: 'Name of the medical specialty, must be unique',
         example: 'Cardiology',
-        unique: true,
         minLength: 2,
         maxLength: 100,
     })

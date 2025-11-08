@@ -51,7 +51,9 @@ export class PersonController {
    * ```
    */
   @Post()
-  @ApiOperation({ summary: 'Create a new person' })
+  @ApiOperation({ summary: 'Create a new person',
+    description: 'Creat a new person in the system',
+  })
   @ApiResponse({ status: 201, description: 'The person has been successfully created.', type: Person })
   @ApiResponse({ status: 400, description: 'Invalid input data.' })
   create(@Body() dto: CreatePersonDto): Promise<{

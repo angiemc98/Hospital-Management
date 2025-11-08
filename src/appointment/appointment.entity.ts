@@ -2,6 +2,18 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Doctor } from 'src/doctor/doctor.entity';
 // ... existing code ...
 import { Prescription } from 'src/prescription/prescription.entity';
+import { Patient } from 'src/patient/patient.entity';
+import { Office } from 'src/office/office.entity';
+import { Invoice } from 'src/invoice/invoice.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+  OneToOne,
+  OneToMany,
+} from 'typeorm';
 
 /**
  * @class Appointment
@@ -74,13 +86,13 @@ export class Appointment {
 
   @ApiProperty({ type: () => Office })
   // Relation Office > Appointment, an Office can have many appointments
-  @ManyToOne(() => Office, (office) => office.appointments)
+  @ManyToOne(() => Office, (office) => office.property_cita)
   @JoinColumn({ name: 'office_id' })
   office: Office;
 
   @ApiProperty({ type: () => Invoice, nullable: true })
   // Relation Invoice > Appointment, an Invoice can have many appointments
-  @OneToOne(() => Invoice, (invoice) => invoice.appointment)
+  @OneToOne(() => Invoice, (invoice) => invoice.propety_cita)
   invoice: Invoice;
 
   @ApiProperty({ type: () => [Prescription] })

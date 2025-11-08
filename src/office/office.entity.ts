@@ -48,8 +48,7 @@ export class Office{
      */
      @ApiProperty({
         description: 'Identifier number of the office, must be unique',
-        example: 101,
-        unique: true,
+        example: 101
     })
     @Column({unique: true})
     num_consultorio: number;

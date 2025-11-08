@@ -118,8 +118,7 @@ export class Person {
      */
     @ApiProperty({
         description: 'Unique identity document number',
-        example: '1234567890',
-        unique: true,
+        example: '1234567890'
     })
     @Column(
     {unique: true}
@@ -158,8 +157,7 @@ export class Person {
      */
     @ApiProperty({
         description: 'Unique contact phone number',
-        example: '3001234567',
-        unique: true,
+        example: '3001234567'
     })
     @Column(
     {unique: true}
@@ -178,8 +176,7 @@ export class Person {
      */
     @ApiProperty({
         description: 'Unique email address',
-        example: 'user@example.com',
-        unique: true,
+        example: 'user@example.com'
     })
     @Column(
     {unique: true}
