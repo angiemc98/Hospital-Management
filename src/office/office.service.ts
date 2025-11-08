@@ -46,28 +46,23 @@ export class OfficeService {
      * });
      * ```
      */
-   async create(createOfficeDto: CreateOfficeDto) {
-    // 1. Validar la existencia primero (FUERA del try)
+    async create(createOfficeDto: CreateOfficeDto) {
+
     const exist = await this.officeRepository.findOne({where: {num_consultorio: createOfficeDto.num_consultorio}});
     if (exist) {
-        // El error de conflicto se lanza y propaga directamente
         throw new HttpException('Office already exists', HttpStatus.CONFLICT);
     }
     
-    // 2. Usar try/catch SOLO para manejar fallos inesperados de DB/servidor
     try {
         const office = this.officeRepository.create(createOfficeDto);
         const savedOffice = await this.officeRepository.save(office);
 
-        // Agregamos un retorno explícito ya que el test de éxito lo necesita
         return {
             message: 'Office created successfully', 
             statusCode: HttpStatus.CREATED, 
             data: savedOffice 
         };
     } catch (error) {
-        // 3. Manejar errores desconocidos con un error 500 genérico
-        // NOTA: Si el error fuera una HttpException ya lanzada, TypeORM no la capturaría aquí.
         throw new HttpException('Error creating office', HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
@@ -106,7 +101,7 @@ export class OfficeService {
      */
     async findOne(id: number) {
         const office = await this.officeRepository.findOne({where: {id_consultorio: id}, relations: ['property_cita']});
-        // Si el consultorio no existe
+
         if (!office) throw new HttpException('Office not found', HttpStatus.NOT_FOUND);
         return {
             message: 'Office retrieved successfully',
@@ -136,12 +131,12 @@ export class OfficeService {
      * ```
      */
     async update(id: number, updateOfficeDto: UpdateOfficeDto) {
-        // Verificación de existencia del consultorio
+        
         const office = await this.officeRepository.findOne({where: {id_consultorio: id}});
         if (!office) {
             throw new HttpException('Office not found', HttpStatus.NOT_FOUND);
         }
-        // Si se envía nuevo num_consultorio, actualiza la relación
+        
         Object.assign(office, updateOfficeDto);
         const updated = await this.officeRepository.save(office);
         return {

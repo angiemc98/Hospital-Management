@@ -73,7 +73,6 @@ describe('SpecialtyService', () => {
         });
 
         it('should return CONFLICT if specialty already exists', async () => {
-            // Ya existe la especialidad
             (repository.findOne as jest.Mock).mockResolvedValue(mockSpecialty);
 
             const result = await service.create(createDto);

@@ -38,6 +38,9 @@ describe('PatientService', () => {
     service = module.get<PatientService>(PatientService);
   });
 
+  // -----------------------------
+  // CREATE
+  // -----------------------------
   describe('create', () => {
     it('should create a new patient successfully', async () => {
       const dto = { bloodType: 'O+', insurance: 'contributive' } as any;
@@ -60,6 +63,10 @@ describe('PatientService', () => {
     });
   });
 
+  // -----------------------------
+  // FIND ONE
+  // -----------------------------
+
   describe('findOne', () => {
     it('should find a patient', async () => {
       mockRepository.findOne.mockResolvedValue({ id: 1, bloodType: 'O+' } as any);
@@ -73,6 +80,9 @@ describe('PatientService', () => {
     });
   });
 
+  // -----------------------------
+  // UPDATE
+  // -----------------------------
   describe('update', () => {
     it('should update a patient', async () => {
       const patient = { id: 1, bloodType: 'O+' };
@@ -83,6 +93,9 @@ describe('PatientService', () => {
     });
   });
 
+  // -----------------------------
+  // REMOVE
+  // -----------------------------
   describe('remove', () => {
     it('should delete a patient', async () => {
       mockRepository.findOne.mockResolvedValue({ id: 1 } as any);

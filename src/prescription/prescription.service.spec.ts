@@ -32,9 +32,7 @@ const mockMedicineRepository: any = {
 };
 
 const mockPrescriptionDetailRepository: any = {
-    // Aunque no lo uses en los métodos mostrados, Nest lo requiere para la inyección.
     findOne: jest.fn(), 
-    // Agrega otros métodos si se usan en el servicio
 };
 
 
@@ -45,7 +43,6 @@ describe('PrescriptionService', () => {
         const module: TestingModule = await Test.createTestingModule({
             providers: [
                 PrescriptionService,
-                // Proveer Mocks para los 4 repositorios inyectados en el constructor
                 {
                     provide: getRepositoryToken(Prescription),
                     useValue: mockPrescriptionRepository,
@@ -55,9 +52,6 @@ describe('PrescriptionService', () => {
                     useValue: mockAppointmentRepository,
                 },
                 {
-                    // Nota: Asegúrate que si el constructor usa Repository<PrescriptionDetail>
-                    // debes usar getRepositoryToken(PrescriptionDetail) aquí, no Prescription.
-                    // Asumo que tu entidad es PrescriptionDetail, corrigiendo el error de tipo en el servicio.
                     provide: getRepositoryToken(PrescriptionDetail), 
                     useValue: mockPrescriptionDetailRepository,
                 },

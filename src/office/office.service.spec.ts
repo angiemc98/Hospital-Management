@@ -15,7 +15,7 @@ describe('OfficeService', () => {
         save: jest.fn(),
         find: jest.fn(),
         findOne: jest.fn(),
-        delete: jest.fn(), // Usamos delete ya que el servicio usa officeRepository.delete(office)
+        delete: jest.fn(),
     };
 
     beforeEach(async () => {
@@ -33,25 +33,24 @@ describe('OfficeService', () => {
         jest.clearAllMocks();
     });
 
-    // --- CREATE ---
-    // office.service.spec.ts
+  // -----------------------------
+  // CREATE
+  // -----------------------------
 
 describe('create', () => {
     const createDto = { num_consultorio: 101, piso: 1, disponible: true };
 
     it('should create a new office successfully', async () => {
-        // 1. Simular que la oficina NO existe
         (mockOfficeRepository.findOne as jest.Mock).mockResolvedValue(null);
         
         const newOffice = { id_consultorio: 1, ...createDto };
         
-        // 2. Simular las llamadas de TypeORM
         (mockOfficeRepository.create as jest.Mock).mockReturnValue(newOffice);
         (mockOfficeRepository.save as jest.Mock).mockResolvedValue(newOffice);
 
         const result = await service.create(createDto);
 
-        // 3. ✅ AJUSTE: Verificar el nuevo objeto de retorno del servicio
+    
         expect(mockOfficeRepository.findOne).toHaveBeenCalledWith({ where: { num_consultorio: 101 } });
         expect(result).toEqual({
             message: 'Office created successfully',
@@ -61,19 +60,18 @@ describe('create', () => {
     });
 
     it('should throw HttpException if office already exists', async () => {
-        // Simular que la oficina YA existe
+       
         (mockOfficeRepository.findOne as jest.Mock).mockResolvedValue({ id_consultorio: 1, ...createDto });
 
-        // Esta verificación ahora pasará porque el error ya no es interceptado por el catch.
         await expect(service.create(createDto)).rejects.toThrow(HttpException);
         await expect(service.create(createDto)).rejects.toThrow('Office already exists');
-        await expect(service.create(createDto)).rejects.toHaveProperty('status', HttpStatus.CONFLICT); // Verificar el código 409
+        await expect(service.create(createDto)).rejects.toHaveProperty('status', HttpStatus.CONFLICT); 
     });
-
-    // ... (el resto de los tests de 'create' siguen igual)
 });
 
-    // --- FIND ALL ---
+    // -----------------------------
+  // FIND ALL
+  // -----------------------------
     describe('findAll', () => {
         it('should return all offices successfully', async () => {
             const offices = [{ id_consultorio: 1, num_consultorio: 101 }, { id_consultorio: 2, num_consultorio: 102 }];
@@ -90,7 +88,9 @@ describe('create', () => {
         });
     });
 
-    // --- FIND ONE ---
+    // -----------------------------
+  // FIND ONE
+  // -----------------------------
     describe('findOne', () => {
         const id = 1;
         const office = { id_consultorio: id, num_consultorio: 101, property_cita: [] };
@@ -112,7 +112,9 @@ describe('create', () => {
         });
     });
 
-    // --- UPDATE ---
+    // -----------------------------
+  // UPDATE
+  // -----------------------------
     describe('update', () => {
         const id = 1;
         const updateDto = { piso: 2, disponible: false, num_consultorio: 101 };
@@ -140,21 +142,22 @@ describe('create', () => {
         });
     });
     
-    // --- REMOVE (DELETE) ---
+    // -----------------------------
+  // REMOVE
+  // -----------------------------
     describe('remove', () => {
         const id = 1;
         const office = { id_consultorio: id, num_consultorio: 101 };
 
         it('should delete an office successfully', async () => {
-            // 1. Simular encontrar la oficina
+           
             (mockOfficeRepository.findOne as jest.Mock).mockResolvedValue(office);
-            // 2. Simular la eliminación (TypeORM delete devuelve DeleteResult)
+           
             (mockOfficeRepository.delete as jest.Mock).mockResolvedValue({ affected: 1 } as DeleteResult);
 
             const result = await service.remove(id);
 
             expect(mockOfficeRepository.findOne).toHaveBeenCalledWith({ where: { id_consultorio: id } });
-            // Verificar que se llamó a 'delete' con la entidad encontrada (como hace tu servicio)
             expect(mockOfficeRepository.delete).toHaveBeenCalledWith(office); 
             expect(result.message).toBe('Office deleted successfully');
             expect(result.statusCode).toBe(HttpStatus.OK);

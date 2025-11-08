@@ -62,7 +62,7 @@ export class DoctorService {
         data: Doctor
     }> {
         try {
-        // Busca la persona
+        // Search for person
             const person = await this.personRepository.findOneBy({id: dto.personaId});
             if (!person) {
                 throw new HttpException(
@@ -70,7 +70,7 @@ export class DoctorService {
                     HttpStatus.NOT_FOUND,
                 );
             }
-            // Busca la especialidad
+            // Search for specialty
             const specialty = await this.specialtyRepository.findOneBy({id_especialidad: dto.specialtyId});
             if (!specialty) {
                 throw new HttpException(
@@ -78,7 +78,7 @@ export class DoctorService {
                     HttpStatus.NOT_FOUND,
                 );
             }
-            // Crea el doctor
+            // Create the doctor
             const doctor = this.doctorRepository.create({person, specialty, licenseNumber: dto.licenseNumber});
             const savedDoctor = await this.doctorRepository.save(doctor);
             return {
@@ -104,6 +104,7 @@ export class DoctorService {
      * // Retorna doctores con datos de person poblados
      * ```
      */
+    // Find all doctors with their person data
     async findAll(): Promise<{
         message: string;
         statusCode: number;
@@ -135,6 +136,7 @@ export class DoctorService {
      * const doctor = await doctorService.findOne(1);
      * ```
      */
+    // Find one doctor with their person data
     async findOne(id: number): Promise<{
         message: string;
         statusCode: number;
@@ -185,6 +187,7 @@ export class DoctorService {
      * });
      * ```
      */
+    // Update doctor with correct relations
     async update(id: number, dto: UpdateDoctorDto): Promise<{
         message: string;
         statusCode: number;
@@ -227,13 +230,13 @@ export class DoctorService {
                 }
                 doctor.person = person;
             }
-             Object.assign(doctor, dto);
-             const updatedDoctor = await this.doctorRepository.save(doctor);
-             return {
-                 message: 'Doctor updated successfully',
-                 statusCode: HttpStatus.OK,
-                 data: updatedDoctor
-             };
+                Object.assign(doctor, dto);
+                const updatedDoctor = await this.doctorRepository.save(doctor);
+                return {
+                    message: 'Doctor updated successfully',
+                    statusCode: HttpStatus.OK,
+                    data: updatedDoctor
+                };
         } catch (error) {
             throw new HttpException({
                 message: 'Error updating doctor',
@@ -253,6 +256,8 @@ export class DoctorService {
      * await doctorService.remove(1);
      * ```
      */
+
+    // Delete doctor by id
    async remove(id: number): Promise <{
         message: string;
         statusCode: number;

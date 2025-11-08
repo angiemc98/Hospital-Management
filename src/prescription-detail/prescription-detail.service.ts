@@ -19,8 +19,6 @@ export class PrescriptionDetailService {
     private readonly prescriptionRepository: Repository<Prescription>,
 ) {}
 
-    // Create a prescription detail with the correct relations
-    // Create a prescription detail with the correct relations
     async create (dto: CreatePrescriptionDetailDto & { prescriptionId?: number, medicineId: number }) {
         try {
             const prescription = await this.prescriptionRepository.findOne({
@@ -37,7 +35,6 @@ export class PrescriptionDetailService {
                
                 throw new HttpException({ message: 'Medicamento no encontrado' }, HttpStatus.NOT_FOUND);
 
-        // ... (resto de la lógica de create) ...
             
             const detail = this.detailRepository.create({
                 dose: dto.dose,
@@ -155,8 +152,7 @@ export class PrescriptionDetailService {
                 statusCode: HttpStatus.OK,
                 data: deleted,
             };
-        } catch (error) {
-          
+        } catch (error) { 
             if (error instanceof HttpException) {
                 throw error;
             }

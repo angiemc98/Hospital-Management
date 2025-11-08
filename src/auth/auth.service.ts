@@ -1,11 +1,10 @@
-// src/auth/auth.service.ts
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { Person, Role } from '../person/person.entity';
 import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/register.dto'; // Necesitamos crear este DTO
+import { RegisterDto } from './dto/register.dto'; 
 
 @Injectable()
 export class AuthService {
@@ -21,15 +20,15 @@ export class AuthService {
      * @param password Contraseña en texto plano
      */
     async validateUser(email: string, pass: string): Promise<any> {
-        // Necesitamos seleccionar la contraseña para la comparación
+        // We need to select the password for comparison
         const user = await this.personRepository
             .createQueryBuilder('person')
-            .addSelect('person.password') // Selecciona el campo 'password' excluido
+            .addSelect('person.password') 
             .where('person.email = :email', { email })
             .getOne();
 
         if (user && (await user.comparePassword(pass))) {
-            // Devuelve el objeto sin la contraseña para evitar exponerla
+            // Returns the object without the password to avoid exposing it
             const { password, ...result } = user;
             return result; 
         }
@@ -65,7 +64,7 @@ export class AuthService {
         };
     }
     
-    // 💡 Implementación simple de registro
+    // 💡 Implementation of simple registration
     async register(registerDto: RegisterDto) {
         const { password, ...userData } = registerDto;
         

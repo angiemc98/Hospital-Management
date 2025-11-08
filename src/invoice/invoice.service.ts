@@ -66,19 +66,19 @@ export class InvoiceService {
    */
   async create(dto: CreateInvoiceDto) {
     try {
-      // Busca la cita
+      // Search for appointment
       const appointment = await this.appointmentRepository.findOne({
         where: { id: dto.id_cita },
       });
       if (!appointment) throw new Error('Appointment not found');
       
-      // Busca el paciente
+      // Search for patient
       const patient = await this.patientRepository.findOne({
         where: { id: dto.id_paciente },
       });
       if (!patient) throw new Error('Patient not found');
       
-      // Crea la factura
+      // Create the invoice
       const invoice = this.invoiceRepository.create({
         fecha: new Date(),
         total: dto.total,
@@ -172,7 +172,7 @@ export class InvoiceService {
    * ```
    */
   async update(id: number, dto: UpdateInvoiceDto) {
-    // Verificación de existencia de la factura
+    // Verification of existence of invoice
     const invoice = await this.invoiceRepository.findOne({
       where: { id_factura: id },
     });

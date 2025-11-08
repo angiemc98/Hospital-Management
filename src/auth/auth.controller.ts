@@ -11,7 +11,7 @@ export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
     /**
-     * Ruta para el registro de nuevos usuarios (se asumen como pacientes por defecto).
+     * Route for user registration. Returns a JSON object with the user data.
      */
     @Post('register')
     async register(@Body() registerDto: RegisterDto) {
@@ -24,21 +24,21 @@ export class AuthController {
     }
 
     /**
-     * Ruta para el inicio de sesión. Devuelve un JWT.
+     * Route for user login. Returns a JSON object with the user data and a JWT token.
      */
     @Post('login')
     async login(@Body() loginDto: LoginDto) {
-        // El servicio maneja la validación de credenciales y la generación del token
+        // The service validates the user credentials and returns a JWT token
         return this.authService.login(loginDto);
     }
     
     /**
-     * Ejemplo de ruta protegida (Requiere JWT)
+     * Example of a protected route. Only authenticated users can access this route.
      */
     @UseGuards(JwtAuthGuard)
     @Get('profile')
     getProfile(@Request() req) {
-        // req.user contiene el objeto retornado por JwtStrategy.validate()
+        // req.user contains the object returned by JwtStrategy.validate()
         return {
             message: 'Acceso autorizado',
             user: req.user,

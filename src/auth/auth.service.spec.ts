@@ -41,6 +41,10 @@ const mockPersonFound: Person = {
     comparePassword: jest.fn(),
 } as Person;
 
+ // -----------------------------
+  // TESTS AUTH SERVICE
+  // -----------------------------
+
 describe('AuthService', () => {
     let service: AuthService;
 
@@ -69,12 +73,14 @@ describe('AuthService', () => {
         expect(service).toBeDefined();
     });
 
-    // --- PRUEBAS DE VALIDATE USER ---
+    // -----------------------------
+  // TESTS VALIDATE USERS
+  // -----------------------------
 
     describe('validateUser', () => {
         const passwordCorrecta = 'correctpassword';
 
-       it('should return the user if the password is correct', async () => {
+        it('should return the user if the password is correct', async () => {
         mockQueryBuilder.getOne.mockResolvedValue(mockPersonFound);
         (mockPersonFound.comparePassword as jest.Mock).mockResolvedValue(true);
         
@@ -114,7 +120,9 @@ describe('AuthService', () => {
         });
     });
 
-    // --- PRUEBAS DE LOGIN ---
+    // -----------------------------
+   // TESTS LOGIN
+   // -----------------------------
 
     describe('login', () => {
         const loginDto = { email: 'test@example.com', password: 'password123' };
@@ -142,7 +150,9 @@ describe('AuthService', () => {
         });
     });
 
-    // --- PRUEBAS DE REGISTER ---
+     // -----------------------------
+  // TESTS REGISTER
+  // -----------------------------
 
     describe('register', () => {
         const registerDto = {

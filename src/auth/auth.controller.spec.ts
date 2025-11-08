@@ -12,6 +12,7 @@ const mockAuthService = {
 };
 
 describe('AuthController', () => {
+    // declare controller and service
     let controller: AuthController;
     let service: AuthService;
 
@@ -38,7 +39,9 @@ describe('AuthController', () => {
         expect(controller).toBeDefined();
     });
 
-    // --- PRUEBAS DE LOGIN ---
+     // -----------------------------
+  // TESTS LOGIN
+  // -----------------------------
 
     describe('login', () => {
         const loginDto: LoginDto = { email: 'user@test.com', password: 'password123' };
@@ -57,7 +60,9 @@ describe('AuthController', () => {
         });
     });
 
-    // --- PRUEBAS DE REGISTER ---
+     // -----------------------------
+  // TEST REGISTER
+  // -----------------------------
 
     describe('register', () => {
         const registerDto: RegisterDto = { 
@@ -81,12 +86,14 @@ describe('AuthController', () => {
         });
     });
 
-    // --- PRUEBAS DE PROFILE (Ruta Protegida) ---
+    // -----------------------------
+  // TESTS PROFILE (protected route)
+  // -----------------------------
 
     describe('getProfile', () => {
         it('should return the user object from the request', async () => {
             const mockRequest = { 
-                user: { id: 1, email: 'user@test.com', role: 'admin' } // El usuario viene adjunto del JWTGuard
+                user: { id: 1, email: 'user@test.com', role: 'admin' } // The user is attached to the JWTGuard
             } as any; 
 
             const result = controller.getProfile(mockRequest);

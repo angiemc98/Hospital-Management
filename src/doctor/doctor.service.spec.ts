@@ -14,6 +14,7 @@ import { HttpException } from '@nestjs/common';
 
 
 describe('DoctorService', () => {
+    // Declare service, repository, and mock objects
     let service: DoctorService;
     let doctorRepository: Repository<Doctor>;
     let personRepository: Repository<Person>;
@@ -57,6 +58,9 @@ describe('DoctorService', () => {
 
         jest.clearAllMocks();
     });
+    // -----------------------------
+  // TESTS CREATE
+  // -----------------------------
     describe('create', () => {
         it('should create a doctor', async () => {
         const doctorData = {

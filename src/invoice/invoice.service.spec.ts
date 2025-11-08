@@ -50,9 +50,10 @@ describe('InvoiceService', () => {
         jest.clearAllMocks();
     });
 
-  // --- CREATE ---
+  // -----------------------------
+  // CREATE
+  // -----------------------------
     describe('create', () => {
-    // invoice/invoice.service.spec.ts
 
         it('should create a new invoice successfully', async () => {
             const dto = { 
@@ -110,7 +111,6 @@ describe('InvoiceService', () => {
         });
         
         it('should throw an error if patient not found', async () => {
-            // Mockeamos la cita como encontrada para que el error sea el paciente
             (mockAppointmentRepository.findOne as jest.Mock).mockResolvedValue({ id: 1 });
             (mockPatientRepository.findOne as jest.Mock).mockResolvedValue(null); 
             
@@ -121,7 +121,9 @@ describe('InvoiceService', () => {
         });
     });
 
-    // --- FIND ALL ---
+    // -----------------------------
+  // FIND ALL
+  // -----------------------------
     describe('findAll', () => {
         it('should return all invoices', async () => {
         const invoices = [{ id_factura: 1 }, { id_factura: 2 }];
@@ -137,7 +139,9 @@ describe('InvoiceService', () => {
         });
     });
 
-    // --- FIND ONE ---
+    // -----------------------------
+  // FIND ONE
+  // -----------------------------
     describe('findOne', () => {
         it('should return one invoice', async () => {
         const invoice = { id_factura: 1 };
@@ -153,7 +157,9 @@ describe('InvoiceService', () => {
         });
     });
 
-  // --- UPDATE ---
+  // -----------------------------
+  // UPDATE
+  // -----------------------------
 describe('update', () => {
     it('should update an existing invoice', async () => {
         const existing = { id_factura: 1, total: 200, metodo_pago: 'Cash' };
@@ -177,19 +183,19 @@ describe('update', () => {
     });
 });
 
-  // --- DELETE (REMOVE) ---
+  // -----------------------------
+  // DELETE (REMOVE)
+  // -----------------------------
     describe('remove', () => {
         it('should delete an invoice successfully', async () => {
         const existing = { id_factura: 1 };
         
         (mockInvoiceRepository.findOne as jest.Mock).mockResolvedValue(existing);
-        // ✅ CORRECCIÓN: Mockeamos 'remove' para que se ejecute sin error
         (mockInvoiceRepository.remove as jest.Mock).mockResolvedValue(existing); 
 
         const result = await service.remove(1);
         
         expect(result.statusCode).toBe(HttpStatus.OK);
-        // ✅ Verificamos la llamada a 'remove' con el objeto entidad
         expect(mockInvoiceRepository.remove).toHaveBeenCalledWith(existing); 
         });
 
