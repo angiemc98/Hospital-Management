@@ -164,15 +164,19 @@ actualización y eliminación de medicamentos.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#remove" >remove</a>
                             </li>
                             <li>
@@ -202,7 +206,7 @@ actualización y eliminación de medicamentos.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/medicine/medicine.service.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/medicine/medicine.service.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -260,6 +264,7 @@ actualización y eliminación de medicamentos.</p>
                 <td class="col-md-4">
                     <a name="create"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>create</b></span>
                         <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -267,15 +272,16 @@ actualización y eliminación de medicamentos.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>create(medicineDto: <a href="../classes/CreateMedicineDto.html" target="_self">CreateMedicineDto</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(dto: <a href="../classes/CreateMedicineDto.html" target="_self">CreateMedicineDto</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/medicine/medicine.service.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/medicine/medicine.service.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -300,12 +306,11 @@ actualización y eliminación de medicamentos.</p>
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
-                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>medicineDto</td>
+                                                <td>dto</td>
                                             <td>
                                                             <code><a href="../classes/CreateMedicineDto.html" target="_self" >CreateMedicineDto</a></code>
                                             </td>
@@ -315,18 +320,12 @@ actualización y eliminación de medicamentos.</p>
                                             </td>
 
 
-                                            <td>
-                                                    <ul>
-<li>Datos del medicamento a crear</li>
-</ul>
-
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -343,6 +342,7 @@ actualización y eliminación de medicamentos.</p>
                 <td class="col-md-4">
                     <a name="findAll"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -350,15 +350,16 @@ actualización y eliminación de medicamentos.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findAll()</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/medicine/medicine.service.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/medicine/medicine.service.ts:93</a></div>
                         </td>
                     </tr>
 
@@ -369,7 +370,7 @@ actualización y eliminación de medicamentos.</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">const medicines = await medicineService.findAll();</code></pre></div></div>
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -386,6 +387,7 @@ actualización y eliminación de medicamentos.</p>
                 <td class="col-md-4">
                     <a name="findOne"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>findOne</b></span>
                         <a href="#findOne"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -393,15 +395,16 @@ actualización y eliminación de medicamentos.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="78"
-                                    class="link-to-prism">src/medicine/medicine.service.ts:78</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/medicine/medicine.service.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -446,7 +449,7 @@ actualización y eliminación de medicamentos.</p>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -463,6 +466,7 @@ actualización y eliminación de medicamentos.</p>
                 <td class="col-md-4">
                     <a name="remove"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>remove</b></span>
                         <a href="#remove"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -470,15 +474,16 @@ actualización y eliminación de medicamentos.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="113"
-                                    class="link-to-prism">src/medicine/medicine.service.ts:113</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">src/medicine/medicine.service.ts:213</a></div>
                         </td>
                     </tr>
 
@@ -523,7 +528,7 @@ actualización y eliminación de medicamentos.</p>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -549,15 +554,15 @@ actualización y eliminación de medicamentos.</p>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, medicineDto: <a href="../classes/UpdateMedicineDto.html" target="_self">UpdateMedicineDto</a>)</code>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, dto: <a href="../classes/UpdateMedicineDto.html" target="_self">UpdateMedicineDto</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="97"
-                                    class="link-to-prism">src/medicine/medicine.service.ts:97</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/medicine/medicine.service.ts:169</a></div>
                         </td>
                     </tr>
 
@@ -602,7 +607,7 @@ actualización y eliminación de medicamentos.</p>
                                             </td>
                                         </tr>
                                         <tr>
-                                                <td>medicineDto</td>
+                                                <td>dto</td>
                                             <td>
                                                             <code><a href="../classes/UpdateMedicineDto.html" target="_self" >UpdateMedicineDto</a></code>
                                             </td>
@@ -613,17 +618,13 @@ actualización y eliminación de medicamentos.</p>
 
 
                                             <td>
-                                                    <ul>
-<li>Datos actualizados del medicamento</li>
-</ul>
-
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
 
                         </div>
                             <div class="io-description">
@@ -640,12 +641,13 @@ actualización y eliminación de medicamentos.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpStatus, Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { Medicine } from &#x27;./medicine.entity&#x27;;
 import { Repository } from &#x27;typeorm&#x27;;
 import { CreateMedicineDto } from &#x27;./dto/create-medicine.dto&#x27;;
 import { UpdateMedicineDto } from &#x27;./dto/update-medicine.dto&#x27;;
+import { HttpException } from &#x27;@nestjs/common&#x27;;
 
 /**
  * Servicio para gestionar las operaciones de medicamentos
@@ -687,10 +689,39 @@ export class MedicineService {
      * });
      * &#x60;&#x60;&#x60;
      */
-    create(medicineDto: CreateMedicineDto) {
-        const medicine &#x3D; this.medicineRepository.create(medicineDto);
-        return this.medicineRepository.save(medicine);
+async create(dto: CreateMedicineDto): Promise&lt;{
+message: string;
+statusCode: number;
+data: Medicine;
+}&gt; {
+try {
+    const existing &#x3D; await this.medicineRepository.findOne({
+    where: { name: dto.name },
+    });
+
+    if (existing) {
+    return {
+        message: &#x27;Medicine already exists&#x27;,
+        statusCode: HttpStatus.CONFLICT,
+        data: existing,
+    };
     }
+
+    const newMedicine &#x3D; this.medicineRepository.create(dto);
+    const saved &#x3D; await this.medicineRepository.save(newMedicine);
+
+    return {
+    message: &#x27;Medicine created successfully&#x27;,
+    statusCode: HttpStatus.CREATED,
+    data: saved,
+    };
+} catch (error) {
+    throw new HttpException(
+    { message: &#x27;Error creating medicine&#x27;, error: error.message },
+    HttpStatus.BAD_REQUEST,
+    );
+}
+}
 
     /**
      * Obtiene todos los medicamentos registrados
@@ -702,9 +733,25 @@ export class MedicineService {
      * const medicines &#x3D; await medicineService.findAll();
      * &#x60;&#x60;&#x60;
      */
-    findAll() {
-        return this.medicineRepository.find();
+async findAll(): Promise&lt;{
+    message: string;
+    statusCode: number;
+    data: Medicine[];
+  }&gt; {
+    try {
+        const medicines &#x3D; await this.medicineRepository.find();
+        return {
+        message: &#x27;All medicines retrieved successfully&#x27;,
+        statusCode: HttpStatus.OK,
+        data: medicines,
+    };
+    } catch (error) {
+        throw new HttpException(
+        { message: &#x27;Error retrieving medicines&#x27;, error: error.message },
+        HttpStatus.BAD_REQUEST,
+    );
     }
+}
 
     /**
      * Busca un medicamento por su ID
@@ -717,9 +764,35 @@ export class MedicineService {
      * const medicine &#x3D; await medicineService.findOne(1);
      * &#x60;&#x60;&#x60;
      */
-    findOne(id: number) {
-        return this.medicineRepository.findOne({where: {id}});
+ async findOne(id: number): Promise&lt;{
+    message: string;
+    statusCode: number;
+    data: Medicine | null;
+  }&gt; {
+    try {
+      const medicine &#x3D; await this.medicineRepository.findOne({
+        where: { id },
+      });
+
+      if (!medicine) {
+        throw new HttpException(
+          { message: &#x27;Medicine not found&#x27; },
+          HttpStatus.NOT_FOUND,
+        );
+      }
+
+      return {
+        message: &#x27;Medicine found successfully&#x27;,
+        statusCode: HttpStatus.OK,
+        data: medicine,
+      };
+    } catch (error) {
+      throw new HttpException(
+        { message: &#x27;Error finding medicine&#x27;, error: error.message },
+        HttpStatus.BAD_REQUEST,
+      );
     }
+  }
 
     /**
      * Actualiza un medicamento existente
@@ -736,10 +809,38 @@ export class MedicineService {
      * });
      * &#x60;&#x60;&#x60;
      */
-    async update(id: number, medicineDto: UpdateMedicineDto) {
-        await this.medicineRepository.update(id, medicineDto);
-        return this.findOne(id);
+async update(
+    id: number,
+    dto: UpdateMedicineDto,
+  ): Promise&lt;{
+    message: string;
+    statusCode: number;
+    data: Medicine;
+  }&gt; {
+    const medicine &#x3D; await this.medicineRepository.findOne({ where: { id } });
+    if (!medicine) {
+      throw new HttpException(
+        { message: &#x27;Medicine not found&#x27; },
+        HttpStatus.NOT_FOUND,
+      );
     }
+
+    Object.assign(medicine, dto);
+
+    try {
+      const updated &#x3D; await this.medicineRepository.save(medicine);
+      return {
+        message: &#x27;Medicine updated successfully&#x27;,
+        statusCode: HttpStatus.OK,
+        data: updated,
+      };
+    } catch (error) {
+      throw new HttpException(
+        { message: &#x27;Error updating medicine&#x27;, error: error.message },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
 
     /**
      * Elimina un medicamento por su ID
@@ -752,9 +853,33 @@ export class MedicineService {
      * await medicineService.remove(1);
      * &#x60;&#x60;&#x60;
      */
-    remove(id: number) {
-        return this.medicineRepository.delete(id);
+     async remove(id: number): Promise&lt;{
+    message: string;
+    statusCode: number;
+    data: any;
+  }&gt; {
+    const medicine &#x3D; await this.medicineRepository.findOne({ where: { id } });
+    if (!medicine) {
+      throw new HttpException(
+        { message: &#x27;Medicine not found&#x27; },
+        HttpStatus.NOT_FOUND,
+      );
     }
+
+    try {
+      const deleted &#x3D; await this.medicineRepository.delete(id);
+      return {
+        message: &#x27;Medicine deleted successfully&#x27;,
+        statusCode: HttpStatus.OK,
+        data: deleted,
+      };
+    } catch (error) {
+      throw new HttpException(
+        { message: &#x27;Error deleting medicine&#x27;, error: error.message },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
 }</code></pre>
     </div>
 

@@ -169,6 +169,7 @@ de sus relaciones con Appointment y Patient.</p>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
@@ -206,7 +207,7 @@ de sus relaciones con Appointment y Patient.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/invoice/invoice.service.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/invoice/invoice.service.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -316,8 +317,8 @@ de sus relaciones con Appointment y Patient.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/invoice/invoice.service.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/invoice/invoice.service.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -388,6 +389,7 @@ Si no se proporciona estado de pago, se establece como &#39;Pendiente&#39; por d
                 <td class="col-md-4">
                     <a name="findAll"></a>
                     <span class="name">
+                            <span class="modifier">Async</span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -395,15 +397,16 @@ Si no se proporciona estado de pago, se establece como &#39;Pendiente&#39; por d
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>findAll()</code>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll()</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="100"
-                                    class="link-to-prism">src/invoice/invoice.service.ts:100</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/invoice/invoice.service.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -415,7 +418,7 @@ Si no se proporciona estado de pago, se establece como &#39;Pendiente&#39; por d
 // Retorna facturas con propety_cita y propety_patient poblados</code></pre></div></div>
 
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -448,8 +451,8 @@ Si no se proporciona estado de pago, se establece como &#39;Pendiente&#39; por d
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="118"
-                                    class="link-to-prism">src/invoice/invoice.service.ts:118</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/invoice/invoice.service.ts:138</a></div>
                         </td>
                     </tr>
 
@@ -527,8 +530,8 @@ Si no se proporciona estado de pago, se establece como &#39;Pendiente&#39; por d
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="194"
-                                    class="link-to-prism">src/invoice/invoice.service.ts:194</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/invoice/invoice.service.ts:208</a></div>
                         </td>
                     </tr>
 
@@ -609,8 +612,8 @@ un mensaje de confirmación tras la eliminación exitosa.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="150"
-                                    class="link-to-prism">src/invoice/invoice.service.ts:150</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">src/invoice/invoice.service.ts:174</a></div>
                         </td>
                     </tr>
 
@@ -704,6 +707,9 @@ import { Repository } from &#x27;typeorm&#x27;;
 import { Invoice } from &#x27;./invoice.entity&#x27;;
 import { Appointment } from &#x27;src/appointment/appointment.entity&#x27;;
 import { Patient } from &#x27;src/patient/patient.entity&#x27;;
+import { HttpStatus } from &#x27;@nestjs/common/enums/http-status.enum&#x27;;
+import { HttpException } from &#x27;@nestjs/common/exceptions/http.exception&#x27;;
+
 
 /**
  * Servicio para gestionar las operaciones de facturas
@@ -760,28 +766,40 @@ export class InvoiceService {
    * &#x60;&#x60;&#x60;
    */
   async create(dto: CreateInvoiceDto) {
-    // Busca la cita
-    const appointment &#x3D; await this.appointmentRepository.findOne({
-      where: { id: dto.id_cita },
-    });
-    if (!appointment) throw new Error(&#x27;Appointment not found&#x27;);
-    
-    // Busca el paciente
-    const patient &#x3D; await this.patientRepository.findOne({
-      where: { id: dto.id_paciente },
-    });
-    if (!patient) throw new Error(&#x27;Patient not found&#x27;);
-
-    // Crea la factura con las relaciones correctas
-    const invoice &#x3D; this.invoiceRepository.create({
-      total: dto.total,
-      metodo_pago: dto.metodo_pago,
-      estado_pago: dto.estado_pago || &#x27;Pendiente&#x27;,
-      propety_cita: appointment,
-      propety_patient: patient,
-    });
-
-    return this.invoiceRepository.save(invoice);
+    try {
+      // Search for appointment
+      const appointment &#x3D; await this.appointmentRepository.findOne({
+        where: { id: dto.id_cita },
+      });
+      if (!appointment) throw new Error(&#x27;Appointment not found&#x27;);
+      
+      // Search for patient
+      const patient &#x3D; await this.patientRepository.findOne({
+        where: { id: dto.id_paciente },
+      });
+      if (!patient) throw new Error(&#x27;Patient not found&#x27;);
+      
+      // Create the invoice
+      const invoice &#x3D; this.invoiceRepository.create({
+        fecha: new Date(),
+        total: dto.total,
+        metodo_pago: dto.metodo_pago,
+        estado_pago: dto.estado_pago,
+        propety_cita: appointment,
+        propety_patient: patient,
+      });
+      const savedInvoice &#x3D; await this.invoiceRepository.save(invoice);
+      return {
+        message: &#x27;Invoice created successfully&#x27;,
+        statusCode: HttpStatus.CREATED,
+        data: savedInvoice
+      };
+  } catch (error) {
+    throw new HttpException(
+      { message: error.message || &#x27;Error creating invoice&#x27; },
+      HttpStatus.INTERNAL_SERVER_ERROR,
+    );
+  }
   }
 
   /**
@@ -795,10 +813,15 @@ export class InvoiceService {
    * // Retorna facturas con propety_cita y propety_patient poblados
    * &#x60;&#x60;&#x60;
    */
-  findAll() {
-    return this.invoiceRepository.find({
+  async findAll() {
+    const invoices &#x3D; await this.invoiceRepository.find({
       relations: [&#x27;propety_cita&#x27;, &#x27;propety_patient&#x27;],
     });
+    return {
+      message: &#x27;All invoices retrieved successfully&#x27;,
+      statusCode: HttpStatus.OK,
+      data: invoices
+    }
   }
 
   /**
@@ -818,8 +841,12 @@ export class InvoiceService {
       where: { id_factura: id },
       relations: [&#x27;propety_cita&#x27;, &#x27;propety_patient&#x27;],
     });
-    if (!invoice) throw new Error(&#x27;Invoice not found&#x27;);
-    return invoice;
+    if (!invoice) throw new HttpException(&#x27;Invoice not found&#x27;, HttpStatus.NOT_FOUND);
+    return {
+      message: &#x27;Invoice retrieved successfully&#x27;,
+      statusCode: HttpStatus.OK,
+      data: invoice
+    }
   }
 
   /**
@@ -846,30 +873,20 @@ export class InvoiceService {
    * &#x60;&#x60;&#x60;
    */
   async update(id: number, dto: UpdateInvoiceDto) {
-    // Verificación de existencia de la factura
-    const invoice &#x3D; await this.findOne(id);
+    // Verification of existence of invoice
+    const invoice &#x3D; await this.invoiceRepository.findOne({
+      where: { id_factura: id },
+    });
 
-    // Si se envía nuevo id_cita, actualiza la relación
-    if (dto.id_cita) {
-      const appointment &#x3D; await this.appointmentRepository.findOne({
-        where: { id: dto.id_cita },
-      });
-      if (!appointment) throw new Error(&#x27;Appointment not found&#x27;);
-      invoice.propety_cita &#x3D; appointment;
-    }
+    if (!invoice) throw new HttpException(&#x27;Invoice not found&#x27;, HttpStatus.NOT_FOUND);
 
-    // Si se envía nuevo id_paciente, actualiza la relación
-    if (dto.id_paciente) {
-      const patient &#x3D; await this.patientRepository.findOne({
-        where: { id: dto.id_paciente },
-      });
-      if (!patient) throw new Error(&#x27;Patient not found&#x27;);
-      invoice.propety_patient &#x3D; patient;
-    }
-
-    // Actualiza campos simples
     Object.assign(invoice, dto);
-    return this.invoiceRepository.save(invoice);
+    const updatedInvoice &#x3D; await this.invoiceRepository.save(invoice);
+    return {
+      message: &#x27;Invoice updated successfully&#x27;,
+      statusCode: HttpStatus.OK,
+      data: updatedInvoice
+    }
   }
 
   /**
@@ -890,10 +907,16 @@ export class InvoiceService {
    * &#x60;&#x60;&#x60;
    */
   async remove(id: number) {
-    const invoice &#x3D; await this.findOne(id);
+    const invoice &#x3D; await this.invoiceRepository.findOne({
+      where: { id_factura: id },
+    });
+    if (!invoice) throw new HttpException(&#x27;Invoice not found&#x27;, HttpStatus.NOT_FOUND);
     await this.invoiceRepository.remove(invoice);
-    return { message: &#x60;Invoice with id ${id} deleted successfully&#x60; };
+    return {
+      message: &#x27;Invoice deleted successfully&#x27;,
+      statusCode: HttpStatus.OK,
   }
+}
 }</code></pre>
     </div>
 

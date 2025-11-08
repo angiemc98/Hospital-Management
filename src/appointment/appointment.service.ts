@@ -9,9 +9,30 @@ import { Patient } from 'src/patient/patient.entity';
 import { Office } from 'src/office/office.entity';
 import { HttpStatus } from '@nestjs/common/enums/http-status.enum';
 
+/**
+ * Servicio para gestionar las operaciones de citas médicas
+ * 
+ * @description
+ * Este servicio proporciona métodos para realizar operaciones CRUD
+ * sobre la entidad Appointment, incluyendo la creación, lectura,
+ * actualización y eliminación de citas médicas, así como el manejo
+ * de sus relaciones con Doctor, Patient y Office.
+ * Implementa manejo robusto de errores con HttpException y respuestas estructuradas.
+ * 
+ * @export
+ * @class AppointmentService
+ */
 @Injectable()
 export class AppointmentService {
 
+  /**
+   * Constructor del servicio de citas médicas
+   * 
+   * @param {Repository<Appointment>} appointmentRepository - Repositorio de TypeORM para la entidad Appointment
+   * @param {Repository<Doctor>} doctorRepository - Repositorio de TypeORM para la entidad Doctor
+   * @param {Repository<Patient>} patientRepository - Repositorio de TypeORM para la entidad Patient
+   * @param {Repository<Office>} officeRepository - Repositorio de TypeORM para la entidad Office
+   */
   constructor(
     @InjectRepository(Appointment)
     private readonly appointmentRepository: Repository<Appointment>,
@@ -19,28 +40,53 @@ export class AppointmentService {
     private readonly doctorRepository: Repository<Doctor>,
     @InjectRepository(Patient)
     private readonly patientRepository: Repository<Patient>,
-    
     @InjectRepository(Office)
     private readonly officeRepository: Repository<Office>,
-    
   ) { }
 
-  // async create (createAppointmentDto: CreateAppointmentDto)
+  /**
+   * Crea una nueva cita médica en la base de datos
+   * 
+   * @description
+   * Crea una cita asociándola con un doctor, paciente y consultorio existentes.
+   * Verifica que todas las entidades relacionadas existan antes de crear la cita.
+   * Si no se proporciona estado, se establece como 'scheduled' por defecto.
+   * Retorna una respuesta estructurada con mensaje, código de estado y datos.
+   * 
+   * @param {CreateAppointmentDto} createAppointmentDto - Datos de la cita a crear
+   * @returns {Promise<{message: string, statusCode: number, data: Appointment}>} Respuesta con la cita creada
+   * @throws {HttpException} Si el doctor, paciente o consultorio no existen
+   * @throws {HttpException} Si ocurre un error durante la creación
+   * 
+   * @example
+   * ```typescript
+   * const newAppointment = await appointmentService.create({
+   *   date: "2024-03-15T10:00:00",
+   *   reason: "Consulta general",
+   *   notes: "Paciente refiere dolor de cabeza",
+   *   status: "scheduled",
+   *   doctorId: 1,
+   *   patientId: 5,
+   *   officeId: 101
+   * });
+   * // Retorna: { message: "Appointment created successfully", statusCode: 201, data: {...} }
+   * ```
+   */
   async create (createAppointmentDto: CreateAppointmentDto) {
     try {
-      // Search of patient, doctor and office by ID
+      // Búsqueda de paciente, doctor y consultorio por ID
       const doctor = await this.doctorRepository.findOneBy({id: createAppointmentDto.doctorId});
       const patient = await this.patientRepository.findOneBy({id: createAppointmentDto.patientId});
       const office = await this.officeRepository.findOneBy({id_consultorio: createAppointmentDto.officeId});
       
-      // Verification of existence of doctor, patient and office
+      // Verificación de existencia de doctor, paciente y consultorio
       if (!doctor || !patient) {
         throw new Error('Doctor or patient not found');
       }
       if (!office) {
         throw new Error('Office not found');
       }
-      // Create the appointment with the correct relations
+      // Crea la cita con las relaciones correctas
       const appointment = this.appointmentRepository.create({
         date: new Date(createAppointmentDto.date),
         reason: createAppointmentDto.reason,
@@ -49,7 +95,6 @@ export class AppointmentService {
         doctor: doctor,
         patient: patient,
         office: office
-        
       });
       const saved = await this.appointmentRepository.save(appointment);
       return {
@@ -67,7 +112,21 @@ export class AppointmentService {
     }
   }
 
-  // Find all appointments with relations doctor and patient
+  /**
+   * Obtiene todas las citas médicas registradas
+   * 
+   * @description
+   * Recupera todas las citas con sus relaciones de doctor y paciente pobladas.
+   * Retorna una respuesta estructurada con mensaje, código de estado y datos.
+   * 
+   * @returns {Promise<{message: string, statusCode: number, data: Appointment[]}>} Respuesta con todas las citas
+   * 
+   * @example
+   * ```typescript
+   * const result = await appointmentService.findAll();
+   * // Retorna: { message: "All appointments retrieved successfully", statusCode: 200, data: [...] }
+   * ```
+   */
   async findAll() {
     const appointments = await this.appointmentRepository.find({ relations: ['doctor', 'patient'] });
     return {
@@ -77,7 +136,23 @@ export class AppointmentService {
     }
   }
 
-  // Find one appointment with relations doctor and patient
+  /**
+   * Busca una cita médica por su ID
+   * 
+   * @description
+   * Recupera una cita específica con sus relaciones de doctor y paciente.
+   * Retorna una respuesta estructurada con mensaje, código de estado y datos.
+   * 
+   * @param {number} id - ID de la cita a buscar
+   * @returns {Promise<{message: string, statusCode: number, data: Appointment}>} Respuesta con la cita encontrada
+   * @throws {HttpException} Si la cita no existe (404 NOT_FOUND)
+   * 
+   * @example
+   * ```typescript
+   * const result = await appointmentService.findOne(1);
+   * // Retorna: { message: "Appointment found successfully", statusCode: 200, data: {...} }
+   * ```
+   */
   async findOne(id: number) {
     const appointment = await this.appointmentRepository.findOne({ where: { id }, relations: ['doctor', 'patient'] });
     
@@ -97,7 +172,28 @@ export class AppointmentService {
     }
   }
 
-  // Update appoinment use of UpdateAppointmentDto
+  /**
+   * Actualiza una cita médica existente
+   * 
+   * @description
+   * Actualiza los datos de una cita existente.
+   * Verifica la existencia de la cita antes de actualizar.
+   * Retorna una respuesta estructurada con mensaje, código de estado y datos actualizados.
+   * 
+   * @param {number} id - ID de la cita a actualizar
+   * @param {UpdateAppointmentDto} updateAppointmentDto - Datos actualizados de la cita
+   * @returns {Promise<{message: string, statusCode: number, data: Appointment}>} Respuesta con la cita actualizada
+   * @throws {HttpException} Si la cita no existe (404 NOT_FOUND)
+   * 
+   * @example
+   * ```typescript
+   * const result = await appointmentService.update(1, {
+   *   status: "completed",
+   *   notes: "Paciente atendido satisfactoriamente"
+   * });
+   * // Retorna: { message: "Cita actualizada", statusCode: 200, data: {...} }
+   * ```
+   */
   async update(id: number, updateAppointmentDto: UpdateAppointmentDto) {
     const appointment = await this.appointmentRepository.findOne({ where: { id } });
     if (!appointment) {
@@ -108,7 +204,23 @@ export class AppointmentService {
     return { message: 'Cita actualizada', statusCode: HttpStatus.OK, data: updated };
   }
 
-  // Delete appointment by id
+  /**
+   * Elimina una cita médica por su ID
+   * 
+   * @description
+   * Verifica la existencia de la cita antes de eliminarla.
+   * Retorna una respuesta estructurada con mensaje de confirmación.
+   * 
+   * @param {number} id - ID de la cita a eliminar
+   * @returns {Promise<{message: string, statusCode: number}>} Mensaje de confirmación de eliminación
+   * @throws {HttpException} Si la cita no existe (404 NOT_FOUND)
+   * 
+   * @example
+   * ```typescript
+   * const result = await appointmentService.remove(1);
+   * // Retorna: { message: "Appointment deleted successfully", statusCode: 200 }
+   * ```
+   */
   async remove(id: number) {
     const appointment = await this.appointmentRepository.findOne({ where: { id } });
     if (!appointment) {

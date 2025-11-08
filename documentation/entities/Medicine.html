@@ -165,37 +165,46 @@ medicine.price = &quot;5000&quot;;</code></pre></div>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#description" >description</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#details" >details</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#id" >id</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#name" >name</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#prescription" >prescription</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#presentation" >presentation</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#price" >price</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
+                                    <span class="modifier"></span>
                                 <a href="#stock" >stock</a>
                             </li>
                             <li>
+                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#type" >type</a>
                             </li>
@@ -224,6 +233,7 @@ medicine.price = &quot;5000&quot;;</code></pre></div>
                     <a name="description"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>description</b></span>
                         <a href="#description"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -240,13 +250,13 @@ medicine.price = &quot;5000&quot;;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({type: &#x27;text&#x27;, nullable: true})<br />
+                            @ApiProperty({description: &#x27;Additional information about the medicine, usage or warnings&#x27;, required: false})<br />@Column({type: &#x27;text&#x27;, nullable: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/medicine/medicine.entity.ts:91</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/medicine/medicine.entity.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -266,6 +276,7 @@ medicine.price = &quot;5000&quot;;</code></pre></div>
                     <a name="details"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>details</b></span>
                         <a href="#details"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -282,13 +293,13 @@ medicine.price = &quot;5000&quot;;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @OneToMany(undefined, prescription &#x3D;&gt; prescription.medicine)<br />
+                            @ApiProperty({type: () &#x3D;&gt; })<br />@OneToMany(undefined, prescription &#x3D;&gt; prescription.medicine)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/medicine/medicine.entity.ts:125</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/medicine/medicine.entity.ts:166</a></div>
                         </td>
                     </tr>
 
@@ -310,6 +321,7 @@ See <a href="../entitys/PrescriptionDetail.html">PrescriptionDetail</a></p>
                     <a name="id"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>id</b></span>
                         <a href="#id"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -326,13 +338,13 @@ See <a href="../entitys/PrescriptionDetail.html">PrescriptionDetail</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @PrimaryGeneratedColumn()<br />
+                            @ApiProperty({description: &#x27;Unique identifier for the medicine&#x27;, example: 1, readOnly: true})<br />@PrimaryGeneratedColumn()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/medicine/medicine.entity.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/medicine/medicine.entity.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -352,6 +364,7 @@ See <a href="../entitys/PrescriptionDetail.html">PrescriptionDetail</a></p>
                     <a name="name"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>name</b></span>
                         <a href="#name"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -368,13 +381,13 @@ See <a href="../entitys/PrescriptionDetail.html">PrescriptionDetail</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({type: &#x27;varchar&#x27;, length: 100})<br />
+                            @ApiProperty({description: &#x27;Commercial or generic name of the medicine&#x27;, example: &#x27;Paracetamol&#x27;, minLength: 2, maxLength: 100})<br />@Column({type: &#x27;varchar&#x27;, length: 100})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/medicine/medicine.entity.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/medicine/medicine.entity.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -394,6 +407,7 @@ See <a href="../entitys/PrescriptionDetail.html">PrescriptionDetail</a></p>
                     <a name="prescription"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>prescription</b></span>
                         <a href="#prescription"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -410,13 +424,13 @@ See <a href="../entitys/PrescriptionDetail.html">PrescriptionDetail</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @OneToMany(undefined, prescription &#x3D;&gt; prescription.medicine)<br />
+                            @ApiProperty({type: () &#x3D;&gt; })<br />@OneToMany(undefined, prescription &#x3D;&gt; prescription.medicine)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/medicine/medicine.entity.ts:114</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/medicine/medicine.entity.ts:154</a></div>
                         </td>
                     </tr>
 
@@ -438,6 +452,7 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
                     <a name="presentation"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>presentation</b></span>
                         <a href="#presentation"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -454,13 +469,13 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({type: &#x27;varchar&#x27;, length: 50})<br />
+                            @ApiProperty({description: &#x27;Dosage and quantity information of the medicine&#x27;, example: &#x27;500mg&#x27;, minLength: 2, maxLength: 50})<br />@Column({type: &#x27;varchar&#x27;, length: 50})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/medicine/medicine.entity.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/medicine/medicine.entity.ts:94</a></div>
                         </td>
                     </tr>
 
@@ -480,6 +495,7 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
                     <a name="price"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>price</b></span>
                         <a href="#price"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -487,7 +503,7 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                     </td>
                 </tr>
@@ -496,13 +512,13 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({type: &#x27;varchar&#x27;, length: 50})<br />
+                            @ApiProperty({description: &#x27;Sale price per unit of the medicine&#x27;, example: &#x27;5000&#x27;, minLength: 2, maxLength: 50})<br />@Column({type: &#x27;varchar&#x27;, length: 50})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/medicine/medicine.entity.ts:103</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/medicine/medicine.entity.ts:142</a></div>
                         </td>
                     </tr>
 
@@ -522,6 +538,7 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
                     <a name="stock"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>stock</b></span>
                         <a href="#stock"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -538,13 +555,13 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({type: &#x27;int&#x27;, default: 0})<br />
+                            @ApiProperty({description: &#x27;Current available quantity in inventory&#x27;, example: 100, default: 0})<br />@Column({type: &#x27;int&#x27;, default: 0})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/medicine/medicine.entity.ts:81</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/medicine/medicine.entity.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -564,6 +581,7 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
                     <a name="type"></a>
                     <span class="name">
                             <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>type</b></span>
                         <a href="#type"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -580,13 +598,13 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @Column({type: &#x27;varchar&#x27;, length: 50})<br />
+                            @ApiProperty({description: &#x27;Physical form of the medicine&#x27;, example: &#x27;tablet&#x27;, minLength: 2, maxLength: 50})<br />@Column({type: &#x27;varchar&#x27;, length: 50})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/medicine/medicine.entity.ts:57</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/medicine/medicine.entity.ts:75</a></div>
                         </td>
                     </tr>
 
@@ -607,6 +625,7 @@ See <a href="../entitys/Prescription.html">Prescription</a></p>
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from &quot;typeorm&quot;;
 import { Prescription } from &quot;src/prescription/prescription.entity&quot;;
 import { PrescriptionDetail } from &quot;src/prescription-detail/prescription-detail.entity&quot;;
+import { ApiProperty } from &quot;@nestjs/swagger&quot;;
 
 /**
  * Entidad que representa un medicamento en el sistema
@@ -634,6 +653,11 @@ export class Medicine {
      * @type {number}
      * @description Identificador único autogenerado para el medicamento
      */
+    @ApiProperty({
+        description: &#x27;Unique identifier for the medicine&#x27;,
+        example: 1,
+        readOnly: true,
+    })
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -646,6 +670,12 @@ export class Medicine {
      * @maxLength 100
      * @required
      */
+     @ApiProperty({
+        description: &#x27;Commercial or generic name of the medicine&#x27;,
+        example: &#x27;Paracetamol&#x27;,
+        minLength: 2,
+        maxLength: 100,
+    })
     @Column({type: &#x27;varchar&#x27;, length: 100})
     name: string;
 
@@ -659,6 +689,12 @@ export class Medicine {
      * @required
      * @example &quot;tablet&quot;, &quot;pill&quot;, &quot;liquid&quot;, &quot;injection&quot;
      */
+     @ApiProperty({
+        description: &#x27;Physical form of the medicine&#x27;,
+        example: &#x27;tablet&#x27;,
+        minLength: 2,
+        maxLength: 50,
+    })
     @Column({type: &#x27;varchar&#x27;, length: 50})
     type: string; //tablet, pill, liquid, injection
 
@@ -672,6 +708,12 @@ export class Medicine {
      * @required
      * @example &quot;500mg&quot;, &quot;100ml&quot;, &quot;250mg/5ml&quot;
      */
+    @ApiProperty({
+        description: &#x27;Dosage and quantity information of the medicine&#x27;,
+        example: &#x27;500mg&#x27;,
+        minLength: 2,
+        maxLength: 50,
+    })
     @Column({type: &#x27;varchar&#x27;, length: 50})
     presentation: string; // 500mg, 100ml, etc
 
@@ -683,6 +725,11 @@ export class Medicine {
      * @default 0
      * @required
      */
+    @ApiProperty({
+        description: &#x27;Current available quantity in inventory&#x27;,
+        example: 100,
+        default: 0,
+    })
     @Column({type: &#x27;int&#x27;, default: 0})
     stock: number;
 
@@ -693,6 +740,10 @@ export class Medicine {
      * @description Información adicional sobre el medicamento, uso o advertencias
      * @optional
      */
+    @ApiProperty({
+        description: &#x27;Additional information about the medicine, usage or warnings&#x27;,
+        required: false,
+    })
     @Column({type: &#x27;text&#x27;, nullable: true})
     description: string;
 
@@ -705,8 +756,14 @@ export class Medicine {
      * @maxLength 50
      * @required
      */
+    @ApiProperty({
+        description: &#x27;Sale price per unit of the medicine&#x27;,
+        example: &#x27;5000&#x27;,
+        minLength: 2,
+        maxLength: 50,
+    })
     @Column({type: &#x27;varchar&#x27;, length: 50})
-    price: string;
+    price: number;
 
     /**
      * Prescripciones asociadas con este medicamento
@@ -716,6 +773,7 @@ export class Medicine {
      * Un medicamento puede estar incluido en múltiples prescripciones.
      * @see {@link Prescription}
      */
+    @ApiProperty({ type: () &#x3D;&gt; [Prescription] })
     @OneToMany(() &#x3D;&gt; Prescription, (prescription) &#x3D;&gt; prescription.medicine)
     prescription: Prescription[];
     
@@ -727,6 +785,7 @@ export class Medicine {
      * Un medicamento puede aparecer en múltiples detalles de prescripción.
      * @see {@link PrescriptionDetail}
      */
+    @ApiProperty({ type: () &#x3D;&gt; [PrescriptionDetail] })
     @OneToMany(() &#x3D;&gt; PrescriptionDetail, (prescription) &#x3D;&gt; prescription.medicine)
     details: PrescriptionDetail[];
     
