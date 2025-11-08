@@ -1,7 +1,7 @@
 // Importación de la clase doctor para usar la entidad y hacer la relación en la BD 
 import { Doctor } from "../doctor/doctor.entity";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ApiProperty } from "@nestjs/swagger";
+
 /**
  * Entidad que representa una especialidad médica en el sistema
  * 
@@ -28,11 +28,6 @@ export class Specialty{
      * @type {number}
      * @description Identificador único autogenerado para la especialidad
      */
-     @ApiProperty({
-        description: 'Unique identifier for the specialty',
-        example: 1,
-        readOnly: true,
-    })
     @PrimaryGeneratedColumn()
     id_especialidad: number;
 
@@ -48,13 +43,6 @@ export class Specialty{
      * 
      * @example "Cardiología", "Pediatría", "Dermatología"
      */
-     @ApiProperty({
-        description: 'Name of the medical specialty, must be unique',
-        example: 'Cardiology',
-        unique: true,
-        minLength: 2,
-        maxLength: 100,
-    })
     @Column({unique: true, length:100})
     name: string;
 
@@ -67,11 +55,6 @@ export class Specialty{
      * 
      * @example "Especialidad dedicada al diagnóstico y tratamiento de enfermedades del corazón"
      */
-    @ApiProperty({
-        description: 'Additional information about the specialty',
-        example: 'Specialty dedicated to the diagnosis and treatment of heart diseases',
-        required: false,
-    })
     @Column({nullable: true})
     description: string;
 
@@ -83,7 +66,6 @@ export class Specialty{
      * Una especialidad puede tener múltiples doctores asociados.
      * @see {@link Doctor}
      */
-    @ApiProperty({ type: () => [Doctor] })
     @OneToMany(() => Doctor, (Doctor_Alias) => Doctor_Alias.specialty)
     propety_doctor: Doctor[];
 }

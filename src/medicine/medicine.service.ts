@@ -1,10 +1,9 @@
-import { HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Medicine } from './medicine.entity';
 import { Repository } from 'typeorm';
 import { CreateMedicineDto } from './dto/create-medicine.dto';
 import { UpdateMedicineDto } from './dto/update-medicine.dto';
-import { HttpException } from '@nestjs/common';
 
 /**
  * Servicio para gestionar las operaciones de medicamentos
@@ -46,39 +45,10 @@ export class MedicineService {
      * });
      * ```
      */
-async create(dto: CreateMedicineDto): Promise<{
-message: string;
-statusCode: number;
-data: Medicine;
-}> {
-try {
-    const existing = await this.medicineRepository.findOne({
-    where: { name: dto.name },
-    });
-
-    if (existing) {
-    return {
-        message: 'Medicine already exists',
-        statusCode: HttpStatus.CONFLICT,
-        data: existing,
-    };
+    create(medicineDto: CreateMedicineDto) {
+        const medicine = this.medicineRepository.create(medicineDto);
+        return this.medicineRepository.save(medicine);
     }
-
-    const newMedicine = this.medicineRepository.create(dto);
-    const saved = await this.medicineRepository.save(newMedicine);
-
-    return {
-    message: 'Medicine created successfully',
-    statusCode: HttpStatus.CREATED,
-    data: saved,
-    };
-} catch (error) {
-    throw new HttpException(
-    { message: 'Error creating medicine', error: error.message },
-    HttpStatus.BAD_REQUEST,
-    );
-}
-}
 
     /**
      * Obtiene todos los medicamentos registrados
@@ -90,25 +60,9 @@ try {
      * const medicines = await medicineService.findAll();
      * ```
      */
-async findAll(): Promise<{
-    message: string;
-    statusCode: number;
-    data: Medicine[];
-  }> {
-    try {
-        const medicines = await this.medicineRepository.find();
-        return {
-        message: 'All medicines retrieved successfully',
-        statusCode: HttpStatus.OK,
-        data: medicines,
-    };
-    } catch (error) {
-        throw new HttpException(
-        { message: 'Error retrieving medicines', error: error.message },
-        HttpStatus.BAD_REQUEST,
-    );
+    findAll() {
+        return this.medicineRepository.find();
     }
-}
 
     /**
      * Busca un medicamento por su ID
@@ -121,35 +75,9 @@ async findAll(): Promise<{
      * const medicine = await medicineService.findOne(1);
      * ```
      */
- async findOne(id: number): Promise<{
-    message: string;
-    statusCode: number;
-    data: Medicine | null;
-  }> {
-    try {
-      const medicine = await this.medicineRepository.findOne({
-        where: { id },
-      });
-
-      if (!medicine) {
-        throw new HttpException(
-          { message: 'Medicine not found' },
-          HttpStatus.NOT_FOUND,
-        );
-      }
-
-      return {
-        message: 'Medicine found successfully',
-        statusCode: HttpStatus.OK,
-        data: medicine,
-      };
-    } catch (error) {
-      throw new HttpException(
-        { message: 'Error finding medicine', error: error.message },
-        HttpStatus.BAD_REQUEST,
-      );
+    findOne(id: number) {
+        return this.medicineRepository.findOne({where: {id}});
     }
-  }
 
     /**
      * Actualiza un medicamento existente
@@ -166,38 +94,10 @@ async findAll(): Promise<{
      * });
      * ```
      */
-async update(
-    id: number,
-    dto: UpdateMedicineDto,
-  ): Promise<{
-    message: string;
-    statusCode: number;
-    data: Medicine;
-  }> {
-    const medicine = await this.medicineRepository.findOne({ where: { id } });
-    if (!medicine) {
-      throw new HttpException(
-        { message: 'Medicine not found' },
-        HttpStatus.NOT_FOUND,
-      );
+    async update(id: number, medicineDto: UpdateMedicineDto) {
+        await this.medicineRepository.update(id, medicineDto);
+        return this.findOne(id);
     }
-
-    Object.assign(medicine, dto);
-
-    try {
-      const updated = await this.medicineRepository.save(medicine);
-      return {
-        message: 'Medicine updated successfully',
-        statusCode: HttpStatus.OK,
-        data: updated,
-      };
-    } catch (error) {
-      throw new HttpException(
-        { message: 'Error updating medicine', error: error.message },
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-  }
 
     /**
      * Elimina un medicamento por su ID
@@ -210,31 +110,7 @@ async update(
      * await medicineService.remove(1);
      * ```
      */
-     async remove(id: number): Promise<{
-    message: string;
-    statusCode: number;
-    data: any;
-  }> {
-    const medicine = await this.medicineRepository.findOne({ where: { id } });
-    if (!medicine) {
-      throw new HttpException(
-        { message: 'Medicine not found' },
-        HttpStatus.NOT_FOUND,
-      );
+    remove(id: number) {
+        return this.medicineRepository.delete(id);
     }
-
-    try {
-      const deleted = await this.medicineRepository.delete(id);
-      return {
-        message: 'Medicine deleted successfully',
-        statusCode: HttpStatus.OK,
-        data: deleted,
-      };
-    } catch (error) {
-      throw new HttpException(
-        { message: 'Error deleting medicine', error: error.message },
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-  }
 }

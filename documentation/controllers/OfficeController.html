@@ -169,10 +169,23 @@ de negocio al servicio OfficeService.</p>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#create" >create</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#findOne" >findOne</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#remove" >remove</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -198,9 +211,6 @@ de negocio al servicio OfficeService.</p>
                     <a name="create"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>create</b></span>
                         <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -217,14 +227,14 @@ de negocio al servicio OfficeService.</p>
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a new office&#x27;})<br />@ApiResponse({status: 201, description: &#x27;The office has been successfully created.&#x27;, type: Office})<br />@ApiResponse({status: 400, description: &#x27;Invalid input data.&#x27;})<br /></code>
+                    <code>@Post()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/office/office.controller.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/office/office.controller.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -287,6 +297,340 @@ Body:
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAll"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findAll</b></span>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get()<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/office/office.controller.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene todos los consultorios</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">GET http://localhost:3000/office</code></pre></div></div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Lista de todos los consultorios con sus citas asociadas</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findOne"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>findOne</b></span>
+                        <a href="#findOne"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/office/office.controller.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene un consultorio por su ID</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">GET http://localhost:3000/office/1</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID del consultorio a buscar</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>El consultorio encontrado con sus citas</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="remove"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>remove</b></span>
+                        <a href="#remove"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/office/office.controller.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un consultorio por su ID</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">DELETE http://localhost:3000/office/1</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID del consultorio a eliminar</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Resultado de la operación de eliminación</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, dto: <a href="../classes/UpdateOfficeDto.html" target="_self">UpdateOfficeDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/office/office.controller.ts:98</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Actualiza un consultorio existente</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">PATCH http://localhost:3000/office/1
+Body:
+```json
+{
+  &quot;disponible&quot;: false,
+  &quot;piso&quot;: 2
+}</code></pre></div></div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID del consultorio a actualizar</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>dto</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateOfficeDto.html" target="_self" >UpdateOfficeDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Datos actualizados del consultorio</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>El consultorio actualizado</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>    </div>
 
 
@@ -295,8 +639,6 @@ Body:
 import { OfficeService } from &#x27;./office.service&#x27;;
 import { CreateOfficeDto } from &#x27;./dto/create-office.dto&#x27;;
 import { UpdateOfficeDto } from &#x27;./dto/Update-office.dto&#x27;;
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
-import { Office } from &#x27;./office.entity&#x27;;
 
 /**
  * Controlador para gestionar las operaciones REST de consultorios
@@ -310,7 +652,6 @@ import { Office } from &#x27;./office.entity&#x27;;
  * @export
  * @class OfficeController
  */
-@ApiTags(&#x27;office&#x27;)
 @Controller(&#x27;office&#x27;)
 export class OfficeController {
   /**
@@ -339,9 +680,6 @@ export class OfficeController {
    * &#x60;&#x60;&#x60;
    */
   @Post()
-  @ApiOperation({ summary: &#x27;Create a new office&#x27; })
-  @ApiResponse({ status: 201, description: &#x27;The office has been successfully created.&#x27;, type: Office })
-  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
   create(@Body() dto: CreateOfficeDto) {
     return this.officeService.create(dto);
   }
@@ -356,267 +694,7 @@ export class OfficeController {
    * GET http://localhost:3000/office
    */
   @Get()
-  camilaaa98
-dame todos de una vez, eso de estarle pidiendo una por una que jajaj​
-TRAE AI
-Thought process
-Considering Autonomous Action
-
-I&#x27;ve been reflecting on the user&#x27;s desire for more independent operation. I&#x27;ve successfully updated medicine.entity.ts. Now, I&#x27;m turning my attention to medicine.controller.ts, which feels like the next logical step in this module. My goal is to streamline the process, as instructed, and tackle the module&#x27;s files in sequence.
-
-Streamlining Module Updates
-
-My focus has shifted. I&#x27;ve processed the user&#x27;s input, now aiming for consolidated updates. I just finished refactoring medicine.controller.ts, incorporating English Swagger decorators and the ParseIntPipe. Next, I will begin working on the office module, as instructed, starting with its entity and controller files.
-
-Executing Autonomous Updates
-
-I&#x27;ve taken the user&#x27;s feedback to heart and am now working to streamline operations. I&#x27;ve updated the medicine.controller.ts file, incorporating English Swagger decorators, replacing +id with ParseIntPipe, and retaining the original JSDoc. Next up, as instructed, I will address the office module, focusing on both its entity and controller files.
-
-Embracing User Requests
-
-I&#x27;ve internalized the user&#x27;s need for autonomy. I&#x27;ve now updated medicine.controller.ts, translating JSDoc to English, adding @ApiTags, @ApiOperation, @ApiResponse, and @ApiParam decorators, and swapping +id with ParseIntPipe. Moving on, I&#x27;ll now address the office module, as instructed, and tackle it as a single unit of work.
-
-Adopting Proactive Strategies
-
-I&#x27;ve integrated the user&#x27;s need for autonomy and am proactively working on entire modules. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and preserved the original JSDoc. I will now move to the office module, as instructed, and will proceed to update both office.entity.ts and office.controller.ts.
-
-Implementing Proactive Updates
-
-I&#x27;m now fully embracing the user&#x27;s desire for an autonomous approach. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and retained the original JSDoc. Next, I&#x27;ll be addressing the office module as a single unit, starting with office.entity.ts and then office.controller.ts, according to the provided instructions.
-
-Adapting Autonomous Module Handling
-
-I&#x27;ve integrated the user&#x27;s need for a complete module focus. I&#x27;ve updated medicine.controller.ts with English Swagger decorators, replaced +id with ParseIntPipe, and preserved the original JSDoc. Next, I&#x27;ll move on to the office module, updating both office.entity.ts and office.controller.ts as a cohesive unit.
-
-¡Entendido! Tienes razón, es mucho más eficiente así. Me disculpo por el flujo de trabajo anterior.
-
-A partir de ahora, abordaré cada módulo de una sola vez, entregándote las actualizaciones para la entidad y el controlador juntos.
-
-Aquí tienes la actualización para el controlador del módulo medicine, con la que completamos este módulo.
-
-
-/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/medicine/medicine.controller.ts
-Apply
-import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from &#x27;@nestjs/common&#x27;;
-import { CreateMedicineDto } from &#x27;./dto/create-medicine.dto&#x27;;
-import { UpdateMedicineDto } from &#x27;./dto/update-medicine.dto&#x27;;
-import { MedicineService } from &#x27;./medicine.service&#x27;;
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
-import { Medicine } from &#x27;./medicine.entity&#x27;;
-
-/**
-// ... existing code ...
- * @export
- * @class MedicineController
- */
-@ApiTags(&#x27;medicine&#x27;)
-@Controller(&#x27;medicine&#x27;)
-export class MedicineController {
-  /**
-// ... existing code ...
-   * @param {MedicineService} medicineService - Servicio que maneja la lógica de negocio de medicamentos
-   */
-  constructor(private readonly medicineService: MedicineService) {}
-
-  /**
-// ... existing code ...
-   *   \&quot;price\&quot;: \&quot;5000\&quot;\n   * }\n   * &#x60;&#x60;&#x60;\n   */
-  @Post()
-  @ApiOperation({ summary: &#x27;Create a new medicine&#x27; })
-  @ApiResponse({ status: 201, description: &#x27;The medicine has been successfully created.&#x27;, type: Medicine })
-  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
-  create(@Body() createMedicineDto: CreateMedicineDto) {
-    return this.medicineService.create(createMedicineDto);
-  } 
-
-  /**
-// ... existing code ...
-   * @example
-   * GET http://localhost:3000/medicine
-   */
-  @Get()
-  @ApiOperation({ summary: &#x27;Get all medicines&#x27; })
-  @ApiResponse({ status: 200, description: &#x27;List of all registered medicines.&#x27;, type: [Medicine] })
   findAll() {
-    return this.medicineService.findAll();
-  }
-
-  /**
-// ... existing code ...
-   * @example
-   * GET http://localhost:3000/medicine/1
-   */
-  @Get(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Get a medicine by its ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to search for&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;Medicine found.&#x27;, type: Medicine })
-  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
-  findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
-    return this.medicineService.findOne(id);
-  }
-
-  /**
-// ... existing code ...
-   *   \&quot;price\&quot;: \&quot;5500\&quot;\n   * }\n   * &#x60;&#x60;&#x60;\n   */
-  @Patch(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Update an existing medicine&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to update&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;The medicine has been successfully updated.&#x27;, type: Medicine })
-  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
-  update(@Param(&#x27;id&#x27;, ParseIntPipe) id: number, @Body() updateMedicineDto: UpdateMedicineDto) {
-    return this.medicineService.update(id, updateMedicineDto);
-  }
-
-  /**
-// ... existing code ...
-   * @example
-   * DELETE http://localhost:3000/medicine/1
-   */
-  @Delete(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Delete a medicine by its ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to delete&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;The medicine has been successfully deleted.&#x27; })
-  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
-  remove(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
-    return this.medicineService.remove(id);
-  }
-
-}
-Módulo medicine completado.
-
-Ahora, procederé con el módulo office. Voy a leer ambos archivos y te entregaré las dos actualizaciones en mi siguiente mensaje.
-
-src\office\office.controller.ts
-src\office\office.entity.ts
-De acuerdo. He revisado los archivos del módulo office.
-
-Aquí tienes las actualizaciones para la entidad y el controlador, ambas con la documentación de Swagger en inglés y las mejoras de estandarización.
-
-Primero, el archivo src/office/office.entity.ts:
-
-
-/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/office/office.entity.ts
-Apply
-import { ApiProperty } from &quot;@nestjs/swagger&quot;;
-import { Appointment } from &quot;src/appointment/appointment.entity&quot;; 
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from &quot;typeorm&quot;;
-
-/**
-// ... existing code ...
- * office.piso &#x3D; 1;
- * office.disponible &#x3D; true;
- * &#x60;&#x60;&#x60;
- */
-@Entity(&#x27;consultorio&#x27;)
-export class Office{
-    /**
-// ... existing code ...
-     * @description Identificador único autogenerado para el consultorio
-     */
-    @ApiProperty({
-        description: &#x27;Unique identifier for the office&#x27;,
-        example: 1,
-        readOnly: true,
-    })
-    @PrimaryGeneratedColumn()
-    id_consultorio: number;
-    
-    /**
-// ... existing code ...
-     * @unique
-     * 
-     * @example 101, 202, 305
-     */
-    @ApiProperty({
-        description: &#x27;Identifier number of the office, must be unique&#x27;,
-        example: 101,
-        unique: true,
-    })
-    @Column({unique: true})
-    num_consultorio: number;
-
-    /**
-// ... existing code ...
-     * @required
-     * 
-     * @example 1, 2, 3
-     */
-    @ApiProperty({
-        description: &#x27;Floor number where the office is located&#x27;,
-        example: 1,
-    })
-    @Column()
-    piso: number;
-
-    /**
-// ... existing code ...
-     * @required
-     * 
-     * @example true, false
-     */
-    @ApiProperty({
-        description: &#x27;Indicates if the office is available (true) or occupied (false)&#x27;,
-        example: true,
-        default: true,
-    })
-    @Column({type: &#x27;boolean&#x27;, default: true})
-    disponible: boolean
-
-    /**
-// ... existing code ...
-     * Un consultorio puede tener múltiples citas asignadas.
-     * Se aplica cascada para operaciones relacionadas.
-     * @see {@link Appointment}
-     */
-    @ApiProperty({ type: () &#x3D;&gt; [Appointment] })
-    @OneToMany(() &#x3D;&gt; Appointment, (Cita) &#x3D;&gt; Cita.office, {cascade: true})
-    property_cita: Appointment[];
-}
-Y aquí está el archivo src/office/office.controller.ts:
-
-
-/c:/Users/Maria/Desktop/Proyectos/Camila_Guevara/Taller4/Hospital-Management/src/office/office.controller.ts
-Apply
-import { Controller, Patch, Get, Post, Body, Param, ParseIntPipe, Delete } from &#x27;@nestjs/common&#x27;;
-import { OfficeService } from &#x27;./office.service&#x27;;
-import { CreateOfficeDto } from &#x27;./dto/create-office.dto&#x27;;
-import { UpdateOfficeDto } from &#x27;./dto/Update-office.dto&#x27;;
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
-import { Office } from &#x27;./office.entity&#x27;;
-
-/**
-// ... existing code ...
- * @export
- * @class OfficeController
- */
-@ApiTags(&#x27;office&#x27;)
-@Controller(&#x27;office&#x27;)
-export class OfficeController {
-  /**
-// ... existing code ...
-   * @param {OfficeService} officeService - Servicio que maneja la lógica de negocio de consultorios
-   */
-  constructor(private readonly officeService: OfficeService) {}
-
-  /**
-// ... existing code ...
-   *   \&quot;disponible\&quot;: true\n   * }\n   * &#x60;&#x60;&#x60;\n   */
-  @Post()
-  @ApiOperation({ summary: &#x27;Create a new office&#x27; })
-  @ApiResponse({ status: 201, description: &#x27;The office has been successfully created.&#x27;, type: Office })
-  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
-  create(@Body() dto: CreateOfficeDto) {
-    return this.officeService.create(dto);
-  }
-
-  /**
-// ... existing code ...
-   * @example
-   * GET http://localhost:3000/office
-   */
-  @Get()
-  @ApiOperation({ summary: &#x27;Get all offices&#x27; })
-  @ApiResponse({ status: 200, description: &#x27;List of all offices with their associated appointments.&#x27;, type: [Office] })  findAll() {
     return this.officeService.findAll();
   }
 
@@ -631,10 +709,6 @@ export class OfficeController {
    * GET http://localhost:3000/office/1
    */
   @Get(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Get an office by its ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to search for&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;Office found with its appointments.&#x27;, type: Office })
-  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
   findOne(@Param(&#x27;id&#x27;, ParseIntPipe) id: number) {
     return this.officeService.findOne(id);
   }
@@ -658,10 +732,6 @@ export class OfficeController {
    * &#x60;&#x60;&#x60;
    */
   @Patch(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Update an existing office&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to update&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;The office has been successfully updated.&#x27;, type: Office })
-  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
   update(
     @Param(&#x27;id&#x27;, ParseIntPipe) id: number,
     @Body() dto: UpdateOfficeDto,
@@ -680,10 +750,6 @@ export class OfficeController {
    * DELETE http://localhost:3000/office/1
    */
   @Delete(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Delete an office by its ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the office to delete&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;The office has been successfully deleted.&#x27; })
-  @ApiResponse({ status: 404, description: &#x27;Office not found.&#x27; })
   remove(@Body(&#x27;id&#x27;, ParseIntPipe) id: number) {
     return this.officeService.remove(id);
   }

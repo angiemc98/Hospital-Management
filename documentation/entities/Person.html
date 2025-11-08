@@ -168,56 +168,45 @@ person.role = Role.Patient;</code></pre></div>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#birthDate" >birthDate</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#doctor" >doctor</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#document" >document</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#email" >email</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#id" >id</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#lastName" >lastName</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#name" >name</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#password" >password</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#patient" >patient</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#phone" >phone</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#role" >role</a>
                             </li>
@@ -246,7 +235,6 @@ person.role = Role.Patient;</code></pre></div>
                     <a name="birthDate"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>birthDate</b></span>
                         <a href="#birthDate"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -263,13 +251,13 @@ person.role = Role.Patient;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Date of birth of the person&#x27;, example: &#x27;1990-05-15&#x27;, required: false})<br />@Column({type: &#x27;date&#x27;, nullable: true})<br />
+                            @Column({type: &#x27;date&#x27;, nullable: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/person/person.entity.ts:147</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/person/person.entity.ts:118</a></div>
                         </td>
                     </tr>
 
@@ -289,7 +277,6 @@ person.role = Role.Patient;</code></pre></div>
                     <a name="doctor"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>doctor</b></span>
                         <a href="#doctor"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -306,13 +293,13 @@ person.role = Role.Patient;</code></pre></div>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Doctor, required: false})<br />@OneToOne(undefined, doctor &#x3D;&gt; doctor.person)<br />
+                            @OneToOne(undefined, doctor &#x3D;&gt; doctor.person)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">src/person/person.entity.ts:273</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">src/person/person.entity.ts:222</a></div>
                         </td>
                     </tr>
 
@@ -334,7 +321,6 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                     <a name="document"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>document</b></span>
                         <a href="#document"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -351,13 +337,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Unique identity document number&#x27;, example: &#x27;1234567890&#x27;, unique: true})<br />@Column({unique: true})<br />
+                            @Column({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/person/person.entity.ts:127</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/person/person.entity.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -377,7 +363,6 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                     <a name="email"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>email</b></span>
                         <a href="#email"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -394,13 +379,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Unique email address&#x27;, example: &#x27;user@example.com&#x27;, unique: true})<br />@Column({unique: true})<br />
+                            @Column({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">src/person/person.entity.ts:187</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/person/person.entity.ts:148</a></div>
                         </td>
                     </tr>
 
@@ -420,7 +405,6 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                     <a name="id"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>id</b></span>
                         <a href="#id"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -437,13 +421,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Unique identifier for the person&#x27;, example: 1, readOnly: true})<br />@PrimaryGeneratedColumn()<br />
+                            @PrimaryGeneratedColumn()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/person/person.entity.ts:63</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/person/person.entity.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -463,7 +447,6 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                     <a name="lastName"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>lastName</b></span>
                         <a href="#lastName"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -480,13 +463,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Last name(s) of the person&#x27;, example: &#x27;Pérez&#x27;, minLength: 2, maxLength: 100})<br />@Column({length: 100})<br />
+                            @Column({length: 100})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/person/person.entity.ts:107</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/person/person.entity.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -506,7 +489,6 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                     <a name="name"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>name</b></span>
                         <a href="#name"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -523,13 +505,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;First name(s) of the person&#x27;, example: &#x27;Juan&#x27;, minLength: 2, maxLength: 100})<br />@Column({length: 100})<br />
+                            @Column({length: 100})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/person/person.entity.ts:85</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/person/person.entity.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -549,7 +531,6 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                     <a name="password"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>password</b></span>
                         <a href="#password"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -566,13 +547,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Hashed password for the user (write-only)&#x27;, example: &#x27;MySecurePassword123&#x27;, writeOnly: true, minLength: 8})<br />@Column({select: false})<br />
+                            @Column({select: false})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">src/person/person.entity.ts:209</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">src/person/person.entity.ts:164</a></div>
                         </td>
                     </tr>
 
@@ -593,7 +574,6 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                     <a name="patient"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>patient</b></span>
                         <a href="#patient"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -610,13 +590,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Patient, required: false})<br />@OneToOne(undefined, patient &#x3D;&gt; patient.person)<br />
+                            @OneToOne(undefined, patient &#x3D;&gt; patient.person)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="288" class="link-to-prism">src/person/person.entity.ts:288</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">src/person/person.entity.ts:236</a></div>
                         </td>
                     </tr>
 
@@ -638,7 +618,6 @@ See <a href="../entitys/Patient.html">Patient</a></p>
                     <a name="phone"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>phone</b></span>
                         <a href="#phone"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -655,13 +634,13 @@ See <a href="../entitys/Patient.html">Patient</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Unique contact phone number&#x27;, example: &#x27;3001234567&#x27;, unique: true})<br />@Column({unique: true})<br />
+                            @Column({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/person/person.entity.ts:167</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/person/person.entity.ts:133</a></div>
                         </td>
                     </tr>
 
@@ -681,7 +660,6 @@ See <a href="../entitys/Patient.html">Patient</a></p>
                     <a name="role"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>role</b></span>
                         <a href="#role"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -698,13 +676,13 @@ See <a href="../entitys/Patient.html">Patient</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Role of the person in the system&#x27;, enum: Role, example: undefined})<br />@Column({type: &#x27;enum&#x27;, enum: Role})<br />
+                            @Column({type: &#x27;enum&#x27;, enum: Role})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="258" class="link-to-prism">src/person/person.entity.ts:258</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">src/person/person.entity.ts:208</a></div>
                         </td>
                     </tr>
 
@@ -726,8 +704,6 @@ See <a href="../entitys/Patient.html">Patient</a></p>
 import { Doctor } from &#x27;../doctor/doctor.entity&#x27;;
 import { Patient } from &#x27;../patient/patient.entity&#x27;;
 import * as bcrypt from &#x27;bcrypt&#x27;;
-import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
-
 
 /**
  * Enumeración de roles de usuario en el sistema
@@ -778,11 +754,6 @@ export class Person {
      * @type {number}
      * @description Identificador único autogenerado para la persona
      */
-     @ApiProperty({
-        description: &#x27;Unique identifier for the person&#x27;,
-        example: 1,
-        readOnly: true,
-    })
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -797,12 +768,6 @@ export class Person {
      * 
      * @example &quot;Juan&quot;, &quot;María Fernanda&quot;
      */
-    @ApiProperty({
-        description: &#x27;First name(s) of the person&#x27;,
-        example: &#x27;Juan&#x27;,
-        minLength: 2,
-        maxLength: 100,
-    })
     @Column(
     {length: 100}
     )
@@ -819,12 +784,6 @@ export class Person {
      * 
      * @example &quot;Pérez&quot;, &quot;García López&quot;
      */
-     @ApiProperty({
-        description: &#x27;Last name(s) of the person&#x27;,
-        example: &#x27;Pérez&#x27;,
-        minLength: 2,
-        maxLength: 100,
-    })
     @Column(
     {length:100}
     )
@@ -840,11 +799,6 @@ export class Person {
      * 
      * @example &quot;1234567890&quot;, &quot;CC-1234567&quot;
      */
-    @ApiProperty({
-        description: &#x27;Unique identity document number&#x27;,
-        example: &#x27;1234567890&#x27;,
-        unique: true,
-    })
     @Column(
     {unique: true}
     )
@@ -859,11 +813,6 @@ export class Person {
      * 
      * @example new Date(&#x27;1990-05-15&#x27;)
      */
-     @ApiProperty({
-        description: &#x27;Date of birth of the person&#x27;,
-        example: &#x27;1990-05-15&#x27;,
-        required: false,
-    })
     @Column({
         type: &#x27;date&#x27;,
         nullable: true
@@ -880,11 +829,6 @@ export class Person {
      * 
      * @example &quot;3001234567&quot;, &quot;+573001234567&quot;
      */
-    @ApiProperty({
-        description: &#x27;Unique contact phone number&#x27;,
-        example: &#x27;3001234567&#x27;,
-        unique: true,
-    })
     @Column(
     {unique: true}
     )
@@ -900,11 +844,6 @@ export class Person {
      * 
      * @example &quot;usuario@example.com&quot;
      */
-    @ApiProperty({
-        description: &#x27;Unique email address&#x27;,
-        example: &#x27;user@example.com&#x27;,
-        unique: true,
-    })
     @Column(
     {unique: true}
     )
@@ -921,12 +860,6 @@ export class Person {
      * 
      * @example &quot;$2b$10$abcdefghijklmnopqrstuvwxyz123456&quot;
      */
-     @ApiProperty({
-        description: &#x27;Hashed password for the user (write-only)&#x27;,
-        example: &#x27;MySecurePassword123&#x27;,
-        writeOnly: true,
-        minLength: 8,
-    })
     @Column(
     {select: false}
     )
@@ -970,11 +903,6 @@ export class Person {
      * 
      * @example Role.Doctor, Role.Patient, Role.Admin
      */
-    @ApiProperty({
-        description: &#x27;Role of the person in the system&#x27;,
-        enum: Role,
-        example: Role.Patient,
-    })
     @Column({
         type: &#x27;enum&#x27;,
         enum: Role
@@ -989,7 +917,6 @@ export class Person {
      * Si la persona tiene rol de doctor, esta relación contendrá su información médica.
      * @see {@link Doctor}
      */
-    @ApiProperty({ type: () &#x3D;&gt; Doctor, required: false })
     @OneToOne(
     () &#x3D;&gt; Doctor,
     (doctor) &#x3D;&gt; doctor.person
@@ -1004,7 +931,6 @@ export class Person {
      * Si la persona tiene rol de paciente, esta relación contendrá su información clínica.
      * @see {@link Patient}
      */
-    @ApiProperty({ type: () &#x3D;&gt; Patient, required: false })
     @OneToOne(
     () &#x3D;&gt; Patient,
     (patient) &#x3D;&gt; patient.person

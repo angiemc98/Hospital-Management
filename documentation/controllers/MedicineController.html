@@ -169,38 +169,21 @@ de negocio al servicio MedicineService.</p>
                         <ul class="index-list">
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#create" >create</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#findAll" >findAll</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#findOne" >findOne</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#remove" >remove</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#update" >update</a>
                             </li>
@@ -228,9 +211,6 @@ de negocio al servicio MedicineService.</p>
                     <a name="create"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>create</b></span>
                         <a href="#create"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -247,14 +227,14 @@ de negocio al servicio MedicineService.</p>
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a new medicine&#x27;})<br />@ApiResponse({status: 201, description: &#x27;The medicine has been successfully created.&#x27;, type: Medicine})<br />@ApiResponse({status: 400, description: &#x27;Invalid input data.&#x27;})<br /></code>
+                    <code>@Post()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/medicine/medicine.controller.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/medicine/medicine.controller.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -326,8 +306,6 @@ Body:
                     <a name="findAll"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -344,14 +322,14 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br />@ApiOperation({summary: &#x27;Get all medicines&#x27;})<br />@ApiResponse({status: 200, description: &#x27;List of all registered medicines.&#x27;, type: undefined})<br /></code>
+                    <code>@Get()<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="70"
-                                    class="link-to-prism">src/medicine/medicine.controller.ts:70</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/medicine/medicine.controller.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -380,10 +358,6 @@ Body:
                     <a name="findOne"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>findOne</b></span>
                         <a href="#findOne"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -392,7 +366,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -400,14 +374,14 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Get a medicine by its ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the medicine to search for&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;Medicine found.&#x27;, type: Medicine})<br />@ApiResponse({status: 404, description: &#x27;Medicine not found.&#x27;})<br /></code>
+                    <code>@Get(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="89"
-                                    class="link-to-prism">src/medicine/medicine.controller.ts:89</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/medicine/medicine.controller.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -433,7 +407,7 @@ Body:
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -470,10 +444,6 @@ Body:
                     <a name="remove"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>remove</b></span>
                         <a href="#remove"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -482,7 +452,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                    <code>remove(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
@@ -490,14 +460,14 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Delete(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Delete a medicine by its ID&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the medicine to delete&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;The medicine has been successfully deleted.&#x27;})<br />@ApiResponse({status: 404, description: &#x27;Medicine not found.&#x27;})<br /></code>
+                    <code>@Delete(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="135"
-                                    class="link-to-prism">src/medicine/medicine.controller.ts:135</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/medicine/medicine.controller.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -523,7 +493,7 @@ Body:
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -560,10 +530,6 @@ Body:
                     <a name="update"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>update</b></span>
                         <a href="#update"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -572,7 +538,7 @@ Body:
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, updateMedicineDto: <a href="../classes/UpdateMedicineDto.html" target="_self">UpdateMedicineDto</a>)</code>
+                    <code>update(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, updateMedicineDto: <a href="../classes/UpdateMedicineDto.html" target="_self">UpdateMedicineDto</a>)</code>
                 </td>
             </tr>
 
@@ -580,14 +546,14 @@ Body:
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Patch(&#x27;:id&#x27;)<br />@ApiOperation({summary: &#x27;Update an existing medicine&#x27;})<br />@ApiParam({name: &#x27;id&#x27;, description: &#x27;ID of the medicine to update&#x27;, type: Number})<br />@ApiResponse({status: 200, description: &#x27;The medicine has been successfully updated.&#x27;, type: Medicine})<br />@ApiResponse({status: 404, description: &#x27;Medicine not found.&#x27;})<br /></code>
+                    <code>@Patch(&#x27;:id&#x27;)<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="116"
-                                    class="link-to-prism">src/medicine/medicine.controller.ts:116</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/medicine/medicine.controller.ts:100</a></div>
                         </td>
                     </tr>
 
@@ -619,7 +585,7 @@ Body:
                                         <tr>
                                                 <td>id</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                             </td>
 
                                             <td>
@@ -675,8 +641,6 @@ Body:
 import { CreateMedicineDto } from &#x27;./dto/create-medicine.dto&#x27;;
 import { UpdateMedicineDto } from &#x27;./dto/update-medicine.dto&#x27;;
 import { MedicineService } from &#x27;./medicine.service&#x27;;
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from &#x27;@nestjs/swagger&#x27;;
-import { Medicine } from &#x27;./medicine.entity&#x27;;
 
 /**
  * Controlador para gestionar las operaciones REST de medicamentos
@@ -690,7 +654,6 @@ import { Medicine } from &#x27;./medicine.entity&#x27;;
  * @export
  * @class MedicineController
  */
-@ApiTags(&#x27;medicine&#x27;)
 @Controller(&#x27;medicine&#x27;)
 export class MedicineController {
   /**
@@ -721,9 +684,6 @@ export class MedicineController {
    * &#x60;&#x60;&#x60;
    */
   @Post()
-  @ApiOperation({ summary: &#x27;Create a new medicine&#x27; })
-  @ApiResponse({ status: 201, description: &#x27;The medicine has been successfully created.&#x27;, type: Medicine })
-  @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
   create(@Body() createMedicineDto: CreateMedicineDto) {
     return this.medicineService.create(createMedicineDto);
   } 
@@ -738,8 +698,6 @@ export class MedicineController {
    * GET http://localhost:3000/medicine
    */
   @Get()
-  @ApiOperation({ summary: &#x27;Get all medicines&#x27; })
-  @ApiResponse({ status: 200, description: &#x27;List of all registered medicines.&#x27;, type: [Medicine] })
   findAll() {
     return this.medicineService.findAll();
   }
@@ -755,11 +713,7 @@ export class MedicineController {
    * GET http://localhost:3000/medicine/1
    */
   @Get(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Get a medicine by its ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to search for&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;Medicine found.&#x27;, type: Medicine })
-  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
-  findOne(@Param(&#x27;id&#x27;) id: number) {
+  findOne(@Param(&#x27;id&#x27;) id: string) {
     return this.medicineService.findOne(+id);
   }
 
@@ -782,11 +736,7 @@ export class MedicineController {
    * &#x60;&#x60;&#x60;
    */
   @Patch(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Update an existing medicine&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to update&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;The medicine has been successfully updated.&#x27;, type: Medicine })
-  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
-  update(@Param(&#x27;id&#x27;) id: number, @Body() updateMedicineDto: UpdateMedicineDto) {
+  update(@Param(&#x27;id&#x27;) id: string, @Body() updateMedicineDto: UpdateMedicineDto) {
     return this.medicineService.update(+id, updateMedicineDto);
   }
 
@@ -801,11 +751,7 @@ export class MedicineController {
    * DELETE http://localhost:3000/medicine/1
    */
   @Delete(&#x27;:id&#x27;)
-  @ApiOperation({ summary: &#x27;Delete a medicine by its ID&#x27; })
-  @ApiParam({ name: &#x27;id&#x27;, description: &#x27;ID of the medicine to delete&#x27;, type: Number })
-  @ApiResponse({ status: 200, description: &#x27;The medicine has been successfully deleted.&#x27; })
-  @ApiResponse({ status: 404, description: &#x27;Medicine not found.&#x27; })
-  remove(@Param(&#x27;id&#x27;) id: number) {
+  remove(@Param(&#x27;id&#x27;) id: string) {
     return this.medicineService.remove(+id);
   }
 

@@ -2,8 +2,6 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CreateMedicineDto } from './dto/create-medicine.dto';
 import { UpdateMedicineDto } from './dto/update-medicine.dto';
 import { MedicineService } from './medicine.service';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
-import { Medicine } from './medicine.entity';
 
 /**
  * Controlador para gestionar las operaciones REST de medicamentos
@@ -17,7 +15,6 @@ import { Medicine } from './medicine.entity';
  * @export
  * @class MedicineController
  */
-@ApiTags('medicine')
 @Controller('medicine')
 export class MedicineController {
   /**
@@ -48,9 +45,6 @@ export class MedicineController {
    * ```
    */
   @Post()
-  @ApiOperation({ summary: 'Create a new medicine' })
-  @ApiResponse({ status: 201, description: 'The medicine has been successfully created.', type: Medicine })
-  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   create(@Body() createMedicineDto: CreateMedicineDto) {
     return this.medicineService.create(createMedicineDto);
   } 
@@ -65,8 +59,6 @@ export class MedicineController {
    * GET http://localhost:3000/medicine
    */
   @Get()
-  @ApiOperation({ summary: 'Get all medicines' })
-  @ApiResponse({ status: 200, description: 'List of all registered medicines.', type: [Medicine] })
   findAll() {
     return this.medicineService.findAll();
   }
@@ -82,10 +74,6 @@ export class MedicineController {
    * GET http://localhost:3000/medicine/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get a medicine by its ID' })
-  @ApiParam({ name: 'id', description: 'ID of the medicine to search for', type: Number })
-  @ApiResponse({ status: 200, description: 'Medicine found.', type: Medicine })
-  @ApiResponse({ status: 404, description: 'Medicine not found.' })
   findOne(@Param('id') id: number) {
     return this.medicineService.findOne(+id);
   }
@@ -109,10 +97,6 @@ export class MedicineController {
    * ```
    */
   @Patch(':id')
-  @ApiOperation({ summary: 'Update an existing medicine' })
-  @ApiParam({ name: 'id', description: 'ID of the medicine to update', type: Number })
-  @ApiResponse({ status: 200, description: 'The medicine has been successfully updated.', type: Medicine })
-  @ApiResponse({ status: 404, description: 'Medicine not found.' })
   update(@Param('id') id: number, @Body() updateMedicineDto: UpdateMedicineDto) {
     return this.medicineService.update(+id, updateMedicineDto);
   }
@@ -128,10 +112,6 @@ export class MedicineController {
    * DELETE http://localhost:3000/medicine/1
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete a medicine by its ID' })
-  @ApiParam({ name: 'id', description: 'ID of the medicine to delete', type: Number })
-  @ApiResponse({ status: 200, description: 'The medicine has been successfully deleted.' })
-  @ApiResponse({ status: 404, description: 'Medicine not found.' })
   remove(@Param('id') id: number) {
     return this.medicineService.remove(+id);
   }

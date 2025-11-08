@@ -3,7 +3,7 @@ import { Patient } from './patient.entity';
 import { CreatePatientDto } from './dto/create-patient.dto';
 import { PatientService } from './patient.service';
 import { UpdatePatientDto } from './dto/update-patient.dto';
-import {ApiTags,ApiOperation, ApiResponse,ApiParam, }from '@nestjs/swagger';
+
 /**
  * Controlador para gestionar las operaciones REST de pacientes
  * 
@@ -16,7 +16,6 @@ import {ApiTags,ApiOperation, ApiResponse,ApiParam, }from '@nestjs/swagger';
  * @export
  * @class PatientController
  */
-@ApiTags('patient')
 @Controller('patient')
 export class PatientController {
   /**
@@ -46,16 +45,8 @@ export class PatientController {
    * ```
    */
   @Post()
-   @Post()
-  @ApiOperation({ summary: 'Create a new patient' })
-  @ApiResponse({
-    status: 201,
-    description: 'The patient has been successfully created.',
-    type: Patient,
-  })
-  @ApiResponse({ status: 400, description: 'Bad Request.' })
   create(@Body() patientDto: CreatePatientDto) {
-    return this.patientService.create(patientDto);
+    return this.patientService.createPatient(patientDto);
   }
 
   /**
@@ -68,12 +59,6 @@ export class PatientController {
    * GET http://localhost:3000/patient
    */
   @Get()
-  @ApiOperation({ summary: 'Get all patients' })
-  @ApiResponse({
-    status: 200,
-    description: 'Return all patients.',
-    type: [Patient],
-  })
   findAll() {
     return this.patientService.findAll();
   }
@@ -89,18 +74,6 @@ export class PatientController {
    * GET http://localhost:3000/patient/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get a single patient by ID' })
-  @ApiParam({
-    name: 'id',
-    description: 'The ID of the patient',
-    type: 'number',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'Return the patient.',
-    type: Patient,
-  })
-  @ApiResponse({ status: 404, description: 'Patient not found.' })
   findOne(@Param('id') id: number) {
     return this.patientService.findOne(+id);
   }
@@ -125,22 +98,7 @@ export class PatientController {
    * ```
    */
   @Patch(':id')
-   @ApiOperation({ summary: 'Update an existing patient' })
-  @ApiParam({
-    name: 'id',
-    description: 'The ID of the patient to update',
-    type: 'number',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'The patient has been successfully updated.',
-    type: Patient,
-  })
-  @ApiResponse({ status: 404, description: 'Patient not found.' })
-  update(
-    @Param('id') id: number,
-     @Body() patientDto: UpdatePatientDto,
-  ) {
+  update(@Param('id') id: number, @Body() patientDto: UpdatePatientDto) {
     return this.patientService.update(+id, patientDto);
   }
 
@@ -155,17 +113,6 @@ export class PatientController {
    * DELETE http://localhost:3000/patient/1
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete a patient' })
-  @ApiParam({
-    name: 'id',
-    description: 'The ID of the patient to delete',
-    type: 'number',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'The patient has been successfully deleted.',
-  })
-  @ApiResponse({ status: 404, description: 'Patient not found.' })
   remove(@Param('id') id: number) {
     return this.patientService.remove(+id);
   }

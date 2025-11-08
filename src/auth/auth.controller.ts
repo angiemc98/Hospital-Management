@@ -1,47 +1,34 @@
-// src/auth/auth.controller.ts
-import { Controller, Post, Body, UseGuards, Request, Get, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { LoginDto } from './dto/login.dto';
-import { RegisterDto } from './dto/register.dto';
-import { AuthGuard } from '@nestjs/passport';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { CreateAuthDto } from './dto/create-auth.dto';
+import { UpdateAuthDto } from './dto/update-auth.dto';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
-    /**
-     * Route for user registration. Returns a JSON object with the user data.
-     */
-    @Post('register')
-    async register(@Body() registerDto: RegisterDto) {
-        const user = await this.authService.register(registerDto);
-        return {
-            message: 'Registro exitoso. Usuario creado.',
-            statusCode: HttpStatus.CREATED,
-            user: { id: user.id, email: user.email, role: user.role }
-        };
-    }
+  @Post()
+  create(@Body() createAuthDto: CreateAuthDto) {
+    return this.authService.create(createAuthDto);
+  }
 
-    /**
-     * Route for user login. Returns a JSON object with the user data and a JWT token.
-     */
-    @Post('login')
-    async login(@Body() loginDto: LoginDto) {
-        // The service validates the user credentials and returns a JWT token
-        return this.authService.login(loginDto);
-    }
-    
-    /**
-     * Example of a protected route. Only authenticated users can access this route.
-     */
-    @UseGuards(JwtAuthGuard)
-    @Get('profile')
-    getProfile(@Request() req) {
-        // req.user contains the object returned by JwtStrategy.validate()
-        return {
-            message: 'Acceso autorizado',
-            user: req.user,
-        };
-    }
+  @Get()
+  findAll() {
+    return this.authService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.authService.findOne(+id);
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateAuthDto: UpdateAuthDto) {
+    return this.authService.update(+id, updateAuthDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.authService.remove(+id);
+  }
 }

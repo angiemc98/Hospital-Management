@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { CreatePrescriptionDto } from './dto/create-prescription.dto';
 import { UpdatePrescriptionDto } from './dto/update-prescription.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -27,105 +27,51 @@ export class PrescriptionService {
   ) { }
   // Create a prescription with the correct relations
   async create(dto: CreatePrescriptionDto) {
-    try{// Search for appointment
-      const appointment = await this.appointmentRepository.findOne({
-        where: { id: dto.appointmentId },
-      });
-     if (!appointment) {
-            throw new HttpException({ message: 'Appointment not found' }, HttpStatus.NOT_FOUND);
-        }
+    // Search for appointment
+    const appointment = await this.appointmentRepository.findOne({
+      where: { id: dto.appointmentId },
+    });
+    if (!appointment) throw new Error('Appointment not found');
 
-      // Search for medicine
-      const medicine = await this.medicineRepository.findOne({
-        where: { id: dto.medicineId },
-      });
-      if (!medicine) throw new HttpException({message: 'Medicine not found'}, HttpStatus.NOT_FOUND);
+    // Search for medicine
+    const medicine = await this.medicineRepository.findOne({
+      where: { id: dto.medicineId },
+    });
+    if (!medicine) throw new Error('Medicine not found');
 
-      // Create the prescription with the correct relations
-      const prescription = this.prescriptionRepository.create({
-        date: dto.date || new Date(),
-        observations: dto.observations,
-        quantity: dto.quantity || 0,
-        duration: dto.duration || 0,
-        appointment,
-        medicine,
-      });
+    // Create the prescription with the correct relations
+    const prescription = this.prescriptionRepository.create({
+      date: dto.date || new Date(),
+      observations: dto.observations,
+      quantity: dto.quantity || 0,
+      duration: dto.duration || 0,
+      appointment,
+      medicine,
+    });
 
-      const savedPrescription = await this.prescriptionRepository.save(prescription);
-      return {
-        message: 'Prescription created successfully',
-        statusCode: HttpStatus.CREATED,
-        data: savedPrescription,
-      };
-    } catch (error) {
-        if (error instanceof HttpException) {
-            throw error;
-        }
-        
-        throw new HttpException(
-            { message: 'Error creating prescription', error: error.message },
-            HttpStatus.BAD_REQUEST, 
-        );
-      }
-  }
+  return this.prescriptionRepository.save(prescription);
+}
 
   // Find all prescriptions with relations appointment and medicine
-  async findAll() {
-    const prescripción = await this.prescriptionRepository.findOne({
+  findAll() {
+    return this.prescriptionRepository.find({
       relations: ['appointment', 'medicine'],
     });
-    return {
-      message: 'Prescriptions retrieved successfully',
-      statusCode: HttpStatus.OK,
-      data: prescripción,
-    };
-    }
+  }
 
   // Find one prescription with relations appointment and medicine
-  async findOne(id: number) {
-    const prescription = await this.prescriptionRepository.findOne({
-      where: { id },
-      relations: ['appointment', 'medicine'],
-    });
-    if (!prescription)
-      throw new HttpException('Prescripción no encontrada', HttpStatus.NOT_FOUND);
-    return {
-      message: 'Prescripción encontrada',
-      statusCode: HttpStatus.OK,
-      data: prescription,
-    };
+  findOne(id: number) {
+    return this.prescriptionRepository.findOne({where: {id}, relations: ['appointment', 'medicine']});
   }
 
   // Update prescription with correct relations
-  async update(id: number, dto: UpdatePrescriptionDto) {
-    const prescription = await this.prescriptionRepository.findOne({
-      where: { id },
-    });
-    if (!prescription)
-      throw new HttpException('Prescripción no encontrada', HttpStatus.NOT_FOUND);
-
-    Object.assign(prescription, dto);
-    const updated = await this.prescriptionRepository.save(prescription);
-
-    return {
-      message: 'Prescripción actualizada correctamente',
-      statusCode: HttpStatus.OK,
-      data: updated,
-    };
+  async update(id: number, updatePrescriptionDto: UpdatePrescriptionDto) {
+    await this.prescriptionRepository.update(id, updatePrescriptionDto);
+    return this.findOne(id);
   }
 
   // Delete prescription by id
-  async remove(id: number) {
-    const prescription = await this.prescriptionRepository.findOne({
-      where: { id },
-    });
-    if (!prescription)
-      throw new HttpException('Prescripción no encontrada', HttpStatus.NOT_FOUND);
-
-    await this.prescriptionRepository.remove(prescription);
-    return {
-      message: 'Prescripción eliminada correctamente',
-      statusCode: HttpStatus.OK,
-    };
+  remove(id: number) {
+    return this.prescriptionRepository.delete(id);
   }
 }

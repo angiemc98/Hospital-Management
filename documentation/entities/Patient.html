@@ -165,36 +165,29 @@ patient.medicalHistory = &quot;Hipertensión controlada&quot;;</code></pre></div
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#appointments" >appointments</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#bloodType" >bloodType</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#id" >id</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#insurance" >insurance</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#invoices" >invoices</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
-                                    <span class="modifier"></span>
                                 <a href="#medicalHistory" >medicalHistory</a>
                             </li>
                             <li>
-                                    <span class="modifier"></span>
                                     <span class="modifier"></span>
                                     <span class="modifier"></span>
                                 <a href="#person" >person</a>
@@ -225,7 +218,6 @@ patient.medicalHistory = &quot;Hipertensión controlada&quot;;</code></pre></div
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>appointments</b></span>
                         <a href="#appointments"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -242,13 +234,13 @@ patient.medicalHistory = &quot;Hipertensión controlada&quot;;</code></pre></div
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; })<br />@OneToMany(undefined, appointment &#x3D;&gt; appointment.patient, {cascade: true})<br />@JoinColumn({name: &#x27;patient_id&#x27;})<br />
+                            @OneToMany(undefined, appointment &#x3D;&gt; appointment.patient, {cascade: true})<br />@JoinColumn({name: &#x27;patient_id&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/patient/patient.entity.ts:125</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/patient/patient.entity.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -272,7 +264,6 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                     <a name="bloodType"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>bloodType</b></span>
                         <a href="#bloodType"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -289,13 +280,13 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The blood type of the patient.&#x27;, example: &#x27;O+&#x27;, maxLength: 50})<br />@Column({type: &#x27;varchar&#x27;, length: 50})<br />
+                            @Column({type: &#x27;varchar&#x27;, length: 50})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/patient/patient.entity.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/patient/patient.entity.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -315,7 +306,6 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                     <a name="id"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>id</b></span>
                         <a href="#id"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -332,13 +322,13 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The unique identifier for the patient.&#x27;, example: 1})<br />@PrimaryGeneratedColumn()<br />
+                            @PrimaryGeneratedColumn()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/patient/patient.entity.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/patient/patient.entity.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -358,7 +348,6 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                     <a name="insurance"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>insurance</b></span>
                         <a href="#insurance"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -375,13 +364,13 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;The type of medical insurance the patient has.&#x27;, example: &#x27;contributive&#x27;, enum: undefined})<br />@Column({enum: undefined})<br />
+                            @Column({enum: undefined})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/patient/patient.entity.ts:77</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/patient/patient.entity.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -401,7 +390,6 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                     <a name="invoices"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>invoices</b></span>
                         <a href="#invoices"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -418,13 +406,13 @@ See <a href="../entitys/Appointment.html">Appointment</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; })<br />@OneToMany(undefined, invoice &#x3D;&gt; invoice.propety_patient, {cascade: true})<br />
+                            @OneToMany(undefined, invoice &#x3D;&gt; invoice.propety_patient, {cascade: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/patient/patient.entity.ts:138</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/patient/patient.entity.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -447,7 +435,6 @@ See <a href="../entitys/Invoice.html">Invoice</a></p>
                     <a name="medicalHistory"></a>
                     <span class="name">
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>medicalHistory</b></span>
                         <a href="#medicalHistory"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -464,13 +451,13 @@ See <a href="../entitys/Invoice.html">Invoice</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;A summary of the patient&#x60;s medical history, including conditions, allergies, etc.&#x27;, example: &#x27;Controlled hypertension, penicillin allergy.&#x27;, nullable: true})<br />@Column({type: &#x27;text&#x27;, nullable: true})<br />
+                            @Column({type: &#x27;text&#x27;, nullable: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/patient/patient.entity.ts:95</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/patient/patient.entity.ts:74</a></div>
                         </td>
                     </tr>
 
@@ -491,7 +478,6 @@ See <a href="../entitys/Invoice.html">Invoice</a></p>
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier"></span>
-                            <span class="modifier"></span>
                         <span ><b>person</b></span>
                         <a href="#person"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -508,13 +494,13 @@ See <a href="../entitys/Invoice.html">Invoice</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Person})<br />@OneToOne(undefined, person &#x3D;&gt; person.patient, {cascade: true})<br />@JoinColumn({name: &#x27;person_id&#x27;})<br />
+                            @OneToOne(undefined, person &#x3D;&gt; person.patient, {cascade: true})<br />@JoinColumn({name: &#x27;person_id&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/patient/patient.entity.ts:110</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/patient/patient.entity.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -541,7 +527,6 @@ import { Appointment } from &quot;../appointment/appointment.entity&quot;;
 import { Person } from &quot;../person/person.entity&quot;;
 import { Prescription } from &quot;../prescription/prescription.entity&quot;;
 import { Invoice } from &quot;../invoice/invoice.entity&quot;;
-import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
 
 /**
  * Entidad que representa un paciente en el sistema médico
@@ -571,10 +556,6 @@ export class Patient {
      * @type {number}
      * @description Identificador único autogenerado para el paciente
      */
-    @ApiProperty({
-    description: &#x27;The unique identifier for the patient.&#x27;,
-    example: 1,
-  })
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -588,11 +569,6 @@ export class Patient {
      * 
      * @example &quot;O+&quot;, &quot;A-&quot;, &quot;AB+&quot;, &quot;B-&quot;
      */
-     @ApiProperty({
-    description: &#x27;The blood type of the patient.&#x27;,
-    example: &#x27;O+&#x27;,
-    maxLength: 50,
-  })
     @Column({type: &#x27;varchar&#x27;, length: 50})
     bloodType: string;
 
@@ -606,11 +582,6 @@ export class Patient {
      * 
      * @example &quot;contributive&quot; (régimen contributivo), &quot;subsidized&quot; (régimen subsidiado), &quot;free&quot; (sin seguro)
      */
-    @ApiProperty({
-    description: &#x27;The type of medical insurance the patient has.&#x27;,
-    example: &#x27;contributive&#x27;,
-    enum: [&#x27;contributive&#x27;, &#x27;subsidized&#x27;, &#x27;free&#x27;],
-  })
     @Column({enum: [&#x27;contributive&#x27;, &#x27;subsidized&#x27;, &#x27;free&#x27;]})
     insurance: string;
 
@@ -623,12 +594,6 @@ export class Patient {
      * 
      * @example &quot;Hipertensión controlada, alergia a la penicilina, apendicectomía en 2015&quot;
      */
-    @ApiProperty({
-    description:
-      &#x27;A summary of the patient&#x60;s medical history, including conditions, allergies, etc.&#x27;,
-    example: &#x27;Controlled hypertension, penicillin allergy.&#x27;,
-    nullable: true,
-  })
     @Column({type: &#x27;text&#x27;, nullable: true})
     medicalHistory: string;
 
@@ -642,7 +607,6 @@ export class Patient {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Person}
      */
-    @ApiProperty({ type: () &#x3D;&gt; Person })
     @OneToOne(() &#x3D;&gt; Person, (person) &#x3D;&gt; person.patient, {cascade: true})
     @JoinColumn({name:&#x27;person_id&#x27;})
     person: Person;
@@ -657,7 +621,6 @@ export class Patient {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Appointment}
      */
-    @ApiProperty({ type: () &#x3D;&gt; [Appointment] })
     @OneToMany (() &#x3D;&gt; Appointment, (appointment) &#x3D;&gt; appointment.patient, {cascade: true})
     @JoinColumn({name: &#x27;patient_id&#x27;})
     appointments: Appointment[];
@@ -671,7 +634,6 @@ export class Patient {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Invoice}
      */
-    @ApiProperty({ type: () &#x3D;&gt; [Invoice] })
     @OneToMany(() &#x3D;&gt; Invoice, (invoice) &#x3D;&gt; invoice.propety_patient, {cascade: true})
     invoices: Invoice[];
 }</code></pre>

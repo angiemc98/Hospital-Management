@@ -1,6 +1,6 @@
 import { PartialType } from "@nestjs/mapped-types";
 import { CreateDoctorDto } from "./create-doctor.dto";
-import { IsInt, IsNumber, IsString } from "class-validator";
+import { IsString } from "class-validator";
 
 /**
  * DTO para la actualización de un doctor existente
@@ -48,9 +48,4 @@ export class UpdateDoctorDto extends PartialType(CreateDoctorDto) {
     @IsString()
     licenseNumber: string;
 
-    @IsInt()
-    specialtyId?: number;
-
-    @IsInt()
-    personaId?: number;
 }

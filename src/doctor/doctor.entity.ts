@@ -3,7 +3,7 @@ import { Person } from "../person/person.entity";
 import { Appointment } from "../appointment/appointment.entity";
 import { Prescription } from "../prescription/prescription.entity";
 import { Specialty } from "../specialty/specialty.entity";
-import { ApiProperty } from '@nestjs/swagger';
+
 /**
  * Entidad que representa un doctor en el sistema médico
  * 
@@ -30,10 +30,6 @@ export class Doctor {
      * @type {number}
      * @description Clave primaria autogenerada del doctor
      */
-     @ApiProperty({
-    description: 'The unique identifier for the doctor.',
-    example: 1,
-  })
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -48,12 +44,6 @@ export class Doctor {
      * 
      * @example "MP-123456", "RM-789012", "LIC-345678"
      */
-     @ApiProperty({
-    description: 'The medical license number of the doctor.',
-    example: 'MP-123456',
-    minLength: 2,
-    maxLength: 50,
-  })
     @Column(
         {length: 50, type: 'varchar'}
     )
@@ -69,7 +59,6 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Person}
      */
-    @ApiProperty({ type: () => Person })
     @OneToOne(() => Person, (person) => person.doctor, {cascade: true})
     @JoinColumn({name:'person_id'})
     person:Person;
@@ -85,7 +74,6 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Specialty}
      */
-    @ApiProperty({ type: () => Specialty })
     @ManyToOne(() => Specialty, (Especialidades) => Especialidades.propety_doctor, {cascade: true})
     @JoinColumn({name:'specialty_id'})
     specialty:Specialty; 
@@ -99,7 +87,6 @@ export class Doctor {
      * Se aplica cascada para operaciones relacionadas.
      * @see {@link Appointment}
      */
-    @ApiProperty({ type: () => [Appointment] })
     @OneToMany(() => Appointment, (appointment) => appointment.doctor, {cascade: true})
     appointments:Appointment[];
 }

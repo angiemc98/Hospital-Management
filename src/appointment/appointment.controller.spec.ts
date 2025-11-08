@@ -98,7 +98,7 @@ describe('appointmentController', () => {
 
         // Cambiar de 1 a '1' (string)
         expect(await controller.update(1, dto)).toEqual(result);
-        expect(service.update).toHaveBeenCalledWith(1, dto); 
+        expect(service.update).toHaveBeenCalledWith(1, dto); // string
     });
 
     // Test: delete appointment

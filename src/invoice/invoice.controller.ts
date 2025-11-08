@@ -2,8 +2,6 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { InvoiceService } from './invoice.service';
 import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { UpdateInvoiceDto } from './dto/update-invoice.dto';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
-import { Invoice } from './invoice.entity';
 
 /**
  * Controlador para gestionar las operaciones REST de facturas
@@ -17,7 +15,6 @@ import { Invoice } from './invoice.entity';
  * @export
  * @class InvoiceController
  */
-@ApiTags('invoice')
 @Controller('invoice')
 export class InvoiceController {
   /**
@@ -48,9 +45,6 @@ export class InvoiceController {
    * ```
    */
   @Post()
-  @ApiOperation({ summary: 'Create a new invoice' })
-  @ApiResponse({ status: 201, description: 'The invoice has been successfully created.', type: Invoice })
-  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   create(@Body() createInvoiceDto: CreateInvoiceDto) {
     return this.invoiceService.create(createInvoiceDto);
   }
@@ -65,8 +59,6 @@ export class InvoiceController {
    * GET http://localhost:3000/invoice
    */
   @Get()
-  @ApiOperation({ summary: 'Get all invoices' })
-  @ApiResponse({ status: 200, description: 'List of all invoices.', type: [Invoice] })
   findAll() {
     return this.invoiceService.findAll();
   }
@@ -82,10 +74,6 @@ export class InvoiceController {
    * GET http://localhost:3000/invoice/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get an invoice by its ID' })
-  @ApiParam({ name: 'id', description: 'ID of the invoice to search for', type: Number })
-  @ApiResponse({ status: 200, description: 'Invoice found.', type: Invoice })
-  @ApiResponse({ status: 404, description: 'Invoice not found.' })
   findOne(@Param('id') id: number) {
     return this.invoiceService.findOne(id);
   }
@@ -110,10 +98,6 @@ export class InvoiceController {
    * ```
    */
   @Patch(':id')
-  @ApiOperation({ summary: 'Update an existing invoice' })
-  @ApiParam({ name: 'id', description: 'ID of the invoice to update', type: Number })
-  @ApiResponse({ status: 200, description: 'The invoice has been successfully updated.', type: Invoice })
-  @ApiResponse({ status: 404, description: 'Invoice not found.' })
   update(@Param('id') id: number, @Body() updateInvoiceDto: UpdateInvoiceDto) {
     return this.invoiceService.update(id, updateInvoiceDto);
   }
@@ -130,10 +114,6 @@ export class InvoiceController {
    * // Retorna: { "message": "Invoice with id 1 deleted successfully" }
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete an invoice by its ID' })
-  @ApiParam({ name: 'id', description: 'ID of the invoice to delete', type: Number })
-  @ApiResponse({ status: 200, description: 'The invoice has been successfully deleted.' })
-  @ApiResponse({ status: 404, description: 'Invoice not found.' })
   remove(@Param('id') id: number) {
     return this.invoiceService.remove(id);
   }
