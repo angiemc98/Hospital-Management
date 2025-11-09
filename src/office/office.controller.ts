@@ -46,9 +46,10 @@ export class OfficeController {
    * ```
    */
   @Post()
-  @ApiOperation({ summary: 'Create a new office' })
-  @ApiResponse({ status: 201, description: 'The office has been successfully created.', type: Office })
+  @ApiOperation({ summary: 'Create a new office', description: 'Create a new office in the system hospital management and return the office' })
   @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiResponse({ status: 201, description: 'Office created successfully.' })
+  @ApiResponse({ status: 409, description: 'Office already exists.' })
   create(@Body() dto: CreateOfficeDto) {
     return this.officeService.create(dto);
   }
@@ -72,8 +73,10 @@ export class OfficeController {
    * GET http://localhost:3000/office
    */
   @Get()
-  @ApiOperation({ summary: 'Get all offices' })
+  @ApiOperation({ summary: 'Get all offices', description: 'Get all offices registered in the system and return a list of them' })
   @ApiResponse({ status: 200, description: 'List of all offices with their associated appointments.', type: [Office] })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiResponse({ status: 404, description: 'Office not found.' })
   findAll() {
     return this.officeService.findAll();
   }
@@ -89,10 +92,11 @@ export class OfficeController {
    * GET http://localhost:3000/office/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get an office by its ID' })
-  @ApiParam({ name: 'id', description: 'ID of the office to search for', type: Number })
+  @ApiOperation({ summary: 'Get an office by its ID', description: 'Get an office by its ID and return the office registered in the system' })
+  @ApiParam({ name: 'id', description: 'ID of the office to search for', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'Office found with its appointments.', type: Office })
   @ApiResponse({ status: 404, description: 'Office not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.officeService.findOne(id);
   }
@@ -116,10 +120,11 @@ export class OfficeController {
    * ```
    */
   @Patch(':id')
-  @ApiOperation({ summary: 'Update an existing office' })
-  @ApiParam({ name: 'id', description: 'ID of the office to update', type: Number })
+  @ApiOperation({ summary: 'Update an existing office', description: 'Update an existing office in the system hospital management and return the office' })
+  @ApiParam({ name: 'id', description: 'ID of the office to update', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'The office has been successfully updated.', type: Office })
   @ApiResponse({ status: 404, description: 'Office not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdateOfficeDto,
@@ -138,10 +143,11 @@ export class OfficeController {
    * DELETE http://localhost:3000/office/1
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete an office by its ID' })
-  @ApiParam({ name: 'id', description: 'ID of the office to delete', type: Number })
+  @ApiOperation({ summary: 'Delete an office by its ID', description: 'Delete an office by its ID and return the message of confirmation' })
+  @ApiParam({ name: 'id', description: 'ID of the office to delete', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'The office has been successfully deleted.' })
   @ApiResponse({ status: 404, description: 'Office not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.officeService.remove(id);
   }

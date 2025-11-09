@@ -250,7 +250,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/appointment/appointment.entity.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/appointment/appointment.entity.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -288,7 +288,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/appointment/appointment.entity.ts:67</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/appointment/appointment.entity.ts:79</a></div>
                         </td>
                     </tr>
 
@@ -325,7 +325,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/appointment/appointment.entity.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/appointment/appointment.entity.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -356,13 +356,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Invoice, nullable: true})<br />@OneToOne(undefined, invoice &#x3D;&gt; invoice.appointment)<br />
+                            @ApiProperty({type: () &#x3D;&gt; Invoice, nullable: true})<br />@OneToOne(undefined, invoice &#x3D;&gt; invoice.propety_cita)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/appointment/appointment.entity.ts:84</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/appointment/appointment.entity.ts:96</a></div>
                         </td>
                     </tr>
 
@@ -399,7 +399,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/appointment/appointment.entity.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/appointment/appointment.entity.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -431,13 +431,13 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: () &#x3D;&gt; Office})<br />@ManyToOne(undefined, office &#x3D;&gt; office.appointments)<br />@JoinColumn({name: &#x27;office_id&#x27;})<br />
+                            @ApiProperty({type: () &#x3D;&gt; Office})<br />@ManyToOne(undefined, office &#x3D;&gt; office.property_cita)<br />@JoinColumn({name: &#x27;office_id&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/appointment/appointment.entity.ts:79</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/appointment/appointment.entity.ts:91</a></div>
                         </td>
                     </tr>
 
@@ -475,7 +475,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/appointment/appointment.entity.ts:73</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/appointment/appointment.entity.ts:85</a></div>
                         </td>
                     </tr>
 
@@ -512,7 +512,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/appointment/appointment.entity.ts:89</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/appointment/appointment.entity.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -549,7 +549,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/appointment/appointment.entity.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/appointment/appointment.entity.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -586,7 +586,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/appointment/appointment.entity.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/appointment/appointment.entity.ts:71</a></div>
                         </td>
                     </tr>
 
@@ -602,6 +602,18 @@
 import { Doctor } from &#x27;src/doctor/doctor.entity&#x27;;
 // ... existing code ...
 import { Prescription } from &#x27;src/prescription/prescription.entity&#x27;;
+import { Patient } from &#x27;src/patient/patient.entity&#x27;;
+import { Office } from &#x27;src/office/office.entity&#x27;;
+import { Invoice } from &#x27;src/invoice/invoice.entity&#x27;;
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+  OneToOne,
+  OneToMany,
+} from &#x27;typeorm&#x27;;
 
 /**
  * @class Appointment
@@ -674,13 +686,13 @@ export class Appointment {
 
   @ApiProperty({ type: () &#x3D;&gt; Office })
   // Relation Office &gt; Appointment, an Office can have many appointments
-  @ManyToOne(() &#x3D;&gt; Office, (office) &#x3D;&gt; office.appointments)
+  @ManyToOne(() &#x3D;&gt; Office, (office) &#x3D;&gt; office.property_cita)
   @JoinColumn({ name: &#x27;office_id&#x27; })
   office: Office;
 
   @ApiProperty({ type: () &#x3D;&gt; Invoice, nullable: true })
   // Relation Invoice &gt; Appointment, an Invoice can have many appointments
-  @OneToOne(() &#x3D;&gt; Invoice, (invoice) &#x3D;&gt; invoice.appointment)
+  @OneToOne(() &#x3D;&gt; Invoice, (invoice) &#x3D;&gt; invoice.propety_cita)
   invoice: Invoice;
 
   @ApiProperty({ type: () &#x3D;&gt; [Prescription] })

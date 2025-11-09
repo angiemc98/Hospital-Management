@@ -1,6 +1,7 @@
 import { IsDateString, IsInt, IsString } from "class-validator";
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateAppointmentDto } from './create-appointment.dto';
+import { ApiProperty } from "@nestjs/swagger";
 
 /**
  * DTO para la actualización de una cita médica existente
@@ -57,6 +58,7 @@ export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {
      * 
      * @example 1, 3, 5
      */
+    @ApiProperty({ name: 'doctorId', description: 'ID of the doctor assigned', type: Number, example: 1 })
     @IsInt()
     doctorId: number;
 
@@ -69,6 +71,7 @@ export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {
      * 
      * @example 5, 10, 15
      */
+    @ApiProperty({ name: 'patientId', description: 'ID of the patient', type: Number, example: 5 })
     @IsInt()
     patientId: number;  
     
@@ -81,6 +84,7 @@ export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {
      * 
      * @example 101, 202, 305
      */
+    @ApiProperty({ name: 'officeId', description: 'ID of the office', type: Number, example: 101 })
     @IsInt()
     officeId: number;
     
@@ -93,6 +97,7 @@ export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {
      * 
      * @example "scheduled" (programada), "completed" (completada), "canceled" (cancelada)
      */
+    @ApiProperty({ name: 'status', description: 'Status of the appointment', type: String, example: 'scheduled' })
     @IsString()
     status: string;
 
@@ -105,6 +110,7 @@ export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {
      * 
      * @example "2024-08-15T10:00:00Z", "2024-12-20T14:30:00Z"
      */
+    @ApiProperty({ name: 'date', description: 'Date and time of the appointment', type: Date, example: new Date('2024-08-15T10:00:00Z') })
     @IsDateString()
     date: Date;
 
@@ -117,6 +123,7 @@ export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {
      * 
      * @example "Consulta de seguimiento", "Revisión de tratamiento", "Control post-operatorio"
      */
+    @ApiProperty({ name: 'reason', description: 'Reason for the appointment', type: String, example: 'Consulta de seguimiento' })
     @IsString()
     reason: string;
 
@@ -129,6 +136,7 @@ export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {
      * 
      * @example "Paciente completó tratamiento satisfactoriamente", "Requiere estudios adicionales"
      */
+    @ApiProperty({ name: 'notes', description: 'Notes for the appointment', type: String, example: 'Paciente completó tratamiento satisfactoriamente' })
     @IsString()
     notes: string;
 }

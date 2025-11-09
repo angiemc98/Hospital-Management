@@ -1,9 +1,12 @@
-import { Controller, Post, Body, Get, Param, Patch, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, Patch, Delete, UseGuards } from '@nestjs/common';
 import { PersonService } from './person.service';
 import { CreatePersonDto } from './dto/create-person.dto';
 import { UpdatePersonDto } from './dto/update-person.dto';
 import { Person, Role } from './person.entity';
-import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBearerAuth } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { Roles } from '../auth/decorators/roles.decorator';
 
 /**
  * Controlador para gestionar las operaciones REST de personas
@@ -18,6 +21,8 @@ import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
  * @class PersonController
  */
 @ApiTags('person')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('person')
 export class PersonController {
   /**
@@ -51,11 +56,11 @@ export class PersonController {
    * ```
    */
   @Post()
-  @ApiOperation({ summary: 'Create a new person',
-    description: 'Creat a new person in the system',
-  })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Create a new person', description: 'Create a new person in the system hospital management and return the person' })
   @ApiResponse({ status: 201, description: 'The person has been successfully created.', type: Person })
   @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiResponse({ status: 409, description: 'Person already exists.' })
   create(@Body() dto: CreatePersonDto): Promise<{
     message: string,
     statusCode: number,
@@ -74,8 +79,9 @@ export class PersonController {
    * GET http://localhost:3000/person
    */
   @Get()
-  @ApiOperation({ summary: 'Get all people' })
-  @ApiResponse({ status: 200, description: 'List of all registered people.', type: [Person] })
+  @ApiOperation({ summary: 'Get all people', description: 'Get all people registered in the system and return a list of them' })
+  @ApiResponse({ status: 200, description: 'List of all registered people.', type: [Person], isArray: true }) 
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   findAll() {
     return this.personService.findAll();
   }
@@ -91,10 +97,11 @@ export class PersonController {
    * GET http://localhost:3000/person/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get a person by their ID' })
-  @ApiParam({ name: 'id', description: 'ID of the person to search for', type: Number })
+  @ApiOperation({ summary: 'Get a person by their ID', description: 'Get a person by their ID and return the person registered in the system' })
+  @ApiParam({ name: 'id', description: 'ID of the person to search for', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'Person found.', type: Person })
   @ApiResponse({ status: 404, description: 'Person not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   findOne(@Param('id') id: number) {
     return this.personService.findOne(id);
   }
@@ -112,9 +119,11 @@ export class PersonController {
    * GET http://localhost:3000/person/role/admin
    */
   @Get('role/:role')
-  @ApiOperation({ summary: 'Get people by their role' })
-  @ApiParam({ name: 'role', description: 'Role to filter by (doctor, paciente, admin)', enum: Role })
+  @ApiOperation({ summary: 'Get people by their role', description: 'Get all people registered in the system with the specified role and return a list of them' })
+  @ApiParam({ name: 'role', description: 'Role to filter by (doctor, paciente, admin)', enum: Role, required: true, example: Role.Doctor })
   @ApiResponse({ status: 200, description: 'List of people with the specified role.', type: [Person] })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiResponse({ status: 404, description: 'Role not found.' })
   findByRole(@Param('role') role: Role) {
     return this.personService.findByrole(role);
   }
@@ -138,10 +147,12 @@ export class PersonController {
    * ```
    */
   @Patch(':id')
-  @ApiOperation({ summary: 'Update an existing person' })
-  @ApiParam({ name: 'id', description: 'ID of the person to update', type: Number })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Update an existing person', description: 'Update an existing person in the system hospital management and return the person' })
+  @ApiParam({ name: 'id', description: 'ID of the person to update', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'The person has been successfully updated.', type: Person })
   @ApiResponse({ status: 404, description: 'Person not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   update(@Param('id') id: number, @Body() dto: UpdatePersonDto) {
     return this.personService.update(id, dto);
   }
@@ -157,10 +168,12 @@ export class PersonController {
    * DELETE http://localhost:3000/person/1
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete a person by their ID' })
-  @ApiParam({ name: 'id', description: 'ID of the person to delete', type: Number })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Delete a person by their ID', description: 'Delete a person by their ID and return the message of confirmation' })
+  @ApiParam({ name: 'id', description: 'ID of the person to delete', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'The person has been successfully deleted.' })
   @ApiResponse({ status: 404, description: 'Person not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   remove(@Param('id') id: number) {
     return this.personService.remove(id);
   }

@@ -4,6 +4,8 @@ import { CreateInvoiceDto } from './dto/create-invoice.dto';
 import { UpdateInvoiceDto } from './dto/update-invoice.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 import { Invoice } from './invoice.entity';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { Role } from '../person/person.entity';
 
 /**
  * Controlador para gestionar las operaciones REST de facturas
@@ -48,7 +50,8 @@ export class InvoiceController {
    * ```
    */
   @Post()
-  @ApiOperation({ summary: 'Create a new invoice' })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Create a new invoice', description: 'Create a new invoice in the system hospital management and return the invoice' })
   @ApiResponse({ status: 201, description: 'The invoice has been successfully created.', type: Invoice })
   @ApiResponse({ status: 400, description: 'Invalid input data.' })
   create(@Body() createInvoiceDto: CreateInvoiceDto) {
@@ -65,8 +68,10 @@ export class InvoiceController {
    * GET http://localhost:3000/invoice
    */
   @Get()
-  @ApiOperation({ summary: 'Get all invoices' })
-  @ApiResponse({ status: 200, description: 'List of all invoices.', type: [Invoice] })
+  @ApiOperation({ summary: 'Get all invoices', description: 'Get all invoices registered in the system and return a list of them' })
+  @ApiResponse({ status: 200, description: 'List of all registered invoices.', type: [Invoice], isArray: true }) 
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiResponse({ status: 404, description: 'Invoice not found.' })
   findAll() {
     return this.invoiceService.findAll();
   }
@@ -82,10 +87,12 @@ export class InvoiceController {
    * GET http://localhost:3000/invoice/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get an invoice by its ID' })
-  @ApiParam({ name: 'id', description: 'ID of the invoice to search for', type: Number })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Get an invoice by its ID', description: 'Get an invoice by its ID and return the invoice registered in the system' })
+  @ApiParam({ name: 'id', description: 'ID of the invoice to search for', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'Invoice found.', type: Invoice })
   @ApiResponse({ status: 404, description: 'Invoice not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   findOne(@Param('id') id: number) {
     return this.invoiceService.findOne(id);
   }
@@ -110,8 +117,9 @@ export class InvoiceController {
    * ```
    */
   @Patch(':id')
-  @ApiOperation({ summary: 'Update an existing invoice' })
-  @ApiParam({ name: 'id', description: 'ID of the invoice to update', type: Number })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Update an existing invoice', description: 'Update an existing invoice in the system hospital management and return the invoice' })
+  @ApiParam({ name: 'id', description: 'ID of the invoice to update', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'The invoice has been successfully updated.', type: Invoice })
   @ApiResponse({ status: 404, description: 'Invoice not found.' })
   update(@Param('id') id: number, @Body() updateInvoiceDto: UpdateInvoiceDto) {
@@ -130,10 +138,12 @@ export class InvoiceController {
    * // Retorna: { "message": "Invoice with id 1 deleted successfully" }
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete an invoice by its ID' })
-  @ApiParam({ name: 'id', description: 'ID of the invoice to delete', type: Number })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Delete an invoice by its ID', description: 'Delete an invoice by its ID and return the message of confirmation' })
+  @ApiParam({ name: 'id', description: 'ID of the invoice to delete', type: Number, required: true, example: 1, })
   @ApiResponse({ status: 200, description: 'The invoice has been successfully deleted.' })
   @ApiResponse({ status: 404, description: 'Invoice not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   remove(@Param('id') id: number) {
     return this.invoiceService.remove(id);
   }

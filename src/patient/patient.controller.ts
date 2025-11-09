@@ -47,13 +47,14 @@ export class PatientController {
    */
   @Post()
    @Post()
-  @ApiOperation({ summary: 'Create a new patient' })
+  @ApiOperation({ summary: 'Create a new patient', description: 'Create a new patient in the system hospital management and return the patient' })
   @ApiResponse({
     status: 201,
     description: 'The patient has been successfully created.',
     type: Patient,
   })
   @ApiResponse({ status: 400, description: 'Bad Request.' })
+  @ApiResponse({ status: 409, description: 'Patient already exists.' })
   create(@Body() patientDto: CreatePatientDto) {
     return this.patientService.create(patientDto);
   }
@@ -68,12 +69,14 @@ export class PatientController {
    * GET http://localhost:3000/patient
    */
   @Get()
-  @ApiOperation({ summary: 'Get all patients' })
+  @ApiOperation({ summary: 'Get all patients', description: 'Get all patients registered in the system and return a list of them' })
   @ApiResponse({
     status: 200,
     description: 'Return all patients.',
     type: [Patient],
   })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiResponse({ status: 404, description: 'Patient not found.' })
   findAll() {
     return this.patientService.findAll();
   }
@@ -89,11 +92,13 @@ export class PatientController {
    * GET http://localhost:3000/patient/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get a single patient by ID' })
+  @ApiOperation({ summary: 'Get a single patient by ID', description: 'Get a single patient by its ID and return the patient registered in the system' })
   @ApiParam({
     name: 'id',
     description: 'The ID of the patient',
     type: 'number',
+    required: true,
+    example: 1,
   })
   @ApiResponse({
     status: 200,
@@ -101,6 +106,7 @@ export class PatientController {
     type: Patient,
   })
   @ApiResponse({ status: 404, description: 'Patient not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   findOne(@Param('id') id: number) {
     return this.patientService.findOne(+id);
   }
@@ -125,7 +131,7 @@ export class PatientController {
    * ```
    */
   @Patch(':id')
-   @ApiOperation({ summary: 'Update an existing patient' })
+   @ApiOperation({ summary: 'Update an existing patient', description: 'Update an existing patient in the system hospital management and return the patient' })
   @ApiParam({
     name: 'id',
     description: 'The ID of the patient to update',
@@ -137,6 +143,7 @@ export class PatientController {
     type: Patient,
   })
   @ApiResponse({ status: 404, description: 'Patient not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   update(
     @Param('id') id: number,
      @Body() patientDto: UpdatePatientDto,
@@ -155,17 +162,20 @@ export class PatientController {
    * DELETE http://localhost:3000/patient/1
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete a patient' })
+  @ApiOperation({ summary: 'Delete a patient', description: 'Delete a patient by its ID and return the message of confirmation' })
   @ApiParam({
     name: 'id',
     description: 'The ID of the patient to delete',
     type: 'number',
+    required: true,
+    example: 1,
   })
   @ApiResponse({
     status: 200,
     description: 'The patient has been successfully deleted.',
   })
   @ApiResponse({ status: 404, description: 'Patient not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   remove(@Param('id') id: number) {
     return this.patientService.remove(+id);
   }

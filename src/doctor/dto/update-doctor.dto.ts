@@ -1,6 +1,7 @@
 import { PartialType } from "@nestjs/mapped-types";
 import { CreateDoctorDto } from "./create-doctor.dto";
 import { IsInt, IsNumber, IsString } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
 
 /**
  * DTO para la actualización de un doctor existente
@@ -45,12 +46,15 @@ export class UpdateDoctorDto extends PartialType(CreateDoctorDto) {
      * 
      * @example "MP-123456", "RM-789012", "LIC-345678", "MED-999888"
      */
+    @ApiProperty({ name: 'licenseNumber', description: 'License number of the doctor', type: String, example: 'MP-123456' })
     @IsString()
     licenseNumber: string;
 
+    @ApiProperty({ name: 'specialtyId', description: 'ID of the doctor', type: Number, example: 1 })
     @IsInt()
     specialtyId?: number;
 
+    @ApiProperty({ name: 'personaId', description: 'ID of the doctor', type: Number, example: 1 })
     @IsInt()
     personaId?: number;
 }

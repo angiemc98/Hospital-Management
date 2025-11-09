@@ -1,6 +1,7 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateInvoiceDto } from './create-invoice.dto';
 import { IsNumber, IsString, IsOptional } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 /**
  * DTO para la actualización de una factura existente
@@ -51,6 +52,7 @@ export class UpdateInvoiceDto extends PartialType(CreateInvoiceDto) {
      * 
      * @example 150000.00, 75500.50, 1250000.99
      */
+    @ApiProperty({ name: 'total', description: 'Total amount of the invoice', type: Number, example: 150000.00 })
     @IsNumber()
     total: number;
 
@@ -63,6 +65,7 @@ export class UpdateInvoiceDto extends PartialType(CreateInvoiceDto) {
      * 
      * @example "Efectivo", "Tarjeta de crédito", "Tarjeta de débito", "Transferencia bancaria", "PSE"
      */
+    @ApiProperty({ name: 'metodo_pago', description: 'Payment method', type: String, example: 'Tarjeta de crédito' })
     @IsString()
     metodo_pago: string;
     
@@ -75,6 +78,7 @@ export class UpdateInvoiceDto extends PartialType(CreateInvoiceDto) {
      * 
      * @example "Pendiente", "Pagado", "Fallido", "Cancelado"
      */
+    @ApiProperty({ name: 'estado_pago', description: 'Payment status', type: String, example: 'Pendiente' })
     @IsString()
     @IsOptional()
     estado_pago?: string;   
@@ -88,6 +92,7 @@ export class UpdateInvoiceDto extends PartialType(CreateInvoiceDto) {
      * 
      * @example 1, 5, 10
      */
+    @ApiProperty({ name: 'id_factura', description: 'ID of the invoice', type: Number, example: 1 })
     @IsNumber()
     id_factura: number;
 }

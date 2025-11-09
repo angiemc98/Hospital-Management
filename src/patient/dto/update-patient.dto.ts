@@ -1,3 +1,4 @@
+import { ApiAcceptedResponse, ApiProperty } from "@nestjs/swagger";
 import { IsInt, IsString, IsNotEmpty, Length } from "class-validator";
 
 /**
@@ -32,6 +33,7 @@ export class UpdatePatientDto {
      * 
      * @example 1, 5, 10
      */
+    @ApiProperty({ name: 'personid', description: 'ID of the patient', type: Number, example: 1 })
     @IsInt()
     @IsNotEmpty()
     personid: number;
@@ -47,6 +49,7 @@ export class UpdatePatientDto {
      * 
      * @example "O+", "A-", "AB+", "B-", "O-", "A+", "AB-", "B+"
      */
+    @ApiProperty({ name: 'bloodType', description: 'Blood type of the patient', type: String, example: 'O+' })
     @IsString()
     @IsNotEmpty()
     @Length(2, 10)
@@ -61,6 +64,7 @@ export class UpdatePatientDto {
      * 
      * @example "contributive" (régimen contributivo), "subsidized" (régimen subsidiado), "free" (sin seguro)
      */
+    @ApiProperty({ name: 'insurance', description: 'Insurance type of the patient', type: String, example: 'contributive' })
     @IsString()
     @IsNotEmpty()
     insurance?: string;
@@ -74,6 +78,7 @@ export class UpdatePatientDto {
      * 
      * @example "Hipertensión controlada desde 2018, diabetes tipo 2 diagnosticada en 2024, alergia a la penicilina"
      */
+    @ApiProperty({ name: 'medicalHistory', description: 'Medical history of the patient', type: String, example: 'Nombre: José Luis, Edad: 30 años, Sexo: Masculino, Fecha de nacimiento: 1990-05-15, Teléfono: 3001234567, Correo electrónico: john@example.com, Tipo de sangre: O+, Tipo de seguro médico: contributive, Historial médico: Hipertensión controlada desde 2018, diabetes tipo 2 diagnosticada en 2024, alergia a la penicilina' })
     @IsString()
     @IsNotEmpty()
     medicalHistory: string;

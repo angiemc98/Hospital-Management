@@ -1,6 +1,7 @@
 import { IsDateString, IsEmail, IsEnum, IsOptional, IsString, Length } from "class-validator";
 import { Role } from "../person.entity";
 import { Type } from "class-transformer";
+import { ApiProperty } from "@nestjs/swagger";
 
 /**
  * DTO para la creación de una nueva persona
@@ -43,6 +44,7 @@ export class CreatePersonDto {
      */
     @IsString()
     @Length(2, 100)
+    @ApiProperty({ name: 'name', description: 'First name of the person', type: String, example: 'Juan' })
     name: string;
 
     /**
@@ -58,6 +60,7 @@ export class CreatePersonDto {
      */
     @IsString()
     @Length(2, 100)
+    @ApiProperty({ name: 'lastname', description: 'Last name of the person', type: String, example: 'Pérez' })
     lastname: string;
 
     /**
@@ -70,6 +73,7 @@ export class CreatePersonDto {
      * @example "1234567890", "CC-1234567"
      */
     @IsString()
+    @ApiProperty({ name: 'document', description: 'Unique ID of the person', type: String, example: '1234567890' })
     document: string;
 
     /**
@@ -83,6 +87,7 @@ export class CreatePersonDto {
      */
     @Type(() => Date)
     @IsDateString()
+    @ApiProperty({ name: 'birthDate', description: 'Birth date of the person', type: Date, example: new Date('1990-05-15') })
     birthDate: Date;
 
     /**
@@ -98,6 +103,7 @@ export class CreatePersonDto {
      */
     @IsString()
     @Length(2, 100)
+    @ApiProperty({ name: 'phone', description: 'Phone number of the person', type: String, example: '3001234567' })
     phone: string;
 
     /**
@@ -110,6 +116,7 @@ export class CreatePersonDto {
      * @example "usuario@example.com"
      */
     @IsEmail()
+    @ApiProperty({ name: 'email', description: 'Email of the person', type: String, example: 'usuario@example.com' })
     email: string;
 
     /**
@@ -127,6 +134,7 @@ export class CreatePersonDto {
     @Length(8, 50, {
         message: 'La contraseña debe tener entre 8 y 50 caracteres'
     })
+    @ApiProperty({ name: 'password', description: 'Password of the person', type: String, example: 'securePass123' })
     password: string;
 
     /**
@@ -139,6 +147,7 @@ export class CreatePersonDto {
      * @example Role.Doctor, Role.Patient, Role.Admin
      */
     @IsEnum(Role, { message: 'El rol debe ser existente' })
+    @ApiProperty({ name: 'role', description: 'Role of the person', example: Role.Doctor })
     role: Role;
 
     /**
@@ -152,6 +161,7 @@ export class CreatePersonDto {
      */
     @IsString()
     @IsOptional()
+    @ApiProperty({ name: 'gender', description: 'Gender of the person', type: String, example: 'Masculino' })
     gender: string;
 
 }

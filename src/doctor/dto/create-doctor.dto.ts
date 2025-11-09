@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsInt, IsString, Length } from "class-validator";
 
 /**
@@ -32,6 +33,7 @@ export class CreateDoctorDto {
      * 
      * @example 1, 5, 10
      */
+    @ApiProperty({ name: 'personaId', description: 'ID of the doctor', type: Number, example: 1 })
     @IsInt()
     personaId: number;
 
@@ -45,6 +47,7 @@ export class CreateDoctorDto {
      * 
      * @example 1 (Cardiología), 2 (Pediatría), 3 (Dermatología)
      */
+    @ApiProperty({ name: 'specialtyId', description: 'ID of the doctor', type: Number, example: 1 })
     @IsInt()
     specialtyId: number;
 
@@ -60,6 +63,7 @@ export class CreateDoctorDto {
      * 
      * @example "MP-123456", "RM-789012", "LIC-345678", "MED-456789"
      */
+    @ApiProperty({ name: 'licenseNumber', description: 'License number of the doctor', type: String, example: 'MP-123456' })
     @IsString()
     @Length(2, 100)
     licenseNumber: string;

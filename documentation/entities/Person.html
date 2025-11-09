@@ -269,7 +269,7 @@ person.role = Role.Patient;</code></pre></div>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/person/person.entity.ts:147</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/person/person.entity.ts:146</a></div>
                         </td>
                     </tr>
 
@@ -312,7 +312,7 @@ person.role = Role.Patient;</code></pre></div>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="273" class="link-to-prism">src/person/person.entity.ts:273</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">src/person/person.entity.ts:270</a></div>
                         </td>
                     </tr>
 
@@ -351,13 +351,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Unique identity document number&#x27;, example: &#x27;1234567890&#x27;, unique: true})<br />@Column({unique: true})<br />
+                            @ApiProperty({description: &#x27;Unique identity document number&#x27;, example: &#x27;1234567890&#x27;})<br />@Column({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/person/person.entity.ts:127</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/person/person.entity.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -394,13 +394,13 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Unique email address&#x27;, example: &#x27;user@example.com&#x27;, unique: true})<br />@Column({unique: true})<br />
+                            @ApiProperty({description: &#x27;Unique email address&#x27;, example: &#x27;user@example.com&#x27;})<br />@Column({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">src/person/person.entity.ts:187</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">src/person/person.entity.ts:184</a></div>
                         </td>
                     </tr>
 
@@ -572,7 +572,7 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">src/person/person.entity.ts:209</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">src/person/person.entity.ts:206</a></div>
                         </td>
                     </tr>
 
@@ -616,7 +616,7 @@ See <a href="../entitys/Doctor.html">Doctor</a></p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="288" class="link-to-prism">src/person/person.entity.ts:288</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="285" class="link-to-prism">src/person/person.entity.ts:285</a></div>
                         </td>
                     </tr>
 
@@ -655,13 +655,13 @@ See <a href="../entitys/Patient.html">Patient</a></p>
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Unique contact phone number&#x27;, example: &#x27;3001234567&#x27;, unique: true})<br />@Column({unique: true})<br />
+                            @ApiProperty({description: &#x27;Unique contact phone number&#x27;, example: &#x27;3001234567&#x27;})<br />@Column({unique: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/person/person.entity.ts:167</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/person/person.entity.ts:165</a></div>
                         </td>
                     </tr>
 
@@ -704,7 +704,7 @@ See <a href="../entitys/Patient.html">Patient</a></p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="258" class="link-to-prism">src/person/person.entity.ts:258</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="255" class="link-to-prism">src/person/person.entity.ts:255</a></div>
                         </td>
                     </tr>
 
@@ -842,8 +842,7 @@ export class Person {
      */
     @ApiProperty({
         description: &#x27;Unique identity document number&#x27;,
-        example: &#x27;1234567890&#x27;,
-        unique: true,
+        example: &#x27;1234567890&#x27;
     })
     @Column(
     {unique: true}
@@ -882,8 +881,7 @@ export class Person {
      */
     @ApiProperty({
         description: &#x27;Unique contact phone number&#x27;,
-        example: &#x27;3001234567&#x27;,
-        unique: true,
+        example: &#x27;3001234567&#x27;
     })
     @Column(
     {unique: true}
@@ -902,8 +900,7 @@ export class Person {
      */
     @ApiProperty({
         description: &#x27;Unique email address&#x27;,
-        example: &#x27;user@example.com&#x27;,
-        unique: true,
+        example: &#x27;user@example.com&#x27;
     })
     @Column(
     {unique: true}

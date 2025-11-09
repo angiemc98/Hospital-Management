@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsInt, IsPositive } from 'class-validator';
 
 /**
@@ -29,6 +30,7 @@ export class CreateOfficeDto {
      * 
      * @example 101, 202, 305
      */
+    @ApiProperty({ name: 'num_consultorio', description: 'Consultorio number', type: Number, example: 101 })
     @IsInt()
     @IsPositive()
     num_consultorio: number;
@@ -42,6 +44,7 @@ export class CreateOfficeDto {
      * 
      * @example 1, 2, 3, -1 (sótano)
      */
+    @ApiProperty({ name: 'piso', description: 'Floor number', type: Number, example: 1 })
     @IsInt()
     piso: number;
 
@@ -54,6 +57,7 @@ export class CreateOfficeDto {
      * 
      * @example true, false
      */
+    @ApiProperty({ name: 'disponible', description: 'Availability of the office', type: Boolean, example: true })
     @IsBoolean()
     disponible: boolean;
 }

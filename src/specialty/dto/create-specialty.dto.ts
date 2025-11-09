@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsOptional, IsString, Length } from "class-validator";
 
 /**
@@ -31,6 +32,7 @@ export class CreateSpecialtyDto{
      * 
      * @example "Cardiología", "Pediatría", "Dermatología", "Neurología"
      */
+    @ApiProperty({ name: 'name', description: 'Name of the specialty', type: String, example: 'Cardiología' })
     @IsString()
     @Length(2, 100)
     name: string;
@@ -46,6 +48,7 @@ export class CreateSpecialtyDto{
      * 
      * @example "Especialidad dedicada al diagnóstico y tratamiento de enfermedades del corazón"
      */
+    @ApiProperty({ name: 'descripcion', description: 'Description of the specialty', type: String, example: 'Especialidad dedicada al diagnóstico y tratamiento de enfermedades del corazón' })
     @IsString()
     @Length(2, 100)
     @IsOptional()

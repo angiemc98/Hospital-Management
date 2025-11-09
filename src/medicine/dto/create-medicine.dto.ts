@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { IsInt, IsOptional, IsString, Length, Min } from "class-validator";
 
 /**
@@ -35,6 +36,7 @@ export class CreateMedicineDto {
      * 
      * @example "Ibuprofeno", "Amoxicilina"
      */
+    @ApiProperty({ name: 'name', description: 'Name of the medicine', type: String, example: 'Ibuprofeno' })
     @IsString()
     @Length(2, 100)
     name: string;
@@ -50,6 +52,7 @@ export class CreateMedicineDto {
      * 
      * @example "tablet", "pill", "liquid", "injection"
      */
+    @ApiProperty({ name: 'type', description: 'Type of the medicine', type: String, example: 'tablet' })
     @IsString()
     @Length(2, 50)
     type: string;
@@ -65,6 +68,7 @@ export class CreateMedicineDto {
      * 
      * @example "500mg", "100ml", "250mg/5ml"
      */
+    @ApiProperty({ name: 'presentation', description: 'Presentation of the medicine', type: String, example: '500mg' })
     @IsString()
     @Length(2, 50)
     presentation: string;
@@ -79,6 +83,7 @@ export class CreateMedicineDto {
      * 
      * @example 100, 50, 200
      */
+    @ApiProperty({ name: 'stock', description: 'Stock of the medicine', type: Number, example: 100 })
     @IsInt()
     @Min(0)
     stock: number;
@@ -94,6 +99,7 @@ export class CreateMedicineDto {
      * 
      * @example "Analgésico y antipirético para dolores leves a moderados"
      */
+    @ApiProperty({ name: 'description', description: 'Description of the medicine', type: String, example: 'Analgésico y antipirético para dolores leves a moderados' })
     @IsString()
     @Length(2, 50)
     @IsOptional()
@@ -109,6 +115,7 @@ export class CreateMedicineDto {
      * 
      * @example "5000", "12500", "3000"
      */
+    @ApiProperty({ name: 'price', description: 'Price of the medicine', type: Number, example: 5000 })
     @IsInt()
     @Min(0)
     price: number;

@@ -12,6 +12,7 @@ import { AppointmentService } from './appointment.service';
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { UpdateAppointmentDto } from './dto/update-appointment.dto';
 import { Appointment } from './appointment.entity';
+import { ApiOperation, ApiResponse, ApiParam } from '@nestjs/swagger';
 
 /**
  * Controlador para gestionar las operaciones REST de citas médicas
@@ -56,6 +57,10 @@ export class AppointmentController {
    * }
    * ```
    */
+  @ApiOperation({ summary: 'Create a new appointment', description: 'Create a new appointment in the system hospital management and return the appointment' })
+  @ApiResponse({ status: 201, description: 'The appointment has been successfully created.', type: Appointment })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiResponse({ status: 409, description: 'Appointment already exists.' })
   @Post()
   create(@Body() createAppointmentDto: CreateAppointmentDto) {
     return this.appointmentService.create(createAppointmentDto);
@@ -70,6 +75,10 @@ export class AppointmentController {
    * @example
    * GET http://localhost:3000/appointment
    */
+  @ApiOperation({ summary: 'Get all appointments', description: 'Get all appointments registered in the system and return a list of them' })
+  @ApiResponse({ status: 200, description: 'List of all registered appointments.', type: [Appointment], isArray: true }) 
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
+  @ApiResponse({ status: 404, description: 'Appointment not found.' })
   @Get()
   findAll() {
     return this.appointmentService.findAll();
@@ -85,6 +94,11 @@ export class AppointmentController {
    * @example
    * GET http://localhost:3000/appointment/1
    */
+  @ApiOperation({ summary: 'Get an appointment by their ID', description: 'Get an appointment by their ID and return the appointment registered in the system' })
+  @ApiParam({ name: 'id', description: 'ID of the appointment to search for', type: Number, required: true, example: 1, })
+  @ApiResponse({ status: 200, description: 'Appointment found.', type: Appointment })
+  @ApiResponse({ status: 404, description: 'Appointment not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.appointmentService.findOne(id);
@@ -108,6 +122,11 @@ export class AppointmentController {
    * }
    * ```
    */
+  @ApiOperation({ summary: 'Update an existing appointment', description: 'Update an existing appointment in the system hospital management and return the appointment' })
+  @ApiParam({ name: 'id', description: 'ID of the appointment to update', type: Number, required: true, example: 1, })
+  @ApiResponse({ status: 200, description: 'The appointment has been successfully updated.', type: Appointment })
+  @ApiResponse({ status: 404, description: 'Appointment not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   @Patch(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
@@ -127,6 +146,11 @@ export class AppointmentController {
    * DELETE http://localhost:3000/appointment/1
    * // Retorna: { "message": "Appointment deleted successfully", "statusCode": 200 }
    */
+  @ApiOperation({ summary: 'Delete an appointment by their ID', description: 'Delete an appointment by their ID and return the message of confirmation' })
+  @ApiParam({ name: 'id', description: 'ID of the appointment to delete', type: Number, required: true, example: 1, })
+  @ApiResponse({ status: 200, description: 'The appointment has been successfully deleted.' })
+  @ApiResponse({ status: 404, description: 'Appointment not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.appointmentService.remove(id);

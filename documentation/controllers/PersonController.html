@@ -254,14 +254,14 @@ de negocio al servicio PersonService. Incluye endpoints para búsqueda por rol.<
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a new person&#x27;})<br />@ApiResponse({status: 201, description: &#x27;The person has been successfully created.&#x27;, type: Person})<br />@ApiResponse({status: 400, description: &#x27;Invalid input data.&#x27;})<br /></code>
+                    <code>@Post()<br />@ApiOperation({summary: &#x27;Create a new person&#x27;, description: &#x27;Creat a new person in the system hospital management and return the person with the hashed password&#x27;})<br />@ApiResponse({status: 201, description: &#x27;The person has been successfully created.&#x27;, type: Person})<br />@ApiResponse({status: 400, description: &#x27;Invalid input data.&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/person/person.controller.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/person/person.controller.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -360,8 +360,8 @@ Body:
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/person/person.controller.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/person/person.controller.ts:79</a></div>
                         </td>
                     </tr>
 
@@ -415,8 +415,8 @@ Body:
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="116"
-                                    class="link-to-prism">src/person/person.controller.ts:116</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/person/person.controller.ts:118</a></div>
                         </td>
                     </tr>
 
@@ -507,8 +507,8 @@ GET http://localhost:3000/person/role/admin</code></pre></div></div>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="96"
-                                    class="link-to-prism">src/person/person.controller.ts:96</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/person/person.controller.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -597,8 +597,8 @@ GET http://localhost:3000/person/role/admin</code></pre></div></div>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="162"
-                                    class="link-to-prism">src/person/person.controller.ts:162</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/person/person.controller.ts:164</a></div>
                         </td>
                     </tr>
 
@@ -687,8 +687,8 @@ GET http://localhost:3000/person/role/admin</code></pre></div></div>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="143"
-                                    class="link-to-prism">src/person/person.controller.ts:143</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="145"
+                                    class="link-to-prism">src/person/person.controller.ts:145</a></div>
                         </td>
                     </tr>
 
@@ -825,7 +825,9 @@ export class PersonController {
    * &#x60;&#x60;&#x60;
    */
   @Post()
-  @ApiOperation({ summary: &#x27;Create a new person&#x27; })
+  @ApiOperation({ summary: &#x27;Create a new person&#x27;,
+    description: &#x27;Creat a new person in the system hospital management and return the person with the hashed password&#x27;
+  })
   @ApiResponse({ status: 201, description: &#x27;The person has been successfully created.&#x27;, type: Person })
   @ApiResponse({ status: 400, description: &#x27;Invalid input data.&#x27; })
   create(@Body() dto: CreatePersonDto): Promise&lt;{

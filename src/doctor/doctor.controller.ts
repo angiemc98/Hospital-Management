@@ -5,6 +5,8 @@ import { UpdateDoctorDto } from './dto/update-doctor.dto';
 import {ApiTags, ApiOperation,ApiResponse,ApiParam,
 } from '@nestjs/swagger';
 import { Doctor } from './doctor.entity';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { Role } from '../person/person.entity';
 /**
  * Controlador para gestionar las operaciones REST de doctores
  * 
@@ -46,13 +48,15 @@ export class DoctorController {
    * ```
    */
   @Post()
-   @ApiOperation({ summary: 'Create a new doctor' })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Create a new doctor', description: 'Create a new doctor in the system hospital management and return the doctor' })
   @ApiResponse({
     status: 201,
     description: 'The doctor has been successfully created.',
     type: Doctor,
   })
   @ApiResponse({ status: 400, description: 'Bad Request.' })
+  @ApiResponse({ status: 409, description: 'Doctor already exists.' })
   create(@Body() dto: CreateDoctorDto) {
     return this.doctorService.create(dto);
   }
@@ -67,12 +71,9 @@ export class DoctorController {
    * GET http://localhost:3000/doctor
    */
   @Get()
-   @ApiOperation({ summary: 'Get all doctors' })
-  @ApiResponse({
-    status: 200,
-    description: 'Return all doctors.',
-    type: [Doctor],
-  })
+  @ApiOperation({ summary: 'Get all doctors', description: 'Get all doctors registered in the system and return a list of them' })
+  @ApiResponse({ status: 200, description: 'List of all registered doctors.', type: [Doctor], isArray: true }) 
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   @ApiResponse({ status: 404, description: 'Doctor not found.' })
   findAll() {
     return this.doctorService.findAll();
@@ -89,14 +90,11 @@ export class DoctorController {
    * GET http://localhost:3000/doctor/1
    */
   @Get(':id')
-  @ApiOperation({ summary: 'Get a single doctor by ID' })
-  @ApiParam({ name: 'id', description: 'The ID of the doctor', type: 'number' })
-  @ApiResponse({
-    status: 200,
-    description: 'Return the doctor.',
-    type: Doctor,
-  })
+  @ApiOperation({ summary: 'Get a single doctor by ID', description: 'Get a single doctor by its ID and return the doctor registered in the system' })
+  @ApiParam({ name: 'id', description: 'The ID of the doctor', type: 'number', required: true, example: 1 })
+  @ApiResponse({ status: 200, description: 'Doctor found.', type: Doctor, isArray: true })
   @ApiResponse({ status: 404, description: 'Doctor not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   findOne(@Param(('id')) id: number) {
     return this.doctorService.findOne(+id);
   }
@@ -120,11 +118,14 @@ export class DoctorController {
    * ```
    */
   @Patch(':id')
-    @ApiOperation({ summary: 'Update an existing doctor' })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Update an existing doctor', description: 'Update an existing doctor in the system hospital management and return the doctor' })
   @ApiParam({
     name: 'id',
     description: 'The ID of the doctor to update',
     type: 'number',
+    required: true,
+    example: 1,
   })
   @ApiResponse({
     status: 200,
@@ -132,6 +133,7 @@ export class DoctorController {
     type: Doctor,
   })
   @ApiResponse({ status: 404, description: 'Doctor not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   update(@Param('id') id: number, @Body() dto: UpdateDoctorDto) {
     return this.doctorService.update(+id, dto);
   }
@@ -147,17 +149,21 @@ export class DoctorController {
    * DELETE http://localhost:3000/doctor/1
    */
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete a doctor' })
+  @Roles(Role.Admin)
+  @ApiOperation({ summary: 'Delete a doctor', description: 'Delete a doctor by its ID and return the message of confirmation' })
   @ApiParam({
     name: 'id',
     description: 'The ID of the doctor to delete',
     type: 'number',
+    required: true,
+    example: 1,
   })
   @ApiResponse({
     status: 200,
     description: 'The doctor has been successfully deleted.',
   })
   @ApiResponse({ status: 404, description: 'Doctor not found.' })
+  @ApiResponse({ status: 400, description: 'Invalid input data.' })
   remove(@Param('id') id: number) {
     return this.doctorService.remove(+id);
   }

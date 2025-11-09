@@ -228,7 +228,7 @@ specialty.description = &quot;Especialidad médica dedicada al estudio del coraz
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/specialty/specialty.entity.ts:76</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/specialty/specialty.entity.ts:75</a></div>
                         </td>
                     </tr>
 
@@ -308,13 +308,13 @@ specialty.description = &quot;Especialidad médica dedicada al estudio del coraz
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;Name of the medical specialty, must be unique&#x27;, example: &#x27;Cardiology&#x27;, unique: true, minLength: 2, maxLength: 100})<br />@Column({unique: true, length: 100})<br />
+                            @ApiProperty({description: &#x27;Name of the medical specialty, must be unique&#x27;, example: &#x27;Cardiology&#x27;, minLength: 2, maxLength: 100})<br />@Column({unique: true, length: 100})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/specialty/specialty.entity.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/specialty/specialty.entity.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -357,7 +357,7 @@ specialty.description = &quot;Especialidad médica dedicada al estudio del coraz
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/specialty/specialty.entity.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/specialty/specialty.entity.ts:87</a></div>
                         </td>
                     </tr>
 
@@ -427,10 +427,9 @@ export class Specialty{
      * 
      * @example &quot;Cardiología&quot;, &quot;Pediatría&quot;, &quot;Dermatología&quot;
      */
-     @ApiProperty({
+    @ApiProperty({
         description: &#x27;Name of the medical specialty, must be unique&#x27;,
         example: &#x27;Cardiology&#x27;,
-        unique: true,
         minLength: 2,
         maxLength: 100,
     })
